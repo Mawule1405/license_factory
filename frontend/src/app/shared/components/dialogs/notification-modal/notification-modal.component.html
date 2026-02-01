@@ -1,0 +1,40 @@
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-4">
+  <div class="absolute inset-0 bg-gray-900/40 backdrop-blur-md"></div>
+
+  <div [class]="'relative bg-white w-full max-w-sm border-t-[10px] shadow-2xl animate-in zoom-in duration-200 ' + getStyles().border">
+
+    <div class="p-6 text-center">
+      <div [class]="'inline-flex items-center justify-center w-16 h-16 mb-4 border-2 ' + getStyles().border + ' ' + getStyles().color">
+        <i [class]="'fas ' + getStyles().icon + ' text-2xl'"></i>
+      </div>
+
+      <h3 class="text-xs font-black uppercase tracking-[0.3em] text-gray-800 mb-2">
+        {{ config.title }}
+      </h3>
+      <p class="text-[10px] font-bold text-gray-500 uppercase leading-relaxed tracking-wider mb-8">
+        {{ config.message }}
+      </p>
+
+      <div class="flex gap-2">
+        @if (config.type === 'PERMISSION' || config.type === 'WARNING') {
+          <button
+            (click)="cancelled.emit()"
+            class="flex-1 py-3 border-2 border-gray-100 font-black text-[9px] uppercase tracking-widest hover:bg-gray-50 transition-all">
+            {{ config.cancelText || 'ABORT_ACTION' }}
+          </button>
+        }
+
+
+        <button (click)="confirmed.emit()"
+                [class]="'flex-1 py-3 text-white font-black text-[9px] uppercase tracking-widest transition-all shadow-lg ' + getStyles().bg">
+          {{ config.confirmText || 'ACKNOWLEDGE_RECEIPT' }}
+        </button>
+      </div>
+    </div>
+
+    <div class="bg-gray-50 px-4 py-2 flex justify-between border-t border-gray-100">
+      <span class="text-[7px] font-black text-gray-300 tracking-widest uppercase">System_Status: 0x{{ config.type.substring(0,3) }}</span>
+      <span class="text-[7px] font-black text-gray-300 tracking-widest">TAURUS_OS_V2</span>
+    </div>
+  </div>
+</div>

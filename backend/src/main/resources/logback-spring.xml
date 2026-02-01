@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property name="LOGS" value="./logs" />
+
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="RollingFile-Tech" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/technical.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/archived/tech-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>7</maxHistory> </rollingPolicy>
+        <encoder>
+            <pattern>%d %p %c{1.} [%t] %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="RollingFile-Audit" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/audit/audit.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/audit/history/audit-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>365</maxHistory> </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} | %msg%n</pattern> </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="Console" />
+        <appender-ref ref="RollingFile-Tech" />
+    </root>
+
+    <logger name="AUDIT" level="INFO" additivity="false">
+        <appender-ref ref="RollingFile-Audit" />
+    </logger>
+</configuration>
