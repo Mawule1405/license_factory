@@ -1,12 +1,15 @@
 package com.taurustechnology.backend.controllers;
 
+import com.taurustechnology.backend.configs.securities.JwtUtil;
+import com.taurustechnology.backend.dtos.RefreshTokenRequest;
+import com.taurustechnology.backend.dtos.TokenResponse;
+import com.taurustechnology.backend.services.impl.TokenRefreshService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import tools.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -16,7 +19,7 @@ import java.util.Map;
  * Controller for handling JWT refresh token operations.
  */
 @RestController
-@RequestMapping("/auth/refresh-token")
+@RequestMapping("/api/refresh-token")
 @RequiredArgsConstructor
 @Slf4j
 public class RefreshTokenController {
@@ -31,26 +34,18 @@ public class RefreshTokenController {
      * @param response the HTTP servlet response
      * @throws IOException in case of I/O error
      */
-    @GetMapping
-    public void refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String authHeader = request.getHeader(JwtUtil.AUTH_HEADER);
+    @PostMapping
+    public void refreshToken(
+            @RequestBody RefreshTokenRequest tokenRequest,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws IOException {
+
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        // Validate Authorization header
-        if (authHeader == null || !authHeader.startsWith(JwtUtil.TOKEN_PREFIX)) {
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            Map<String, Object> errorResponse = Map.of(
-                    "success", false,
-                    "error_message", "Refresh token required in Authorization header",
-                    "timestamp", LocalDateTime.now(),
-                    "path", request.getServletPath()
-            );
-            OBJECT_MAPPER.writeValue(response.getOutputStream(), errorResponse);
-            return;
-        }
 
-        String refreshToken = authHeader.substring(JwtUtil.TOKEN_PREFIX.length());
+        String refreshToken = tokenRequest.refreshToken();
 
         try {
             // Call service to refresh token with built-in security checks

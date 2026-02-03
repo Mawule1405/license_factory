@@ -1,0 +1,118 @@
+<div class="max-w-6xl mx-auto animate-fade-in p-6">
+  <div class="mb-8 flex justify-between items-end">
+    <div>
+      <h1 class="text-2xl font-black text-gray-800 uppercase tracking-tight">Profil Utilisateur</h1>
+      <p class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.3em] mt-1">Identité & Paramètres du compte</p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+    <div class="lg:col-span-1 space-y-4">
+      <div class="bg-white border border-gray-200 shadow-sm p-8 text-center">
+        <div class="w-24 h-24 bg-taurus-green text-white rounded-full mx-auto mb-4 flex items-center justify-center text-3xl font-black shadow-lg shadow-taurus-green/20">
+          {{ getInitials(currentUser?.fullName) }}
+        </div>
+
+        <h2 class="text-sm font-black text-gray-800 uppercase tracking-widest">{{ currentUser?.fullName }}</h2>
+
+        <div class="flex flex-wrap justify-center gap-2 mt-4">
+          @for (role of currentUser?.appRoles; track role.id) {
+            <span class="px-2 py-0.5 bg-gray-100 text-gray-600 text-[9px] font-black uppercase rounded border border-gray-200">
+              {{ role.name }}
+            </span>
+          }
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-gray-100 space-y-4">
+          <div class="flex justify-between items-center">
+            <span class="text-[9px] font-black uppercase text-gray-400">Statut Compte</span>
+            <span [class]="currentUser?.activated ? 'text-taurus-green' : 'text-red-500'" class="text-[10px] font-bold uppercase">
+              {{ currentUser?.activated ? 'Actif' : 'Suspendu' }}
+            </span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-[9px] font-black uppercase text-gray-400">Membre depuis</span>
+            <span class="text-[10px] font-bold text-gray-800 uppercase">{{ currentUser?.createdAt | date:'MMM yyyy' }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gray-900 p-6 shadow-sm border border-gray-800">
+        <div class="flex items-center gap-3 mb-4">
+          <i class="fas fa-shield-alt text-taurus-green"></i>
+          <h3 class="text-[10px] font-black text-white uppercase tracking-widest">Sécurité</h3>
+        </div>
+        <p class="text-[10px] text-gray-400 leading-relaxed mb-4">
+          Gardez votre compte en sécurité en mettant régulièrement à jour vos accès.
+        </p>
+        <a routerLink="/workspace/change-password"
+           class="block w-full text-center py-3 bg-white/5 hover:bg-taurus-green text-white text-[9px] font-black uppercase tracking-widest transition-all border border-white/10 hover:border-taurus-green">
+          Changer le mot de passe
+        </a>
+      </div>
+    </div>
+
+    <div class="lg:col-span-2 space-y-6">
+      <div class="bg-white border border-gray-200 shadow-sm">
+        <div class="p-6 border-b border-gray-100 bg-gray-50 flex justify-between items-center">
+          <h3 class="text-[11px] font-black uppercase tracking-[0.2em] text-gray-600">Informations Modifiables</h3>
+          <span class="text-[9px] font-bold text-gray-400 bg-gray-200 px-2 py-0.5 rounded">ID: {{ currentUser?.username }}</span>
+        </div>
+
+        <form [formGroup]="profileForm" (ngSubmit)="onUpdateProfile()" class="p-8 space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <div class="space-y-2">
+              <label class="text-[9px] font-black uppercase text-gray-400 tracking-tighter">Nom Complet</label>
+              <input type="text" formControlName="fullName"
+                     class="w-full border-b-2 border-gray-100 p-2 text-sm font-bold focus:border-taurus-green outline-none transition-all placeholder:text-gray-300">
+            </div>
+
+            <div class="space-y-2">
+              <label class="text-[9px] font-black uppercase text-gray-400 tracking-tighter">Nom d'utilisateur</label>
+              <input type="text" formControlName="username"
+                     class="w-full border-b-2 border-gray-100 p-2 text-sm font-bold focus:border-taurus-green outline-none transition-all placeholder:text-gray-300">
+            </div>
+
+            <div class="md:col-span-2 space-y-2">
+              <label class="text-[9px] font-black uppercase text-gray-400 tracking-tighter">Adresse Email</label>
+              <input type="email" formControlName="email"
+                     class="w-full border-b-2 border-gray-100 p-2 text-sm font-bold focus:border-taurus-green outline-none transition-all placeholder:text-gray-300">
+            </div>
+          </div>
+
+          <div class="mt-10 pt-6 border-t border-dashed border-gray-100 grid grid-cols-2 gap-4 opacity-60">
+            <div class="space-y-1">
+              <p class="text-[8px] font-black text-gray-400 uppercase">UUID Système</p>
+              <p class="text-[10px] font-mono text-gray-600">{{ currentUser?.id }}</p>
+            </div>
+            <div class="space-y-1">
+              <p class="text-[8px] font-black text-gray-400 uppercase">Dernière mise à jour</p>
+              <p class="text-[10px] font-bold text-gray-600 uppercase">{{ currentUser?.updatedAt | date:'dd/MM/yyyy HH:mm' }}</p>
+            </div>
+          </div>
+
+          <div class="pt-6 flex justify-end gap-3">
+            <button type="button" (click)="resetForm()"
+                    class="px-6 py-2 text-[10px] font-black uppercase text-gray-400 hover:text-gray-800 transition-all">
+              Réinitialiser
+            </button>
+            <button type="submit" [disabled]="profileForm.invalid || !profileForm.dirty || isLoading"
+                    class="px-10 py-3 bg-gray-900 text-white text-[10px] font-black uppercase tracking-widest hover:bg-taurus-green transition-all disabled:opacity-30 shadow-xl">
+              @if (isLoading) { <i class="fas fa-spinner fa-spin mr-2"></i> }
+              Enregistrer les modifications
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="flex items-center gap-4 p-4 border border-blue-100 bg-blue-50/50 rounded">
+        <i class="fas fa-info-circle text-blue-400"></i>
+        <p class="text-[9px] font-bold text-blue-800 uppercase tracking-wider leading-relaxed">
+          Les modifications apportées au profil peuvent affecter la génération de vos rapports de licence.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

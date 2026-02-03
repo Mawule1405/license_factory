@@ -1,13 +1,14 @@
 package com.taurustechnology.backend.entities;
 
+import com.taurustechnology.backend.enums.LicenseLevel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Entity
 @Data
@@ -16,20 +17,25 @@ import java.util.Optional;
 @Builder
 public class License {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
 
-    private String licenseKey; // Un UUID ou une clé hashée
+    private String licenseKey;
+    private String addressMac;
+    @Enumerated(EnumType.STRING)
+    private LicenseLevel licenseLevel;
+    private long maxUsers;
 
     private LocalDateTime createdAt;
-    private LocalDateTime expiryDate;
+    private LocalDate expiryDate;
 
-    private boolean isActive;
+    private boolean activated;
+    private boolean deleted;
 
     @ManyToOne
-    @JoinColumn(name = "client_id")
     private Client client;
 
-    @OneToMany(mappedBy = "license", cascade = CascadeType.ALL)
-    private List<LicenseParameter> parameters;
+    @ManyToOne
+    private AppUser creator;
+
 }

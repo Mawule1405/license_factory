@@ -1,55 +1,79 @@
 package com.taurustechnology.backend.services;
 
-import org.springframework.stereotype.Service;
+import com.taurustechnology.backend.entities.License;
+import com.taurustechnology.backend.services.impl.LicenseGeneratorServiceImpl;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.io.TempDir;
+import tools.jackson.databind.ObjectMapper;
+
 import java.io.File;
-import java.io.FileOutputStream;
-import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.util.Base64;
 
-@Service
-public class KeyGeneratorToolService {
+import static org.assertj.core.api.Assertions.assertThat;
 
-    private static final String PRIVATE_KEY_PATH = "private_key_pkcs8.key";
-    private static final String PUBLIC_KEY_PATH = "public_key.pub";
+class LicenseGeneratorServiceImplTest {
 
-    public void checkAndGenerateKeys() throws Exception {
-        File privFile = new File(PRIVATE_KEY_PATH);
-        File pubFile = new File(PUBLIC_KEY_PATH);
+    private LicenseGeneratorServiceImpl licenseGeneratorService;
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
-        if (privFile.exists() && pubFile.exists()) {
-            System.out.println("✅ Sécurité : Les clés RSA sont déjà présentes.");
-            return;
-        }
+    // Crée un dossier temporaire qui sera supprimé après le test
+    @TempDir
+    Path tempDir;
 
-        System.out.println("⚠️ Sécurité : Clés introuvables. Génération du couple RSA en cours...");
-        generate();
-    }
-
-    private void generate() throws Exception {
+    @BeforeEach
+    void setUp() throws Exception {
+        // 1. Simuler la présence du fichier de clé dans le répertoire de travail
+        // On génère une clé RSA 2048 de test
         KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
         keyGen.initialize(2048);
         KeyPair pair = keyGen.generateKeyPair();
 
-        saveToFile(PRIVATE_KEY_PATH, formatToPEM(
-                Base64.getEncoder().encodeToString(pair.getPrivate().getEncoded()), "PRIVATE KEY"));
+        String encoded = Base64.getEncoder().encodeToString(pair.getPrivate().getEncoded());
+        String pem = "-----BEGIN PRIVATE KEY-----\n" + encoded + "\n-----END PRIVATE KEY-----";
 
-        saveToFile(PUBLIC_KEY_PATH, formatToPEM(
-                Base64.getEncoder().encodeToString(pair.getPublic().getEncoded()), "PUBLIC KEY"));
+        // On crée le fichier attendu par le service à la racine (ou ici via un hack de chemin)
+        // Note: Dans le service réel, PRIVATE_KEY_PATH = "private_key_pkcs8.key"
+        Files.writeString(Path.of("private_key_pkcs8.key"), pem);
 
-        System.out.println("🚀 Success : private_key_pkcs8.key et public_key.pub ont été créés.");
+        licenseGeneratorService = new LicenseGeneratorServiceImpl(objectMapper);
     }
 
-    private String formatToPEM(String base64Key, String type) {
-        return "-----BEGIN " + type + "-----\n" +
-                base64Key.replaceAll("(.{64})", "$1\n") +
-                "\n-----END " + type + "-----";
+    @AfterEach
+    void tearDown() throws Exception {
+        // Nettoyage : on supprime le fichier de clé de test pour ne pas polluer le projet
+        Files.deleteIfExists(Path.of("private_key_pkcs8.key"));
     }
 
-    private void saveToFile(String fileName, String content) throws Exception {
-        try (FileOutputStream fos = new FileOutputStream(fileName)) {
-            fos.write(content.getBytes(StandardCharsets.UTF_8));
-        }
+    @Test
+    @DisplayName("Devrait générer une licence signée valide (Payload + Signature)")
+    void shouldGenerateValidSignedLicense() throws Exception {
+        // Given
+        License license = License.builder()
+                .id("lic-123")
+                .licenseKey("ABC-123")
+                .maxUsers(10)
+                .build();
+
+        // When
+        String result = licenseGeneratorService.buildLicense(license);
+
+        // Then
+        assertThat(result).isNotNull();
+        assertThat(result).contains(".");
+
+        String[] parts = result.split("\\.");
+        assertThat(parts).hasSize(2);
+
+        // Vérifier que le payload est bien du Base64 (le JSON encodé)
+        byte[] decodedPayload = Base64.getDecoder().decode(parts[0]);
+        String json = new String(decodedPayload);
+        assertThat(json).contains("ABC-123");
+
+        // Vérifier que la signature est présente
+        assertThat(parts[1]).isNotEmpty();
     }
 }

@@ -29,8 +29,6 @@ public class AppRoleDTO {
     @Length(max = 500, message = "La description ne peut pas dépasser 500 caractères")
     private String description;
 
-    private List<AppUserDTO> appUsers = new ArrayList<>();
 
-    private Integer userCount;
 
 }

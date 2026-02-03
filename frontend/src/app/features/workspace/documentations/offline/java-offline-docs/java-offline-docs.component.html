@@ -1,0 +1,37 @@
+<div class="space-y-12 animate-fade-in">
+
+  <header>
+    <div class="flex items-center gap-3 mb-2">
+      <span class="bg-purple-600 text-white text-[10px] font-black px-2 py-0.5 rounded">RSA SECURITY</span>
+      <h2 class="text-lg font-bold text-gray-800 uppercase tracking-tight">Vérification de Signature RSA (Java)</h2>
+    </div>
+    <p class="text-sm text-gray-500 leading-relaxed">
+      Le mode hors-ligne utilise une <strong>Clé Publique RSA</strong> pour vérifier l'authenticité d'un fichier de licence signé.
+    </p>
+  </header>
+
+  <section class="space-y-4">
+    <div class="flex justify-between items-end">
+      <div>
+        <h4 class="text-xs font-black text-taurus-green uppercase tracking-widest">Étape 1 : Le Verificateur RSA</h4>
+      </div>
+      <button (click)="copyCode(javaOfflineCode, 'javaOffline')"
+              class="text-[10px] font-bold uppercase tracking-tighter bg-gray-100 hover:bg-taurus-green hover:text-white px-3 py-1 rounded transition-all">
+        <i class="fas fa-copy mr-1"></i> {{ copyStatus['javaOffline'] || 'Copier le code' }}
+      </button>
+    </div>
+
+
+
+    <div class="relative">
+      <pre class="bg-gray-900 text-gray-300 p-6 rounded-sm text-[11px] font-mono shadow-2xl overflow-x-auto leading-normal"><code>{{ javaOfflineCode }}</code></pre>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h4 class="text-xs font-black text-taurus-green uppercase tracking-widest">Étape 2 : Vérification du fichier .lic</h4>
+    <div class="relative">
+      <pre class="bg-gray-900 text-gray-300 p-6 rounded-sm text-[11px] font-mono shadow-2xl overflow-x-auto leading-normal"><code>{{ javaOfflineUsage }}</code></pre>
+    </div>
+  </section>
+</div>

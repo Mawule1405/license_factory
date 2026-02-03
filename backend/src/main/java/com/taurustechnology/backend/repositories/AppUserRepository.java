@@ -2,6 +2,8 @@ package com.taurustechnology.backend.repositories;
 
 
 import com.taurustechnology.backend.entities.AppUser;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -24,4 +26,10 @@ public interface AppUserRepository extends JpaRepository<AppUser, String> {
 
     @Query("SELECT a FROM AppUser a WHERE :name IN (SELECT r.name FROM a.appRoles r)")
     List<AppUser> findByRoleName(@Param("name") String roleName);
+
+    @Query("SELECT u FROM AppUser u WHERE " +
+            "LOWER(u.username) LIKE LOWER(CONCAT('%', :kw, '%')) OR " +
+            "LOWER(u.fullName) LIKE LOWER(CONCAT('%', :kw, '%')) OR " +
+            "LOWER(u.email) LIKE LOWER(CONCAT('%', :kw, '%'))")
+    Page<AppUser> searchOperators(@Param("kw") String keyword, Pageable pageable);
 }

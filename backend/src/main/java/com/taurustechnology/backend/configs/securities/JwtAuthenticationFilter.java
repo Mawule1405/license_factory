@@ -120,7 +120,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                     .map(GrantedAuthority::getAuthority)
                     .toList();
 
-            Tokens tokens = JwtUtil.generateTokens(user, roles, algorithm, request);
+            Tokens tokens = JwtUtil.generateTokens(user,appUser, roles, algorithm, request);
 
             log.info("[{}] JWT tokens generated successfully for user: {}", LocalDateTime.now(), user.getUsername());
 

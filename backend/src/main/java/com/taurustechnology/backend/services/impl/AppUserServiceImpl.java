@@ -3,11 +3,16 @@ package com.taurustechnology.backend.services.impl;
 
 import com.taurustechnology.backend.entities.AppRole;
 import com.taurustechnology.backend.entities.AppUser;
+import com.taurustechnology.backend.repositories.AppRoleRepository;
 import com.taurustechnology.backend.repositories.AppUserRepository;
 import com.taurustechnology.backend.services.AppUserService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +33,7 @@ public class AppUserServiceImpl implements AppUserService {
 
     private final AppUserRepository appUserRepository;
     private final PasswordEncoder passwordEncoder;
+    private final AppRoleRepository appRoleRepository;
 
     /**
      * Creates a new application user with the specified creator user ID.
@@ -40,6 +46,7 @@ public class AppUserServiceImpl implements AppUserService {
      */
     @Override
     public AppUser create(AppUser appUser, String createdByAppUserId) {
+
         if (appUser == null) {
             throw new IllegalArgumentException("AppUser cannot be null");
         }
@@ -54,16 +61,24 @@ public class AppUserServiceImpl implements AppUserService {
             return null;
         }
 
+        AppRole appRole = appRoleRepository.findByName(appUser.getAppRoles().getFirst().getName());
+        if (appRole == null) {
+            throw new IllegalArgumentException("AppRole cannot be null");
+        }
+
+
         // Check if username or email already exists
         if (appUserRepository.existsByUsername(appUser.getUsername())) {
             log.warn("Username {} already exists", appUser.getUsername());
             throw new IllegalArgumentException("Username already exists");
         }
 
+
         if (appUser.getEmail() != null && appUserRepository.existsByEmail(appUser.getEmail())) {
             log.warn("Email {} already exists", appUser.getEmail());
             throw new IllegalArgumentException("Email already exists");
         }
+
 
         // Set user properties
         appUser.setPasswordHash(passwordEncoder.encode(appUser.getPasswordHash()));
@@ -71,12 +86,14 @@ public class AppUserServiceImpl implements AppUserService {
         appUser.setActivated(true);
         appUser.setDeleted(false);
         appUser.setLoggedIn(false);
+        appUser.setAppRoles(List.of(appRole));
         appUser.setCreatedAt(LocalDateTime.now());
         appUser.setUpdatedAt(LocalDateTime.now());
 
         AppUser newAppUser = appUserRepository.save(appUser);
         log.info("User {} created new user: {} with ID: {}",
                 createdByAppUserId, newAppUser.getUsername(), newAppUser.getId());
+
 
         return newAppUser;
     }
@@ -215,12 +232,8 @@ public class AppUserServiceImpl implements AppUserService {
 
         appUser.setLoggedIn(true);
         appUser.setUpdatedAt(LocalDateTime.now());
-        System.out.println("===========AVANT");
-        System.out.println(appUser);
         appUser = appUserRepository.save(appUser);
 
-        System.out.println("===========APRES");
-        System.out.println(appUser);
 
         log.info("User {} logged in", appUser.getId());
         return appUser;
@@ -392,5 +405,13 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
     public List<AppUser> findAllAppUser(){
         return appUserRepository.findAll();
+    }
+
+
+    @Override
+    public Page<AppUser> searchUsers(String keyword, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by("fullName","username","email"));
+
+        return appUserRepository.searchOperators(keyword, pageable);
     }
 }

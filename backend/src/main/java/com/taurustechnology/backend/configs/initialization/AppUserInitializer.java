@@ -41,7 +41,7 @@ public class AppUserInitializer {
     @Value("${app.admin.password:Admin@123}")
     private String defaultAdminPassword;
 
-    private static final String SUPER_ADMIN_ROLE_NAME = "SUPER-ADMINISTRATEUR";
+    private static final String SUPER_ADMIN_ROLE_NAME = "ADMINISTRATEUR";
 
     /**
      * Creates the default super administrator user if it doesn't exist.
@@ -87,7 +87,7 @@ public class AppUserInitializer {
         appRole = appRoleRepository.findByName(SUPER_ADMIN_ROLE_NAME);
         if (appRole == null) {
             throw new IllegalStateException(
-                    "SUPER-ADMINISTRATEUR role not found after initialization");
+                    "ADMINISTRATEUR role not found after initialization");
         }
 
         return appRole;

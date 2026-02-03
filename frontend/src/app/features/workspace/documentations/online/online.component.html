@@ -1,0 +1,27 @@
+<div class="animate-fade-in">
+  <div class="mb-8 border-b border-gray-100 pb-6">
+    <h3 class="text-xl font-black text-gray-800 uppercase tracking-tight italic">Protocol: Online Verification</h3>
+    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.3em] mt-1">Status: Stable / Production Ready</p>
+
+    <div class="flex gap-4 mt-6">
+      <button (click)="selectedLang = 'java'"
+              [ngClass]="selectedLang === 'java' ? 'border-taurus-green text-taurus-green' : 'border-transparent text-gray-400 hover:text-gray-600'"
+              class="border-b-2 pb-2 text-[11px] font-black uppercase tracking-widest transition-all">
+        <i class="fab fa-java mr-2"></i> Java Provider
+      </button>
+      <button (click)="selectedLang = 'python'"
+              [ngClass]="selectedLang === 'python' ? 'border-taurus-green text-taurus-green' : 'border-transparent text-gray-400 hover:text-gray-600'"
+              class="border-b-2 pb-2 text-[11px] font-black uppercase tracking-widest transition-all">
+        <i class="fab fa-python mr-2"></i> Python Provider
+      </button>
+    </div>
+  </div>
+
+  <div class="mt-8">
+    @if (selectedLang === 'java') {
+      <app-java-online-docs></app-java-online-docs>
+    } @else {
+      <app-python-online-docs></app-python-online-docs>
+    }
+  </div>
+</div>

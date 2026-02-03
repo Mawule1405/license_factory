@@ -9,6 +9,7 @@ import com.taurustechnology.backend.mappers.AppRoleMapper;
 import com.taurustechnology.backend.mappers.AppUserMapper;
 import com.taurustechnology.backend.services.AppUserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +20,7 @@ import java.util.List;
  * Provides endpoints for user creation, retrieval, update, and logout.
  */
 @RestController
-@RequestMapping("/auth/users")
+@RequestMapping("/api/users")
 @RequiredArgsConstructor
 public class AppUserController {
 
@@ -41,6 +42,18 @@ public class AppUserController {
         appUser = appUserService.create(appUser, createdAppUserId);
         return ResponseEntity.ok(appUserMapper.toDTO(appUser));
     }
+
+
+
+    @GetMapping("/search")
+    public ResponseEntity<Page<AppUserDTO>> search(
+                @RequestParam(name = "keyword", defaultValue = "") String keyword,
+                @RequestParam(name = "page", defaultValue = "0") int page,
+                @RequestParam(name = "size", defaultValue = "5") int size) {
+
+            return ResponseEntity.ok(appUserService.searchUsers(keyword, page, size).map(appUserMapper::toDTO));
+        }
+
 
     /**
      * Find a user by their ID.

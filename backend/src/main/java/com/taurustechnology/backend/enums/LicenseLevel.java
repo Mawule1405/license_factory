@@ -1,4 +1,11 @@
 package com.taurustechnology.backend.enums;
 
-public enum Niveau {
+public enum LicenseLevel {
+    FREEMIUM,
+    BASIC,
+    CLASSIC,
+    STANDARD,
+    COMMUNITY,
+    PROFESSIONAL,
+    PREMIUM
 }

@@ -1,5 +1,8 @@
-package com.taurustechnology.backend.entities;
+package com.taurustechnology.backend.dtos;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.taurustechnology.backend.entities.AppUser;
+import com.taurustechnology.backend.entities.Client;
 import com.taurustechnology.backend.enums.LicenseLevel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,34 +10,32 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class License {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+public class LicenseDTO {
+
     private String id;
 
     private String licenseKey;
     private String addressMac;
-    @Enumerated(EnumType.STRING)
-    private LicenseLevel niveau;
-    private long maxUsers;
+
+    private LicenseLevel level;
+    private Long maxUsers;
 
     private LocalDateTime createdAt;
-    private LocalDateTime expiryDate;
+    private LocalDate expiryDate;
 
-    private boolean activated;
-    private boolean deleted;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Boolean activated;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Boolean deleted;
 
-    @ManyToOne
-    private Client client;
-
-    @ManyToOne
-    private AppUser creator;
+    private String clientId;
+    private String creatorId;
 
 }

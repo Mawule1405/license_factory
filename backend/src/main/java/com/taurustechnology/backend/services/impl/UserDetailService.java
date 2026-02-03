@@ -161,14 +161,5 @@ public class UserDetailService implements UserDetailsService {
                 .build();
     }
 
-    /**
-     * Optional: Method to reload user details for security context refresh
-     *
-     * @param username the username to reload
-     * @return updated UserDetails
-     */
-    public UserDetails reloadUser(String username) {
-        log.debug("Reloading user details for: {}", username);
-        return loadUserByUsername(username);
-    }
+
 }

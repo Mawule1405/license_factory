@@ -1,0 +1,92 @@
+2026-02-01 00:26:55,523 INFO c.t.b.BackendApplicationTests [main] Starting BackendApplicationTests using Java 21.0.6 with PID 22500 (started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend)
+2026-02-01 00:26:55,526 INFO c.t.b.BackendApplicationTests [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-01 00:26:56,616 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-01 00:26:58,026 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-01 00:26:58,220 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 172 ms. Found 4 JPA repository interfaces.
+2026-02-01 00:26:59,891 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-01 00:27:00,119 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-01 00:27:01,637 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-01 00:27:01,710 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-01 00:27:02,207 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-01 00:27:02,210 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-01 00:27:02,256 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-01 00:27:02,332 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-01 00:27:04,502 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-01 00:27:04,633 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-01 00:27:04,983 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-01 00:27:06,147 INFO c.t.b.c.i.AppRoleInitializer [main] Starting application role initialization...
+2026-02-01 00:27:06,438 INFO c.t.b.c.i.AppRoleInitializer [main] Created new application role: ADMINISTRATEUR
+2026-02-01 00:27:06,443 INFO c.t.b.c.i.AppRoleInitializer [main] Created new application role: COLLABORATEUR
+2026-02-01 00:27:06,443 INFO c.t.b.c.i.AppRoleInitializer [main] Application role initialization completed successfully
+2026-02-01 00:27:07,274 INFO c.t.b.c.i.AppUserInitializer [main] Created default super administrator user: admin
+2026-02-01 00:27:07,274 WARN c.t.b.c.i.AppUserInitializer [main] Default admin password should be changed after first login for security reasons
+2026-02-01 00:27:08,124 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-01 00:27:08,373 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-01 00:27:08,820 INFO c.t.b.c.s.WebSecurity [main] [2026-02-01T00:27:08.820686900] Configuring security filter chain
+2026-02-01 00:27:08,916 INFO c.t.b.c.s.WebSecurity [main] [2026-02-01T00:27:08.916377500] Creating AuthenticationManager bean
+2026-02-01 00:27:08,937 INFO c.t.b.c.s.WebSecurity [main] [2026-02-01T00:27:08.937388100] Security filter chain configured successfully
+2026-02-01 00:27:10,035 INFO c.t.b.BackendApplicationTests [main] Started BackendApplicationTests in 15.587 seconds (process running for 19.219)
+2026-02-01 00:27:11,726 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-01 00:27:11,734 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-01 00:27:11,742 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-01 00:29:06,514 INFO c.t.b.BackendApplicationTests [main] Starting BackendApplicationTests using Java 21.0.6 with PID 11784 (started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend)
+2026-02-01 00:29:06,517 INFO c.t.b.BackendApplicationTests [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-01 00:29:07,143 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-01 00:29:08,673 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-01 00:29:08,808 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 117 ms. Found 4 JPA repository interfaces.
+2026-02-01 00:29:10,130 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-01 00:29:10,304 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-01 00:29:11,345 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-01 00:29:11,395 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-01 00:29:11,793 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-01 00:29:11,795 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-01 00:29:11,836 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-01 00:29:11,874 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-01 00:29:13,748 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-01 00:29:13,844 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-01 00:29:14,126 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-01 00:29:16,649 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-01 00:29:16,808 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-01 00:29:16,997 INFO c.t.b.c.s.WebSecurity [main] [2026-02-01T00:29:16.997774] Configuring security filter chain
+2026-02-01 00:29:17,130 INFO c.t.b.c.s.WebSecurity [main] [2026-02-01T00:29:17.129846200] Creating AuthenticationManager bean
+2026-02-01 00:29:17,148 INFO c.t.b.c.s.WebSecurity [main] [2026-02-01T00:29:17.148883400] Security filter chain configured successfully
+2026-02-01 00:29:18,429 INFO c.t.b.BackendApplicationTests [main] Started BackendApplicationTests in 12.629 seconds (process running for 15.243)
+2026-02-01 00:29:21,280 INFO c.t.b.s.i.AppUserServiceImpl [main] User user-123 logged in
+2026-02-01 00:29:21,336 WARN c.t.b.s.i.AppUserServiceImpl [main] Username jdoe already exists
+2026-02-01 00:29:21,359 INFO c.t.b.s.i.AppUserServiceImpl [main] User creator-id created new user: jdoe with ID: null
+2026-02-01 00:29:21,408 INFO c.t.b.s.i.AppUserServiceImpl [main] User admin-id soft-deleted user: target-id
+2026-02-01 00:29:21,796 INFO c.t.b.s.i.ClientServiceImpl [main] Client successfully saved with ID: client-1
+2026-02-01 00:29:21,841 INFO c.t.b.s.i.ClientServiceImpl [main] Initiation of client deletion for ID: client-1
+2026-02-01 00:29:21,844 WARN c.t.b.s.i.ClientServiceImpl [main] Deletion failed: Client client-1 still has active licenses
+2026-02-01 00:29:21,856 INFO c.t.b.s.i.ClientServiceImpl [main] Initiation of client deletion for ID: client-1
+2026-02-01 00:29:21,858 INFO c.t.b.s.i.ClientServiceImpl [main] Client client-1 deleted successfully
+2026-02-01 00:29:21,877 INFO c.t.b.s.i.ClientServiceImpl [main] Updating client client-1 by user user-1
+2026-02-01 00:29:22,800 WARN c.t.b.s.i.LicenseServiceImpl [main] Soft deleting license: lic-123
+2026-02-01 00:29:22,846 INFO c.t.b.s.i.LicenseServiceImpl [main] License created successfully: F9382614-093B-4568-8D72-B95AA871E826
+2026-02-01 00:29:22,880 INFO c.t.b.s.i.LicenseServiceImpl [main] Generating signed license string for ID: lic-123 by user: user-1
+2026-02-01 00:29:22,987 INFO c.t.b.s.i.LicenseServiceImpl [main] Generating signed license string for ID: lic-123 by user: user-1
+2026-02-01 00:29:23,132 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-01 00:29:23,141 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-01 00:29:23,157 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

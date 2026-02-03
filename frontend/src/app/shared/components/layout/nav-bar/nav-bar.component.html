@@ -9,25 +9,25 @@
     <div class="hidden md:flex h-full items-center space-x-0">
       <a routerLink="/workspace/dashboard"
          routerLinkActive="bg-taurus-green text-white border-b-4 border-taurus-dark"
-         class="h-full flex items-center px-6 border-b-4 border-transparent hover:bg-gray-50 font-bold text-[11px] uppercase tracking-[0.2em] transition-all">
+         class="h-full flex items-center px-6 border-b-4 border-transparent hover:bg-gray-400 font-bold text-[11px] uppercase tracking-[0.2em] transition-all">
         <i class="fas fa-th-large mr-4 text-sm"></i> Dashboard
       </a>
 
       <a routerLink="/workspace/administration"
          routerLinkActive="bg-taurus-green text-white border-b-4 border-taurus-dark"
-         class="h-full flex items-center px-6 border-b-4 border-transparent hover:bg-gray-50 font-bold text-[11px] uppercase tracking-[0.2em] transition-all">
+         class="h-full flex items-center px-6 border-b-4 border-transparent hover:bg-gray-400 font-bold text-[11px] uppercase tracking-[0.2em] transition-all">
         <i class="fas fa-cogs mr-4 text-sm"></i> Administration
       </a>
 
       <a routerLink="/workspace/clients"
          routerLinkActive="bg-taurus-green text-white border-b-4 border-taurus-dark"
-         class="h-full flex items-center px-6 border-b-4 border-transparent hover:bg-gray-50 font-bold text-[11px] uppercase tracking-[0.2em] transition-all">
+         class="h-full flex items-center px-6 border-b-4 border-transparent hover:bg-gray-400 font-bold text-[11px] uppercase tracking-[0.2em] transition-all">
         <i class="fas fa-users-cog mr-4 text-sm"></i> Clients Management
       </a>
 
       <a routerLink="/workspace/docs"
          routerLinkActive="bg-taurus-green text-white border-b-4 border-taurus-dark"
-         class="h-full flex items-center px-6 border-b-4 border-transparent hover:bg-gray-50 font-bold text-[11px] uppercase tracking-[0.2em] transition-all">
+         class="h-full flex items-center px-6 border-b-4 border-transparent hover:bg-gray-400 font-bold text-[11px] uppercase tracking-[0.2em] transition-all">
         <i class="fas fa-file-alt mr-4 text-sm"></i> Documentation
       </a>
     </div>
@@ -63,6 +63,9 @@
           </a>
           <a routerLink="/workspace/change-password" class="flex items-center px-5 py-4 text-[11px] font-bold text-gray-700 hover:bg-taurus-green hover:text-white transition-colors uppercase tracking-[0.15em]">
             <i class="fas fa-key mr-4 text-base opacity-70"></i> Change Password
+          </a>
+          <a routerLink="/workspace/about" class="flex items-center px-5 py-4 text-[11px] font-bold text-gray-700 hover:bg-taurus-green hover:text-white transition-colors uppercase tracking-[0.15em]">
+            <i class="fas fa-info-circle mr-4 text-base opacity-70"></i> About
           </a>
           <div class="border-t border-gray-100"></div>
           <button (click)="logout()"

@@ -28,9 +28,9 @@ public class LicenseStatus {
     private String expiryDate;   // Format YYYY-MM-DD
 
     // Limites techniques (Quotas)
-    private int maxUsers;
-    private int maxDocuments;
-    private int maxFolders;
+    private Long maxUsers;
+    private String addressMac;
+
 
     /**
      * Méthode utilitaire pour vérifier si la licence est expirée

@@ -41,6 +41,8 @@ public class AppUser {
     @Length(min = 3, max = 50, message = "Le nom d'utilisateur doit faire entre 3 et 50 caractères")
     private String username;
 
+    private String fullName;
+
 
     @Column(nullable = false)
     @NotBlank(message = "Le mot de passe est obligatoire")
@@ -52,17 +54,21 @@ public class AppUser {
     @Email(message = "Format d'email invalide")
     private String email;
 
+    @Builder.Default
     @Column(nullable = false, columnDefinition = "boolean default true")
     private boolean activated = true;
 
+    @Builder.Default
     @Column(nullable = false, columnDefinition = "boolean default false")
     private boolean deleted = false;
 
+    @Builder.Default
     @Column( nullable = false, columnDefinition = "boolean default false")
     private boolean loggedIn = false;
 
     // Audit fields
     @CreatedDate
+    @Builder.Default
     @Column( updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 

@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+/* 1. Importations version v4 */
+@import "tailwindcss";
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+/* 2. Définition des composants */
+@theme {
+  /* On redéfinit tes couleurs ici au cas où ton tailwind.config.js n'est pas détecté */
+  --color-taurus-green: #006D5B;
+  --color-taurus-dark: #004D40;
+}
+
+@layer components {
+  /* Définition de base */
+  .btn-taurus {
+    @apply px-6 py-3 rounded-lg font-bold transition-all transform active:scale-95 flex items-center justify-center gap-2;
+  }
+
+  /* Pour éviter l'erreur "unknown utility", on n'utilise pas @apply sur une classe perso
+     définie dans le même bloc. On répète les styles ou on utilise les classes natives */
+  .btn-taurus-primary {
+    /* On reprend la logique de btn-taurus manuellement pour éviter le conflit */
+    @apply px-6 py-3 rounded-lg font-bold transition-all transform active:scale-95 flex items-center justify-center gap-2;
+    @apply bg-taurus-green text-white hover:bg-taurus-dark shadow-md;
+  }
+
+  .input-taurus {
+    @apply w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-taurus-green focus:border-transparent outline-none transition-all;
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.animate-blink {
+  animation: blink 1.5s infinite;
+}

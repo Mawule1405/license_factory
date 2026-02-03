@@ -1,0 +1,15 @@
+<div class="min-h-screen flex flex-col bg-gray-50">
+  <header class="fixed top-0 left-0 right-0 z-50">
+    <app-navbar></app-navbar>
+  </header>
+
+  <main class="flex-1 p-2 mt-16">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="bg-white border-t border-gray-200 py-3 px-6">
+    <p class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">
+      Taurus License Factory {{ APP_VERSION }}
+    </p>
+  </footer>
+</div>

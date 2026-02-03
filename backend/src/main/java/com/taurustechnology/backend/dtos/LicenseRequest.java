@@ -1,15 +1,30 @@
 package com.taurustechnology.backend.dtos;
 
+import com.taurustechnology.backend.entities.Client;
+import com.taurustechnology.backend.enums.LicenseLevel;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
+
+import java.time.LocalDateTime;
 
 @Data
 public class LicenseRequest {
-    private String customerName;
-    private String address;
-    private String phone;
-    private String licenseLevel; // FREEMIUM, BASIC, etc.
-    private int maxUsers;
-    private int maxDocuments;
-    private int maxFolders;
-    private String expiryDate;
+
+    private String id;
+
+    private String licenseKey;
+    private String addressMac;
+    private LicenseLevel niveau;
+    private long maxUsers;
+
+    private LocalDateTime createdAt;
+    private LocalDateTime expiryDate;
+
+    private boolean activated;
+    private boolean deleted;
+
+    private String clientId;
+
 }

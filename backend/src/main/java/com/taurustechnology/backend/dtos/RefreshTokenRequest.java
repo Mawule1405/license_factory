@@ -5,10 +5,5 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class RefreshTokenRequest {
-    String token;
-}
+// Dans tes DTOs
+public record RefreshTokenRequest(String refreshToken) {}

@@ -25,7 +25,7 @@ public class AppRoleInitializer {
      * Role names and descriptions used for initialization
      */
     private static final String ADMIN_ROLE = "ADMINISTRATEUR";
-    private static final String USER_ROLE = "COLLABORATEUR";
+    private static final String USER_ROLE = "USER";
 
     private static final String ADMIN_DESC = "System administrator with full access and management rights "
             + "for all modules";

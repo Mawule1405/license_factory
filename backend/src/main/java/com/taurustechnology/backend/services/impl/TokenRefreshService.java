@@ -88,7 +88,7 @@ public class TokenRefreshService {
             User user = new User(appUser.getUsername(), appUser.getPasswordHash(), authorities);
 
             // Generate new tokens
-            Tokens tokens = JwtUtil.generateTokens(user, roles, algorithm, request);
+            Tokens tokens = JwtUtil.generateTokens(user, appUser, roles, algorithm, request);
 
             log.info("Tokens successfully refreshed for user: {}", username);
 

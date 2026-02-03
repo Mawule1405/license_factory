@@ -3,6 +3,7 @@ package com.taurustechnology.backend.configs.securities;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.taurustechnology.backend.dtos.Tokens;
+import com.taurustechnology.backend.entities.AppUser;
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
@@ -66,7 +67,7 @@ public class JwtUtil {
      * @param request   the HTTP servlet request
      * @return a Tokens object containing access and refresh tokens
      */
-    public static Tokens generateTokens(User user, List<String> roles, Algorithm algorithm, HttpServletRequest request) {
+    public static Tokens generateTokens(User user, AppUser appUser, List<String> roles, Algorithm algorithm, HttpServletRequest request) {
         long currentTimeMillis = System.currentTimeMillis();
 
         String accessToken = JWT.create()
@@ -74,6 +75,7 @@ public class JwtUtil {
                 .withExpiresAt(new Date(currentTimeMillis + EXPIRE_ACCESS))
                 .withIssuer(request.getRequestURL().toString())
                 .withClaim("roles", roles)
+                .withClaim("userId", appUser.getId())
                 .sign(algorithm);
 
         String refreshToken = JWT.create()

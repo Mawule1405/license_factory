@@ -29,6 +29,8 @@ public class AppUserDTO {
     @Length(min = 3, max = 50, message = "Le nom d'utilisateur doit faire entre 3 et 50 caractères")
     private String username;
 
+    private String fullName;
+
 
     @Column(nullable = false)
     @NotBlank(message = "Le mot de passe est obligatoire")
@@ -41,14 +43,19 @@ public class AppUserDTO {
     @Email(message = "Format d'email invalide")
     private String email;
 
-    private boolean activated = true;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Boolean activated = true;
 
-    private boolean deleted = false;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Boolean deleted = false;
 
-    private boolean loggedIn = false;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Boolean loggedIn = false;
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private LocalDateTime updatedAt = LocalDateTime.now();
 
     private List<AppRoleDTO> appRoles = new ArrayList<>();

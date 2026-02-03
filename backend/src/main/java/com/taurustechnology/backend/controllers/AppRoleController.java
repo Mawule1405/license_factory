@@ -18,7 +18,7 @@ import java.util.Optional;
  * Provides endpoints for role creation, retrieval, and listing.
  */
 @RestController
-@RequestMapping("/auth/roles")
+@RequestMapping("/api/roles")
 @RequiredArgsConstructor
 public class AppRoleController {
 

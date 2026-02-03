@@ -1,7 +1,9 @@
 package com.taurustechnology.backend.services.impl;
 
 
+import com.taurustechnology.backend.dtos.LicenseFormat;
 import com.taurustechnology.backend.dtos.LicenseRequest;
+import com.taurustechnology.backend.entities.License;
 import com.taurustechnology.backend.services.LicenseGeneratorService;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
@@ -54,6 +56,36 @@ public class LicenseGeneratorServiceImpl implements LicenseGeneratorService {
     public String buildLicense(LicenseRequest request) throws Exception {
         // 1. Transformer le DTO en JSON string
         String json = objectMapper.writeValueAsString(request);
+
+        // 2. Encodage Base64 du JSON (pour garantir l'intégrité du texte)
+        String encodedPayload = Base64.getEncoder().encodeToString(json.getBytes(StandardCharsets.UTF_8));
+
+        // 3. Signature numérique avec SHA256withRSA
+        Signature sig = Signature.getInstance("SHA256withRSA");
+        sig.initSign(getPrivateKey());
+        sig.update(encodedPayload.getBytes(StandardCharsets.UTF_8));
+
+        byte[] signatureBytes = sig.sign();
+        String encodedSignature = Base64.getEncoder().encodeToString(signatureBytes);
+
+        // 4. Format final concaténé
+        return encodedPayload + "." + encodedSignature;
+    }
+
+    @Override
+    public String buildLicense(License request) throws Exception {
+        // 1. Transformer le DTO en JSON string
+        LicenseFormat licenseFormat = LicenseFormat.builder()
+                .licenseLevel(request.getLicenseLevel().toString())
+                .phone(request.getClient().getPhone())
+                .address(request.getClient().getAddress())
+                .addressMac(request.getAddressMac())
+                .customerName(request.getClient().getName())
+                .expiryDate(request.getExpiryDate().toString())
+                .maxUsers(request.getMaxUsers())
+                .build();
+
+        String json = objectMapper.writeValueAsString(licenseFormat);
 
         // 2. Encodage Base64 du JSON (pour garantir l'intégrité du texte)
         String encodedPayload = Base64.getEncoder().encodeToString(json.getBytes(StandardCharsets.UTF_8));

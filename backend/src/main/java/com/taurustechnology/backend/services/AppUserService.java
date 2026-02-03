@@ -3,6 +3,7 @@ package com.taurustechnology.backend.services;
 
 import com.taurustechnology.backend.entities.AppRole;
 import com.taurustechnology.backend.entities.AppUser;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -32,4 +33,6 @@ public interface AppUserService {
     AppUser changeAppRoles(String id, List<AppRole> newRoles);
 
     List<AppUser> findAllAppUser();
+
+    Page<AppUser> searchUsers(String keyword, int page, int size);
 }

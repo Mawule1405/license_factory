@@ -1,0 +1,61 @@
+<div class="space-y-12 animate-fade-in">
+
+  <header>
+    <div class="flex items-center gap-3 mb-2">
+      <span class="bg-orange-500 text-white text-[10px] font-black px-2 py-0.5 rounded">CORE SDK</span>
+      <h2 class="text-lg font-bold text-gray-800 uppercase tracking-tight">Implémentation Java High-Performance</h2>
+    </div>
+    <p class="text-sm text-gray-500 leading-relaxed">
+      Cette implémentation utilise un système de <strong>Provider</strong> avec cache atomique.
+      Elle sépare la vérification réseau (coûteuse) de la vérification d'accès (instantanée).
+    </p>
+  </header>
+
+  <section class="space-y-4">
+    <div class="flex justify-between items-end">
+      <div>
+        <h4 class="text-xs font-black text-taurus-green uppercase tracking-widest">Étape 1 : Le Provider de Licence</h4>
+        <p class="text-[11px] text-gray-400 mt-1">Créez cette classe pour gérer le stockage et la validation.</p>
+      </div>
+      <button (click)="copyCode(providerCode, 'provider')"
+              class="text-[10px] font-bold uppercase tracking-tighter bg-gray-100 hover:bg-taurus-green hover:text-white px-3 py-1 rounded transition-all">
+        <i class="fas fa-copy mr-1"></i> {{ copyStatus['provider'] || 'Copier le code' }}
+      </button>
+    </div>
+
+
+
+    <div class="relative">
+      <pre class="bg-gray-900 text-gray-300 p-6 rounded-sm text-[11px] font-mono shadow-2xl overflow-x-auto leading-normal"><code>{{ providerCode }}</code></pre>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+      <div class="bg-gray-50 p-4 border-l-2 border-gray-200">
+        <p class="text-[10px] font-black uppercase text-gray-400 mb-1">Méthode isAuthorized()</p>
+        <p class="text-[11px] text-gray-600">Lecture seule. Retourne immédiatement le résultat du cache. <strong>Zéro latence.</strong></p>
+      </div>
+      <div class="bg-gray-50 p-4 border-l-2 border-gray-200">
+        <p class="text-[10px] font-black uppercase text-gray-400 mb-1">Méthode ensureValidation()</p>
+        <p class="text-[11px] text-gray-600">Le gardien. Ne déclenche une requête HTTP que si le cache est vide ou expiré.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <div class="flex justify-between items-end">
+      <div>
+        <h4 class="text-xs font-black text-taurus-green uppercase tracking-widest">Étape 2 : Utilisation dans votre application</h4>
+        <p class="text-[11px] text-gray-400 mt-1">Comment intégrer les appels dans vos contrôleurs ou services.</p>
+      </div>
+      <button (click)="copyCode(usageCode, 'usage')"
+              class="text-[10px] font-bold uppercase tracking-tighter bg-gray-100 hover:bg-taurus-green hover:text-white px-3 py-1 rounded transition-all">
+        <i class="fas fa-copy mr-1"></i> {{ copyStatus['usage'] || 'Copier le code' }}
+      </button>
+    </div>
+
+    <div class="relative">
+      <pre class="bg-gray-900 text-gray-300 p-6 rounded-sm text-[11px] font-mono shadow-2xl overflow-x-auto leading-normal"><code>{{ usageCode }}</code></pre>
+    </div>
+  </section>
+
+</div>

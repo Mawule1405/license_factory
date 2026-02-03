@@ -1,0 +1,129 @@
+<div class="space-y-3">
+
+  <div class="flex flex-col lg:flex-row gap-0 shadow-md border-2 border-gray-200">
+    <div class="relative flex-1 bg-white">
+      <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-taurus-green">
+        <i class="fas fa-terminal text-xs"></i>
+      </span>
+      <input type="text" [(ngModel)]="searchTerm" (input)="onSearchChange()"
+             placeholder="QUERY OPERATOR DATABASE..."
+             class="w-full pl-10 pr-4 py-2.5 outline-none font-black text-[10px] tracking-[0.2em] uppercase placeholder-gray-300">
+    </div>
+    <button (click)="openCreationPanel()"
+            class="bg-taurus-green hover:bg-taurus-dark text-white px-6 py-2.5 font-black text-[10px] tracking-[0.2em] transition-all flex items-center justify-center gap-3">
+      <i class="fas fa-plus-square text-xs"></i>
+      INITIALIZE_NEW_OPERATOR
+    </button>
+  </div>
+
+  <div class="bg-white border-2 border-gray-200 relative min-h-[400]">
+
+    @if(loading){
+      <div class="absolute inset-0 bg-white/80 z-20 flex flex-col items-center justify-center">
+        <i class="fas fa-sync fa-spin text-taurus-green text-2xl mb-1"></i>
+        <span class="text-[9px] font-black uppercase tracking-widest text-taurus-green">Syncing...</span>
+      </div>
+    }
+
+    <table class="w-full text-left border-collapse">
+      <thead class="bg-gray-800 text-white uppercase text-[9px] tracking-[0.2em]">
+      <tr>
+        <th class="p-2.5 border-r border-gray-700 w-32">Status</th>
+        <th class="p-2.5 border-r border-gray-700">Identity Details</th>
+        <th class="p-2.5 border-r border-gray-700 w-56">Privileges</th>
+        <th class="p-2.5 text-center w-28">Command</th>
+      </tr>
+      </thead>
+
+      <tbody class="text-[10px] font-bold uppercase tracking-widest">
+        @for (user of users; track user.id) {
+          <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors group">
+
+            <td class="p-2 border-r border-gray-50">
+              <div class="flex items-center gap-2">
+                <span class="relative flex h-2.5 w-2.5">
+                  <span [class]="user.loggedIn ? 'bg-taurus-green' : 'bg-red-600'"
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"></span>
+                  <span [class]="user.loggedIn ? 'bg-taurus-green' : 'bg-red-600'"
+                        class="relative inline-flex h-2.5 w-2.5 rounded-full border border-white"></span>
+                </span>
+                <span [class]="user.loggedIn ? 'text-taurus-green' : 'text-red-600'" class="text-[8px] font-black">
+                  {{ user.loggedIn ? 'ONLINE' : 'LOCKED' }}
+                </span>
+              </div>
+            </td>
+
+            <td class="p-2 border-r border-gray-50">
+              <div class="flex flex-col gap-0">
+                <span class="text-gray-900 font-black text-xs tracking-tight">{{ user.fullName }}</span>
+                <span class="text-[9px] text-taurus-green">ID: &#64;{{ user.username }}</span>
+                <span class="text-[8px] text-gray-400 lowercase italic font-medium">{{ user.email }}</span>
+              </div>
+            </td>
+
+            <td class="p-2 border-r border-gray-50">
+              <div class="flex flex-wrap gap-1">
+                @for (role of user.appRoles; track role.id){
+                  <span
+                        [ngClass]="role.name === 'ADMINISTRATEUR' ? 'bg-amber-50 text-amber-700 border-amber-200' : 'bg-slate-50 text-slate-600 border-slate-200'"
+                        class="px-1.5 py-0.5 border text-[7px] font-black flex items-center gap-1">
+                  <i class="fas" [ngClass]="role.name === 'ADMINISTRATEUR' ? 'fa-shield-alt' : 'fa-user'"></i>
+                    {{ role.name }}
+                </span>
+                }
+
+              </div>
+            </td>
+
+            <td class="p-2">
+              <div class="flex justify-center gap-1 opacity-40 group-hover:opacity-100 transition-opacity">
+                <button class="w-7 h-7 bg-gray-100 text-gray-600 hover:bg-taurus-green hover:text-white transition-all flex items-center justify-center">
+                  <i class="fas fa-edit text-[10px]"></i>
+                </button>
+                <button class="w-7 h-7 bg-gray-100 text-gray-600 hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center">
+                  <i class="fas fa-power-off text-[10px]"></i>
+                </button>
+                <button class="w-7 h-7 bg-gray-100 text-gray-600 hover:bg-orange-600 hover:text-white transition-all flex items-center justify-center">
+                  <i class="fas fa-lock text-[10px]"></i>
+                </button>
+                <button (click)="deleteOperator(user)" class="w-7 h-7 bg-gray-100 text-red-600 hover:bg-red-600 hover:text-white transition-all flex items-center justify-center">
+                  <i class="fas fa-trash-alt text-[10px]"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <div class="flex flex-col sm:flex-row justify-between items-center bg-gray-800 p-2 border-t-4 border-taurus-green">
+    <div class="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] ml-2">
+      TOTAL: {{ totalElements }} OPS
+    </div>
+
+    <div class="flex gap-1">
+      <button [disabled]="currentPage === 0 || loading" (click)="changePage(-1)"
+              class="px-4 py-1.5 border border-white/20 text-white hover:border-taurus-green hover:text-taurus-green disabled:opacity-20 transition-all font-black text-[9px] uppercase">
+        <i class="fas fa-caret-left mr-1"></i> PREV
+      </button>
+
+      <div class="px-4 py-1.5 bg-taurus-green text-white font-black text-[9px] uppercase shadow-inner">
+        {{ currentPage + 1 }} / {{ totalPages }}
+      </div>
+
+      <button [disabled]="currentPage >= totalPages - 1 || loading" (click)="changePage(1)"
+              class="px-4 py-1.5 border border-white/20 text-white hover:border-taurus-green hover:text-taurus-green disabled:opacity-20 transition-all font-black text-[9px] uppercase">
+        NEXT <i class="fas fa-caret-right ml-1"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+@if (isCreateModalOpen) {
+  <app-create-user-modal
+    (close)="isCreateModalOpen = false"
+    (userCreated)="loadUsers()">
+  </app-create-user-modal>
+}

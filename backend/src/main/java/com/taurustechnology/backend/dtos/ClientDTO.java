@@ -1,39 +1,37 @@
-package com.taurustechnology.backend.entities;
+package com.taurustechnology.backend.dtos;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.taurustechnology.backend.entities.AppUser;
+import com.taurustechnology.backend.entities.License;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.ReadOnlyProperty;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Client {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+public class ClientDTO {
+
     private String id;
 
     private String name;
-
-    @Column(unique = true)
     private String email;
 
     private String address;
-
-    @Column(unique = true)
     private String phone;
 
     private LocalDateTime createdAt;
 
-    @ManyToOne
-    private AppUser creator;
-
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    private List<License> licenses;
+    private String creatorId;
+    @ReadOnlyProperty
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private Long numberOfLicenses;
 }
