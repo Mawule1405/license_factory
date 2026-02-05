@@ -62,9 +62,7 @@ public class WebSecurity {
                 // Configuration des autorisations
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/login",
-                                "/logout",
-                                "/auth/refresh-token"
+                                "/login", "/logout", "/api/refresh-token"
                         ).permitAll()
                         .anyRequest().permitAll()
                 )

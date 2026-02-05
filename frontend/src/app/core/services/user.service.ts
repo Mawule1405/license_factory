@@ -45,13 +45,24 @@ export class UserService {
   }
 
   updateProfile(currentUserId: string, value: any) {
-    return this.http.put<AppUser>(`${this.apiUrl}/${currentUserId}`, value);
+    return this.http.put<AppUser>(`${this.apiUrl}/update/${currentUserId}`, value);
   }
 
-  changePassword(currentUserId: string, oldPassword: any, newPassword: any) {
-    return this.http.put<AppUser>(`${this.apiUrl}/${currentUserId}`, {
-      oldPassword: oldPassword,
-      newPassword: newPassword
-    });
+  changePassword(currentUserId: string, oldPassword: string, newPassword: string): Observable<AppUser> {
+
+    const payload = {
+      oldPassword: oldPassword.trim(),
+      newPassword: newPassword.trim()
+    };
+
+    return this.http.patch<AppUser>(
+      `${this.apiUrl}/change-password/${currentUserId}`,
+      payload
+    );
   }
+
+  initializePassword(initializerId:string, userId:string) {
+    return this.http.patch<AppUser>(`${this.apiUrl}/${initializerId}/initialize-password/${userId}`, {})
+  }
+
 }

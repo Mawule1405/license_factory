@@ -1,1 +1,34 @@
-<p>settings.component works!</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 animate-fade-in">
+
+  <div class="border-4 border-gray-900 p-6 bg-white shadow-[10px_10px_0px_0px_rgba(0,0,0,1)]">
+    <h3 class="text-xl font-black uppercase mb-4 italic italic">Encryption Engine</h3>
+    <div class="space-y-4">
+      <label class="block text-[10px] font-bold text-gray-400 uppercase">Public Key (RSA-4096)</label>
+      <textarea readonly class="w-full h-32 p-3 bg-gray-50 border border-gray-200 font-mono text-[10px] resize-none">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA...</textarea>
+      <button class="w-full py-3 bg-red-600 text-white text-xs font-black uppercase hover:bg-red-700 transition-all">
+        Rotate Master Keys
+      </button>
+    </div>
+  </div>
+
+  <div class="border-4 border-gray-900 p-6 bg-gray-900 text-white">
+    <h3 class="text-xl font-black uppercase mb-4 italic text-taurus-green">Access Policies</h3>
+    <div class="space-y-6">
+      <div class="flex justify-between items-center border-b border-gray-800 pb-4">
+        <div>
+          <p class="text-xs font-bold">Two-Factor Authentication</p>
+          <p class="text-[9px] text-gray-500 uppercase">Enforce 2FA for all admins</p>
+        </div>
+        <input type="checkbox" class="accent-taurus-green w-5 h-5">
+      </div>
+
+      <div class="flex justify-between items-center border-b border-gray-800 pb-4">
+        <div>
+          <p class="text-xs font-bold">JWT Expiration (Minutes)</p>
+          <p class="text-[9px] text-gray-500 uppercase">Token validity period</p>
+        </div>
+        <input type="number" value="60" class="bg-gray-800 border-none text-taurus-green w-16 text-center font-bold">
+      </div>
+    </div>
+  </div>
+</div>

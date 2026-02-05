@@ -1,11 +1,11 @@
 package com.taurustechnology.backend.services.impl;
 
-
 import com.taurustechnology.backend.entities.AppRole;
 import com.taurustechnology.backend.entities.AppUser;
 import com.taurustechnology.backend.repositories.AppRoleRepository;
 import com.taurustechnology.backend.repositories.AppUserRepository;
 import com.taurustechnology.backend.services.AppUserService;
+import com.taurustechnology.backend.services.AuditService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,10 +21,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Service implementation for AppUser entity operations.
- * Provides CRUD operations and business logic for user management.
- */
 @Service
 @Transactional
 @Slf4j
@@ -34,384 +30,201 @@ public class AppUserServiceImpl implements AppUserService {
     private final AppUserRepository appUserRepository;
     private final PasswordEncoder passwordEncoder;
     private final AppRoleRepository appRoleRepository;
+    private final AuditService auditService;
 
-    /**
-     * Creates a new application user with the specified creator user ID.
-     * Validates input parameters and sets appropriate default values.
-     *
-     * @param appUser the user entity to create
-     * @param createdByAppUserId the ID of the user creating this account
-     * @return the created AppUser entity, or null if creator user doesn't exist
-     * @throws IllegalArgumentException if appUser parameter is null
-     */
     @Override
     public AppUser create(AppUser appUser, String createdByAppUserId) {
+        if (appUser == null) throw new IllegalArgumentException("AppUser cannot be null");
 
-        if (appUser == null) {
-            throw new IllegalArgumentException("AppUser cannot be null");
-        }
-
-        if (createdByAppUserId == null || createdByAppUserId.trim().isEmpty()) {
-            throw new IllegalArgumentException("Creator user ID cannot be null or empty");
-        }
-
-        Optional<AppUser> creatorUser = appUserRepository.findById(createdByAppUserId);
-        if (creatorUser.isEmpty()) {
-            log.warn("Creator user with ID {} not found, cannot create new user", createdByAppUserId);
-            return null;
-        }
-
-        AppRole appRole = appRoleRepository.findByName(appUser.getAppRoles().getFirst().getName());
-        if (appRole == null) {
-            throw new IllegalArgumentException("AppRole cannot be null");
-        }
-
-
-        // Check if username or email already exists
-        if (appUserRepository.existsByUsername(appUser.getUsername())) {
-            log.warn("Username {} already exists", appUser.getUsername());
-            throw new IllegalArgumentException("Username already exists");
-        }
-
-
-        if (appUser.getEmail() != null && appUserRepository.existsByEmail(appUser.getEmail())) {
-            log.warn("Email {} already exists", appUser.getEmail());
-            throw new IllegalArgumentException("Email already exists");
-        }
-
-
-        // Set user properties
-        appUser.setPasswordHash(passwordEncoder.encode(appUser.getPasswordHash()));
-        appUser.setId(null);
-        appUser.setActivated(true);
-        appUser.setDeleted(false);
-        appUser.setLoggedIn(false);
-        appUser.setAppRoles(List.of(appRole));
-        appUser.setCreatedAt(LocalDateTime.now());
-        appUser.setUpdatedAt(LocalDateTime.now());
-
-        AppUser newAppUser = appUserRepository.save(appUser);
-        log.info("User {} created new user: {} with ID: {}",
-                createdByAppUserId, newAppUser.getUsername(), newAppUser.getId());
-
-
-        return newAppUser;
-    }
-
-    /**
-     * Finds a user by username or email address.
-     *
-     * @param username the username to search for
-     * @param email the email address to search for
-     * @return the found AppUser entity, or null if not found
-     * @throws IllegalArgumentException if both username and email are null or empty
-     */
-    @Override
-    public AppUser findByUsernameOrEmail(String username, String email) {
-        if ((username == null || username.trim().isEmpty()) &&
-                (email == null || email.trim().isEmpty())) {
-            throw new IllegalArgumentException("Either username or email must be provided");
-        }
-
-        Optional<AppUser> user;
-
-        if (username != null && !username.trim().isEmpty()) {
-            user = appUserRepository.findByUsername(username);
-            if (user.isPresent()) {
-                return user.get();
+        try {
+            Optional<AppUser> creator = appUserRepository.findById(createdByAppUserId);
+            if (creator.isEmpty()) {
+                log.warn("Creator {} not found", createdByAppUserId);
+                auditService.logAction("CREATE_USER", createdByAppUserId, appUser.getUsername(), "FAILED: CREATOR_NOT_FOUND");
+                return null;
             }
-        }
 
-        if (email != null && !email.trim().isEmpty()) {
-            user = appUserRepository.findByEmail(email);
-            if (user.isPresent()) {
-                return user.get();
-            }
-        }
-
-        log.debug("User not found with username: {} or email: {}", username, email);
-        return null;
-    }
-
-    /**
-     * Finds a user by their unique identifier.
-     *
-     * @param id the user ID to search for
-     * @return the found AppUser entity, or null if not found
-     * @throws IllegalArgumentException if id parameter is null
-     */
-    @Override
-    public AppUser findById(String id) {
-        if (id == null || id.trim().isEmpty()) {
-            throw new IllegalArgumentException("User ID cannot be null or empty");
-        }
-
-        return appUserRepository.findById(id).orElse(null);
-    }
-
-    /**
-     * Updates an existing user with the specified updater user ID.
-     *
-     * @param appUser the user entity with updated information
-     * @param updatedByAppUserId the ID of the user performing the update
-     * @return the updated AppUser entity, or null if user doesn't exist
-     * @throws IllegalArgumentException if appUser parameter is null or has null ID
-     */
-    @Override
-    public AppUser update(AppUser appUser, String updatedByAppUserId) {
-        if (appUser == null) {
-            throw new IllegalArgumentException("AppUser cannot be null");
-        }
-
-        if (appUser.getId() == null || appUser.getId().trim().isEmpty()) {
-            throw new IllegalArgumentException("User ID cannot be null for update operation");
-        }
-
-        if (updatedByAppUserId == null || updatedByAppUserId.trim().isEmpty()) {
-            throw new IllegalArgumentException("Updater user ID cannot be null or empty");
-        }
-
-        Optional<AppUser> existingUser = appUserRepository.findById(appUser.getId());
-        if (existingUser.isEmpty()) {
-            log.warn("User with ID {} not found for update", appUser.getId());
-            return null;
-        }
-
-        Optional<AppUser> updaterUser = appUserRepository.findById(updatedByAppUserId);
-        if (updaterUser.isEmpty()) {
-            log.warn("Updater user with ID {} not found", updatedByAppUserId);
-            return null;
-        }
-
-        AppUser userToUpdate = existingUser.get();
-
-        // Update fields that are allowed to be modified
-        if (appUser.getUsername() != null && !appUser.getUsername().equals(userToUpdate.getUsername())) {
             if (appUserRepository.existsByUsername(appUser.getUsername())) {
+                auditService.logAction("CREATE_USER", createdByAppUserId, appUser.getUsername(), "FAILED: USERNAME_EXISTS");
                 throw new IllegalArgumentException("Username already exists");
             }
-            userToUpdate.setUsername(appUser.getUsername());
+
+            appUser.setPasswordHash(passwordEncoder.encode(appUser.getPasswordHash()));
+            appUser.setCreatedAt(LocalDateTime.now());
+            appUser.setUpdatedAt(LocalDateTime.now());
+            appUser.setActivated(true);
+
+            AppUser saved = appUserRepository.save(appUser);
+            auditService.logAction("CREATE_USER", createdByAppUserId, saved.getUsername(), "SUCCESS");
+            log.info("User {} created successfully", saved.getUsername());
+            return saved;
+        } catch (Exception e) {
+            auditService.logAction("CREATE_USER", createdByAppUserId, appUser.getUsername(), "FAILED: " + e.getMessage());
+            throw e;
         }
-
-        if (appUser.getEmail() != null && !appUser.getEmail().equals(userToUpdate.getEmail())) {
-            if (appUserRepository.existsByEmail(appUser.getEmail())) {
-                throw new IllegalArgumentException("Email already exists");
-            }
-            userToUpdate.setEmail(appUser.getEmail());
-        }
-
-        if (appUser.getPasswordHash() != null) {
-            userToUpdate.setPasswordHash(passwordEncoder.encode(appUser.getPasswordHash()));
-        }
-
-        userToUpdate.setActivated(appUser.isActivated());
-        userToUpdate.setUpdatedAt(LocalDateTime.now());
-
-        AppUser updatedUser = appUserRepository.save(userToUpdate);
-        log.info("User {} updated user: {}", updatedByAppUserId, updatedUser.getId());
-
-        return updatedUser;
     }
 
-
-    /**
-     * Login an existing user account with the specified user ID.
-     *
-     * @param appUserId the AppUser ID
-     * @return the updated AppUser entity
-     * @throws EntityNotFoundException if the user is not found
-     */
     @Override
     @Transactional
-    public AppUser login(String appUserId) {
-        AppUser appUser = appUserRepository.findById(appUserId)
+    public AppUser changePassword(String userId, String oldPassword, String newPassword) {
+        log.debug("Request to change password for user ID: {}", userId);
+
+        AppUser appUser = appUserRepository.findById(userId)
                 .orElseThrow(() -> {
-                    log.warn("User {} not found", appUserId);
-                    return new EntityNotFoundException("User not found with id: " + appUserId);
+                    auditService.logAction("CHANGE_PASSWORD", "SYSTEM", userId, "FAILED: USER_NOT_FOUND");
+                    return new EntityNotFoundException("User not found");
                 });
 
-        appUser.setLoggedIn(true);
-        appUser.setUpdatedAt(LocalDateTime.now());
-        appUser = appUserRepository.save(appUser);
-
-
-        log.info("User {} logged in", appUser.getId());
-        return appUser;
-    }
-
-
-    /**
-     * Logout an existing user account with the specified user ID.
-     *
-     * @param appUserId the AppUser ID
-     * @return the updated AppUser entity
-     * @throws EntityNotFoundException if the user is not found
-     */
-    @Override
-    @Transactional
-    public AppUser logout(String appUserId) {
-        AppUser appUser = appUserRepository.findById(appUserId)
-                .orElseThrow(() -> {
-                    log.warn("User {} not found", appUserId);
-                    return new EntityNotFoundException("User not found with id: " + appUserId);
-                });
-
-        appUser.setLoggedIn(false);
-        appUser.setUpdatedAt(LocalDateTime.now());
-        AppUser updatedUser = appUserRepository.save(appUser);
-
-        log.info("User {} logged out", updatedUser.getId());
-        return updatedUser;
-    }
-
-    /**
-     * Checks if a username already exists in the database.
-     *
-     * @param username the username to check
-     * @return true if the username exists, false otherwise
-     * @throws IllegalArgumentException if username parameter is null or empty
-     */
-    @Override
-    public boolean existsByUsername(String username) {
-        if (username == null || username.trim().isEmpty()) {
-            throw new IllegalArgumentException("Username cannot be null or empty");
-        }
-        return appUserRepository.existsByUsername(username);
-    }
-
-    /**
-     * Checks if an email already exists in the database.
-     *
-     * @param email the email to check
-     * @return true if the email exists, false otherwise
-     * @throws IllegalArgumentException if email parameter is null or empty
-     */
-    @Override
-    public boolean existsByEmail(String email) {
-        if (email == null || email.trim().isEmpty()) {
-            throw new IllegalArgumentException("Email cannot be null or empty");
-        }
-        return appUserRepository.existsByEmail(email);
-    }
-
-    /**
-     * Deletes a user by their unique identifier (soft delete).
-     *
-     * @param id the user ID to delete
-     * @param deletedByAppUserId the ID of the user performing the deletion
-     * @return true if deletion was successful, false otherwise
-     * @throws IllegalArgumentException if id parameter is null or empty
-     */
-    @Override
-    public boolean deleteById(String id, String deletedByAppUserId) {
-        if (id == null || id.trim().isEmpty()) {
-            throw new IllegalArgumentException("User ID cannot be null or empty");
-        }
-
-        Optional<AppUser> user = appUserRepository.findById(id);
-        if (user.isEmpty()) {
-            log.warn("User with ID {} not found for deletion", id);
-            return false;
-        }
-
-        AppUser userToDelete = user.get();
-        userToDelete.setDeleted(true);
-        userToDelete.setUpdatedAt(LocalDateTime.now());
-
-        appUserRepository.save(userToDelete);
-        log.info("User {} soft-deleted user: {}", deletedByAppUserId, id);
-
-        return true;
-    }
-
-    /**
-     * Find all the administrator account
-     * @return List of administrators
-     */
-    @Override
-    public List<AppUser> findAdministrators(){
-        return this.appUserRepository.findByRoleName("ADMINISTRATEUR");
-    }
-
-    /**
-     * * Check if the username exists
-     * @param username : checking username
-     * @return True or False
-     */
-    @Override
-    public Boolean checkIfUsernameExists(String username){
-        AppUser appUser =  appUserRepository.findByUsername(username).orElse(null);
-        return appUser != null;
-    }
-
-    @Override
-    public AppUser changePassword(String id, String newPassword){
-        AppUser appUser = appUserRepository.findById(id).orElse(null);
-
-        if (appUser == null) {
-            log.warn("User {} not found", id);
-            throw new EntityNotFoundException("User not found with id: " + id);
+        if (!passwordEncoder.matches(oldPassword, appUser.getPasswordHash())) {
+            auditService.logAction("CHANGE_PASSWORD", appUser.getUsername(), userId, "FAILED: WRONG_OLD_PASSWORD");
+            log.warn("Invalid old password attempt for user: {}", appUser.getUsername());
+            throw new IllegalArgumentException("Wrong password");
         }
 
         appUser.setPasswordHash(passwordEncoder.encode(newPassword));
-        appUser.setLoggedIn(false);
         appUser.setUpdatedAt(LocalDateTime.now());
-        appUser = appUserRepository.save(appUser);
+        AppUser updated = appUserRepository.save(appUser);
 
-        log.info("User {} changed password", id);
-        return appUser;
+        auditService.logAction("CHANGE_PASSWORD", appUser.getUsername(), userId, "SUCCESS");
+        log.info("Password changed for user: {}", appUser.getUsername());
+        return updated;
     }
 
     @Override
-    public AppUser changeCredential(String id, String username, String email){
-        AppUser appUser = appUserRepository.findById(id).orElse(null);
+    public AppUser update(AppUser appUser, String updatedByAppUserId) {
+        AppUser existing = appUserRepository.findById(appUser.getId())
+                .orElseThrow(() -> new EntityNotFoundException("User not found"));
 
-        if (appUser == null) {
-            log.warn("User {} not found", id);
-            throw new EntityNotFoundException("User not found with id: " + id);
+        try {
+            existing.setFullName(appUser.getFullName());
+            existing.setEmail(appUser.getEmail());
+            existing.setActivated(appUser.isActivated());
+            existing.setUpdatedAt(LocalDateTime.now());
+
+            AppUser updated = appUserRepository.save(existing);
+            auditService.logAction("UPDATE_PROFILE", updatedByAppUserId, updated.getUsername(), "SUCCESS");
+            return updated;
+        } catch (Exception e) {
+            auditService.logAction("UPDATE_PROFILE", updatedByAppUserId, appUser.getUsername(), "FAILED: " + e.getMessage());
+            throw e;
         }
-
-        appUser.setUsername(username);
-        appUser.setEmail(email);
-        appUser.setLoggedIn(false);
-        appUser.setUpdatedAt(LocalDateTime.now());
-        appUser = appUserRepository.save(appUser);
-
-        log.info("User {} changed credential", id);
-        return appUser;
     }
 
     @Override
-    public long countAll(){
+    public AppUser login(String appUserId) {
+        return appUserRepository.findById(appUserId).map(user -> {
+            user.setLoggedIn(true);
+            user.setUpdatedAt(LocalDateTime.now());
+            auditService.logAction("LOGIN", user.getUsername(), appUserId, "SUCCESS");
+            return appUserRepository.save(user);
+        }).orElseThrow(() -> new EntityNotFoundException("User not found"));
+    }
+
+    @Override
+    public AppUser logout(String appUserId) {
+        return appUserRepository.findById(appUserId).map(user -> {
+            user.setLoggedIn(false);
+            user.setUpdatedAt(LocalDateTime.now());
+            auditService.logAction("LOGOUT", user.getUsername(), appUserId, "SUCCESS");
+            return appUserRepository.save(user);
+        }).orElseThrow(() -> new EntityNotFoundException("User not found"));
+    }
+
+    @Override
+    public boolean deleteById(String id, String deletedByAppUserId) {
+        return appUserRepository.findById(id).map(user -> {
+            user.setDeleted(true);
+            user.setUpdatedAt(LocalDateTime.now());
+            appUserRepository.save(user);
+            auditService.logAction("SOFT_DELETE", deletedByAppUserId, user.getUsername(), "SUCCESS");
+            return true;
+        }).orElseGet(() -> {
+            auditService.logAction("SOFT_DELETE", deletedByAppUserId, id, "FAILED: NOT_FOUND");
+            return false;
+        });
+    }
+
+    @Override
+    public AppUser changeCredential(String id, String username, String email) {
+        AppUser user = appUserRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+
+        user.setUsername(username);
+        user.setEmail(email);
+        user.setUpdatedAt(LocalDateTime.now());
+
+        AppUser updated = appUserRepository.save(user);
+        auditService.logAction("CHANGE_CREDENTIALS", "ADMIN", updated.getUsername(), "SUCCESS");
+        return updated;
+    }
+
+    @Override
+    public AppUser changeAppRoles(String id, List<AppRole> newRoles) {
+        AppUser user = appUserRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+
+        user.setAppRoles(newRoles);
+        AppUser updated = appUserRepository.save(user);
+        auditService.logAction("CHANGE_ROLES", "ADMIN", updated.getUsername(), "SUCCESS");
+        return updated;
+    }
+
+    // --- READ OPERATIONS (No Audit required usually) ---
+
+    @Override
+    public AppUser findByUsernameOrEmail(String username, String email) {
+        return appUserRepository.findByUsername(username)
+                .or(() -> appUserRepository.findByEmail(email))
+                .orElse(null);
+    }
+
+    @Override
+    public AppUser findById(String id) {
+        return appUserRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<AppUser> findAdministrators() {
+        return appUserRepository.findByRoleName("ADMINISTRATEUR");
+    }
+
+    @Override
+    public Page<AppUser> searchUsers(String keyword, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by("fullName"));
+        return appUserRepository.searchOperators(keyword, pageable);
+    }
+
+    @Override
+    public long countAll() {
         return appUserRepository.count();
     }
 
     @Override
-    public AppUser changeAppRoles(String id, List<AppRole> newRoles){
-        AppUser user = appUserRepository.findById(id).orElse(null);
-        if(user == null) {
-            log.warn("User {} not found", id);
-            throw new EntityNotFoundException("User not found with id: " + id);
-        }
-
-        user.setAppRoles(newRoles);
-        System.out.println(user);
-        user = appUserRepository.save(user);
-
-        log.info("User {} changed roles", id);
-        return user;
+    public boolean existsByUsername(String username) {
+        return appUserRepository.existsByUsername(username);
     }
 
     @Override
-    public List<AppUser> findAllAppUser(){
+    public boolean existsByEmail(String email) {
+        return appUserRepository.existsByEmail(email);
+    }
+
+    @Override
+    public Boolean checkIfUsernameExists(String username) {
+        return appUserRepository.existsByUsername(username);
+    }
+
+    @Override
+    public AppUser initialize(String initializerId, String userId, String newPassword) {
+        AppUser user = appUserRepository.findById(userId).orElseThrow();
+        user.setPasswordHash(passwordEncoder.encode(newPassword));
+        user.setUpdatedAt(LocalDateTime.now());
+        auditService.logAction("INITIALIZE_PASSWORD", initializerId, user.getUsername(), "SUCCESS");
+        return appUserRepository.save(user);
+    }
+
+    @Override
+    public List<AppUser> findAllAppUser() {
         return appUserRepository.findAll();
-    }
-
-
-    @Override
-    public Page<AppUser> searchUsers(String keyword, int page, int size) {
-        Pageable pageable = PageRequest.of(page, size, Sort.by("fullName","username","email"));
-
-        return appUserRepository.searchOperators(keyword, pageable);
     }
 }

@@ -80,13 +80,15 @@ export class ProfileComponent implements OnInit {
   onUpdateProfile() {
     if (this.profileForm.valid && this.currentUserId) {
       this.isLoading = true;
+      let data = this.profileForm.value;
+      data.id = this.currentUser?.id;
 
-      this.userService.updateProfile(this.currentUserId, this.profileForm.value).subscribe({
+      this.userService.updateProfile(this.currentUserId, data).subscribe({
         next: (updatedUser) => {
-          this.currentUser = updatedUser;
-          this.notifService.success('Profil mis à jour avec succès', 'SUCCESS');
+          this.loadUser(this.currentUserId)
+          this.notifService.success('Profil mis à jour avec succès. \n Si vous avez modifié le username, veuillez-vous reconnecter.', 'SUCCESS');
           this.isLoading = false;
-          this.profileForm.markAsPristine(); // Désactive le bouton save jusqu'à la prochaine modif
+          this.profileForm.markAsPristine();
         },
         error: (err) => {
           this.notifService.error('Erreur lors de la mise à jour', 'ERROR');

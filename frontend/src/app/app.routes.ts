@@ -19,6 +19,8 @@ import {
 import {OnlineComponent} from './features/workspace/documentations/online/online.component';
 import {OfflineComponent} from './features/workspace/documentations/offline/offline.component';
 import {AboutComponent} from './features/workspace/about/about.component';
+import {ArchitectureComponent} from './features/workspace/documentations/architecture/architecture.component';
+import {SecurityComponent} from './features/workspace/documentations/security/security.component';
 
 export const routes: Routes = [
   {path:'', redirectTo:'login', pathMatch: 'full'},
@@ -42,7 +44,9 @@ export const routes: Routes = [
       {path: 'docs', component: DocumentationsComponent, canActivate:[authGuard],children:[
           { path: '', redirectTo:'online', pathMatch: 'full'},
           {path:'online', component: OnlineComponent},
-          {path:'offline', component: OfflineComponent}
+          {path:'offline', component: OfflineComponent},
+          {path:'architecture', component: ArchitectureComponent},
+          {path:'security', component: SecurityComponent},
         ]},
       {path: 'profile', component: ProfileComponent, canActivate:[authGuard]},
       {path: 'about', component: AboutComponent, canActivate:[authGuard]},

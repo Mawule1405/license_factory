@@ -13,6 +13,9 @@ public interface AppUserService {
     AppUser findByUsernameOrEmail(String username, String email);
     AppUser findById(String id);
     AppUser update(AppUser appUser, String updateByAppUserId);
+
+    AppUser changePassword(String userId, String oldPassword, String newPassword);
+
     AppUser login(String appUserId);
     AppUser logout(String appUserId);
 
@@ -24,7 +27,7 @@ public interface AppUserService {
 
     Boolean checkIfUsernameExists(String username);
 
-    AppUser changePassword(String id, String newPassword);
+    AppUser initialize(String initializerId, String userId, String newPassword);
 
     AppUser changeCredential(String id, String username, String email);
 

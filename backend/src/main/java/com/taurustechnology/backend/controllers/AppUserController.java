@@ -1,13 +1,12 @@
 package com.taurustechnology.backend.controllers;
 
 
-import com.taurustechnology.backend.dtos.AppRoleDTO;
-import com.taurustechnology.backend.dtos.AppUserDTO;
-import com.taurustechnology.backend.dtos.CredentialDTO;
+import com.taurustechnology.backend.dtos.*;
 import com.taurustechnology.backend.entities.AppUser;
 import com.taurustechnology.backend.mappers.AppRoleMapper;
 import com.taurustechnology.backend.mappers.AppUserMapper;
 import com.taurustechnology.backend.services.AppUserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -82,14 +81,19 @@ public class AppUserController {
     /**
      * Update a user's information.
      *
-     * @param appUserDTO the new user data
+     * @param updateUser the new user data
      * @param appUserId  the ID of the user to update
      * @return the updated user as DTO
      */
     @PutMapping("/update/{userId}")
-    public ResponseEntity<AppUserDTO> updateAppUser(@RequestBody AppUserDTO appUserDTO,
+    public ResponseEntity<AppUserDTO> updateAppUser(@RequestBody @Valid AppUserUpdateRequest updateUser,
                                                     @PathVariable("userId") String appUserId) {
-        AppUser appUser = appUserMapper.toEntity(appUserDTO);
+        AppUser appUser = AppUser.builder()
+                .id(updateUser.getId())
+                .username(updateUser.getUsername())
+                .email(updateUser.getEmail())
+                .fullName(updateUser.getFullName())
+                .build();
         appUser = appUserService.update(appUser, appUserId);
         return ResponseEntity.ok(appUserMapper.toDTO(appUser));
     }
@@ -116,10 +120,16 @@ public class AppUserController {
         return ResponseEntity.ok(appUserMapper.toDTO(appUserService.findByUsernameOrEmail(username,username)));
     }
 
+    @PatchMapping("/change-password/{userId}")
+    public ResponseEntity<AppUserDTO> changePassword(@PathVariable String userId,
+                                                    @RequestBody AppUserPasswordChangingRequest data){
 
-    @PatchMapping("/change-password/{id}")
-    public ResponseEntity<AppUserDTO> changePassword(@PathVariable String id, @RequestBody String newPassword) {
-        return ResponseEntity.ok(appUserMapper.toDTO(appUserService.changePassword(id, newPassword)));
+        return ResponseEntity.ok(appUserMapper.toDTO(appUserService.changePassword(userId, data.getOldPassword(),data.getNewPassword())));
+    }
+
+    @PatchMapping("/{initializerId}/initialize-password/{userId}")
+    public ResponseEntity<AppUserDTO> initialize(@PathVariable String initializerId,@PathVariable String userId) {
+        return ResponseEntity.ok(appUserMapper.toDTO(appUserService.initialize(initializerId, userId, "123456789")));
     }
 
     @PatchMapping("/change-app-roles/{id}")

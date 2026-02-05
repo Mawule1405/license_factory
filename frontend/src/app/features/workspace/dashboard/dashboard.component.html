@@ -1,1 +1,94 @@
-<p>dashboard.component works!</p>
+<div class="p-6 space-y-8 animate-fade-in bg-gray-50 min-h-screen">
+
+  <div class="flex justify-between items-end border-b-4 border-gray-900 pb-4">
+    <div>
+      <h2 class="text-4xl font-black uppercase italic tracking-tighter text-gray-900">
+        Control <span class="text-taurus-green text-stroke-black">Center</span>
+      </h2>
+      <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em]">Operational Metrics & Audit Trail</p>
+    </div>
+    <button (click)="ngOnInit()" [class.animate-spin]="loading()" class="text-gray-900 hover:text-taurus-green transition-colors">
+      <i class="fas fa-sync-alt text-xl"></i>
+    </button>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="border-4 border-gray-900 p-6 bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] group hover:-translate-y-1 transition-transform">
+      <p class="text-[10px] font-black uppercase text-gray-400 mb-1">Registered Clients</p>
+      <div class="flex justify-between items-end">
+        <p class="text-4xl font-black italic">{{ stats()?.totalClients || 0 }}</p>
+        <i class="fas fa-users text-2xl text-gray-200 group-hover:text-taurus-green transition-colors"></i>
+      </div>
+    </div>
+
+    <div class="border-4 border-gray-900 p-6 bg-taurus-green shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] group hover:-translate-y-1 transition-transform">
+      <p class="text-[10px] font-black uppercase text-gray-900 mb-1">Active Licenses</p>
+      <div class="flex justify-between items-end">
+        <p class="text-4xl font-black italic text-gray-900">{{ stats()?.totalLicenses || 0 }}</p>
+        <i class="fas fa-key text-2xl text-gray-800 opacity-20"></i>
+      </div>
+    </div>
+
+    <div class="border-4 border-gray-900 p-6 bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] group hover:-translate-y-1 transition-transform">
+      <p class="text-[10px] font-black uppercase text-gray-400 mb-1">System Operators</p>
+      <div class="flex justify-between items-end">
+        <p class="text-4xl font-black italic">{{ stats()?.activeUsers || 0 }}</p>
+        <i class="fas fa-user-shield text-2xl text-gray-200 group-hover:text-blue-500 transition-colors"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+    <div class="lg:col-span-2 border-4 border-gray-900 p-8 bg-white shadow-[12px_12px_0px_0px_rgba(0,0,0,0.05)] h-[450px] flex flex-col overflow-hidden">
+      <h3 class="text-xl font-black uppercase italic mb-8 flex items-center gap-3">
+        <span class="w-8 h-2 bg-gray-900"></span> License Growth
+      </h3>
+
+      <div class="flex-1 flex items-end justify-around gap-4 border-b-2 border-gray-100 pb-2 mb-10 relative">
+        @for (month of chartLabels(); track month) {
+          @let val = stats()?.licensesPerMonth?.[month] || 0;
+          <div class="w-full bg-gray-900 hover:bg-taurus-green transition-all relative group"
+               [style.height.%]="(val / maxLicenseValue()) * 100">
+
+            <span class="absolute -top-8 left-1/2 -translate-x-1/2 text-[10px] font-black opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white px-2 py-1 z-10">
+              {{ val }}
+            </span>
+
+            <span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[9px] font-bold text-gray-400 uppercase whitespace-nowrap">
+              {{ month }}
+            </span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="border-4 border-gray-900 bg-gray-900 text-white p-6 shadow-[12px_12px_0px_0px_rgba(46,213,115,0.2)] flex flex-col h-[450px]">
+      <div class="flex justify-between items-center mb-6 shrink-0">
+        <h3 class="text-lg font-black uppercase italic text-taurus-green tracking-tighter">Live Audit</h3>
+        <span class="text-[8px] font-bold px-2 py-1 bg-red-600 animate-pulse uppercase">Realtime</span>
+      </div>
+
+      <div class="space-y-6 overflow-y-auto flex-1 pr-2 custom-scrollbar overflow-x-hidden">
+        @for (act of stats()?.recentActivities; track $index) {
+          <div class="relative pl-6 border-l-2 transition-colors group" [class]="getStatusClass(act.status)">
+            <div class="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-gray-700 group-hover:bg-current shadow-lg"></div>
+            <div class="flex flex-col">
+              <span class="text-[8px] font-mono text-gray-500 uppercase tracking-widest">{{ act.timestamp }}</span>
+              <span class="text-[10px] font-black text-taurus-green uppercase mt-1">{{ act.action }}</span>
+              <p class="text-[11px] text-gray-300 leading-tight mt-1 font-medium italic break-words">
+                {{ act.details }}
+              </p>
+            </div>
+          </div>
+        }
+      </div>
+
+      <button routerLink="/workspace/administration/logs" class="w-full mt-6 py-3 bg-white text-black text-[10px] font-black uppercase hover:bg-taurus-green transition-all shrink-0">
+        Full Engine Logs
+      </button>
+    </div>
+
+  </div>
+
+</div>

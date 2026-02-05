@@ -1,0 +1,1330 @@
+2026-02-04 00:11:27,805 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 00:11:28,327 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 00:11:28,334 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 00:11:28,338 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 00:11:28,341 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 00:11:44,896 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 17540 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 00:11:44,900 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 00:11:45,312 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 00:11:46,717 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 00:11:46,854 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 108 ms. Found 4 JPA repository interfaces.
+2026-02-04 00:11:47,939 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 00:11:47,960 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 00:11:47,963 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 00:11:47,964 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 00:11:48,080 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 3108 ms
+2026-02-04 00:11:48,347 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 00:11:48,417 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 00:11:49,049 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 00:11:49,097 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 00:11:49,449 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 00:11:49,451 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 00:11:49,483 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 00:11:49,515 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 00:11:51,332 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 00:11:51,462 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 00:11:51,665 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 00:11:53,699 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 00:11:53,745 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 00:11:53,865 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T00:11:53.865586300] Configuring security filter chain
+2026-02-04 00:11:53,881 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T00:11:53.881776500] Creating AuthenticationManager bean
+2026-02-04 00:11:53,890 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T00:11:53.890758900] Security filter chain configured successfully
+2026-02-04 00:11:54,516 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 00:11:54,553 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 00:11:54,563 INFO c.t.b.BackendApplication [main] Started BackendApplication in 10.735 seconds (process running for 12.384)
+2026-02-04 00:12:02,816 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 00:12:02,816 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-02-04 00:12:02,818 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
+2026-02-04 00:22:32,482 WARN o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier [http-nio-8080-exec-9] Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-02-04 00:37:03,724 INFO c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-8] User ac7fbf95-d228-472d-a098-9c2c1fa68691 logged out
+2026-02-04 00:37:17,218 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 00:37:17,248 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 00:37:17,256 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 00:37:17,260 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 00:37:17,262 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 09:12:00,231 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 10632 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 09:12:00,236 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 09:12:00,972 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 09:12:02,656 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 09:12:03,406 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 656 ms. Found 4 JPA repository interfaces.
+2026-02-04 09:12:05,206 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 09:12:05,235 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 09:12:05,238 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 09:12:05,239 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 09:12:05,414 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 5078 ms
+2026-02-04 09:12:05,892 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 09:12:06,075 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 09:12:07,192 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 09:12:07,362 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 09:12:08,246 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 09:12:08,249 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 09:12:08,381 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 09:12:08,440 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 09:12:11,515 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 09:12:11,679 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 09:12:11,932 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 09:12:15,856 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 09:12:15,954 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 09:12:16,227 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T09:12:16.225641300] Configuring security filter chain
+2026-02-04 09:12:16,275 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T09:12:16.275548500] Creating AuthenticationManager bean
+2026-02-04 09:12:16,296 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T09:12:16.296310100] Security filter chain configured successfully
+2026-02-04 09:12:17,673 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 09:12:17,713 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 09:12:17,723 INFO c.t.b.BackendApplication [main] Started BackendApplication in 20.125 seconds (process running for 22.162)
+2026-02-04 09:17:17,095 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 09:17:17,095 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2026-02-04 09:17:17,105 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Completed initialization in 6 ms
+2026-02-04 09:17:17,279 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T09:17:17.279160700] Attempting authentication
+2026-02-04 09:17:17,923 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-1] Attempting to load user by identifier: admin
+2026-02-04 09:17:17,971 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-1] User admin loaded successfully with 1 roles
+2026-02-04 09:17:18,352 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T09:17:18.352460900] Authentication successful for user: admin
+2026-02-04 09:17:18,613 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T09:17:18.613032700] JWT tokens generated successfully for user: admin
+2026-02-04 09:17:18,662 INFO c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-1] User ac7fbf95-d228-472d-a098-9c2c1fa68691 logged in
+2026-02-04 09:17:18,828 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T09:17:18.828317200] Login status updated for user: admin
+2026-02-04 09:17:18,828 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T09:17:18.828317200] Authentication completed successfully for user: admin
+2026-02-04 09:18:32,406 WARN o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier [http-nio-8080-exec-6] Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-02-04 09:27:22,839 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-2] Attempting to refresh token
+2026-02-04 09:27:22,872 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-2] Tokens successfully refreshed for user: admin
+2026-02-04 09:27:22,980 INFO c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-4] User ac7fbf95-d228-472d-a098-9c2c1fa68691 logged out
+2026-02-04 10:51:25,650 WARN c.z.h.p.HikariPool [HikariPool-1:housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=52m13s988ms253µs400ns).
+2026-02-04 11:07:37,287 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-6] [2026-02-04T11:07:37.287422400] Attempting authentication
+2026-02-04 11:07:37,330 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-6] Attempting to load user by identifier: admin
+2026-02-04 11:07:37,357 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-6] User admin loaded successfully with 1 roles
+2026-02-04 11:07:37,734 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-6] [2026-02-04T11:07:37.734901700] Authentication successful for user: admin
+2026-02-04 11:07:37,758 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-6] [2026-02-04T11:07:37.758436300] JWT tokens generated successfully for user: admin
+2026-02-04 11:07:37,768 INFO c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-6] User ac7fbf95-d228-472d-a098-9c2c1fa68691 logged in
+2026-02-04 11:07:37,812 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-6] [2026-02-04T11:07:37.812849400] Login status updated for user: admin
+2026-02-04 11:07:37,812 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-6] [2026-02-04T11:07:37.812849400] Authentication completed successfully for user: admin
+2026-02-04 11:07:50,467 INFO c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-9] User ac7fbf95-d228-472d-a098-9c2c1fa68691 updated user: ac7fbf95-d228-472d-a098-9c2c1fa68691
+2026-02-04 11:26:29,630 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 11:26:29,745 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 11:26:29,755 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 11:26:29,762 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 11:26:29,765 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 11:26:56,079 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 27612 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 11:26:56,086 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 11:26:56,580 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 11:26:57,988 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 11:26:58,157 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 139 ms. Found 4 JPA repository interfaces.
+2026-02-04 11:26:59,456 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 11:26:59,484 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 11:26:59,488 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 11:26:59,488 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 11:26:59,652 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 3467 ms
+2026-02-04 11:27:00,101 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 11:27:00,226 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 11:27:01,319 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 11:27:01,382 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 11:27:03,381 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 11:27:03,384 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 11:27:03,446 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 11:27:03,511 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 11:27:07,699 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 11:27:07,833 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 11:27:08,048 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 11:27:13,794 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 11:27:13,863 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 11:27:14,033 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T11:27:14.033890900] Configuring security filter chain
+2026-02-04 11:27:14,058 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T11:27:14.058444600] Creating AuthenticationManager bean
+2026-02-04 11:27:14,069 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T11:27:14.069679100] Security filter chain configured successfully
+2026-02-04 11:27:14,935 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 11:27:14,970 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 11:27:14,985 INFO c.t.b.BackendApplication [main] Started BackendApplication in 20.45 seconds (process running for 22.596)
+2026-02-04 11:32:35,125 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 11:32:35,127 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-02-04 11:32:35,136 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 7 ms
+2026-02-04 11:32:47,339 WARN o.s.w.s.m.s.DefaultHandlerExceptionResolver [http-nio-8080-exec-3] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.taurustechnology.backend.dtos.AppUserDTO> com.taurustechnology.backend.controllers.AppUserController.updateAppUser(com.taurustechnology.backend.dtos.AppUserUpdateRequest,java.lang.String): [Field error in object 'appUserUpdateRequest' on field 'password': rejected value [null]; codes [NotBlank.appUserUpdateRequest.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [appUserUpdateRequest.password,password]; arguments []; default message [password]]; default message [Le mot de passe est obligatoire]] ]
+2026-02-04 11:33:00,677 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 11:33:00,761 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 11:33:00,769 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 11:33:00,773 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 11:33:00,776 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 11:33:13,412 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 19492 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 11:33:13,417 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 11:33:13,881 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 11:33:15,146 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 11:33:15,309 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 139 ms. Found 4 JPA repository interfaces.
+2026-02-04 11:33:16,609 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 11:33:16,634 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 11:33:16,639 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 11:33:16,640 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 11:33:16,843 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 3335 ms
+2026-02-04 11:33:17,272 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 11:33:17,398 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 11:33:18,565 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 11:33:18,619 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 11:33:19,109 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 11:33:19,112 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 11:33:19,162 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 11:33:19,209 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 11:33:21,704 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 11:33:21,869 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 11:33:22,068 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 11:33:24,691 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 11:33:24,745 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 11:33:24,951 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T11:33:24.951994400] Configuring security filter chain
+2026-02-04 11:33:24,975 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T11:33:24.975717400] Creating AuthenticationManager bean
+2026-02-04 11:33:24,990 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T11:33:24.990738] Security filter chain configured successfully
+2026-02-04 11:33:25,839 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 11:33:25,873 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 11:33:25,882 INFO c.t.b.BackendApplication [main] Started BackendApplication in 13.699 seconds (process running for 15.61)
+2026-02-04 11:33:49,294 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 11:33:49,294 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-02-04 11:33:49,301 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 7 ms
+2026-02-04 11:33:50,467 WARN o.s.w.s.m.s.DefaultHandlerExceptionResolver [http-nio-8080-exec-1] Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<com.taurustechnology.backend.dtos.AppUserDTO> com.taurustechnology.backend.controllers.AppUserController.updateAppUser(com.taurustechnology.backend.dtos.AppUserUpdateRequest,java.lang.String): [Field error in object 'appUserUpdateRequest' on field 'password': rejected value [null]; codes [NotBlank.appUserUpdateRequest.password,NotBlank.password,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [appUserUpdateRequest.password,password]; arguments []; default message [password]]; default message [Le mot de passe est obligatoire]] ]
+2026-02-04 11:36:02,918 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 11:36:02,953 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 11:36:02,961 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 11:36:02,966 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 11:36:02,971 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 11:36:17,371 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 3836 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 11:36:17,377 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 11:36:17,831 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 11:36:19,179 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 11:36:19,329 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 131 ms. Found 4 JPA repository interfaces.
+2026-02-04 11:36:20,889 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 11:36:20,942 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 11:36:20,966 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 11:36:20,968 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 11:36:21,230 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 3764 ms
+2026-02-04 11:36:21,712 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 11:36:21,842 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 11:36:23,002 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 11:36:23,092 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 11:36:23,653 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 11:36:23,656 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 11:36:23,713 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 11:36:23,767 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 11:36:26,269 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 11:36:26,382 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 11:36:26,585 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 11:36:29,214 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 11:36:29,282 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 11:36:29,500 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T11:36:29.500798800] Configuring security filter chain
+2026-02-04 11:36:29,521 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T11:36:29.521861400] Creating AuthenticationManager bean
+2026-02-04 11:36:29,536 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T11:36:29.536251500] Security filter chain configured successfully
+2026-02-04 11:36:30,354 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 11:36:30,401 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 11:36:30,410 INFO c.t.b.BackendApplication [main] Started BackendApplication in 14.408 seconds (process running for 16.152)
+2026-02-04 11:36:39,908 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 11:36:39,910 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-02-04 11:36:39,915 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 5 ms
+2026-02-04 11:36:41,043 INFO c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-2] User ac7fbf95-d228-472d-a098-9c2c1fa68691 updated user: ac7fbf95-d228-472d-a098-9c2c1fa68691
+2026-02-04 15:53:35,982 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 23712 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 15:53:35,986 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 15:53:36,451 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 15:53:37,645 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 15:53:37,794 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 131 ms. Found 4 JPA repository interfaces.
+2026-02-04 15:53:38,889 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 15:53:38,913 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 15:53:38,915 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 15:53:38,916 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 15:53:39,048 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 2992 ms
+2026-02-04 15:53:39,436 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 15:53:39,579 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 15:53:40,559 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 15:53:40,628 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 15:53:41,126 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 15:53:41,130 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 15:53:41,188 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 15:53:41,233 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 15:53:43,648 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 15:53:43,767 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 15:53:44,007 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 15:53:46,236 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 15:53:46,291 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 15:53:46,432 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T15:53:46.432846500] Configuring security filter chain
+2026-02-04 15:53:46,470 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T15:53:46.470116800] Creating AuthenticationManager bean
+2026-02-04 15:53:46,493 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T15:53:46.493247800] Security filter chain configured successfully
+2026-02-04 15:53:47,259 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 15:53:47,287 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 15:53:47,294 INFO c.t.b.BackendApplication [main] Started BackendApplication in 12.508 seconds (process running for 14.779)
+2026-02-04 15:58:25,314 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 15:58:25,314 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-02-04 15:58:25,314 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 0 ms
+2026-02-04 15:58:25,385 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T15:58:25.385115900] Attempting authentication
+2026-02-04 15:58:25,614 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-1] Attempting to load user by identifier: admin
+2026-02-04 15:58:25,636 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-1] User admin loaded successfully with 1 roles
+2026-02-04 15:58:25,750 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T15:58:25.750805800] Authentication successful for user: admin
+2026-02-04 15:58:25,846 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T15:58:25.846821700] JWT tokens generated successfully for user: admin
+2026-02-04 15:58:25,861 INFO c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-1] User ac7fbf95-d228-472d-a098-9c2c1fa68691 logged in
+2026-02-04 15:58:25,919 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T15:58:25.919186800] Login status updated for user: admin
+2026-02-04 15:58:25,921 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T15:58:25.921194500] Authentication completed successfully for user: admin
+2026-02-04 16:19:57,893 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-3] Attempting to refresh token
+2026-02-04 16:19:57,918 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-3] Tokens successfully refreshed for user: admin
+2026-02-04 16:19:58,063 INFO c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-6] User ac7fbf95-d228-472d-a098-9c2c1fa68691 logged out
+2026-02-04 16:31:32,177 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-9] [2026-02-04T16:31:32.177432800] Attempting authentication
+2026-02-04 16:31:32,186 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-9] Attempting to load user by identifier: admin
+2026-02-04 16:31:32,203 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-9] User admin loaded successfully with 1 roles
+2026-02-04 16:31:32,360 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-9] [2026-02-04T16:31:32.360919] Authentication successful for user: admin
+2026-02-04 16:31:32,368 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-9] [2026-02-04T16:31:32.368104100] JWT tokens generated successfully for user: admin
+2026-02-04 16:31:32,372 INFO c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-9] User ac7fbf95-d228-472d-a098-9c2c1fa68691 logged in
+2026-02-04 16:31:32,374 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-9] [2026-02-04T16:31:32.374164300] Login status updated for user: admin
+2026-02-04 16:31:32,374 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-9] [2026-02-04T16:31:32.374164300] Authentication completed successfully for user: admin
+2026-02-04 16:32:22,299 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-4] Attempting to refresh token
+2026-02-04 16:32:22,329 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-4] Tokens successfully refreshed for user: admin
+2026-02-04 16:32:22,451 INFO c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-7] User ac7fbf95-d228-472d-a098-9c2c1fa68691 logged out
+2026-02-04 16:40:30,214 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 16:40:30,276 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 16:40:30,285 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 16:40:30,290 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 16:40:30,294 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 16:40:48,607 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 12448 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 16:40:48,614 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 16:40:49,037 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 16:40:50,155 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 16:40:50,282 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 108 ms. Found 4 JPA repository interfaces.
+2026-02-04 16:40:51,435 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 16:40:51,463 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 16:40:51,466 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 16:40:51,467 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 16:40:51,588 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 2905 ms
+2026-02-04 16:40:51,986 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 16:40:52,095 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 16:40:53,069 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 16:40:53,133 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 16:40:53,622 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 16:40:53,626 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 16:40:53,673 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 16:40:53,721 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 16:40:56,559 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 16:40:56,754 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 16:40:56,974 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 16:41:00,246 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 16:41:00,306 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 16:41:00,442 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T16:41:00.442321] Configuring security filter chain
+2026-02-04 16:41:00,462 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T16:41:00.462195700] Creating AuthenticationManager bean
+2026-02-04 16:41:00,481 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T16:41:00.481657500] Security filter chain configured successfully
+2026-02-04 16:41:01,201 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 16:41:01,231 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 16:41:01,240 INFO c.t.b.BackendApplication [main] Started BackendApplication in 13.819 seconds (process running for 15.533)
+2026-02-04 16:42:06,361 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 16:42:06,363 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-02-04 16:42:06,365 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 2 ms
+2026-02-04 16:42:06,479 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T16:42:06.479060400] Attempting authentication
+2026-02-04 16:42:06,825 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-1] Attempting to load user by identifier: admin
+2026-02-04 16:42:06,872 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-1] User admin loaded successfully with 1 roles
+2026-02-04 16:42:07,058 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T16:42:07.058919400] Authentication successful for user: admin
+2026-02-04 16:42:07,195 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T16:42:07.195768800] JWT tokens generated successfully for user: admin
+2026-02-04 16:42:07,219 INFO c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-1] User ac7fbf95-d228-472d-a098-9c2c1fa68691 logged in
+2026-02-04 16:42:07,317 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T16:42:07.317694200] Login status updated for user: admin
+2026-02-04 16:42:07,319 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T16:42:07.319705600] Authentication completed successfully for user: admin
+2026-02-04 16:42:46,754 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-7] Attempting to refresh token
+2026-02-04 16:42:46,784 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-7] Tokens successfully refreshed for user: admin
+2026-02-04 16:42:46,930 INFO c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-9] User ac7fbf95-d228-472d-a098-9c2c1fa68691 logged out
+2026-02-04 16:44:05,149 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 16:44:05,226 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 16:44:05,232 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 16:44:05,236 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 16:44:05,239 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 16:44:28,281 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 1076 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 16:44:28,287 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 16:44:28,705 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 16:44:29,937 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 16:44:30,086 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 132 ms. Found 4 JPA repository interfaces.
+2026-02-04 16:44:31,246 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 16:44:31,269 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 16:44:31,272 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 16:44:31,273 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 16:44:31,430 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 3064 ms
+2026-02-04 16:44:31,857 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 16:44:31,971 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 16:44:32,960 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 16:44:33,029 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 16:44:33,539 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 16:44:33,543 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 16:44:33,594 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 16:44:33,641 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 16:44:36,127 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 16:44:36,258 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 16:44:36,487 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 16:44:39,022 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 16:44:39,089 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 16:44:39,257 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T16:44:39.257869300] Configuring security filter chain
+2026-02-04 16:44:39,286 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T16:44:39.286346700] Creating AuthenticationManager bean
+2026-02-04 16:44:39,297 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T16:44:39.297716] Security filter chain configured successfully
+2026-02-04 16:44:40,170 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 16:44:40,204 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 16:44:40,211 INFO c.t.b.BackendApplication [main] Started BackendApplication in 14.067 seconds (process running for 16.007)
+2026-02-04 16:45:52,371 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 16:45:52,371 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-02-04 16:45:52,375 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 2 ms
+2026-02-04 16:45:52,450 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-3] [2026-02-04T16:45:52.450907800] Attempting authentication
+2026-02-04 16:45:52,733 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-3] Attempting to load user by identifier: admin
+2026-02-04 16:45:52,754 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-3] User admin loaded successfully with 1 roles
+2026-02-04 16:45:52,876 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-3] [2026-02-04T16:45:52.876444300] Authentication successful for user: admin
+2026-02-04 16:45:53,006 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-3] [2026-02-04T16:45:53.006157400] JWT tokens generated successfully for user: admin
+2026-02-04 16:45:53,022 INFO c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-3] User ac7fbf95-d228-472d-a098-9c2c1fa68691 logged in
+2026-02-04 16:45:53,089 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-3] [2026-02-04T16:45:53.089076900] Login status updated for user: admin
+2026-02-04 16:45:53,089 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-3] [2026-02-04T16:45:53.089076900] Authentication completed successfully for user: admin
+2026-02-04 16:46:23,559 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-8] Attempting to refresh token
+2026-02-04 16:46:23,576 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-8] Tokens successfully refreshed for user: admin
+2026-02-04 16:46:23,726 INFO c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-1] User ac7fbf95-d228-472d-a098-9c2c1fa68691 logged out
+2026-02-04 16:47:30,978 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 16:47:31,020 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 16:47:31,027 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 16:47:31,030 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 16:47:31,034 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 16:47:47,806 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 9164 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 16:47:47,809 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 16:47:48,176 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 16:47:49,216 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 16:47:49,346 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 114 ms. Found 4 JPA repository interfaces.
+2026-02-04 16:47:50,369 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 16:47:50,390 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 16:47:50,393 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 16:47:50,394 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 16:47:50,506 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 2630 ms
+2026-02-04 16:47:50,881 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 16:47:50,974 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 16:47:51,982 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 16:47:52,049 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 16:47:52,529 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 16:47:52,534 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 16:47:52,592 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 16:47:52,652 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 16:47:55,024 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 16:47:55,164 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 16:47:55,388 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 16:47:57,670 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 16:47:57,728 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 16:47:57,906 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T16:47:57.906792200] Configuring security filter chain
+2026-02-04 16:47:57,930 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T16:47:57.930544500] Creating AuthenticationManager bean
+2026-02-04 16:47:57,941 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T16:47:57.941547500] Security filter chain configured successfully
+2026-02-04 16:47:58,645 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 16:47:58,674 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 16:47:58,689 INFO c.t.b.BackendApplication [main] Started BackendApplication in 11.975 seconds (process running for 13.384)
+2026-02-04 16:49:19,494 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 16:49:19,494 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-02-04 16:49:19,499 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 5 ms
+2026-02-04 16:49:19,624 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T16:49:19.624178600] Attempting authentication
+2026-02-04 16:49:19,878 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-1] Attempting to load user by identifier: admin
+2026-02-04 16:49:19,910 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-1] User admin loaded successfully with 1 roles
+2026-02-04 16:49:20,028 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T16:49:20.028728900] Authentication successful for user: admin
+2026-02-04 16:49:20,137 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T16:49:20.137787200] JWT tokens generated successfully for user: admin
+2026-02-04 16:49:20,154 INFO c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-1] User ac7fbf95-d228-472d-a098-9c2c1fa68691 logged in
+2026-02-04 16:49:20,209 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T16:49:20.209850800] Login status updated for user: admin
+2026-02-04 16:49:20,209 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T16:49:20.209850800] Authentication completed successfully for user: admin
+2026-02-04 16:49:51,411 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-7] Attempting to refresh token
+2026-02-04 16:49:51,428 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-7] Tokens successfully refreshed for user: admin
+2026-02-04 16:49:51,612 INFO c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-10] User ac7fbf95-d228-472d-a098-9c2c1fa68691 logged out
+2026-02-04 17:01:55,498 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 17:01:55,515 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 17:01:55,522 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 17:01:55,526 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 17:01:55,529 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 17:02:06,899 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 15700 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 17:02:06,903 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 17:02:07,227 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 17:02:08,160 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 17:02:08,278 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 102 ms. Found 4 JPA repository interfaces.
+2026-02-04 17:02:09,212 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 17:02:09,233 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 17:02:09,236 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 17:02:09,236 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 17:02:09,332 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 2363 ms
+2026-02-04 17:02:09,571 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 17:02:09,629 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 17:02:10,141 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 17:02:10,178 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 17:02:10,438 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 17:02:10,441 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 17:02:10,468 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 17:02:10,507 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 17:02:12,038 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 17:02:12,115 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 17:02:12,224 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 17:02:13,784 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 17:02:13,825 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 17:02:13,929 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T17:02:13.929370700] Configuring security filter chain
+2026-02-04 17:02:13,945 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T17:02:13.945902100] Creating AuthenticationManager bean
+2026-02-04 17:02:13,954 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T17:02:13.954918500] Security filter chain configured successfully
+2026-02-04 17:02:14,468 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 17:02:14,491 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 17:02:14,499 INFO c.t.b.BackendApplication [main] Started BackendApplication in 8.503 seconds (process running for 9.774)
+2026-02-04 17:04:28,800 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 17:04:28,800 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-02-04 17:04:28,802 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 2 ms
+2026-02-04 17:04:29,067 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:04:29.067329900] Attempting authentication
+2026-02-04 17:04:29,279 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-2] Attempting to load user by identifier: admin
+2026-02-04 17:04:29,302 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-2] User admin loaded successfully with 1 roles
+2026-02-04 17:04:29,412 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:04:29.412460] Authentication successful for user: admin
+2026-02-04 17:04:29,499 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:04:29.499150100] JWT tokens generated successfully for user: admin
+2026-02-04 17:04:29,572 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:04:29.572951300] Login status updated for user: admin
+2026-02-04 17:04:29,572 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:04:29.572951300] Authentication completed successfully for user: admin
+2026-02-04 17:05:02,081 WARN c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-4] Invalid old password attempt for user: admin
+2026-02-04 17:05:02,228 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-7] Attempting to refresh token
+2026-02-04 17:05:02,246 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-7] Tokens successfully refreshed for user: admin
+2026-02-04 17:05:02,302 WARN c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-8] Invalid old password attempt for user: admin
+2026-02-04 17:06:51,748 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 17:06:51,814 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 17:06:51,820 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 17:06:51,823 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 17:06:51,825 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 17:07:04,303 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 13528 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 17:07:04,307 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 17:07:04,650 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 17:07:05,687 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 17:07:05,817 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 108 ms. Found 4 JPA repository interfaces.
+2026-02-04 17:07:06,739 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 17:07:06,760 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 17:07:06,762 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 17:07:06,763 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 17:07:06,874 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 2506 ms
+2026-02-04 17:07:07,172 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 17:07:07,272 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 17:07:07,797 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 17:07:07,833 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 17:07:08,117 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 17:07:08,120 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 17:07:08,145 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 17:07:08,171 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 17:07:09,576 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 17:07:09,652 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 17:07:09,767 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 17:07:11,382 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 17:07:11,422 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 17:07:11,517 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T17:07:11.517246300] Configuring security filter chain
+2026-02-04 17:07:11,531 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T17:07:11.531244600] Creating AuthenticationManager bean
+2026-02-04 17:07:11,543 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T17:07:11.543759300] Security filter chain configured successfully
+2026-02-04 17:07:12,167 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 17:07:12,190 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 17:07:12,197 INFO c.t.b.BackendApplication [main] Started BackendApplication in 8.721 seconds (process running for 10.029)
+2026-02-04 17:09:26,495 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 17:09:26,495 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-02-04 17:09:26,505 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 10 ms
+2026-02-04 17:09:26,549 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:09:26.549956500] Attempting authentication
+2026-02-04 17:09:26,881 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-2] Attempting to load user by identifier: admin
+2026-02-04 17:09:26,910 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-2] User admin loaded successfully with 1 roles
+2026-02-04 17:09:27,105 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:09:27.105941300] Authentication successful for user: admin
+2026-02-04 17:09:27,219 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:09:27.219037500] JWT tokens generated successfully for user: admin
+2026-02-04 17:09:27,302 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:09:27.302444500] Login status updated for user: admin
+2026-02-04 17:09:27,302 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:09:27.302444500] Authentication completed successfully for user: admin
+2026-02-04 17:10:00,984 WARN c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-6] Invalid old password attempt for user: admin
+2026-02-04 17:10:01,053 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-8] Attempting to refresh token
+2026-02-04 17:10:01,066 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-8] Tokens successfully refreshed for user: admin
+2026-02-04 17:10:01,121 WARN c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-9] Invalid old password attempt for user: admin
+2026-02-04 17:11:56,105 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 17:11:56,126 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 17:11:56,134 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 17:11:56,138 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 17:11:56,142 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 17:12:14,307 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 4052 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 17:12:14,312 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 17:12:14,855 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 17:12:16,418 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 17:12:16,532 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 98 ms. Found 4 JPA repository interfaces.
+2026-02-04 17:12:17,546 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 17:12:17,574 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 17:12:17,577 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 17:12:17,578 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 17:12:17,748 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 3326 ms
+2026-02-04 17:12:18,133 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 17:12:18,228 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 17:12:19,097 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 17:12:19,139 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 17:12:19,467 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 17:12:19,470 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 17:12:19,499 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 17:12:19,535 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 17:12:21,571 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 17:12:21,701 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 17:12:21,919 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 17:12:24,173 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 17:12:24,228 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 17:12:24,367 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T17:12:24.367454500] Configuring security filter chain
+2026-02-04 17:12:24,385 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T17:12:24.385565600] Creating AuthenticationManager bean
+2026-02-04 17:12:24,406 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T17:12:24.406799900] Security filter chain configured successfully
+2026-02-04 17:12:25,190 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 17:12:25,221 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 17:12:25,230 INFO c.t.b.BackendApplication [main] Started BackendApplication in 12.321 seconds (process running for 14.977)
+2026-02-04 17:14:04,628 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 17:14:04,644 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 17:14:04,651 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 17:14:04,655 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 17:14:04,661 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 17:14:15,221 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 23236 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 17:14:15,225 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 17:14:15,586 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 17:14:16,540 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 17:14:16,652 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 97 ms. Found 4 JPA repository interfaces.
+2026-02-04 17:14:17,562 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 17:14:17,582 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 17:14:17,585 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 17:14:17,586 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 17:14:17,698 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 2407 ms
+2026-02-04 17:14:18,020 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 17:14:18,116 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 17:14:18,727 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 17:14:18,766 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 17:14:19,049 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 17:14:19,051 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 17:14:19,077 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 17:14:19,105 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 17:14:20,539 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 17:14:20,615 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 17:14:20,737 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 17:14:22,275 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 17:14:22,316 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 17:14:22,407 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T17:14:22.407945900] Configuring security filter chain
+2026-02-04 17:14:22,422 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T17:14:22.422968200] Creating AuthenticationManager bean
+2026-02-04 17:14:22,430 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T17:14:22.430947800] Security filter chain configured successfully
+2026-02-04 17:14:22,968 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 17:14:22,991 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 17:14:22,997 INFO c.t.b.BackendApplication [main] Started BackendApplication in 8.792 seconds (process running for 10.381)
+2026-02-04 17:15:17,218 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 17:15:17,218 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-02-04 17:15:17,223 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 5 ms
+2026-02-04 17:15:17,268 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:15:17.268898500] Attempting authentication
+2026-02-04 17:15:17,520 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-2] Attempting to load user by identifier: admin
+2026-02-04 17:15:17,538 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-2] User admin loaded successfully with 1 roles
+2026-02-04 17:15:17,710 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:15:17.710970800] Authentication successful for user: admin
+2026-02-04 17:15:17,805 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:15:17.805195100] JWT tokens generated successfully for user: admin
+2026-02-04 17:15:17,887 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:15:17.887214800] Login status updated for user: admin
+2026-02-04 17:15:17,887 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:15:17.887214800] Authentication completed successfully for user: admin
+2026-02-04 17:16:00,252 WARN c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-6] Invalid old password attempt for user: admin
+2026-02-04 17:16:00,328 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-8] Attempting to refresh token
+2026-02-04 17:16:00,351 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-8] Tokens successfully refreshed for user: admin
+2026-02-04 17:16:00,401 WARN c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-9] Invalid old password attempt for user: admin
+2026-02-04 17:18:37,539 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-4] [2026-02-04T17:18:37.539965800] Attempting authentication
+2026-02-04 17:18:37,540 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-4] Attempting to load user by identifier: admin
+2026-02-04 17:18:37,545 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-4] User admin loaded successfully with 1 roles
+2026-02-04 17:18:37,709 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-4] [2026-02-04T17:18:37.709894100] Authentication successful for user: admin
+2026-02-04 17:18:37,721 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-4] [2026-02-04T17:18:37.721939900] JWT tokens generated successfully for user: admin
+2026-02-04 17:18:37,727 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-4] [2026-02-04T17:18:37.727665300] Login status updated for user: admin
+2026-02-04 17:18:37,727 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-4] [2026-02-04T17:18:37.727665300] Authentication completed successfully for user: admin
+2026-02-04 17:22:53,963 WARN c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-4] Invalid old password attempt for user: admin
+2026-02-04 17:22:54,022 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-6] Attempting to refresh token
+2026-02-04 17:22:54,047 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-6] Tokens successfully refreshed for user: admin
+2026-02-04 17:22:54,087 WARN c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-7] Invalid old password attempt for user: admin
+2026-02-04 17:23:57,437 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 17:23:57,489 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 17:23:57,495 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 17:23:57,498 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 17:23:57,500 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 17:24:09,071 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 10648 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 17:24:09,075 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 17:24:09,398 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 17:24:10,318 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 17:24:10,435 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 102 ms. Found 4 JPA repository interfaces.
+2026-02-04 17:24:11,424 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 17:24:11,441 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 17:24:11,443 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 17:24:11,443 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 17:24:11,557 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 2423 ms
+2026-02-04 17:24:11,874 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 17:24:11,974 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 17:24:12,539 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 17:24:12,576 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 17:24:12,850 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 17:24:12,854 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 17:24:12,880 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 17:24:12,909 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 17:24:14,350 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 17:24:14,430 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 17:24:14,541 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 17:24:16,072 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 17:24:16,112 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 17:24:16,218 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T17:24:16.218270100] Configuring security filter chain
+2026-02-04 17:24:16,232 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T17:24:16.232279500] Creating AuthenticationManager bean
+2026-02-04 17:24:16,239 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T17:24:16.239276600] Security filter chain configured successfully
+2026-02-04 17:24:16,786 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 17:24:16,812 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 17:24:16,818 INFO c.t.b.BackendApplication [main] Started BackendApplication in 8.635 seconds (process running for 10.332)
+2026-02-04 17:26:43,083 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 17:26:43,083 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-02-04 17:26:43,083 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 0 ms
+2026-02-04 17:26:43,172 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:26:43.172158900] Attempting authentication
+2026-02-04 17:26:43,430 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-2] Attempting to load user by identifier: admin
+2026-02-04 17:26:43,467 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-2] User admin loaded successfully with 1 roles
+2026-02-04 17:26:43,656 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:26:43.656581700] Authentication successful for user: admin
+2026-02-04 17:26:43,807 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:26:43.805915] JWT tokens generated successfully for user: admin
+2026-02-04 17:26:43,894 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:26:43.894701300] Login status updated for user: admin
+2026-02-04 17:26:43,894 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T17:26:43.894701300] Authentication completed successfully for user: admin
+2026-02-04 17:27:14,024 INFO c.t.b.s.i.AppUserServiceImpl [http-nio-8080-exec-6] Password changed for user: admin
+2026-02-04 17:27:38,154 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-8] [2026-02-04T17:27:38.154968700] Attempting authentication
+2026-02-04 17:27:38,162 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-8] Attempting to load user by identifier: admin
+2026-02-04 17:27:38,165 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-8] User admin loaded successfully with 1 roles
+2026-02-04 17:27:38,322 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-8] [2026-02-04T17:27:38.322412900] Authentication successful for user: admin
+2026-02-04 17:27:38,331 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-8] [2026-02-04T17:27:38.331983500] JWT tokens generated successfully for user: admin
+2026-02-04 17:27:38,331 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-8] [2026-02-04T17:27:38.331983500] Login status updated for user: admin
+2026-02-04 17:27:38,331 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-8] [2026-02-04T17:27:38.331983500] Authentication completed successfully for user: admin
+2026-02-04 18:05:21,388 WARN o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier [http-nio-8080-exec-4] Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-02-04 18:27:01,623 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 18:27:01,641 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 18:27:01,650 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 18:27:01,656 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 18:27:01,658 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 18:27:17,936 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 8080 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 18:27:17,941 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 18:27:18,386 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 18:27:20,980 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 18:27:21,244 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 213 ms. Found 4 JPA repository interfaces.
+2026-02-04 18:27:22,714 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 18:27:22,765 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 18:27:22,774 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 18:27:22,775 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 18:27:23,033 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 4992 ms
+2026-02-04 18:27:25,404 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 18:27:25,547 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 18:27:27,011 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 18:27:27,175 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 18:27:27,724 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 18:27:27,729 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 18:27:27,794 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 18:27:27,869 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 18:27:30,635 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 18:27:30,775 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 18:27:31,042 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 18:27:33,674 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 18:27:33,743 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 18:27:33,898 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T18:27:33.898208] Configuring security filter chain
+2026-02-04 18:27:33,937 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T18:27:33.937512700] Creating AuthenticationManager bean
+2026-02-04 18:27:33,950 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T18:27:33.950194600] Security filter chain configured successfully
+2026-02-04 18:27:34,779 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 18:27:34,827 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 18:27:34,837 INFO c.t.b.BackendApplication [main] Started BackendApplication in 19.012 seconds (process running for 21.324)
+2026-02-04 18:31:59,965 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 18:31:59,965 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-02-04 18:31:59,991 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 24 ms
+2026-02-04 18:32:00,440 WARN c.t.b.c.s.WebSecurity [http-nio-8080-exec-1] [2026-02-04T18:32:00.440042900] Access denied for path: /api/admin/logs/stream/technical
+2026-02-04 18:32:25,781 WARN c.t.b.c.s.WebSecurity [http-nio-8080-exec-3] [2026-02-04T18:32:25.781260700] Access denied for path: /api/admin/logs/stream/audit
+2026-02-04 18:36:36,317 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 18:36:36,351 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 18:36:36,359 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 18:36:36,365 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 18:36:36,372 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 18:36:48,107 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 16672 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 18:36:48,111 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 18:36:48,482 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 18:36:49,558 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 18:36:49,682 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 109 ms. Found 4 JPA repository interfaces.
+2026-02-04 18:36:50,730 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 18:36:50,755 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 18:36:50,759 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 18:36:50,759 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 18:36:50,889 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 2709 ms
+2026-02-04 18:36:51,248 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 18:36:51,357 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 18:36:52,140 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 18:36:52,189 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 18:36:52,592 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 18:36:52,594 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 18:36:52,630 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 18:36:52,665 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 18:36:54,547 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 18:36:54,631 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 18:36:54,761 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 18:36:56,501 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 18:36:56,555 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 18:36:56,660 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T18:36:56.660065800] Configuring security filter chain
+2026-02-04 18:36:56,675 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T18:36:56.675196400] Creating AuthenticationManager bean
+2026-02-04 18:36:56,683 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T18:36:56.683194600] Security filter chain configured successfully
+2026-02-04 18:36:57,284 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 18:36:57,311 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 18:36:57,318 INFO c.t.b.BackendApplication [main] Started BackendApplication in 10.359 seconds (process running for 11.772)
+2026-02-04 18:37:42,674 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 18:37:42,674 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-02-04 18:37:42,679 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 5 ms
+2026-02-04 18:37:43,263 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-2] Attempting to refresh token
+2026-02-04 18:37:43,317 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-2] Tokens successfully refreshed for user: admin
+2026-02-04 18:37:43,388 WARN c.t.b.c.s.WebSecurity [http-nio-8080-exec-4] [2026-02-04T18:37:43.388930500] Access denied for path: /api/admin/logs/stream/technical
+2026-02-04 18:43:02,671 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 18:43:02,687 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 18:43:02,701 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 18:43:02,705 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 18:43:02,709 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 18:43:11,448 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 24024 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 18:43:11,453 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 18:43:11,791 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 18:43:12,706 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 18:43:12,817 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 96 ms. Found 4 JPA repository interfaces.
+2026-02-04 18:43:13,757 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 18:43:13,780 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 18:43:13,782 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 18:43:13,784 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 18:43:13,890 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 2379 ms
+2026-02-04 18:43:14,192 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 18:43:14,267 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 18:43:14,810 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 18:43:14,859 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 18:43:15,131 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 18:43:15,133 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 18:43:15,158 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 18:43:15,184 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 18:43:16,584 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 18:43:16,661 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 18:43:16,810 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 18:43:18,851 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 18:43:18,899 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 18:43:18,991 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T18:43:18.991510900] Configuring security filter chain
+2026-02-04 18:43:19,012 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T18:43:19.012777700] Creating AuthenticationManager bean
+2026-02-04 18:43:19,028 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T18:43:19.028334800] Security filter chain configured successfully
+2026-02-04 18:43:19,761 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 18:43:19,783 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 18:43:19,789 INFO c.t.b.BackendApplication [main] Started BackendApplication in 9.265 seconds (process running for 10.561)
+2026-02-04 18:44:22,785 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 18:44:22,787 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-02-04 18:44:22,791 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 3 ms
+2026-02-04 18:44:22,872 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:44:22.872316100] Attempting authentication
+2026-02-04 18:44:23,096 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-2] Attempting to load user by identifier: admin
+2026-02-04 18:44:23,116 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-2] User admin loaded successfully with 1 roles
+2026-02-04 18:44:23,232 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:44:23.232284600] Authentication successful for user: admin
+2026-02-04 18:44:23,357 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:44:23.357860400] JWT tokens generated successfully for user: admin
+2026-02-04 18:44:23,440 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:44:23.440200] Login status updated for user: admin
+2026-02-04 18:44:23,440 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:44:23.440200] Authentication completed successfully for user: admin
+2026-02-04 18:44:29,971 WARN o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier [http-nio-8080-exec-3] Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-02-04 18:44:31,486 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-6] Attempting to refresh token
+2026-02-04 18:44:31,504 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-6] Tokens successfully refreshed for user: admin
+2026-02-04 18:48:28,853 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:48:28.853186400] Attempting authentication
+2026-02-04 18:48:28,860 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-2] Attempting to load user by identifier: admin
+2026-02-04 18:48:28,863 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-2] User admin loaded successfully with 1 roles
+2026-02-04 18:48:29,000 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:48:29.000296600] Authentication successful for user: admin
+2026-02-04 18:48:29,004 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:48:29.004315900] JWT tokens generated successfully for user: admin
+2026-02-04 18:48:29,008 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:48:29.008889] Login status updated for user: admin
+2026-02-04 18:48:29,008 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:48:29.008889] Authentication completed successfully for user: admin
+2026-02-04 18:48:35,201 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-8] Attempting to refresh token
+2026-02-04 18:48:35,217 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-8] Tokens successfully refreshed for user: admin
+2026-02-04 18:54:22,955 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 18:54:22,984 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 18:54:22,991 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 18:54:22,995 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 18:54:22,999 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 18:54:31,378 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 14748 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 18:54:31,380 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 18:54:31,717 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 18:54:32,646 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 18:54:32,767 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 108 ms. Found 4 JPA repository interfaces.
+2026-02-04 18:54:33,653 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 18:54:33,666 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 18:54:33,666 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 18:54:33,670 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 18:54:33,758 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 2315 ms
+2026-02-04 18:54:34,006 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 18:54:34,084 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 18:54:34,679 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 18:54:34,726 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 18:54:35,128 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 18:54:35,131 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 18:54:35,171 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 18:54:35,208 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 18:54:37,363 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 18:54:37,439 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 18:54:37,565 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 18:54:39,241 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 18:54:39,294 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 18:54:39,395 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T18:54:39.395569300] Configuring security filter chain
+2026-02-04 18:54:39,409 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T18:54:39.409577400] Creating AuthenticationManager bean
+2026-02-04 18:54:39,417 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T18:54:39.417575] Security filter chain configured successfully
+2026-02-04 18:54:39,945 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 18:54:39,969 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 18:54:39,975 INFO c.t.b.BackendApplication [main] Started BackendApplication in 9.505 seconds (process running for 10.751)
+2026-02-04 18:54:56,511 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 18:54:56,511 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-02-04 18:54:56,511 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 0 ms
+2026-02-04 18:54:56,590 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-3] [2026-02-04T18:54:56.590444] Attempting authentication
+2026-02-04 18:54:56,841 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-3] Attempting to load user by identifier: admin
+2026-02-04 18:54:56,859 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-3] User admin loaded successfully with 1 roles
+2026-02-04 18:54:57,021 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-3] [2026-02-04T18:54:57.021263300] Authentication successful for user: admin
+2026-02-04 18:54:57,142 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-3] [2026-02-04T18:54:57.142582800] JWT tokens generated successfully for user: admin
+2026-02-04 18:54:57,223 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-3] [2026-02-04T18:54:57.223294] Login status updated for user: admin
+2026-02-04 18:54:57,223 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-3] [2026-02-04T18:54:57.223294] Authentication completed successfully for user: admin
+2026-02-04 18:55:05,178 WARN o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier [http-nio-8080-exec-2] Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-02-04 18:55:07,058 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-7] Attempting to refresh token
+2026-02-04 18:55:07,074 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-7] Tokens successfully refreshed for user: admin
+2026-02-04 18:56:46,344 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 18:56:46,361 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 18:56:46,379 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 18:56:46,385 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 18:56:46,389 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 18:56:55,369 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 15352 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 18:56:55,374 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 18:56:55,704 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 18:56:56,639 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 18:56:56,747 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 97 ms. Found 4 JPA repository interfaces.
+2026-02-04 18:56:57,734 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 18:56:57,756 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 18:56:57,758 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 18:56:57,760 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 18:56:57,872 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 2436 ms
+2026-02-04 18:56:58,117 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 18:56:58,176 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 18:56:58,694 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 18:56:58,734 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 18:56:59,013 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 18:56:59,015 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 18:56:59,041 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 18:56:59,067 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 18:57:00,494 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 18:57:00,570 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 18:57:00,681 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 18:57:02,284 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 18:57:02,328 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 18:57:02,431 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T18:57:02.431380500] Configuring security filter chain
+2026-02-04 18:57:02,444 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T18:57:02.444385100] Creating AuthenticationManager bean
+2026-02-04 18:57:02,452 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T18:57:02.452383600] Security filter chain configured successfully
+2026-02-04 18:57:02,984 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 18:57:03,006 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 18:57:03,014 INFO c.t.b.BackendApplication [main] Started BackendApplication in 8.507 seconds (process running for 9.862)
+2026-02-04 18:57:32,638 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 18:57:32,638 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-02-04 18:57:32,640 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 2 ms
+2026-02-04 18:57:32,718 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:57:32.718181] Attempting authentication
+2026-02-04 18:57:32,937 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-2] Attempting to load user by identifier: admin
+2026-02-04 18:57:32,961 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-2] User admin loaded successfully with 1 roles
+2026-02-04 18:57:33,084 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:57:33.084400700] Authentication successful for user: admin
+2026-02-04 18:57:33,183 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:57:33.183284600] JWT tokens generated successfully for user: admin
+2026-02-04 18:57:33,263 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:57:33.263203] Login status updated for user: admin
+2026-02-04 18:57:33,263 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:57:33.263203] Authentication completed successfully for user: admin
+2026-02-04 18:57:38,796 WARN o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier [http-nio-8080-exec-4] Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-02-04 18:57:40,275 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-8] Attempting to refresh token
+2026-02-04 18:57:40,290 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-8] Tokens successfully refreshed for user: admin
+2026-02-04 18:58:18,824 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 18:58:18,842 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 18:58:18,850 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 18:58:18,852 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 18:58:18,852 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 18:58:28,278 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 27152 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 18:58:28,282 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 18:58:28,605 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 18:58:29,572 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 18:58:29,688 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 100 ms. Found 4 JPA repository interfaces.
+2026-02-04 18:58:30,650 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 18:58:30,675 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 18:58:30,679 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 18:58:30,681 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 18:58:30,802 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 2452 ms
+2026-02-04 18:58:31,120 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 18:58:31,225 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 18:58:31,747 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 18:58:31,795 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 18:58:32,070 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 18:58:32,071 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 18:58:32,097 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 18:58:32,125 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 18:58:33,519 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 18:58:33,597 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 18:58:33,752 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 18:58:35,698 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 18:58:35,739 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 18:58:35,859 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T18:58:35.859956700] Configuring security filter chain
+2026-02-04 18:58:35,887 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T18:58:35.887812100] Creating AuthenticationManager bean
+2026-02-04 18:58:35,895 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T18:58:35.895860300] Security filter chain configured successfully
+2026-02-04 18:58:36,747 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 18:58:36,778 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 18:58:36,784 INFO c.t.b.BackendApplication [main] Started BackendApplication in 9.422 seconds (process running for 10.77)
+2026-02-04 18:58:50,004 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 18:58:50,004 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-02-04 18:58:50,008 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 4 ms
+2026-02-04 18:58:50,077 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:58:50.077044500] Attempting authentication
+2026-02-04 18:58:50,323 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-2] Attempting to load user by identifier: admin
+2026-02-04 18:58:50,346 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-2] User admin loaded successfully with 1 roles
+2026-02-04 18:58:50,518 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:58:50.518412500] Authentication successful for user: admin
+2026-02-04 18:58:50,648 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:58:50.648747800] JWT tokens generated successfully for user: admin
+2026-02-04 18:58:50,735 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:58:50.735276100] Login status updated for user: admin
+2026-02-04 18:58:50,735 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-2] [2026-02-04T18:58:50.735276100] Authentication completed successfully for user: admin
+2026-02-04 18:58:54,496 WARN o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier [http-nio-8080-exec-4] Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-02-04 18:58:56,843 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-8] Attempting to refresh token
+2026-02-04 18:58:56,850 INFO c.t.b.s.i.TokenRefreshService [http-nio-8080-exec-8] Tokens successfully refreshed for user: admin
+2026-02-04 19:01:05,820 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 19:01:05,847 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 19:01:05,855 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 19:01:05,860 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 19:01:05,862 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 19:01:15,078 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 20512 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 19:01:15,083 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 19:01:15,416 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 19:01:16,486 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 19:01:16,625 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 120 ms. Found 4 JPA repository interfaces.
+2026-02-04 19:01:17,664 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 19:01:17,684 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 19:01:17,687 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 19:01:17,689 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 19:01:17,804 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 2659 ms
+2026-02-04 19:01:19,145 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 19:01:19,235 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 19:01:20,097 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 19:01:20,131 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 19:01:20,418 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 19:01:20,420 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 19:01:20,447 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 19:01:20,475 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 19:01:22,116 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 19:01:22,206 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 19:01:22,316 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 19:01:23,861 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 19:01:23,901 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 19:01:24,000 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T19:01:24.000363500] Configuring security filter chain
+2026-02-04 19:01:24,015 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T19:01:24.014369300] Creating AuthenticationManager bean
+2026-02-04 19:01:24,022 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T19:01:24.022368400] Security filter chain configured successfully
+2026-02-04 19:01:24,578 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 19:01:24,600 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 19:01:24,607 INFO c.t.b.BackendApplication [main] Started BackendApplication in 10.52 seconds (process running for 12.058)
+2026-02-04 19:02:00,156 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 19:02:00,156 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2026-02-04 19:02:00,156 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Completed initialization in 0 ms
+2026-02-04 19:02:00,219 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T19:02:00.219918700] Attempting authentication
+2026-02-04 19:02:00,442 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-1] Attempting to load user by identifier: admin
+2026-02-04 19:02:00,468 INFO c.t.b.s.i.UserDetailService [http-nio-8080-exec-1] User admin loaded successfully with 1 roles
+2026-02-04 19:02:00,585 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T19:02:00.585648] Authentication successful for user: admin
+2026-02-04 19:02:00,714 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T19:02:00.714697400] JWT tokens generated successfully for user: admin
+2026-02-04 19:02:00,795 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T19:02:00.795622800] Login status updated for user: admin
+2026-02-04 19:02:00,795 INFO c.t.b.c.s.JwtAuthenticationFilter [http-nio-8080-exec-1] [2026-02-04T19:02:00.795622800] Authentication completed successfully for user: admin
+2026-02-04 19:02:03,978 WARN o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier [http-nio-8080-exec-4] Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-02-04 19:04:35,374 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 19:04:35,407 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 19:04:35,416 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 19:04:35,419 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 19:04:35,422 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 19:04:47,336 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 22064 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 19:04:47,343 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 19:04:47,751 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 19:04:48,931 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 19:04:49,068 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 119 ms. Found 4 JPA repository interfaces.
+2026-02-04 19:04:50,162 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 19:04:50,184 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 19:04:50,188 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 19:04:50,188 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 19:04:50,316 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 2894 ms
+2026-02-04 19:04:50,680 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 19:04:50,801 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 19:04:51,646 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 19:04:51,701 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 19:04:52,171 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 19:04:52,177 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 19:04:52,230 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 19:04:52,287 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 19:04:54,644 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 19:04:54,788 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 19:04:55,007 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 19:04:57,432 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 19:04:57,511 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 19:04:57,674 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T19:04:57.674721100] Configuring security filter chain
+2026-02-04 19:04:57,691 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T19:04:57.691271900] Creating AuthenticationManager bean
+2026-02-04 19:04:57,702 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T19:04:57.702276100] Security filter chain configured successfully
+2026-02-04 19:04:58,485 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 19:04:58,532 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 19:04:58,545 INFO c.t.b.BackendApplication [main] Started BackendApplication in 13.552 seconds (process running for 15.367)
+2026-02-04 19:06:07,596 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 19:06:07,596 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2026-02-04 19:06:07,598 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Completed initialization in 2 ms
+2026-02-04 19:38:06,707 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-02-04 19:38:06,747 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-02-04 19:38:06,761 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 19:38:06,767 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-02-04 19:38:06,769 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-02-04 19:38:20,515 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 18464 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-02-04 19:38:20,519 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-02-04 19:38:20,896 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-02-04 19:38:22,031 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-04 19:38:22,266 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 215 ms. Found 4 JPA repository interfaces.
+2026-02-04 19:38:23,331 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-02-04 19:38:23,353 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-04 19:38:23,357 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-02-04 19:38:23,360 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-02-04 19:38:23,488 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 2867 ms
+2026-02-04 19:38:23,837 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-02-04 19:38:23,934 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-02-04 19:38:24,774 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-04 19:38:24,820 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-02-04 19:38:25,165 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-02-04 19:38:25,167 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-02-04 19:38:25,200 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-04 19:38:25,236 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-02-04 19:38:26,970 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-04 19:38:27,066 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-04 19:38:27,233 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-02-04 19:38:29,131 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-04 19:38:29,204 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-02-04 19:38:29,376 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T19:38:29.376697800] Configuring security filter chain
+2026-02-04 19:38:29,400 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T19:38:29.400702500] Creating AuthenticationManager bean
+2026-02-04 19:38:29,411 INFO c.t.b.c.s.WebSecurity [main] [2026-02-04T19:38:29.411319600] Security filter chain configured successfully
+2026-02-04 19:38:30,121 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-02-04 19:38:30,148 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-02-04 19:38:30,154 INFO c.t.b.BackendApplication [main] Started BackendApplication in 10.717 seconds (process running for 12.307)
+2026-02-04 19:39:39,958 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-04 19:39:39,959 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2026-02-04 19:39:39,961 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Completed initialization in 2 ms
+2026-02-04 19:39:40,348 WARN o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier [http-nio-8080-exec-1] Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-02-04 20:17:34,242 WARN c.z.h.p.HikariPool [HikariPool-1:housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=12m38s244ms980µs).
+2026-02-04 21:48:48,618 WARN c.z.h.p.HikariPool [HikariPool-1:housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=22m13s323ms847µs900ns).
