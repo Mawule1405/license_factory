@@ -1,44 +1,39 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {ClientService} from '../../../core/services/client.service';
-import {Client, ClientStats} from '../../../core/models/client.model';
-import {CreateLicenseModalComponent} from './list-licenses/create-license-modal/create-license-modal.component';
-import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
-import {ClientUiService} from '../../../core/services/client-ui.service';
-import {ProjectStats} from '../../../core/models/project.model';
+import { Component, inject, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import { ClientUiService } from '../../../core/services/client-ui.service';
+import { LicenseStats } from '../../../core/models/license.model'; // Import du nouveau modèle
+import { LicenseService } from '../../../core/services/license.service'; // Service à injecter
 
 @Component({
   selector: 'app-licenses-management',
   standalone: true,
-  imports: [CommonModule, FormsModule,  RouterOutlet],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './licenses-management.component.html'
 })
 export class LicensesManagementComponent implements OnInit {
+  private licenseService = inject(LicenseService);
 
-  private uiService = inject(ClientUiService);
-  activeClientName = '';
 
-  miniStats: ClientStats = {
-    // --- Volume & Croissance ---
+
+  // Remplacement de miniStats par le type LicenseStats
+  miniStats: LicenseStats = {
     total: 0,
-    totalThisMonth: 0,
-    growthRate: 0,           // Pourcentage de croissance vs mois dernier
-
-    // --- Activité Technique ---
-    activeDeployments: 0,    // Nombre de licences actuellement valides (non expirées)
-    deploymentDensity: 0,    // Moyenne de projets par client (ex: 1.5 projets/client)
-
-    // --- Records & Flux ---
+    activeTotal: 0,
+    growthRate: 0,
+    conversionEfficiency: 0,
     lastDeployedName: 'WAITING_STREAM...',
     topLicensedProject: 'N/A',
-
-    // --- Performance Équipe ---
     leadArchitect: 'N/A',
-    conversionEfficiency: 0  // Ratio clients avec licence / clients total (%)
+    deploymentDensity: 0
   };
 
   ngOnInit() {
-    this.uiService.currentClientName$.subscribe(name => this.activeClientName = name);
+    this.loadLicenseStats();
+  }
+
+  loadLicenseStats() {
+
+    this.licenseService.fetchLicenseMiniStats().subscribe(stats => this.miniStats = stats);
   }
 }

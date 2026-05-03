@@ -1,5 +1,6 @@
 package com.taurustechnology.backend.controllers;
 
+import com.taurustechnology.backend.dtos.LicenseMiniStats;
 import com.taurustechnology.backend.dtos.responses.LicenseResponse;
 import com.taurustechnology.backend.dtos.requests.LicenseRequest;
 import com.taurustechnology.backend.dtos.responses.Pagination;
@@ -117,5 +118,10 @@ public class LicenseController {
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();
         }
+    }
+
+    @GetMapping("/mini-stats")
+    public ResponseEntity<LicenseMiniStats> getLicenseMiniStats() {
+        return ResponseEntity.ok(licenseService.getMiniStats());
     }
 }

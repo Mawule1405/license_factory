@@ -1,5 +1,6 @@
 package com.taurustechnology.backend.controllers;
 
+import com.taurustechnology.backend.dtos.ProjectMiniStats;
 import com.taurustechnology.backend.dtos.requests.ProjectRequest;
 import com.taurustechnology.backend.dtos.responses.Pagination;
 import com.taurustechnology.backend.dtos.responses.ProjectResponse;
@@ -89,5 +90,10 @@ public class ProjectController {
         log.warn("REST request to delete project ID: {} by user: {}", id, principal.getName());
         projectService.deleteProject(id, principal.getName());
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/mini-stats")
+    public ResponseEntity<ProjectMiniStats> getProjectMiniStats() {
+        return ResponseEntity.ok(projectService.getProjectStats());
     }
 }

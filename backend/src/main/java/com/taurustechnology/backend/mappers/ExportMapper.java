@@ -10,7 +10,7 @@ import org.mapstruct.factory.Mappers;
 public interface ExportMapper {
 
     @Mapping(target = "adminId", source = "register.id")
-    @Mapping(target = "adminFullName", expression = "java(export.getRegister().getFirstName() + \" \" + export.getRegister().getLastName())")
+    @Mapping(target = "adminFullName", expression = "java(export.getRegister().getFullName())")
     @Mapping(target = "licenseId", source = "license.id")
     @Mapping(target = "activationCode", source = "license.activationCode")
     @Mapping(target = "clientName", source = "license.client.name")

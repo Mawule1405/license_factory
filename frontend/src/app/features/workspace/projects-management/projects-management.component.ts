@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import { RouterOutlet} from '@angular/router';
 import {ClientUiService} from '../../../core/services/client-ui.service';
 import {ProjectStats} from '../../../core/models/project.model';
+import {ProjectService} from '../../../core/services/project.service';
 
 @Component({
   selector: 'app-projects-management',
@@ -13,8 +14,7 @@ import {ProjectStats} from '../../../core/models/project.model';
 })
 export class ProjectsManagementComponent implements OnInit {
 
-  private uiService = inject(ClientUiService);
-  activeClientName = '';
+  private projectService = inject(ProjectService);
 
   // Dans ta classe de composant
   miniStats: ProjectStats = {
@@ -28,19 +28,8 @@ export class ProjectsManagementComponent implements OnInit {
 
 
   ngOnInit() {
-    this.uiService.currentClientName$.subscribe(name => this.activeClientName = name);
+    this.projectService.fetchProjectMiniStats().subscribe((data)=>this.miniStats = data);
   }
 
-  updateStats(projects: any[]) {
-    if (projects.length > 0) {
-      this.miniStats = {
-        total: projects.length, // ou pagination.totalElements
-        totalThisMonth: 12, // Logique à adapter selon tes dates
-        newDeployments: 3,
-        lastDeployedName: projects[0].name,
-        topLicensedProject: 'NEBI_SYSTEM',
-        leadArchitect: projects[0].creatorName
-      };
-    }
-  }
+
 }

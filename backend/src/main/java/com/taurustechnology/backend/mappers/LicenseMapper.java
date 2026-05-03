@@ -19,22 +19,35 @@ public interface LicenseMapper {
     @Mapping(target = "projectId", expression = "java(entity.getProject().getId())")
     @Mapping(target = "projectName", source = "project.name")
     @Mapping(target = "creatorName", source = "creator.username")
-    @Mapping(target = "parameters", expression = "java(mapParameters(entity.getParameters()))")
+    @Mapping(target = "parameters", expression = "java(mapParametersToMap(entity.getParameters()))")
     LicenseResponse toResponse(License entity);
 
-
+    @Mapping(target = "parameters", expression = "java(mapParametersToList(dto.getParameters()))")
     License toEntity(LicenseRequest dto);
 
     /**
      * Convertit la liste d'entités LicenseParameter en Map pour le DTO de réponse
      */
-    default Map<String, String> mapParameters(List<LicenseParameter> parameters) {
+    default Map<String, String> mapParametersToMap(List<LicenseParameter> parameters) {
         if (parameters == null) return null;
         return parameters.stream()
                 .collect(Collectors.toMap(
                         LicenseParameter::getLabel,
                         LicenseParameter::getValue,
-                        (existing, replacement) -> existing // En cas de doublon de label
+                        (existing, replacement) -> existing
                 ));
+    }
+
+    /**
+     * Convertit la Map du DTO en Liste d'entités pour la persistance
+     */
+    default List<LicenseParameter> mapParametersToList(Map<String, String> parameters) {
+        if (parameters == null) return null;
+        return parameters.entrySet().stream()
+                .map(entry -> LicenseParameter.builder()
+                        .label(entry.getKey())
+                        .value(entry.getValue())
+                        .build())
+                .collect(Collectors.toList());
     }
 }

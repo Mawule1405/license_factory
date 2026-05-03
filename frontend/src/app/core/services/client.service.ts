@@ -1,6 +1,6 @@
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Pagination} from '../models/auth.model';
-import {Client} from '../models/client.model';
+import {Client, ClientStats} from '../models/client.model';
 import {Observable} from 'rxjs';
 import {inject, Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
@@ -41,5 +41,9 @@ export class ClientService {
   updateClient(updatedClient: Client): Observable<Client> {
     const url = `${this.apiUrl}/${updatedClient.id}`;
     return this.http.put<Client>(url, updatedClient);
+  }
+
+  fetchClientMiniStats() {
+    return this.http.get<ClientStats>(`${this.apiUrl}/mini-stats`)
   }
 }

@@ -16,8 +16,7 @@ import {ProjectStats} from '../../../core/models/project.model';
 })
 export class ClientsManagementComponent implements OnInit {
 
-  private uiService = inject(ClientUiService);
-  activeClientName = '';
+  clientService = inject(ClientService)
 
   miniStats: ClientStats = {
     // --- Volume & Croissance ---
@@ -39,6 +38,6 @@ export class ClientsManagementComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.uiService.currentClientName$.subscribe(name => this.activeClientName = name);
+    this.clientService.fetchClientMiniStats().subscribe((data)=>this.miniStats = data);
   }
 }

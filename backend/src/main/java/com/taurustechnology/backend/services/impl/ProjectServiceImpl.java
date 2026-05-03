@@ -1,14 +1,17 @@
 package com.taurustechnology.backend.services.impl;
 
+import com.taurustechnology.backend.dtos.ProjectMiniStats;
 import com.taurustechnology.backend.dtos.requests.ProjectRequest;
 import com.taurustechnology.backend.models.AppUser;
 import com.taurustechnology.backend.models.LicenseModel;
 import com.taurustechnology.backend.models.Project;
 import com.taurustechnology.backend.repositories.AppUserRepository;
 import com.taurustechnology.backend.repositories.LicenseModelRepository;
+import com.taurustechnology.backend.repositories.LicenseRepository;
 import com.taurustechnology.backend.repositories.ProjectRepository;
 import com.taurustechnology.backend.services.AuditService;
 import com.taurustechnology.backend.services.ProjectService;
+import com.taurustechnology.backend.specifications.LicenseSpecifications;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
@@ -20,8 +23,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -34,12 +40,14 @@ public class ProjectServiceImpl implements ProjectService {
     private final AppUserRepository appUserRepository;
     private final AuditService auditService;
     private final LicenseModelRepository licenseModelRepository;
+    private final LicenseRepository licenseRepository;
 
-    public ProjectServiceImpl(ProjectRepository projectRepository, AppUserRepository appUserRepository, AuditService auditService, LicenseModelRepository licenseModelRepository) {
+    public ProjectServiceImpl(ProjectRepository projectRepository, AppUserRepository appUserRepository, AuditService auditService, LicenseModelRepository licenseModelRepository, LicenseRepository licenseRepository) {
         this.projectRepository = projectRepository;
         this.appUserRepository = appUserRepository;
         this.auditService = auditService;
         this.licenseModelRepository = licenseModelRepository;
+        this.licenseRepository = licenseRepository;
     }
 
     @Override
@@ -180,5 +188,26 @@ public class ProjectServiceImpl implements ProjectService {
 
         auditService.logAction("DELETE_PROJECT", username, project.getName(), "SUCCESS");
         log.info("[COMPLETED] Project '{}' successfully decommissioned (Soft Delete)", project.getName());
+    }
+
+
+    @Override
+    public ProjectMiniStats getProjectStats() {
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime startOfMonth = now.with(TemporalAdjusters.firstDayOfMonth()).with(LocalTime.MIN);
+
+        // Un "nouveau projet" est un projet dont le nom n'existait pas avant ce mois-ci
+        List<String> existingBefore = licenseRepository.findProjectNamesExistingBefore(startOfMonth);
+        long totalProjects = licenseRepository.countDistinctProjectNames();
+        long newProjectsCount = totalProjects - existingBefore.size();
+
+        return new ProjectMiniStats(
+                totalProjects,
+                newProjectsCount, // totalThisMonth
+                licenseRepository.count(LicenseSpecifications.createdBetween(startOfMonth, now)), // newDeployments
+                licenseRepository.findTopByOrderByCreatedAtDesc().map(l -> l.getClient().getName()).orElse("N/A"),
+                licenseRepository.findMostLicensedProjectName(),
+                licenseRepository.findTopCreatorName().orElse("N/A")
+        );
     }
 }

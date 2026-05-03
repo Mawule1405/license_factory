@@ -1,11 +1,14 @@
 package com.taurustechnology.backend.services.impl;
 
+import com.taurustechnology.backend.dtos.ClientMiniStats;
 import com.taurustechnology.backend.models.AppUser;
 import com.taurustechnology.backend.models.Client;
 import com.taurustechnology.backend.repositories.AppUserRepository;
 import com.taurustechnology.backend.repositories.ClientRepository;
+import com.taurustechnology.backend.repositories.LicenseRepository;
 import com.taurustechnology.backend.services.AuditService;
 import com.taurustechnology.backend.services.ClientService;
+import com.taurustechnology.backend.specifications.ClientSpecifications;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,12 +19,17 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.TemporalAdjusters;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
 public class ClientServiceImpl implements ClientService {
 
     private final ClientRepository clientRepository;
+    private final LicenseRepository licenseRepository;
     private final AppUserRepository appUserRepository;
     private final AuditService auditService;
 
@@ -116,5 +124,54 @@ public class ClientServiceImpl implements ClientService {
             auditService.logAction("UPDATE_CLIENT", username, id, "FAILED");
             throw e;
         }
+    }
+
+    @Override
+    public ClientMiniStats getMiniStats() {
+        long totalClients = clientRepository.count();
+
+        // --- Calcul des périodes ---
+        LocalDateTime now = LocalDateTime.now();
+
+        // Mois en cours : du 1er du mois à 00:00 jusqu'à maintenant
+        LocalDateTime startOfMonth = now.with(TemporalAdjusters.firstDayOfMonth()).with(LocalTime.MIN);
+
+        // Mois dernier : du 1er au dernier jour du mois précédent
+        LocalDateTime startOfLastMonth = now.minusMonths(1).with(TemporalAdjusters.firstDayOfMonth()).with(LocalTime.MIN);
+        LocalDateTime endOfLastMonth = now.minusMonths(1).with(TemporalAdjusters.lastDayOfMonth()).with(LocalTime.MAX);
+
+        // --- Appels via Specifications ---
+        long totalThisMonth = clientRepository.count(ClientSpecifications.createdBetween(startOfMonth, now));
+        long totalLastMonth = clientRepository.count(ClientSpecifications.createdBetween(startOfLastMonth, endOfLastMonth));
+
+        // --- Reste de la logique ---
+        double growthRate = calculateGrowthRate(totalThisMonth, totalLastMonth);
+        double deploymentDensity = totalClients > 0 ? (double) licenseRepository.count() / totalClients : 0;
+
+        String lastDeployed = licenseRepository.findTopByOrderByCreatedAtDesc()
+                .map(l -> l.getClient().getName()).orElse("N/A");
+
+        String topProject = licenseRepository.findMostLicensedProjectName();
+        String leadArchitect = clientRepository.findTopCreatorName().orElse("N/A");
+
+        long clientsWithLicense = clientRepository.countClientsWithAtLeastOneLicense();
+        double conversionEfficiency = totalClients > 0 ? (double) clientsWithLicense / totalClients * 100 : 0;
+
+        return new ClientMiniStats(
+                totalClients,
+                totalThisMonth,
+                growthRate,
+                0, // activeDeployments (à remplir selon tes besoins)
+                deploymentDensity,
+                lastDeployed,
+                topProject,
+                leadArchitect,
+                conversionEfficiency
+        );
+    }
+
+    private double calculateGrowthRate(long current, long previous) {
+        if (previous == 0) return current > 0 ? 100.0 : 0.0;
+        return ((double) (current - previous) / previous) * 100;
     }
 }

@@ -9,6 +9,12 @@ import {CreateLicenseModalComponent} from './create-license-modal/create-license
 import {LicenseParametersModalComponent} from './license-parameters-modal/license-parameters-modal.component';
 import {NotificationService} from '../../../../core/services/notification.service';
 import {ExportLicenseRaisonModalComponent} from '../../../../shared/components/modals/export-license-raison-modal/export-license-raison-modal.component';
+import {
+  LicenseExportLogsModalComponent
+} from '../../../../shared/components/modals/license-export-logs-modal/license-export-logs-modal.component';
+import {
+  EditLicenseParametersModalComponent
+} from '../../../../shared/components/modals/edit-license-parameters-modal/edit-license-parameters-modal.component';
 
 @Component({
   selector: 'app-list-licenses',
@@ -20,7 +26,9 @@ import {ExportLicenseRaisonModalComponent} from '../../../../shared/components/m
     DatePipe,
     CreateLicenseModalComponent,
     LicenseParametersModalComponent,
-    ExportLicenseRaisonModalComponent
+    ExportLicenseRaisonModalComponent,
+    LicenseExportLogsModalComponent,
+    EditLicenseParametersModalComponent
   ],
   templateUrl: './list-licenses.component.html',
 })
@@ -44,6 +52,8 @@ export class ListLicensesComponent implements OnInit {
 
   isLicenseParametersModal = false;
   isExportLicenseModal= false
+  isLogsModal = false
+  isEditLicenseModal = false
   selectedLicense? : LicenseResponse
 
   ngOnInit() {
@@ -90,6 +100,11 @@ export class ListLicensesComponent implements OnInit {
     this.isLicenseParametersModal = true;
   }
 
+  editParameters(license: LicenseResponse) {
+    this.selectedLicense = license;
+    this.isEditLicenseModal = true;
+  }
+
   exportLicense(license: LicenseResponse) {
   this.selectedLicense = license;
   this.isExportLicenseModal = true;
@@ -112,8 +127,9 @@ export class ListLicensesComponent implements OnInit {
     );
   }
 
-  viewLicenseLogs(id: string) {
-
+  viewLicenseLogs(license: LicenseResponse) {
+    this.selectedLicense = license
+    this.isLogsModal = true
   }
 
   revokeLicense(id: string) {

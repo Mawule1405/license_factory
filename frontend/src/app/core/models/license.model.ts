@@ -20,3 +20,22 @@ export interface LicenseResponse {
 
   parameters: { [key: string]: string };
 }
+
+
+export interface LicenseStats {
+  // --- Volume ---
+  total: number;             // Total des licences générées
+  activeTotal: number;       // Licences actuellement actives (active: true)
+
+  // --- Croissance & Performance ---
+  growthRate: number;        // % de croissance vs mois précédent
+  conversionEfficiency: number; // % de projets ayant au moins une licence active
+
+  // --- Flux & Records ---
+  lastDeployedName: string;  // Nom du client de la dernière licence générée
+  topLicensedProject: string; // Nom du projet le plus licencié
+
+  // --- Staff & Densité ---
+  leadArchitect: string;     // Administrateur ayant généré le plus de licences
+  deploymentDensity: number; // Moyenne de licences par projet
+}

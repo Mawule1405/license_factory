@@ -1,5 +1,6 @@
 package com.taurustechnology.backend.services;
 
+import com.taurustechnology.backend.dtos.ProjectMiniStats;
 import com.taurustechnology.backend.dtos.requests.ProjectRequest;
 import com.taurustechnology.backend.dtos.responses.ProjectResponse;
 import com.taurustechnology.backend.models.Project;
@@ -15,4 +16,5 @@ public interface ProjectService {
     void updateProject(String id, Project project, String username);
 
 
+    ProjectMiniStats getProjectStats();
 }

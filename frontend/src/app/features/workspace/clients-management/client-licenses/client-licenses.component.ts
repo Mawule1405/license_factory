@@ -12,11 +12,19 @@ import {
   ExportLicenseRaisonModalComponent
 } from '../../../../shared/components/modals/export-license-raison-modal/export-license-raison-modal.component';
 import {NotificationService} from '../../../../core/services/notification.service';
+import {
+  LicenseExportLogsModalComponent
+} from '../../../../shared/components/modals/license-export-logs-modal/license-export-logs-modal.component';
+import {
+  EditLicenseParametersModalComponent
+} from '../../../../shared/components/modals/edit-license-parameters-modal/edit-license-parameters-modal.component';
 
 @Component({
   selector: 'app-client-licenses',
   standalone: true,
-  imports: [CommonModule, CreateClientLicenceModalComponent, PaginationComponent, RouterLink, ExportLicenseRaisonModalComponent],
+  imports: [CommonModule, CreateClientLicenceModalComponent,
+    PaginationComponent, RouterLink, ExportLicenseRaisonModalComponent,
+    LicenseExportLogsModalComponent,  EditLicenseParametersModalComponent],
   templateUrl: './client-licenses.component.html'
 })
 export class ClientLicensesComponent implements OnInit {
@@ -36,6 +44,8 @@ export class ClientLicensesComponent implements OnInit {
   loading = false;
   showLicenseCreationModal = false;
   isExportLicenseModal= false
+  isLogsModal = false
+  isEditLicenseModal = false
   selectedLicense? : LicenseResponse
 
   // Pagination conforme à ton composant
@@ -159,29 +169,33 @@ export class ClientLicensesComponent implements OnInit {
 
   /** Action : Ouvrir le modal d'édition des paramètres */
   editParameters(license: LicenseResponse) {
-    // Ici, tu peux ouvrir le même modal que la création mais en mode "Edit"
-    // ou un modal spécifique aux paramètres
-    console.log("Editing parameters for:", license.id);
-    // this.selectedLicense = license;
-    // this.showEditModal = true;
+    this.selectedLicense = license;
+    this.isEditLicenseModal = true;
   }
 
   /** Action : Régénérer le code d'activation ou rafraîchir les données */
   displayLicenseExport(license: LicenseResponse) {
-    if(confirm("Regenerate the signed key for this license?")) {
-      /*this.licenseService.generateLicense(license.id).subscribe(() => {
-        this.loadLicenses(); // Recharger pour voir les changements
-      });*/
-    }
+    this.selectedLicense = license
+    this.isLogsModal = true
   }
 
   /** Action : Supprimer/Révoquer */
   deleteLicense(license: LicenseResponse) {
-    if(confirm("CRITICAL: Revoke this license protocol permanently?")) {
-      this.licenseService.deleteLicense(license.id).subscribe({
-        next: () => this.loadLicenses()
-      });
-    }
+    this.notifyService.confirm("Do you want to revoke this license", "REVOKE LICENSE").then(result => {
+      if (result) {
+
+        this.licenseService.deleteLicense(license.id).subscribe({
+          next: () => {
+            this.notifyService.success('LICENSE_REVOKED_SUCCESSFULLY');
+            this.loadLicenses();
+          },
+          error: (err) => {
+            console.error('Revocation failed', err);
+
+          }
+        });
+      }
+    });
   }
 
   copyToClipboard(text: string) {

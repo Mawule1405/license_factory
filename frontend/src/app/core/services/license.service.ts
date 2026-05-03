@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LicenseResponse } from '../models/license.model';
+import {LicenseResponse, LicenseStats} from '../models/license.model';
 import { environment } from '../../../environments/environment';
 import { Pagination} from '../models/auth.model';
 import {StorageService} from './storage.service';
@@ -47,14 +47,19 @@ export class LicenseService {
   }
 
   // 3. Mettre à jour une configuration
-  updateLicense( licenseId: string, license: LicenseResponse): Observable<LicenseResponse> {
-    return this.http.put<LicenseResponse>(`${this.apiUrl}/${licenseId}`, license);
+  /**
+   * Met à jour les paramètres d'une licence existante
+   * @param licenseId L'UUID de la licence
+   * @param payload Objet contenant la Map des paramètres
+   */
+  updateLicense(licenseId: string, payload: { parameters: Record<string, string> }): Observable<LicenseResponse> {
+    return this.http.put<LicenseResponse>(`${this.apiUrl}/${licenseId}`, payload);
   }
 
   // 4. Générer et Télécharger le fichier binaire .lic
   downloadLicenseFile(licenseId: string, raison: string): Observable<Blob> {
     // Envoi de la raison dans le corps de la requête
-    return this.http.post(`${this.apiUrl}/generate/${licenseId}`, { raison }, {
+    return this.http.post(`${this.apiUrl}/generate/${licenseId}`,  raison , {
       responseType: 'blob'
     });
   }
@@ -64,6 +69,8 @@ export class LicenseService {
     return this.http.delete<void>(`${this.apiUrl}/${licenseId}`);
   }
 
-
+  fetchLicenseMiniStats() {
+    return this.http.get<LicenseStats>(`${this.apiUrl}/mini-stats`)
+  }
 
 }

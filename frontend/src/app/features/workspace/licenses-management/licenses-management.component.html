@@ -1,32 +1,37 @@
 <div class="space-y-1">
-  <div class="flex min-h-[calc(100vh-4rem)] gap-1">
+  <div class="flex min-h-[calc(100vh-4rem)] max-h-[calc(100vh-4rem)] gap-1">
 
     <aside class="w-72 flex-shrink-0">
-      <div class="bg-white border border-gray-200 h-full shadow-sm flex flex-col">
+      <div class="bg-white border border-gray-200 h-full shadow-sm flex flex-col overflow-hidden">
 
-        <div class="p-6 border-b-2 border-taurus-green bg-gray-50">
+        <!-- Header (Fixe) -->
+        <div class="p-6 border-b-2 border-taurus-green bg-gray-50 flex-shrink-0">
           <div class="flex items-center gap-3">
             <div class="w-2 h-2 bg-taurus-green rounded-full animate-pulse"></div>
             <h2 class="font-black text-sm uppercase tracking-widest text-gray-800">LICENSES_Analytics</h2>
           </div>
         </div>
 
-        <div class="flex flex-col divide-y divide-gray-100">
+        <!-- Zone de Stat (Scrollable) -->
+        <!-- flex-1 : occupe l'espace restant | min-h-0 : permet le scroll en flexbox | overflow-y-auto : active le scroll -->
+        <div class="flex-1 min-h-0 overflow-y-auto flex flex-col divide-y divide-gray-100 custom-scrollbar">
 
+          <!-- Volume Total -->
           <div class="p-5 hover:bg-gray-50 transition-colors">
             <p class="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] mb-1">Global_Registry_Total</p>
             <div class="flex items-end gap-2">
               <span class="text-3xl font-black text-gray-900 leading-none">{{ miniStats.total }}</span>
-              <span class="text-[10px] font-bold text-taurus-green mb-1 uppercase">Accounts</span>
+              <span class="text-[10px] font-bold text-taurus-green mb-1 uppercase">Issued</span>
             </div>
           </div>
 
+          <!-- Rapports de Performance -->
           <div class="p-5 bg-gray-50/50">
             <p class="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] mb-3">Market_Pulse_Report</p>
             <div class="grid grid-cols-2 gap-4">
               <div class="flex flex-col">
                 <span class="text-xs font-black text-gray-800">{{ miniStats.conversionEfficiency }}%</span>
-                <span class="text-[8px] font-bold text-gray-500 uppercase">Conversion</span>
+                <span class="text-[8px] font-bold text-gray-500 uppercase">Efficiency</span>
               </div>
               <div class="flex flex-col border-l border-gray-200 pl-4">
                 <span class="text-xs font-black text-taurus-green">+{{ miniStats.growthRate }}%</span>
@@ -35,6 +40,7 @@
             </div>
           </div>
 
+          <!-- Dernier Client (Handshake) -->
           <div class="p-5">
             <p class="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] mb-2">Latest_Handshake_Detected</p>
             <div class="flex items-center gap-3 p-2 bg-gray-900 border-l-4 border-taurus-green">
@@ -46,18 +52,20 @@
           </div>
 
           <div class="p-5 space-y-4">
+            <!-- Produit Top Demande -->
             <div>
               <p class="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] mb-2">Top_Demand_Product</p>
               <div class="flex flex-col">
                 <span class="text-[10px] font-black text-gray-800 uppercase">{{ miniStats.topLicensedProject }}</span>
-                <div class="w-full bg-gray-100 h-1 mt-1">
+                <div class="w-full bg-gray-100 h-1 mt-1 text-[0px]">
                   <div class="bg-taurus-green h-full" [style.width.%]="miniStats.conversionEfficiency"></div>
                 </div>
               </div>
             </div>
 
+            <!-- Officier de Forge (Lead Architect) -->
             <div>
-              <p class="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] mb-2">Lead_Ops_Registrar</p>
+              <p class="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] mb-2">Primary_Forge_Officer</p>
               <div class="flex items-center gap-2">
                 <div class="w-6 h-6 rounded bg-gray-800 flex items-center justify-center text-[10px] text-white font-bold">
                   {{ miniStats.leadArchitect.charAt(0) }}
@@ -67,6 +75,7 @@
             </div>
           </div>
 
+          <!-- Densité de déploiement -->
           <div class="p-5">
             <div class="flex justify-between items-center">
               <p class="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em]">Deployment_Density</p>
@@ -76,7 +85,8 @@
 
         </div>
 
-        <div class="mt-auto p-4 bg-gray-800">
+        <!-- Footer (Fixe) -->
+        <div class="mt-auto p-4 bg-gray-800 flex-shrink-0">
           <div class="flex items-center justify-between">
             <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest">Network_Node</span>
             <span class="text-[8px] font-black text-taurus-green uppercase tracking-widest animate-pulse">Ready_Sync</span>
@@ -86,7 +96,8 @@
       </div>
     </aside>
 
-    <section class="flex-1 bg-white border border-gray-200 shadow-sm">
+    <!-- Main Content Area -->
+    <section class="flex-1 bg-white border border-gray-200 shadow-sm overflow-hidden">
       <router-outlet></router-outlet>
     </section>
 

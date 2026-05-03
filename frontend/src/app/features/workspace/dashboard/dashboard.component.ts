@@ -1,51 +1,84 @@
-import {Component, computed, inject} from '@angular/core';
-import {DatePipe} from '@angular/common';
+import { Component, inject, effect } from '@angular/core';
+import { DiagramService } from '../../../core/services/diagram.service';
 import {DashboardService} from '../../../core/services/dashboard.service';
-import {RouterLink} from '@angular/router';
+import {GlobalActivityMix, GrowthMetrics, UserActivityMetrics} from '../../../core/models/dashboard.model';
 
 @Component({
-  selector: 'app-dashboard.component',
-  imports: [
-    RouterLink
-  ],
+  selector: 'app-dashboard',
+  standalone: true,
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css',
+  styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
+  private ds = inject(DashboardService);
+  private diagram = inject(DiagramService);
 
-  private dashboardService = inject(DashboardService);
+  // Récupération des signaux
+  logs = this.ds.recentLogs;
 
-  // Accès direct aux signaux du service
-  stats = this.dashboardService.stats;
-  loading = this.dashboardService.isLoading;
+  constructor() {
+    // Surveille et dessine le graphique des utilisateurs dès que les données arrivent
+    effect(() => {
+      const data = this.ds.userMetrics();
+      if (data.length) this.renderUserChart(data);
+    });
 
-  // Exemple de calcul réactif pour le graphique (extraire les clés du Map)
-  chartLabels = computed(() => {
-    const s = this.stats();
-    return s ? Object.keys(s.licensesPerMonth) : [];
-  });
+    // Surveille et dessine la croissance
+    effect(() => {
+      const data = this.ds.growthMetrics();
+      if (data) this.renderGrowthChart(data);
+    });
+
+    // Surveille et dessine le mix global
+    effect(() => {
+      const data = this.ds.activityMix();
+      if (data) this.renderMixChart(data);
+    });
+  }
 
   ngOnInit() {
-    this.dashboardService.fetchStats().subscribe();
+    // Chargements parallèles et indépendants
+    this.ds.fetchUserMetrics();
+    this.ds.fetchGrowth();
+    this.ds.fetchActivityMix();
+    this.ds.fetchRecentLogs();
   }
 
-  /**
-   * Helper pour mapper le status du log à une classe CSS Tailwind
-   */
-  getStatusClass(status: string): string {
-    switch (status) {
-      case 'SUCCESS': return 'border-taurus-green text-taurus-green';
-      case 'WARNING': return 'border-yellow-500 text-yellow-500';
-      case 'DANGER': return 'border-red-600 text-red-600';
-      default: return 'border-gray-500 text-gray-400';
-    }
+  private renderUserChart(data: UserActivityMetrics[]) {
+    this.diagram.createChart({
+      canvasId: 'userWorkloadCanvas',
+      type: 'stacked_bar',
+      title: 'PRODUCTIVITÉ PAR OPÉRATEUR',
+      labels: data.map(u => u.username),
+      datasets: [
+        { label: 'Licences', data: data.map(u => u.licensing), color: '#2ed573' },
+        { label: 'Clients', data: data.map(u => u.clientRegistration), color: '#70a1ff' },
+        { label: 'Exports', data: data.map(u => u.exports), color: '#ffa502' },
+        { label: 'Admin', data: data.map(u => u.userManagement), color: '#ff4757' }
+      ]
+    });
   }
 
-  maxLicenseValue = computed(() => {
-    const s = this.stats();
-    if (!s || !s.licensesPerMonth) return 10;
-    const values = Object.values(s.licensesPerMonth);
-    return Math.max(...values, 10); // On met 10 par défaut pour éviter division par 0
-  });
+  private renderGrowthChart(data: GrowthMetrics) {
+    this.diagram.createChart({
+      canvasId: 'growthCanvas',
+      type: 'bar_vertical',
+      title: 'FLUX MENSUEL DE LICENCES',
+      labels: data.labels,
+      datasets: [{ label: 'Volume', data: data.values, color: '#2ed573', fill: true }]
+    });
+  }
 
+  private renderMixChart(data: GlobalActivityMix) {
+    this.diagram.createChart({
+      canvasId: 'mixCanvas',
+      type: 'doughnut_ring',
+      title: 'RÉPARTITION DES OPÉRATIONS',
+      labels: ['Licences', 'Enregistrements', 'Exports', 'Admin'],
+      datasets: [{
+        label: 'Actions',
+        data: [data.licensing, data.registrations, data.exports, data.admin]
+      }]
+    });
+  }
 }

@@ -1,0 +1,92 @@
+<div class="flex flex-col h-full bg-gray-50">
+  <!-- Header de la page -->
+  <div class="flex-shrink-0 bg-white border-b border-gray-100 p-2">
+    <div class="flex justify-between items-center">
+      <div>
+        <h1 class="text-xs font-black uppercase tracking-[0.4em] text-gray-900">System_Export_Audit</h1>
+        <p class="text-[9px] font-bold text-taurus-green uppercase tracking-widest mt-1">Traceability_Protocol_Active</p>
+      </div>
+      <button (click)="loadExports()" class="p-2 hover:bg-gray-100 rounded-full transition-colors">
+        <i class="fas fa-sync-alt text-xs text-gray-400" [class.animate-spin]="isLoading"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Zone du Tableau (Scrollable avec min-h-0 pour flexbox) -->
+  <div class="flex-1 min-h-0 overflow-auto scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-gray-100">
+    <div class="bg-white shadow-sm">
+      <table class="w-full text-left border-separate border-spacing-0">
+        <thead class="sticky top-0 z-10 bg-taurus-green text-white">
+        <tr>
+          <th class="px-4 py-3 text-[10px] font-black uppercase tracking-widest border-b border-taurus-green">Timestamp</th>
+          <th class="px-4 py-3 text-[10px] font-black uppercase tracking-widest border-b border-taurus-green">Administrator</th>
+          <th class="px-4 py-3 text-[10px] font-black uppercase tracking-widest border-b border-taurus-green">License_ID</th>
+          <th class="px-4 py-3 text-[10px] font-black uppercase tracking-widest border-b border-taurus-green">Project / Client</th>
+          <th class="px-4 py-3 text-[10px] font-black uppercase tracking-widest border-b border-taurus-green">Justification</th>
+        </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+          @if (isLoading) {
+            <tr>
+              <td colspan="5" class="py-20 text-center">
+                <i class="fas fa-circle-notch animate-spin text-taurus-green mb-2"></i>
+                <p class="text-[9px] font-black text-gray-400 uppercase tracking-widest">Loading_Audit_Data...</p>
+              </td>
+            </tr>
+          } @else {
+            @for (log of exports; track log.id) {
+              <tr class="hover:bg-gray-50/80 transition-colors group">
+                <td class="px-4 py-4 whitespace-nowrap border-b border-gray-50">
+                  <span class="text-[10px] font-mono text-gray-500 italic">{{ log.createdAt | date:'dd/MM/yyyy HH:mm:ss' }}</span>
+                </td>
+                <td class="px-4 py-4 border-b border-gray-50">
+                  <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 bg-gray-100 rounded flex items-center justify-center">
+                      <i class="fas fa-user-shield text-[10px] text-gray-400"></i>
+                    </div>
+                    <span class="text-[11px] font-black text-gray-800 uppercase">{{ log.adminFullName }}</span>
+                  </div>
+                </td>
+                <td class="px-4 py-4 border-b border-gray-50">
+                  <span class="px-2 py-1 bg-amber-50 text-amber-700 border border-amber-100 rounded text-[9px] font-mono font-bold">
+                    {{ log.activationCode }}
+                  </span>
+                </td>
+                <td class="px-4 py-4 border-b border-gray-50">
+                  <div class="flex flex-col">
+                    <span class="text-[10px] font-bold text-gray-900 uppercase">{{ log.projectName }}</span>
+                    <span class="text-[9px] text-gray-400 font-medium uppercase tracking-tighter">{{ log.clientName }}</span>
+                  </div>
+                </td>
+                <td class="px-4 py-4 max-w-xs border-b border-gray-50">
+                  <p class="text-[11px] text-gray-600 italic font-serif line-clamp-2">
+                    "{{ log.details }}"
+                  </p>
+                </td>
+              </tr>
+            } @empty {
+              <tr>
+                <td colspan="5" class="py-20 text-center">
+                  <p class="text-[10px] font-black text-gray-300 uppercase">Empty_Audit_Log</p>
+                </td>
+              </tr>
+            }
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Footer Pagination -->
+  <div class="flex-shrink-0 bg-gray-800 p-0.5 border-t-2 border-taurus-green shadow-lg">
+    <app-pagination
+      [message]="'EXPORTS'"
+      [totalElements]="pagination.totalElements"
+      [totalPages]="pagination.totalPages"
+      [currentPage]="pagination.page"
+      [itemsPerPage]="pagination.size"
+      (pageChanged)="handlePageChange($event)"
+      (pageSizeChanged)="handleSizeChange($event)">
+    </app-pagination>
+  </div>
+</div>

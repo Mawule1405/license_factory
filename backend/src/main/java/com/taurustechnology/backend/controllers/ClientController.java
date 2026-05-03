@@ -1,6 +1,7 @@
 package com.taurustechnology.backend.controllers;
 
 import com.taurustechnology.backend.dtos.ClientDTO;
+import com.taurustechnology.backend.dtos.ClientMiniStats;
 import com.taurustechnology.backend.dtos.responses.ClientResponse;
 import com.taurustechnology.backend.dtos.responses.Pagination;
 import com.taurustechnology.backend.models.Client;
@@ -79,5 +80,10 @@ public class ClientController {
         } else {
             return ResponseEntity.badRequest().build();
         }
+    }
+
+    @GetMapping("/mini-stats")
+    public ResponseEntity<ClientMiniStats> getClientMiniStats() {
+        return ResponseEntity.ok(clientService.getMiniStats());
     }
 }

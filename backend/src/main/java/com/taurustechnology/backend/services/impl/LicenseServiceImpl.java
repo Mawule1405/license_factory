@@ -1,11 +1,13 @@
 package com.taurustechnology.backend.services.impl;
 
+import com.taurustechnology.backend.dtos.LicenseMiniStats;
 import com.taurustechnology.backend.dtos.requests.LicenseRequest;
 import com.taurustechnology.backend.models.*;
 import com.taurustechnology.backend.repositories.*;
 import com.taurustechnology.backend.services.AuditService;
 import com.taurustechnology.backend.services.LicenseGeneratorService;
 import com.taurustechnology.backend.services.LicenseService;
+import com.taurustechnology.backend.specifications.LicenseSpecifications;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +17,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -22,7 +27,7 @@ import java.util.UUID;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
+@Transactional
 public class LicenseServiceImpl implements LicenseService {
 
     private final LicenseRepository licenseRepository;
@@ -94,12 +99,6 @@ public class LicenseServiceImpl implements LicenseService {
         License existingLicense = licenseRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("License not found"));
 
-        // Mise à jour des relations si nécessaire
-        if (!existingLicense.getClient().getId().equals(request.getClientId())) {
-            Client newClient = clientRepository.findById(request.getClientId())
-                    .orElseThrow(() -> new EntityNotFoundException("New client not found"));
-            existingLicense.setClient(newClient);
-        }
 
         // Mise à jour des paramètres dynamiques (Metadata)
         existingLicense.getParameters().clear();
@@ -149,13 +148,54 @@ public class LicenseServiceImpl implements LicenseService {
             export.setLicense(license);
             export.setCreatedBy(username);
             export.setDetails(raison);
-            exportRepository.save(export);
-            auditService.logAction("GENERATE_SIGNED_KEY", username, "ID: " + id, "SUCCESS");
+            export = exportRepository.save(export);
+
+            auditService.logAction("GENERATE_SIGNED_KEY", username, "ID: " + id+"---EX: "+export.getId(), "SUCCESS");
             return signedLicense;
         } catch (Exception e) {
             auditService.logAction("GENERATE_SIGNED_KEY", username, id, "FAILED");
             throw new RuntimeException("Error during digital signature process", e);
         }
+    }
+
+    @Override
+    public LicenseMiniStats getMiniStats() {
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime startOfMonth = now.with(TemporalAdjusters.firstDayOfMonth()).with(LocalTime.MIN);
+
+        LocalDateTime startOfLastMonth = now.minusMonths(1).with(TemporalAdjusters.firstDayOfMonth()).with(LocalTime.MIN);
+        LocalDateTime endOfLastMonth = now.minusMonths(1).with(TemporalAdjusters.lastDayOfMonth()).with(LocalTime.MAX);
+
+        // 1. Volumes avec Specifications
+        long total = licenseRepository.count();
+        long activeTotal = licenseRepository.countByActive(true);
+
+        long thisMonth = licenseRepository.count(LicenseSpecifications.createdBetween(startOfMonth, now));
+        long lastMonth = licenseRepository.count(LicenseSpecifications.createdBetween(startOfLastMonth, endOfLastMonth));
+
+        // 2. Croissance & Performance
+        double growthRate = calculateGrowthRate(thisMonth, lastMonth);
+
+        long totalProjects = licenseRepository.countDistinctProjectNames();
+        long projectsWithActive = licenseRepository.countProjectsWithActiveLicense();
+        double efficiency = totalProjects > 0 ? (double) projectsWithActive / totalProjects * 100 : 0;
+
+        // 3. Records & Staff
+        String lastClient = licenseRepository.findTopByOrderByCreatedAtDesc()
+                .map(l -> l.getClient().getName()).orElse("N/A");
+        String topProject = licenseRepository.findMostLicensedProjectName();
+        String leadArchitect = licenseRepository.findTopCreatorName().orElse("N/A");
+
+        // 4. Densité
+        double density = totalProjects > 0 ? (double) total / totalProjects : 0;
+
+        return new LicenseMiniStats(total, activeTotal, growthRate, efficiency, lastClient, topProject, leadArchitect, density);
+    }
+
+
+    private double calculateGrowthRate(long current, long previous) {
+        if (previous == 0) return current > 0 ? 100.0 : 0.0;
+        return ((double) (current - previous) / previous) * 100;
     }
 
     /**

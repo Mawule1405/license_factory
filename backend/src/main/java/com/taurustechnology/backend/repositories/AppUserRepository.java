@@ -39,4 +39,6 @@ public interface AppUserRepository extends JpaRepository<AppUser, String> {
     Page<AppUserResponse> searchOperatorsWithStats(@Param("kw") String keyword, Pageable pageable);
 
     Optional<AppUser> findByUsernameOrEmail(String username, String email);
+
+    long countByCreatedBy(String createdBy);
 }

@@ -26,6 +26,7 @@ import {ListProjectsComponent} from './features/workspace/projects-management/li
 import {ProjectsManagementComponent} from './features/workspace/projects-management/projects-management.component';
 import {LicensesManagementComponent} from './features/workspace/licenses-management/licenses-management.component';
 import {ListLicensesComponent} from './features/workspace/licenses-management/list-licenses/list-licenses.component';
+import {ExportLogsComponent} from './features/workspace/administration/export-logs/export-logs.component';
 
 export const routes: Routes = [
   {path:'', redirectTo:'login', pathMatch: 'full'},
@@ -39,6 +40,7 @@ export const routes: Routes = [
         {path:'users', component: UsersComponent, canActivate:[authGuard, adminGuard],},
         {path:'rules', component: RulesComponent, canActivate:[authGuard, adminGuard],},
         {path:'logs', component: LogsComponent,canActivate:[authGuard, adminGuard]},
+        {path:'export',component: ExportLogsComponent, canActivate:[authGuard, adminGuard]},
         {path:'settings',component: SettingsComponent,canActivate:[authGuard, adminGuard]},
       ]},
       {path: 'clients', component: ClientsManagementComponent, canActivate:[authGuard],

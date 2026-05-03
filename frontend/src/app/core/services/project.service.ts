@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import {Pagination} from '../models/auth.model';
-import {Project} from '../models/project.model';
+import {Project, ProjectStats} from '../models/project.model';
 
 @Injectable({
   providedIn: 'root'
@@ -54,5 +54,9 @@ export class ProjectService {
    */
   deleteProject(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
+  }
+
+  fetchProjectMiniStats() {
+    return this.http.get<ProjectStats>(`${this.apiUrl}/mini-stats`)
   }
 }

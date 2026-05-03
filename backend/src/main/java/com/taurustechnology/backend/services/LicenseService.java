@@ -1,5 +1,6 @@
 package com.taurustechnology.backend.services;
 
+import com.taurustechnology.backend.dtos.LicenseMiniStats;
 import com.taurustechnology.backend.dtos.requests.LicenseRequest;
 import com.taurustechnology.backend.models.License;
 import org.springframework.data.domain.Page;
@@ -37,4 +38,5 @@ public interface LicenseService {
     String generateLicense(String username, String id,String raison);
 
 
+    LicenseMiniStats getMiniStats();
 }

@@ -12,3 +12,4 @@ public class RecentActivity {
     private String details;   // Ex: "Client: Microsoft | User: admin"
     private String status;    // Ex: "SUCCESS", "WARN", "DANGER"
 }
+

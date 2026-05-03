@@ -29,6 +29,6 @@ public class ExportServiceImpl implements ExportService {
     @Transactional(readOnly = true)
     public Page<Export> findAllByLicense(String licenseId, int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("createdAt").descending());
-        return exportRepository.findByLicenseId(licenseId, pageable);
+        return exportRepository.findByLicense_Id(licenseId, pageable);
     }
 }

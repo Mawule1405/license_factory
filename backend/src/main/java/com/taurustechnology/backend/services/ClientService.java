@@ -1,5 +1,6 @@
 package com.taurustechnology.backend.services;
 
+import com.taurustechnology.backend.dtos.ClientMiniStats;
 import com.taurustechnology.backend.models.Client;
 import org.springframework.data.domain.Page;
 
@@ -11,4 +12,5 @@ public interface ClientService {
     boolean deleteClient(String userId, String id);
     Client updateClient(String userId, String id, Client client);
 
+    ClientMiniStats getMiniStats();
 }

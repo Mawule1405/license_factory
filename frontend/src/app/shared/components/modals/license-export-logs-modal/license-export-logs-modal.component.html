@@ -1,0 +1,69 @@
+<div class="fixed inset-0 z-50 flex justify-end">
+  <!-- Backdrop (Partie gauche transparente) -->
+  <div class="flex-1 bg-gray-900/20 backdrop-blur-[2px] transition-opacity" (click)="close.emit()"></div>
+
+  <!-- Panel (Moitié droite, toute la hauteur) -->
+  <div class="w-1/2 bg-white shadow-2xl flex flex-col animate-in slide-in-from-right duration-300">
+
+    <!-- Header -->
+    <div class="p-6 bg-taurus-green text-white flex justify-between items-center border-b border-amber-500/30">
+      <div>
+        <h2 class="text-xs font-black uppercase tracking-[0.3em]">Security_Audit_Logs</h2>
+        <p class="text-[9px] text-amber-500 font-mono mt-1">{{ activationCode }}</p>
+      </div>
+      <button (click)="close.emit()" class="w-8 h-8 flex items-center justify-center hover:bg-white/10 transition-colors">
+        <i class="fas fa-times text-sm"></i>
+      </button>
+    </div>
+
+    <!-- Content Area -->
+    <div class="flex-1 overflow-y-auto p-6 bg-gray-50/50">
+      @if (isLoading) {
+        <div class="h-full flex flex-col items-center justify-center text-gray-400 gap-3">
+          <i class="fas fa-circle-notch animate-spin text-2xl"></i>
+          <span class="text-[10px] font-black uppercase tracking-widest">Fetching_Logs...</span>
+        </div>
+      } @else if (logs.length === 0) {
+        <div class="h-full flex flex-col items-center justify-center text-gray-300 italic">
+          <i class="fas fa-history text-4xl mb-4 opacity-20"></i>
+          <p class="text-[10px] uppercase">No_Export_History_Found</p>
+        </div>
+      } @else {
+        <div class="space-y-4">
+          @for (log of logs; track log.id) {
+            <div class="bg-white border-l-4 border-gray-200 p-4 shadow-sm hover:border-amber-500 transition-all">
+              <div class="flex justify-between items-start mb-2">
+                <span class="text-[10px] font-black text-gray-800 uppercase">{{ log.adminFullName }}</span>
+                <span class="text-[9px] font-mono text-gray-400">{{ log.createdAt | date:'dd/MM/yyyy HH:mm' }}</span>
+              </div>
+              <p class="text-[11px] text-gray-600 font-mono leading-relaxed bg-gray-50 p-2 border border-dashed border-gray-100">
+                {{ log.details }}
+              </p>
+            </div>
+          }
+        </div>
+      }
+    </div>
+
+    <!-- Footer / Pagination -->
+    <div class="p-6 bg-white border-t border-gray-100 flex items-center justify-between">
+      <div class="text-[10px] font-bold text-gray-400 uppercase italic">
+        Total_Entries: {{ totalElements }}
+      </div>
+
+      <div class="flex gap-2">
+        <button (click)="prevPage()" [disabled]="currentPage === 0 || isLoading"
+                class="px-4 py-2 border-2 border-gray-100 text-[10px] font-black uppercase hover:bg-gray-50 disabled:opacity-30 transition-all">
+          Prev
+        </button>
+        <div class="flex items-center px-4 bg-gray-900 text-white text-[10px] font-mono">
+          {{ currentPage + 1 }} / {{ totalPages || 1 }}
+        </div>
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages - 1 || isLoading"
+                class="px-4 py-2 border-2 border-gray-100 text-[10px] font-black uppercase hover:bg-gray-50 disabled:opacity-30 transition-all">
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
