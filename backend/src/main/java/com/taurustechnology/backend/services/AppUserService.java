@@ -1,15 +1,16 @@
 package com.taurustechnology.backend.services;
 
 
-import com.taurustechnology.backend.entities.AppRole;
-import com.taurustechnology.backend.entities.AppUser;
+import com.taurustechnology.backend.dtos.responses.AppUserResponse;
+import com.taurustechnology.backend.models.AppRole;
+import com.taurustechnology.backend.models.AppUser;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
 
 public interface AppUserService {
 
-    AppUser create(AppUser appUser, String createByAppUserId);
+    AppUser create(AppUser appUser, String username);
     AppUser findByUsernameOrEmail(String username, String email);
     AppUser findById(String id);
     AppUser update(AppUser appUser, String updateByAppUserId);
@@ -23,7 +24,7 @@ public interface AppUserService {
     boolean existsByEmail(String email);
     boolean deleteById(String id, String deletedByAppUserId);
 
-    List<AppUser> findAdministrators();
+    Page<AppUser> findAdministrators(int page, int size);
 
     Boolean checkIfUsernameExists(String username);
 
@@ -35,7 +36,7 @@ public interface AppUserService {
 
     AppUser changeAppRoles(String id, List<AppRole> newRoles);
 
-    List<AppUser> findAllAppUser();
+    Page<AppUser> findAllAppUser(int page, int size);
 
-    Page<AppUser> searchUsers(String keyword, int page, int size);
+    Page<AppUserResponse> searchUsers(String keyword, int page, int size);
 }

@@ -2,7 +2,13 @@ package com.taurustechnology.backend.controllers;
 
 
 import com.taurustechnology.backend.dtos.*;
-import com.taurustechnology.backend.entities.AppUser;
+import com.taurustechnology.backend.dtos.requests.AppRoleRequest;
+import com.taurustechnology.backend.dtos.requests.AppUserRequest;
+import com.taurustechnology.backend.dtos.requests.AppUserPasswordChangingRequest;
+import com.taurustechnology.backend.dtos.requests.AppUserUpdateRequest;
+import com.taurustechnology.backend.dtos.responses.AppUserResponse;
+import com.taurustechnology.backend.dtos.responses.Pagination;
+import com.taurustechnology.backend.models.AppUser;
 import com.taurustechnology.backend.mappers.AppRoleMapper;
 import com.taurustechnology.backend.mappers.AppUserMapper;
 import com.taurustechnology.backend.services.AppUserService;
@@ -12,6 +18,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -30,27 +37,32 @@ public class AppUserController {
     /**
      * Create a new application user.
      *
-     * @param appUserDTO       the user data transfer object
-     * @param createdAppUserId the ID of the user creating the new user
+     * @param appUserRequest       the user data transfer object
      * @return the created user as DTO
      */
-    @PostMapping("/create/{userId}")
-    public ResponseEntity<AppUserDTO> createAppUser(@RequestBody AppUserDTO appUserDTO,
-                                                    @PathVariable("userId") String createdAppUserId) {
-        AppUser appUser = appUserMapper.toEntity(appUserDTO);
-        appUser = appUserService.create(appUser, createdAppUserId);
+    @PostMapping("/create") // Route simplifiée
+    public ResponseEntity<AppUserResponse> createAppUser(@RequestBody AppUserRequest appUserRequest,
+                                                         Principal principal) {
+        // Principal contient le username extrait du JWT
+        String adminUsername = principal.getName();
+
+        AppUser appUser = appUserMapper.toEntity(appUserRequest);
+        // On passe le username ou on cherche l'ID en service
+        appUser = appUserService.create(appUser, adminUsername);
+
         return ResponseEntity.ok(appUserMapper.toDTO(appUser));
     }
 
 
 
     @GetMapping("/search")
-    public ResponseEntity<Page<AppUserDTO>> search(
+    public ResponseEntity<Pagination<AppUserResponse>> search(
                 @RequestParam(name = "keyword", defaultValue = "") String keyword,
                 @RequestParam(name = "page", defaultValue = "0") int page,
                 @RequestParam(name = "size", defaultValue = "5") int size) {
+            Page<AppUserResponse> responses = appUserService.searchUsers(keyword, page, size);
 
-            return ResponseEntity.ok(appUserService.searchUsers(keyword, page, size).map(appUserMapper::toDTO));
+            return ResponseEntity.ok(Pagination.of(responses));
         }
 
 
@@ -61,7 +73,7 @@ public class AppUserController {
      * @return the found user as DTO
      */
     @GetMapping("/find/{userId}")
-    public ResponseEntity<AppUserDTO> findById(@PathVariable("userId") String appUserId) {
+    public ResponseEntity<AppUserResponse> findById(@PathVariable("userId") String appUserId) {
         AppUser appUser = appUserService.findById(appUserId);
         return ResponseEntity.ok(appUserMapper.toDTO(appUser));
     }
@@ -72,9 +84,13 @@ public class AppUserController {
      * @return the list of administrator
      */
     @GetMapping("/find/all-admin")
-    public ResponseEntity<List<AppUserDTO>> findAllAdministrators() {
-        List<AppUser> appUsers = appUserService.findAdministrators();
-        return ResponseEntity.ok(appUserMapper.toDTO(appUsers));
+    public ResponseEntity<Pagination<AppUserResponse>> findAllAdministrators(
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "20") int size
+    ) {
+        Page<AppUser> appUsers = appUserService.findAdministrators(page, size);
+        Page<AppUserResponse> appUserResponses = appUsers.map(appUserMapper::toDTO);
+        return ResponseEntity.ok(Pagination.of(appUserResponses));
     }
 
 
@@ -86,10 +102,10 @@ public class AppUserController {
      * @return the updated user as DTO
      */
     @PutMapping("/update/{userId}")
-    public ResponseEntity<AppUserDTO> updateAppUser(@RequestBody @Valid AppUserUpdateRequest updateUser,
-                                                    @PathVariable("userId") String appUserId) {
+    public ResponseEntity<AppUserResponse> updateAppUser(@RequestBody @Valid AppUserUpdateRequest updateUser,
+                                                        @PathVariable("userId") String appUserId) {
         AppUser appUser = AppUser.builder()
-                .id(updateUser.getId())
+
                 .username(updateUser.getUsername())
                 .email(updateUser.getEmail())
                 .fullName(updateUser.getFullName())
@@ -105,7 +121,7 @@ public class AppUserController {
      * @return the user as DTO after logout
      */
     @PatchMapping("/logout/{userId}")
-    public ResponseEntity<AppUserDTO> logout(@PathVariable("userId") String appUserId) {
+    public ResponseEntity<AppUserResponse> logout(@PathVariable("userId") String appUserId) {
         AppUser appUser = appUserService.logout(appUserId);
         return ResponseEntity.ok(appUserMapper.toDTO(appUser));
     }
@@ -116,29 +132,29 @@ public class AppUserController {
     }
 
     @GetMapping("/find-by-username/{username}")
-    public ResponseEntity<AppUserDTO> findByUsername(@PathVariable("username") String username) {
+    public ResponseEntity<AppUserResponse> findByUsername(@PathVariable("username") String username) {
         return ResponseEntity.ok(appUserMapper.toDTO(appUserService.findByUsernameOrEmail(username,username)));
     }
 
     @PatchMapping("/change-password/{userId}")
-    public ResponseEntity<AppUserDTO> changePassword(@PathVariable String userId,
-                                                    @RequestBody AppUserPasswordChangingRequest data){
+    public ResponseEntity<AppUserResponse> changePassword(@PathVariable String userId,
+                                                         @RequestBody AppUserPasswordChangingRequest data){
 
         return ResponseEntity.ok(appUserMapper.toDTO(appUserService.changePassword(userId, data.getOldPassword(),data.getNewPassword())));
     }
 
     @PatchMapping("/{initializerId}/initialize-password/{userId}")
-    public ResponseEntity<AppUserDTO> initialize(@PathVariable String initializerId,@PathVariable String userId) {
+    public ResponseEntity<AppUserResponse> initialize(@PathVariable String initializerId, @PathVariable String userId) {
         return ResponseEntity.ok(appUserMapper.toDTO(appUserService.initialize(initializerId, userId, "123456789")));
     }
 
     @PatchMapping("/change-app-roles/{id}")
-    public ResponseEntity<AppUserDTO> changeAppRoles(@PathVariable String id, @RequestBody List<AppRoleDTO> newRoles) {
+    public ResponseEntity<AppUserResponse> changeAppRoles(@PathVariable String id, @RequestBody List<AppRoleRequest> newRoles) {
         return ResponseEntity.ok(appUserMapper.toDTO(appUserService.changeAppRoles(id, appRoleMapper.toEntity(newRoles))));
     }
 
     @PatchMapping("/change-credentials/{id}")
-    public ResponseEntity<AppUserDTO> changeCredentials(@PathVariable String id, @RequestBody CredentialDTO credentialDTO) {
+    public ResponseEntity<AppUserResponse> changeCredentials(@PathVariable String id, @RequestBody CredentialDTO credentialDTO) {
         return ResponseEntity.ok(appUserMapper.toDTO(appUserService.changeCredential(id, credentialDTO.getUsername(), credentialDTO.getEmail())));
     }
 
@@ -148,7 +164,11 @@ public class AppUserController {
     }
 
     @GetMapping("/find/all")
-    public ResponseEntity<List<AppUserDTO>> findAllAppUsers() {
-        return ResponseEntity.ok(appUserMapper.toDTO(appUserService.findAllAppUser()));
+    public ResponseEntity<Pagination<AppUserResponse>> findAllAppUsers(@RequestParam(value = "page", defaultValue = "0") int page,
+                                                                @RequestParam(value = "size", defaultValue = "20") int size) {
+
+        Page<AppUser> appUsers = appUserService.findAllAppUser(page, size);
+        Page<AppUserResponse> appUserResponses = appUsers.map(appUserMapper::toDTO);
+        return ResponseEntity.ok(Pagination.of(appUserResponses));
     }
 }

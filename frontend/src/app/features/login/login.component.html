@@ -21,7 +21,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-5">
 
       <div class="space-y-1">
-        <label class="text-[11px] uppercase font-black text-gray-500 tracking-wider ml-1">Utilisateur</label>
+        <label class="text-[11px] uppercase font-black text-gray-500 tracking-wider ml-1">EMAIL OR IDENTIDY</label>
         <div class="relative group">
           <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-taurus-green transition-colors">
             <i class="fas fa-user text-sm"></i>
@@ -33,7 +33,7 @@
       </div>
 
       <div class="space-y-1">
-        <label class="text-[11px] uppercase font-black text-gray-500 tracking-wider ml-1">Mot de passe</label>
+        <label class="text-[11px] uppercase font-black text-gray-500 tracking-wider ml-1">PASSWORD</label>
         <div class="relative group">
           <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-taurus-green transition-colors">
             <i class="fas fa-lock text-sm"></i>
@@ -53,14 +53,14 @@
       <button type="submit" [disabled]="loginForm.invalid"
               class="w-full bg-taurus-green hover:bg-taurus-dark text-white font-black py-3.5 shadow-lg transition-all transform active:scale-[0.98] flex justify-center items-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed tracking-widest text-xs">
         <i class="fas fa-sign-in-alt"></i>
-        <span>ACCÉDER AU SYSTÈME</span>
+        <span>CONNECT</span>
       </button>
 
     </form>
 
     <div class="mt-8 pt-4 border-t border-gray-100 flex justify-center">
       <p class="text-[9px] text-gray-400 font-bold uppercase tracking-[0.3em]">
-        © 2026 Taurus Technology
+        2026&copy;TaurusTeX
       </p>
     </div>
   </div>

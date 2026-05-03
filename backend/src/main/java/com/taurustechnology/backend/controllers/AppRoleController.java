@@ -1,8 +1,9 @@
 package com.taurustechnology.backend.controllers;
 
 
-import com.taurustechnology.backend.dtos.AppRoleDTO;
-import com.taurustechnology.backend.entities.AppRole;
+import com.taurustechnology.backend.dtos.requests.AppRoleRequest;
+import com.taurustechnology.backend.dtos.responses.AppRoleResponse;
+import com.taurustechnology.backend.models.AppRole;
 import com.taurustechnology.backend.mappers.AppRoleMapper;
 import com.taurustechnology.backend.services.AppRoleService;
 import jakarta.validation.Valid;
@@ -31,7 +32,7 @@ public class AppRoleController {
      * @return a list of all roles as DTOs
      */
     @GetMapping("/all")
-    public ResponseEntity<List<AppRoleDTO>> findAllAppRoles() {
+    public ResponseEntity<List<AppRoleResponse>> findAllAppRoles() {
         List<AppRole> appRoles = appRoleService.findAll();
         return ResponseEntity.ok(appRoleMapper.toDTO(appRoles));
     }
@@ -43,7 +44,7 @@ public class AppRoleController {
      * @return the found role as DTO, or 404 if not found
      */
     @GetMapping("/find/{id}")
-    public ResponseEntity<AppRoleDTO> findAppRoleById(@PathVariable String id) {
+    public ResponseEntity<AppRoleResponse> findAppRoleById(@PathVariable String id) {
         Optional<AppRole> appRole = appRoleService.findById(id);
         return appRole
                 .map(role -> ResponseEntity.ok(appRoleMapper.toDTO(role)))
@@ -53,12 +54,12 @@ public class AppRoleController {
     /**
      * Create a new application role.
      *
-     * @param appRoleDTO the role data transfer object
+     * @param appRoleRequest the role data transfer object
      * @return the created role as DTO
      */
     @PostMapping("/create")
-    public ResponseEntity<AppRoleDTO> createAppRole(@RequestBody @Valid AppRoleDTO appRoleDTO) {
-        AppRole appRole = appRoleMapper.toEntity(appRoleDTO);
+    public ResponseEntity<AppRoleResponse> createAppRole(@RequestBody @Valid AppRoleRequest appRoleRequest) {
+        AppRole appRole = appRoleMapper.toEntity(appRoleRequest);
         AppRole savedRole = appRoleService.save(appRole);
         return ResponseEntity.ok(appRoleMapper.toDTO(savedRole));
     }

@@ -5,11 +5,12 @@ import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import {UserService} from '../../../../core/services/user.service';
 import {AppUser} from '../../../../core/models/auth.model';
 import {CreateUserModalComponent} from './create-user-modal/create-user-modal.component';
+import {PaginationComponent} from '../../../../shared/components/layout/pagination/pagination.component';
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [CommonModule, FormsModule, CreateUserModalComponent],
+  imports: [CommonModule, FormsModule, CreateUserModalComponent, PaginationComponent],
   templateUrl: './users.component.html'
 })
 export class UsersComponent implements OnInit {
@@ -23,20 +24,23 @@ export class UsersComponent implements OnInit {
   // State Management
   loading = false;
   searchTerm = '';
-  currentPage = 0;
-  pageSize = 5;
-  totalElements = 0;
-  totalPages = 0;
+
 
   // Search Optimization
   private searchSubject = new Subject<string>();
+  pagination = {
+    currentPage: 1,
+    totalPages: 0,
+    totalElements: 0,
+    page:0,
+    size:10,
+  };
 
   ngOnInit() {
     this.searchSubject.pipe(
       debounceTime(200),
       distinctUntilChanged()
     ).subscribe(() => {
-      this.currentPage = 0;
       this.loadUsers();
     });
 
@@ -45,12 +49,15 @@ export class UsersComponent implements OnInit {
 
   loadUsers() {
     this.loading = true;
-    this.userService.searchUsers(this.searchTerm, this.currentPage, this.pageSize)
+    this.userService.searchUsers(this.searchTerm, this.pagination.currentPage, this.pagination.size)
       .subscribe({
         next: (response) => {
           this.users = response.content;
-          this.totalElements = response.totalElements;
-          this.totalPages = response.totalPages;
+          this.pagination.totalElements = response.totalElements;
+          this.pagination.totalPages = response.totalPages;
+          this.pagination.currentPage = response.page;
+          this.pagination.page = response.page;
+          this.pagination.size = response.size;
           this.loading = false;
           this.cdr.detectChanges()
         },
@@ -66,14 +73,6 @@ export class UsersComponent implements OnInit {
     this.searchSubject.next(this.searchTerm);
   }
 
-  changePage(delta: number) {
-    const nextSub = this.currentPage + delta;
-    if (nextSub >= 0 && nextSub < this.totalPages) {
-      this.currentPage = nextSub;
-      this.loadUsers();
-    }
-  }
-
   deleteOperator(user: AppUser) {
     if (confirm(`CRITICAL: CONFIRM TERMINATION OF OPERATOR [${user.username.toUpperCase()}]?`)) {
       this.userService.deleteUser(user.id).subscribe(() => this.loadUsers());
@@ -82,5 +81,17 @@ export class UsersComponent implements OnInit {
 
   openCreationPanel() {
     this.isCreateModalOpen = true
+  }
+
+  // Dans le parent
+  handlePageChange(page: number) {
+    this.pagination.page = page;
+    this.loadUsers();
+  }
+
+  handleSizeChange(size: number) {
+    this.pagination.size = size;
+    this.pagination.page = 1; // Toujours revenir à la page 1
+    this.loadUsers();
   }
 }

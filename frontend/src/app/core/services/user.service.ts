@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import {AppUser, PageResponse} from '../models/auth.model';
+import {AppUser, Pagination} from '../models/auth.model';
 import {StorageService} from './storage.service';
 import {ACCESS_TOKEN} from '../constants/auth.constants';
 
@@ -21,18 +21,18 @@ export class UserService {
   }
 
   // Recherche avec pagination Backend
-  searchUsers(keyword: string, page: number, size: number): Observable<PageResponse<AppUser>> {
+  searchUsers(keyword: string, page: number, size: number): Observable<Pagination<AppUser>> {
     let params = new HttpParams()
       .set('keyword', keyword)
-      .set('page', page.toString())
+      .set('page', (page-1).toString())
       .set('size', size.toString());
 
-    return this.http.get<PageResponse<AppUser>>(`${this.apiUrl}/search`, { params });
+    return this.http.get<Pagination<AppUser>>(`${this.apiUrl}/search`, { params });
   }
 
   // Création d'un utilisateur
   createUser(user: Partial<AppUser>): Observable<AppUser> {
-    return this.http.post<AppUser>(`${this.apiUrl}/create/${this.getUserId()}`, user);
+    return this.http.post<AppUser>(`${this.apiUrl}/create`, user);
   }
 
   // Suppression (Soft delete ou Hard delete selon ton backend)

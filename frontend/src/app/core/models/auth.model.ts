@@ -1,7 +1,9 @@
 export interface AppRole {
+
   id?: number;
   name: string;
   description?: string;
+  userCount?: string;
 }
 
 export interface AppUser {
@@ -15,13 +17,19 @@ export interface AppUser {
   createdAt: Date;
   updatedAt: Date;
   appRoles: AppRole[];
+  licenseCount: number;
+  exportCount: number;
+  clientCount: number;
+  projectCount: number;
 }
 
 // Interface pour la réponse paginée de Spring Data
-export interface PageResponse<T> {
+export interface Pagination<T> {
   content: T[];
   totalPages: number;
   totalElements: number;
   size: number;
-  number: number;
+  page: number;
 }
+
+

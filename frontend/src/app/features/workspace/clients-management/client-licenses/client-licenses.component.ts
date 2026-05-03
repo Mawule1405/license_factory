@@ -1,41 +1,50 @@
-import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, RouterLink} from '@angular/router';
 import { Client } from '../../../../core/models/client.model';
-import { LicenseDTO } from '../../../../core/models/license.model';
+import { LicenseResponse } from '../../../../core/models/license.model';
 import { ClientService } from '../../../../core/services/client.service';
 import { LicenseService } from '../../../../core/services/license.service';
 import { ClientUiService } from '../../../../core/services/client-ui.service';
-import {CreateClientLicenceModalComponent} from './create-client-licence-modal/create-client-licence-modal.component';
+import { CreateClientLicenceModalComponent } from './create-client-licence-modal/create-client-licence-modal.component';
+import {PaginationComponent} from '../../../../shared/components/layout/pagination/pagination.component';
+import {
+  ExportLicenseRaisonModalComponent
+} from '../../../../shared/components/modals/export-license-raison-modal/export-license-raison-modal.component';
+import {NotificationService} from '../../../../core/services/notification.service';
 
 @Component({
   selector: 'app-client-licenses',
   standalone: true,
-  imports: [CommonModule, CreateClientLicenceModalComponent],
+  imports: [CommonModule, CreateClientLicenceModalComponent, PaginationComponent, RouterLink, ExportLicenseRaisonModalComponent],
   templateUrl: './client-licenses.component.html'
 })
 export class ClientLicensesComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private clientService = inject(ClientService);
   private licenseService = inject(LicenseService);
+  private notifyService = inject(NotificationService);
   private uiService = inject(ClientUiService);
   private cdr = inject(ChangeDetectorRef);
 
-  // Data & Context
+  // Data
   client?: Client;
-  licenses: LicenseDTO[] = [];
+  licenses: LicenseResponse[] = [];
   clientId!: string;
 
   // State
   loading = false;
-
-  // Pagination
-  currentPage = 0;
-  pageSize = 10;
-  totalElements = 0;
-  totalPages = 0;
-
   showLicenseCreationModal = false;
+  isExportLicenseModal= false
+  selectedLicense? : LicenseResponse
+
+  // Pagination conforme à ton composant
+  pagination = {
+    page: 1,
+    size: 10,
+    totalElements: 0,
+    totalPages: 0
+  };
 
   ngOnInit() {
     this.clientId = this.route.snapshot.params['clientId'];
@@ -44,73 +53,145 @@ export class ClientLicensesComponent implements OnInit {
     }
   }
 
-  /** Initialise la vue : Récupère le client ET les licences */
   initView() {
     this.loading = true;
-    this.clientService.getClientById( this.clientId).subscribe({
+    this.clientService.getClientById(this.clientId).subscribe({
       next: (client) => {
         this.client = client;
-        this.uiService.setClientName(client.name); // Mise à jour du Breadcrumb
+        this.uiService.setClientName(client.name);
         this.loadLicenses();
       },
       error: () => {
-        this.loading = false
-        this.cdr.detectChanges()
+        this.loading = false;
+        this.cdr.detectChanges();
       }
     });
   }
 
-  /** Charge la liste paginée des licences */
   loadLicenses() {
     this.loading = true;
-    this.licenseService.getLicenses(this.currentPage, this.pageSize)
+    // Utilisation des paramètres de pagination
+    this.licenseService.getClientLicenses(this.clientId, this.pagination.page, this.pagination.size)
       .subscribe({
         next: (res) => {
-          // Note : On filtre côté client si le backend n'a pas de endpoint filtré
-          this.licenses = res.content.filter(l => l.clientId === this.clientId);
-          this.totalElements = res.totalElements;
-          this.totalPages = res.totalPages;
+          // On garde res.content directement (le backend doit idéalement filtrer par clientId)
+          this.licenses = res.content;
+          this.pagination.totalElements = res.totalElements;
+          this.pagination.totalPages = res.totalPages;
+          this.pagination.page = res.page
+          this.pagination.size = res.size;
           this.loading = false;
           this.cdr.detectChanges();
         },
         error: () => {
-          this.loading = false
-          this.cdr.detectChanges()
+          this.loading = false;
+          this.cdr.detectChanges();
         }
       });
   }
 
-  /** Navigation de page */
-  goToPage(delta: number) {
-    let page = this.currentPage + delta;
-    if (page>=0 && page <= this.totalPages) {
-      this.currentPage = page;
-      this.loadLicenses();
-    }
-
+  /** Handlers pour ton composant Pagination */
+  handlePageChange(newPage: number) {
+    this.pagination.page = newPage;
+    this.loadLicenses();
   }
 
-  /** Action de téléchargement du fichier .lic */
-  download(license: LicenseDTO) {
-    if (!license.id) return;
-    this.licenseService.downloadLicenseFile( license.id).subscribe({
-      next: (blob) => {
+  handleSizeChange(newSize: number) {
+    this.pagination.size = newSize;
+    this.pagination.page = 0; // Reset à la première page
+    this.loadLicenses();
+  }
+
+  downloadLicense($event: { raison: string }) {
+    if (!this.selectedLicense?.id) return;
+
+    this.licenseService.downloadLicenseFile(this.selectedLicense.id, $event.raison).subscribe({
+      next: (blob: Blob) => {
+        // 1. Créer une URL pour le Blob
         const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `TAURUS_${this.client?.name}_${license.level}.lic`.replace(/\s+/g, '_');
-        a.click();
+        // 2. Créer un élément <a> invisible pour déclencher le téléchargement
+        const link = document.createElement('a');
+        link.href = url;
+
+        // 3. Définir le nom du fichier (ex: LIC-CLIENT-PROJET.bin)
+        link.download = `LIC_${this.selectedLicense?.clientName.toUpperCase()}_${this.selectedLicense?.projectName.toUpperCase()}.lic`;
+
+        // 4. Déclencher le clic et nettoyer
+        link.click();
         window.URL.revokeObjectURL(url);
+
+        this.notifyService.success('LICENSE_EXPORTED_SUCCESSFULLY');
+        this.isExportLicenseModal = false;
+      },
+      error: (err) => {
+        console.error('Export failed', err);
+        this.notifyService.error('EXPORT_FAILED_CHECK_LOGS');
+        this.isExportLicenseModal = false;
       }
     });
   }
 
   createNewLicense() {
-    this.showLicenseCreationModal = true
+    this.showLicenseCreationModal = true;
   }
 
-  onCreateLicense($event: void) {
-    this.showLicenseCreationModal = false
-    this.initView()
+  onCreateLicense() {
+    this.showLicenseCreationModal = false;
+    this.pagination.page = 1;
+    this.loadLicenses();
   }
+
+  toggleLicenseStatus(license: LicenseResponse) {
+    const newStatus = !license.active;
+    // On pourrait appeler un endpoint partiel ou le update général
+    /*this.licenseService.updateLicenseStatus(license.id, newStatus).subscribe({
+      next: () => {
+        license.active = newStatus;
+        this.cdr.detectChanges();
+      }
+    });*/
+  }
+
+  download(license: LicenseResponse) {
+    this.selectedLicense = license;
+    this.isExportLicenseModal = true;
+  }
+
+  /** Action : Ouvrir le modal d'édition des paramètres */
+  editParameters(license: LicenseResponse) {
+    // Ici, tu peux ouvrir le même modal que la création mais en mode "Edit"
+    // ou un modal spécifique aux paramètres
+    console.log("Editing parameters for:", license.id);
+    // this.selectedLicense = license;
+    // this.showEditModal = true;
+  }
+
+  /** Action : Régénérer le code d'activation ou rafraîchir les données */
+  displayLicenseExport(license: LicenseResponse) {
+    if(confirm("Regenerate the signed key for this license?")) {
+      /*this.licenseService.generateLicense(license.id).subscribe(() => {
+        this.loadLicenses(); // Recharger pour voir les changements
+      });*/
+    }
+  }
+
+  /** Action : Supprimer/Révoquer */
+  deleteLicense(license: LicenseResponse) {
+    if(confirm("CRITICAL: Revoke this license protocol permanently?")) {
+      this.licenseService.deleteLicense(license.id).subscribe({
+        next: () => this.loadLicenses()
+      });
+    }
+  }
+
+  copyToClipboard(text: string) {
+    navigator.clipboard.writeText(text).then(() => {
+      // Optionnel : Tu peux ajouter une notification de succès ici
+      console.log('Key copied to clipboard');
+    }).catch(err => {
+      console.error('Could not copy text: ', err);
+    });
+  }
+
+
 }

@@ -1,26 +1,22 @@
-export enum LicenseLevel {
-  FREEMIUM = 'FREEMIUM',
-  BASIC = 'BASIC',
-  CLASSIC = 'CLASSIC',
-  COMMUNITY= 'COMMUNITY',
-  STANDARD = 'STANDARD',
-  PREMIUM = 'PREMIUM',
-  ENTERPRISE = 'ENTERPRISE',
-  
+export interface LicenseResponse {
+  id: string;
 
-}
+  // Informations de base
+  activationCode: string;
+  active: boolean;
+  createdAt: Date | string; // Date si parsé, string si brut (ISO 8601)
 
-export interface LicenseDTO {
-  id?: string;
-  licenseKey?: string;
-  addressMac: string;
-  level: LicenseLevel;
-  maxUsers: number;
-  createdAt?: Date;
-  expiryDate: string; // Utilisation de string pour l'input date HTML
-  activated: boolean;
-  deleted: boolean;
+  // Détails du Client
   clientId: string;
-  creatorId?: string;
-}
+  clientName: string;
+  clientEmail: string;
 
+  // Détails du Projet
+  projectId: string;
+  projectName: string;
+
+  // Utilisateur ayant généré la licence
+  creatorName: string;
+
+  parameters: { [key: string]: string };
+}

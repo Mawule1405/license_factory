@@ -1,4 +1,4 @@
-<div class="flex min-h-[calc(100vh-8rem)] gap-2">
+<div class="flex min-h-[calc(100vh-4rem)] gap-1">
 
   <aside class="w-72 flex-shrink-0">
     <div class="bg-white border border-gray-200 h-full shadow-sm">
@@ -16,6 +16,11 @@
           <i class="fas fa-users mr-4 w-8 text-base"></i> Users
         </a>
 
+        <a routerLink="/workspace/administration/rules" routerLinkActive="bg-taurus-green text-white"
+           class="flex items-center px-6 py-4 text-[11px] font-bold uppercase tracking-[0.2em] border-b border-gray-100 transition-all hover:bg-gray-50 hover:text-taurus-green active:bg-taurus-dark">
+          <i class="fas fa-users mr-4 w-8 text-base"></i> Rules
+        </a>
+
         <a routerLink="/workspace/administration/logs" routerLinkActive="bg-taurus-green text-white"
            class="flex items-center px-6 py-4 text-[11px] font-bold uppercase tracking-[0.2em] border-b border-gray-100 transition-all hover:bg-gray-50 hover:text-taurus-green">
           <i class="fas fa-terminal mr-4 w-8 text-base"></i> System Logs
@@ -27,16 +32,10 @@
         </a>
       </nav>
 
-      <div class="p-6 mt-auto">
-        <div class="bg-gray-50 p-4 border border-dashed border-gray-300">
-          <p class="text-[9px] font-black text-gray-400 uppercase tracking-tighter">Engine Status</p>
-          <p class="text-[10px] font-bold text-taurus-green uppercase tracking-widest">{{ APP_VERSION }}</p>
-        </div>
-      </div>
     </div>
   </aside>
 
-  <section class="flex-1 bg-white border border-gray-200 shadow-sm p-2">
+  <section class="flex-1 bg-white border border-gray-200 shadow-sm">
     <router-outlet></router-outlet>
   </section>
 

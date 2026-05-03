@@ -1,7 +1,7 @@
 package com.taurustechnology.backend.services.impl;
 
 
-import com.taurustechnology.backend.entities.AppRole;
+import com.taurustechnology.backend.models.AppRole;
 import com.taurustechnology.backend.repositories.AppRoleRepository;
 import com.taurustechnology.backend.services.AppRoleService;
 import lombok.RequiredArgsConstructor;

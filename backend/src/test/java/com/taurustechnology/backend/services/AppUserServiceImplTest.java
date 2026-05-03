@@ -1,6 +1,6 @@
 package com.taurustechnology.backend.services;
 
-import com.taurustechnology.backend.entities.AppUser;
+import com.taurustechnology.backend.models.AppUser;
 import com.taurustechnology.backend.repositories.AppUserRepository;
 import com.taurustechnology.backend.services.impl.AppUserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;

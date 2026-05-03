@@ -1,9 +1,6 @@
 package com.taurustechnology.backend.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.taurustechnology.backend.entities.AppUser;
-import com.taurustechnology.backend.entities.License;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +8,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.ReadOnlyProperty;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 
 @Data

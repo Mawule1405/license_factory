@@ -1,10 +1,8 @@
 package com.taurustechnology.backend.services;
 
-import com.taurustechnology.backend.dtos.LicenseRequest;
-import com.taurustechnology.backend.entities.License;
+import com.taurustechnology.backend.dtos.requests.LicenseRequest;
+import com.taurustechnology.backend.models.License;
 
 public interface LicenseGeneratorService {
-    String buildLicense(LicenseRequest request) throws Exception;
-
     String buildLicense(License request) throws Exception;
 }

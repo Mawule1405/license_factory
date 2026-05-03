@@ -1,6 +1,6 @@
 package com.taurustechnology.backend.services;
 
-import com.taurustechnology.backend.entities.AppRole;
+import com.taurustechnology.backend.models.AppRole;
 import com.taurustechnology.backend.repositories.AppRoleRepository;
 import com.taurustechnology.backend.services.impl.AppRoleServiceImpl;
 import org.junit.jupiter.api.DisplayName;

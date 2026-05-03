@@ -1,0 +1,56 @@
+2026-04-25 00:16:19 | CREATE_USER     | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | taurus01             | SUCCESS
+2026-04-25 00:16:20 | CREATE_USER     | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | taurus01             | SUCCESS
+2026-04-25 00:16:20 | LOGOUT          | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 00:16:36 | LOGIN           | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 00:21:04 | CREATE_USER     | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | taurus01             | SUCCESS
+2026-04-25 00:21:05 | CREATE_USER     | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | taurus01             | SUCCESS
+2026-04-25 00:21:05 | LOGOUT          | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 00:31:58 | LOGIN           | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 00:36:22 | CREATE_USER     | admin           | taurus 1405          | SUCCESS
+2026-04-25 00:36:22 | CREATE_USER     | admin           | taurus 1405          | SUCCESS
+2026-04-25 00:36:22 | LOGOUT          | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 00:39:06 | LOGIN           | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 00:45:08 | CREATE_USER     | admin           | taurus1405           | SUCCESS
+2026-04-25 00:45:08 | CREATE_USER     | admin           | taurus1405           | SUCCESS
+2026-04-25 00:45:08 | LOGOUT          | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 00:49:35 | LOGIN           | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 00:55:05 | CREATE_USER     | admin           | taurus1405           | SUCCESS
+2026-04-25 00:55:05 | CREATE_USER     | admin           | taurus1405           | SUCCESS
+2026-04-25 00:55:05 | LOGOUT          | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 00:58:33 | LOGIN           | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 00:59:06 | CREATE_USER     | admin           | Taurus 1405          | SUCCESS
+2026-04-25 00:59:06 | CREATE_USER     | admin           | Taurus 1405          | SUCCESS
+2026-04-25 00:59:06 | LOGOUT          | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 01:02:24 | LOGIN           | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 01:03:26 | CREATE_USER     | admin           | Taurus 1405          | SUCCESS
+2026-04-25 01:03:26 | CREATE_USER     | admin           | Taurus 1405          | SUCCESS
+2026-04-25 01:03:26 | LOGOUT          | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 01:06:45 | LOGIN           | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 01:07:22 | CREATE_USER     | admin           | cdcdcdcd             | SUCCESS
+2026-04-25 01:10:20 | LOGOUT          | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 01:10:33 | LOGIN           | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 01:11:01 | CREATE_USER     | admin           | aaaaaaaaaa           | SUCCESS
+2026-04-25 01:11:06 | CREATE_USER     | admin           | aaaaaaaaaa           | SUCCESS
+2026-04-25 01:11:06 | LOGOUT          | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 01:30:09 | LOGIN           | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 01:30:46 | CREATE_USER     | admin           | fdxghj               | SUCCESS
+2026-04-25 01:31:37 | CREATE_USER     | admin           | fdxghj               | SUCCESS
+2026-04-25 01:31:39 | LOGOUT          | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 09:20:58 | CREATE_USER     | admin           | cdccccc              | SUCCESS
+2026-04-25 09:21:12 | LOGOUT          | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 10:00:32 | CREATE_USER     | admin           | taurus123            | SUCCESS
+2026-04-25 10:03:58 | CREATE_USER     | admin           | taurus01             | SUCCESS
+2026-04-25 12:09:42 | LOGOUT          | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 12:39:21 | LOGOUT          | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 12:44:08 | LOGOUT          | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 12:49:10 | CREATE_PROJECT  | admin           | NEBI                 | SUCCESS
+2026-04-25 13:39:27 | CREATE_PROJECT  | admin           | nowait               | SUCCESS
+2026-04-25 13:43:51 | CREATE_PROJECT  | admin           | TAURus doc api       | SUCCESS
+2026-04-25 14:51:18 | CREATE_PROJECT  | admin           | dcfdcdc              | SUCCESS
+2026-04-25 14:51:34 | LOGOUT          | admin           | 195ffc35-0221-40d1-b2d2-ee5ab61faa23 | SUCCESS
+2026-04-25 15:40:48 | DELETE_PROJECT  | admin           | dcfdcdc              | SUCCESS
+2026-04-25 15:42:43 | DELETE_PROJECT  | admin           | dcfdcdc              | SUCCESS
+2026-04-25 15:49:26 | DELETE_PROJECT  | admin           | dcfdcdc              | SUCCESS
+2026-04-25 15:57:48 | DELETE_PROJECT  | admin           | dcfdcdc              | SUCCESS
+2026-04-25 17:45:01 | CREATE_CLIENT   | admin           | TAURUS LOGISTICS LTD | SUCCESS
+2026-04-25 17:47:37 | CREATE_CLIENT   | admin           | TAURUS ACADEMY       | SUCCESS

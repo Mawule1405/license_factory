@@ -1,0 +1,112 @@
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4">
+  <div class="absolute inset-0 bg-gray-900/50 backdrop-blur-sm" (click)="close.emit()"></div>
+
+  <div class="relative bg-white w-full max-w-4xl shadow-2xl border-t-8 border-taurus-green animate-in fade-in zoom-in duration-300 overflow-hidden">
+
+    <div class="p-5 border-b border-gray-100 flex justify-between items-center bg-gray-800 text-white">
+      <div>
+        <h2 class="text-xs font-black uppercase tracking-[0.3em] text-white">License_Provisioning_System</h2>
+        <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest mt-1">
+          Target_Engine: <span class="text-white">{{ project.name }}</span>
+        </p>
+      </div>
+      <button (click)="close.emit()" class="text-gray-500 hover:text-white transition-colors px-2">
+        <i class="fas fa-times text-sm"></i>
+      </button>
+    </div>
+
+    <form [formGroup]="licenseForm" (ngSubmit)="onSubmit()">
+
+      <div class="flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-gray-100">
+
+        <div class="flex-1 p-6 space-y-4 bg-gray-50/50">
+          <div class="flex justify-between items-baseline mb-2">
+            <label class="text-[9px] font-black text-gray-500 uppercase tracking-widest">01. Select_Target_Client</label>
+            <span class="text-[8px] font-bold text-taurus-green uppercase">{{ clients.length }} Nodes_Available</span>
+          </div>
+
+          <div class="max-h-[400px] overflow-y-auto pr-2 space-y-2 custom-scrollbar">
+            @for (client of clients; track client.id) {
+              <label class="flex items-center p-3 border-2 transition-all cursor-pointer group bg-white"
+                     [class.border-taurus-green]="isClientSelected(client?.id)"
+                     [class.shadow-md]="isClientSelected(client?.id)"
+                     [class.border-gray-100]="!isClientSelected(client?.id)">
+
+                <input type="radio" formControlName="clientId" [value]="client.id" class="hidden">
+
+                <div class="w-4 h-4 border-2 rounded-full flex items-center justify-center mr-3 transition-colors"
+                     [class.border-taurus-green]="isClientSelected(client?.id)"
+                     [class.border-gray-200]="!isClientSelected(client?.id)">
+                  @if (isClientSelected(client?.id)) {
+                    <div class="w-2 h-2 bg-taurus-green rounded-full shadow-[0_0_5px_#22c55e]"></div>
+                  }
+                </div>
+
+                <div class="flex flex-col">
+                  <span class="text-[10px] font-black uppercase tracking-tight"
+                        [class.text-taurus-green]="isClientSelected(client?.id)"
+                        [class.text-gray-800]="!isClientSelected(client?.id)">{{ client?.name }}</span>
+                  <span class="text-[8px] font-bold text-gray-400 uppercase tracking-tighter">{{ client?.email }}</span>
+                </div>
+              </label>
+            }
+
+            @if (!isLastPage) {
+              <button type="button" (click)="fetchMoreClients()" [disabled]="isLoadingClients"
+                      class="w-full py-3 border-2 border-dashed border-gray-200 text-[8px] font-black text-gray-400 uppercase tracking-widest hover:border-taurus-green hover:text-taurus-green transition-all bg-white">
+                @if (isLoadingClients) {
+                  <i class="fas fa-spinner animate-spin mr-2"></i> Syncing_Data...
+                } @else {
+                  <i class="fas fa-plus-circle mr-2"></i> Fetch_More_Entries
+                }
+              </button>
+            }
+          </div>
+        </div>
+
+        <div class="flex-1 p-6 space-y-6" formGroupName="dynamicParams">
+          <div class="flex items-center gap-2">
+            <div class="w-1.5 h-1.5 bg-taurus-green rounded-full"></div>
+            <label class="text-[9px] font-black text-gray-500 uppercase tracking-widest">02. Metadata_Injection</label>
+          </div>
+
+          <div class="space-y-4 min-h-[200px]">
+            @for (key of dynamicParamKeys; track key) {
+              <div class="space-y-1">
+                <div class="flex justify-between items-center">
+                  <label class="text-[10px] font-bold uppercase tracking-wider">{{ key.replace('_', ' ') }}</label>
+                  @if (licenseForm.get('dynamicParams.' + key)?.invalid && licenseForm.get('dynamicParams.' + key)?.touched) {
+                    <span class="text-[10px] text-red-500 font-black uppercase">Required_Field</span>
+                  }
+                </div>
+                <input [formControlName]="key" type="text" [placeholder]="'Enter_' + key + '...'"
+                       class="w-full px-3 py-2 bg-gray-50 border-2 border-gray-100 outline-none focus:border-taurus-green font-mono text-[11px] text-gray-800 uppercase transition-all">
+              </div>
+            } @empty {
+              <div class="h-full flex flex-col items-center justify-center py-12 border-2 border-dashed border-gray-50 opacity-50">
+                <i class="fas fa-microchip text-gray-200 text-2xl mb-2"></i>
+                <p class="text-[8px] font-bold text-gray-300 uppercase italic tracking-[0.2em]">Static_Model_No_Params_Needed</p>
+              </div>
+            }
+          </div>
+
+          <div class="pt-6 border-t border-gray-50 flex gap-3">
+            <button type="button" (click)="close.emit()" [disabled]="isLoading"
+                    class="flex-1 py-3 border-2 border-gray-100 text-[10px] font-black uppercase tracking-widest hover:bg-gray-50 transition-all disabled:opacity-50">
+              Abort
+            </button>
+            <button type="submit" [disabled]="licenseForm.invalid || isLoading"
+                    class="flex-1 py-3 bg-gray-900 text-white text-[10px] font-black uppercase tracking-widest hover:bg-taurus-green disabled:opacity-20 transition-all shadow-xl flex items-center justify-center gap-2">
+              @if (isLoading) {
+                <i class="fas fa-circle-notch animate-spin"></i> Processing...
+              } @else {
+                <i class="fas fa-key text-taurus-green"></i> Commit_Forge
+              }
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

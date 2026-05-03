@@ -1,0 +1,80 @@
+<div class="w-full flex flex-col sm:flex-row items-center justify-between gap-2 py-1 px-2 bg-white border-gray-100">
+
+  <div class="flex items-center gap-6">
+
+    <div class="flex items-center gap-2 px-2 py-1 bg-gray-50 rounded border border-gray-200">
+      <i class="fas fa-list-ul text-taurus-green text-xs"></i>
+      <select
+        [value]="itemsPerPage"
+        (change)="onPageSizeChange($event)"
+        class="bg-transparent border-none focus:ring-0 cursor-pointer text-xs font-semibold text-gray-600 p-0 pr-4">
+        @for (option of pageSizeOptions; track option) {
+          <option [value]="option">{{ option }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="flex items-center text-xs tracking-tight text-gray-500">
+      <span class="font-bold uppercase text-[10px] text-taurus-green mr-2">{{message}}</span>
+
+      <span class="font-semibold text-gray-800">{{ startEntry }}</span>
+
+      <span class="mx-1.5 opacity-50">—</span>
+
+      <span class="font-semibold text-gray-800">{{ endEntry }}</span>
+
+      <span class="mx-2 lowercase italic">sur</span>
+
+      <span class="bg-blue-50 text-taurus-green px-2 py-0.5 rounded-full font-bold">
+    {{ totalElements }}
+  </span>
+    </div>
+  </div>
+
+  <nav class="inline-flex -space-x-px rounded-md shadow-sm overflow-hidden border border-gray-200" aria-label="Pagination">
+
+    <button
+      (click)="onPageClick(currentPage - 1)"
+      [disabled]="currentPage === 1"
+      class="inline-flex items-center px-2.5 py-1.5 bg-white text-gray-400 hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed border-r border-gray-200 transition-colors">
+      <i class="fas fa-angle-left text-xs"></i>
+    </button>
+
+    @if (pages.length > 0 && pages[0] > 1) {
+      <button (click)="onPageClick(1)"
+              class="hidden sm:inline-flex items-center px-3 py-1.5 bg-white text-gray-600 hover:bg-gray-50 text-xs font-medium border-r border-gray-200">
+        1
+      </button>
+      @if (pages[0] > 2) {
+        <span class="inline-flex items-center px-3 py-1.5 bg-gray-50 text-gray-400 text-xs border-r border-gray-200">...</span>
+      }
+    }
+
+    @for (page of pages; track page) {
+      <button
+        (click)="onPageClick(page)"
+        [class]="page === currentPage
+          ? 'z-10 bg-taurus-green text-white px-3 py-1.5 text-xs font-bold'
+          : 'bg-white text-gray-600 hover:bg-gray-50 px-3 py-1.5 text-xs font-medium border-r border-gray-200'">
+        {{ page }}
+      </button>
+    }
+
+    @if (pages.length > 0 && pages[pages.length - 1] < totalPages) {
+      @if (pages[pages.length - 1] < totalPages - 1) {
+        <span class="inline-flex items-center px-3 py-1.5 bg-gray-50 text-gray-400 text-xs border-r border-gray-200">...</span>
+      }
+      <button (click)="onPageClick(totalPages)"
+              class="hidden sm:inline-flex items-center px-3 py-1.5 bg-white text-gray-600 hover:bg-gray-50 text-xs font-medium border-r border-gray-200">
+        {{ totalPages }}
+      </button>
+    }
+
+    <button
+      (click)="onPageClick(currentPage + 1)"
+      [disabled]="currentPage === totalPages"
+      class="inline-flex items-center px-2.5 py-1.5 bg-white text-gray-400 hover:bg-gray-50 disabled:opacity-30 disabled:cursor-not-allowed transition-colors">
+      <i class="fas fa-angle-right text-xs"></i>
+    </button>
+  </nav>
+</div>

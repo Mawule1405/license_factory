@@ -1,7 +1,7 @@
 package com.taurustechnology.backend.services;
 
 
-import com.taurustechnology.backend.entities.AppRole;
+import com.taurustechnology.backend.models.AppRole;
 
 import java.util.List;
 import java.util.Optional;

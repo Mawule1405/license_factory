@@ -1,9 +1,9 @@
 package com.taurustechnology.backend.controllers;
 
-import com.taurustechnology.backend.dtos.LicenseRequest;
-import com.taurustechnology.backend.dtos.LicenseDTO; // Supposé existant
-import com.taurustechnology.backend.entities.License;
-
+import com.taurustechnology.backend.dtos.responses.LicenseResponse;
+import com.taurustechnology.backend.dtos.requests.LicenseRequest;
+import com.taurustechnology.backend.dtos.responses.Pagination;
+import com.taurustechnology.backend.models.License;
 import com.taurustechnology.backend.mappers.LicenseMapper;
 import com.taurustechnology.backend.services.LicenseService;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.nio.charset.StandardCharsets;
+import java.security.Principal;
 
 @RestController
 @RequestMapping("/api/licenses")
@@ -23,63 +24,93 @@ public class LicenseController {
     private final LicenseService licenseService;
     private final LicenseMapper licenseMapper;
 
-    // 1. Créer une licence
-    @PostMapping("/{userId}")
-    public ResponseEntity<LicenseDTO> createLicense(@PathVariable String userId, @RequestBody LicenseDTO request) {
-        License license = licenseMapper.toEntity(request);
-        License savedLicense = licenseService.save(userId, license);
-        return ResponseEntity.ok(licenseMapper.toDto(savedLicense));
+    /**
+     * 1. Provisioning : Créer une licence
+     */
+    @PostMapping
+    public ResponseEntity<LicenseResponse> create(@RequestBody LicenseRequest request, Principal principal) {
+        String username = principal.getName();
+        System.out.println(username+"   Création de license");
+        License savedLicense = licenseService.createLicense(request, username);
+        System.out.println(username+"   Création de license 2");
+        return ResponseEntity.ok(licenseMapper.toResponse(savedLicense));
     }
 
-    // 2. Récupérer toutes les licences (Pagination)
-    @GetMapping("/{userId}")
-    public ResponseEntity<Page<LicenseDTO>> getAllLicenses(
-            @PathVariable String userId,
+    /**
+     * 2. Exploration : Liste paginée des licences
+     */
+    @GetMapping
+    public ResponseEntity<Pagination<LicenseResponse>> getAllLicenses(
+            Principal principal,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
-        Page<License> licenses = licenseService.findAll(userId, page, size);
-        return ResponseEntity.ok(licenses.map(licenseMapper::toDto));
+
+        Page<License> licenses = licenseService.findAll(principal.getName(), page, size);
+        return ResponseEntity.ok(Pagination.of(licenses.map(licenseMapper::toResponse)));
     }
 
-    // 3. Récupérer une licence par ID
-    @GetMapping("/{userId}/{id}")
-    public ResponseEntity<LicenseDTO> getLicense(@PathVariable String userId, @PathVariable String id) {
-        License license = licenseService.findOne(userId, id);
-        return ResponseEntity.ok(licenseMapper.toDto(license));
+    /**
+     * 2.1. Exploration : Liste paginée des licences
+     */
+    @GetMapping("/clients")
+    public ResponseEntity<Pagination<LicenseResponse>> getClientLicenses(
+            Principal principal,
+            @RequestParam String id,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+
+        Page<License> licenses = licenseService.findClientLicenses(principal.getName(),id, page, size);
+        return ResponseEntity.ok(Pagination.of(licenses.map(licenseMapper::toResponse)));
     }
 
-    // 4. Mettre à jour une licence
-    @PutMapping("/{userId}/{id}")
-    public ResponseEntity<LicenseDTO> updateLicense(
-            @PathVariable String userId,
+    /**
+     * 3. Inspection : Détail d'une licence spécifique
+     */
+    @GetMapping("/{id}")
+    public ResponseEntity<LicenseResponse> getLicense(@PathVariable String id, Principal principal) {
+        License license = licenseService.findOne(principal.getName(), id);
+        return ResponseEntity.ok(licenseMapper.toResponse(license));
+    }
+
+    /**
+     * 4. Mutation : Mise à jour des données de licence
+     */
+    @PutMapping("/{id}")
+    public ResponseEntity<LicenseResponse> updateLicense(
             @PathVariable String id,
-            @RequestBody LicenseDTO request) {
-        License license = licenseMapper.toEntity(request);
-        license.setId(id); // On s'assure que l'ID est le bon
-        License updatedLicense = licenseService.update(userId, license);
-        return ResponseEntity.ok(licenseMapper.toDto(updatedLicense));
+            @RequestBody LicenseRequest request, // On peut réutiliser Request ou créer un UpdateRequest
+            Principal principal) {
+
+        License updatedLicense = licenseService.update(principal.getName(), id, request);
+        return ResponseEntity.ok(licenseMapper.toResponse(updatedLicense));
     }
 
-    // 5. Supprimer (Soft Delete) une licence
-    @DeleteMapping("/{userId}/{id}")
-    public ResponseEntity<Void> deleteLicense(@PathVariable String userId, @PathVariable String id) {
-        boolean deleted = licenseService.delete(userId, id);
-        return deleted ? ResponseEntity.noContent().build() : ResponseEntity.badRequest().build();
+    /**
+     * 5. Suppression : Retrait d'une licence du registre
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteLicense(@PathVariable String id, Principal principal) {
+        licenseService.delete(principal.getName(), id);
+        return ResponseEntity.noContent().build();
     }
 
-    // 6. Générer et Télécharger le fichier .lic
-    @PostMapping("/{userId}/generate/{id}")
-    public ResponseEntity<byte[]> downloadLicense(@PathVariable String userId, @PathVariable String id) {
+    /**
+     * 6. Artefact : Génération et téléchargement du fichier .lic
+     */
+    @PostMapping("/generate/{id}")
+    public ResponseEntity<byte[]> downloadLicense(@PathVariable String id, @RequestBody String raison, Principal principal) {
         try {
-            String licenseContent = licenseService.generateLicense(userId, id);
-            License license = licenseService.findOne(userId, id);
+            String username = principal.getName();
+            String licenseContent = licenseService.generateLicense(username, id,raison);
+            License license = licenseService.findOne(username, id);
+
             byte[] licenseBytes = licenseContent.getBytes(StandardCharsets.UTF_8);
 
             String clientName = license.getClient().getName().replaceAll("\\s+", "_");
-            String fileName = "License_" + clientName + ".lic";
+            String fileName = "License_" + clientName + "_"+license.getProject().getName()+".lic";
 
             return ResponseEntity.ok()
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName)
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
                     .contentType(MediaType.APPLICATION_OCTET_STREAM)
                     .body(licenseBytes);
 

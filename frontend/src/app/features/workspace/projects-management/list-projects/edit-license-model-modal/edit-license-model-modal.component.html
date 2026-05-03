@@ -1,0 +1,72 @@
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4">
+  <div class="absolute inset-0 bg-gray-900/70 backdrop-blur-sm" (click)="close.emit()"></div>
+
+  <div class="relative bg-white w-full max-w-md shadow-[0_0_50px_rgba(0,0,0,0.3)] border-t-8 border-taurus-green animate-in fade-in zoom-in duration-200">
+
+    <div class="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-800">
+      <div>
+        <h2 class="text-xs font-black uppercase tracking-[0.3em] text-white">Manage_License_Model</h2>
+        <p class="text-[8px] font-bold text-gray-400 uppercase tracking-widest italic">Project_ID: {{ project.id.substring(0,8) }}</p>
+      </div>
+      <button (click)="close.emit()" class="text-gray-400 hover:text-red-600 transition-colors px-2">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" class="p-6 space-y-5">
+
+      <div class="space-y-1 opacity-60">
+        <label class="text-[9px] font-black text-gray-400 uppercase tracking-widest">Target_Project</label>
+        <input formControlName="name" type="text" readonly
+               class="w-full px-3 py-2 bg-gray-100 border-2 border-gray-200 cursor-not-allowed font-bold text-[11px] uppercase outline-none">
+      </div>
+
+      <div class="space-y-2" formGroupName="licenseModel">
+        <div class="flex justify-between items-center">
+          <label class="text-[9px] font-black text-gray-400 uppercase tracking-widest text-taurus-green">Active_Security_Parameters</label>
+          <button type="button" (click)="addParameter()"
+                  class="text-[8px] bg-taurus-green text-white px-2 py-1 uppercase font-bold hover:bg-taurus-dark transition-all">
+            + Add_Constraint
+          </button>
+        </div>
+
+        <div formArrayName="parameters" class="space-y-2 max-h-48 overflow-y-auto pr-2 custom-scrollbar">
+          @for (param of parameters.controls; track $index) {
+            <div class="flex gap-2 animate-in slide-in-from-right-2 duration-200">
+              <div class="flex-none flex items-center justify-center w-6 bg-gray-100 text-[8px] font-black text-gray-400 border border-gray-200">
+                0{{ $index + 1 }}
+              </div>
+              <input [formControlName]="$index"
+                     type="text"
+                     placeholder="PARAM_IDENTIFIER"
+                     class="flex-1 px-3 py-1 bg-gray-50 border-2 border-gray-100 outline-none focus:border-taurus-green font-bold text-[10px] uppercase transition-all">
+
+              @if (parameters.length > 1) {
+                <button type="button"
+                        (click)="removeParameter($index)"
+                        class="text-gray-300 hover:text-red-600 transition-colors px-1">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              }
+            </div>
+          } @empty {
+            <div class="text-[8px] text-gray-400 italic text-center py-4 border-2 border-dashed border-gray-100">
+              NO_PARAMETERS_DEFINED_FOR_THIS_MODEL
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="pt-4 flex gap-2">
+        <button type="button" (click)="close.emit()" [disabled]="isLoading"
+                class="flex-1 py-3 border-2 border-gray-100 text-[10px] font-black uppercase tracking-widest hover:bg-gray-50 transition-all">
+          Discard_Changes
+        </button>
+        <button type="submit" [disabled]="projectForm.invalid || isLoading"
+                class="flex-1 py-3 bg-gray-800 text-white text-[10px] font-black uppercase tracking-widest hover:bg-taurus-green disabled:opacity-30 transition-all shadow-lg">
+          {{ isLoading ? 'Synchronizing...' : 'Update_Security_Model' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

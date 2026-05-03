@@ -10,7 +10,7 @@ export const adminGuard: CanActivateFn = (route, state) => {
 
   const roles = storage.getRolesFromToken(ACCESS_TOKEN);
 
-  if (roles && roles.length > 0 && (roles.includes("ADMINISTRATEUR")||roles.includes("ROLE_ADMINISTRATEUR"))) {
+  if (roles && roles.length > 0 && (roles.includes("ADMINISTRATOR")||roles.includes("ROLE_ADMINISTRATOR"))) {
     return true;
   }
 

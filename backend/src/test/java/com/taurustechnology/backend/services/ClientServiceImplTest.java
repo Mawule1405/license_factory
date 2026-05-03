@@ -1,11 +1,10 @@
 package com.taurustechnology.backend.services;
 
-import com.taurustechnology.backend.entities.AppUser;
-import com.taurustechnology.backend.entities.Client;
-import com.taurustechnology.backend.entities.License;
+import com.taurustechnology.backend.models.AppUser;
+import com.taurustechnology.backend.models.Client;
+import com.taurustechnology.backend.models.License;
 import com.taurustechnology.backend.repositories.AppUserRepository;
 import com.taurustechnology.backend.repositories.ClientRepository;
-import com.taurustechnology.backend.services.AuditService;
 import com.taurustechnology.backend.services.impl.ClientServiceImpl;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;

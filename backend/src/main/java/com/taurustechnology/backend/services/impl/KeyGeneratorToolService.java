@@ -52,4 +52,5 @@ public class KeyGeneratorToolService {
             fos.write(content.getBytes(StandardCharsets.UTF_8));
         }
     }
+
 }

@@ -1,0 +1,175 @@
+<div class="space-y-1">
+
+  <nav class="flex items-center gap-2 bg-gray-50 border border-gray-200 p-2 text-[10px] font-black tracking-widest uppercase">
+    <span
+      class="hover:text-taurus-green transition-colors flex items-center gap-2">
+      <i class="fas fa-address-book"></i> PROJECTS_DATABASE
+    </span>
+
+  </nav>
+
+  <div class="flex flex-col lg:flex-row gap-0 shadow-md border-2 border-gray-200">
+    <div class="relative flex-1 bg-white">
+      <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-taurus-green">
+        <i class="fas fa-search text-xs"></i>
+      </span>
+      <input type="text" [(ngModel)]="searchKey" (input)="onSearch()"
+             placeholder="SEARCH PROJECTS..."
+             class="w-full pl-10 pr-4 py-2.5 outline-none font-black text-[10px] tracking-[0.2em] uppercase placeholder-gray-300">
+    </div>
+    <button (click)="isModalOpen = true"
+            class="bg-taurus-green hover:bg-taurus-dark text-white px-6 py-2.5
+            font-black text-[10px] tracking-[0.2em] transition-all flex items-center justify-center gap-3">
+      <i class="fas fa-plus-circle text-xs"></i>
+      CREATE NEW PROJECT
+    </button>
+  </div>
+
+  <div class="bg-white border-2 border-gray-200 relative min-h-[400px]">
+    @if(loading){
+      <div class="absolute inset-0 bg-white/80 z-20 flex flex-col items-center justify-center">
+        <i class="fas fa-cog fa-spin text-taurus-green text-2xl mb-1"></i>
+      </div>
+    }
+
+    <table class="w-full text-left border-collapse">
+      <thead class="bg-gray-800 text-white uppercase text-[9px] tracking-[0.2em]">
+      <tr>
+        <th class="p-2.5 border-r border-gray-700">Name</th>
+        <th class="p-2.5 border-r border-gray-700">Description</th>
+        <th class="p-2.5 border-r border-gray-700">Creator</th>
+        <th class="p-2.5 border-r border-gray-700 w-32 text-center">Licences_Parameters</th>
+
+        <th class="p-2.5 border-r border-gray-700 w-36">Registry_Logs</th>
+        <th class="p-2.5 text-center w-28">Command</th>
+      </tr>
+      </thead>
+      <tbody class="text-[10px] font-bold uppercase tracking-widest text-gray-700">
+        @for (project of projects; track project.id) {
+          <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors group">
+            <td class="p-2 border-r border-gray-50">
+              <span class="text-gray-900 font-black text-xs">{{ project.name }}</span>
+            </td>
+            <td class="p-2 border-r border-gray-50">
+                <span class="lowercase italic font-bold">{{ project.description }}</span>
+            </td>
+            <td class="p-2 border-r border-gray-50 text-center">
+              <span class="inline px-2 py-0.5 bg-gray-100 border border-gray-200 font-black">
+                {{ project.creatorName }}
+              </span>
+            </td>
+
+            <td class="p-2 border-r border-gray-50 align-middle">
+              <div class="grid grid-cols-2 gap-1.5 w-full max-w-[240px] mx-auto">
+                @for (parameter of project.licenseModel.parameters; track parameter){
+                  <div class="flex items-center gap-1.5 px-2 py-1 bg-gray-50 border border-gray-200
+                  text-gray-600 font-black text-[7px] tracking-tighter
+                  hover:border-taurus-green transition-colors truncate"
+                       [title]="parameter">
+                    <span class="min-w-[4px] h-1 bg-taurus-green rounded-full animate-pulse"></span>
+                    <span class="truncate">{{ parameter }}</span>
+                  </div>
+                } @empty {
+                  <div class="col-span-2 flex flex-col items-center opacity-30 italic py-1">
+                    <span class="text-[8px] font-black tracking-widest text-red-500">NO_RESTRICTIONS</span>
+                  </div>
+                }
+              </div>
+            </td>
+
+            <td class="p-2 border-r border-gray-50 text-center">
+              <div class="flex flex-col text-[8px] text-gray-400 leading-tight font-medium">
+                <span>INIT: {{ project.createdAt | date:'dd/MM/yyyy' }}</span>
+                <span>SYNC: {{ project.updatedAt | date:'dd/MM/yyyy' }}</span>
+              </div>
+            </td>
+
+
+            <td class="p-2">
+              <div class="flex justify-center gap-1.5 opacity-90 group-hover:opacity-100 transition-opacity">
+
+                <button (click)="openLicenseModelModal(project)"
+                        title="MANAGE_PARAMETERS"
+                        class="w-7 h-7 bg-gray-800 text-taurus-green border border-gray-700 hover:bg-taurus-green hover:text-white transition-all flex items-center justify-center shadow-sm">
+                  <i class="fas fa-fingerprint text-[10px]"></i>
+                </button>
+
+                <button (click)="openCreateLicenseModal(project)"
+                        title="GENERATE_NEW_LICENSE"
+                        class="w-7 h-7 bg-taurus-green text-white hover:bg-taurus-dark transition-all flex items-center justify-center shadow-md">
+                  <i class="fas fa-key text-[9px]"></i>
+                </button>
+
+                <button (click)="openEditProjectModal(project)"
+                        title="EDIT_PROJECT_METADATA"
+                        class="w-7 h-7 bg-gray-100 text-gray-600 hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center">
+                  <i class="fas fa-pen-nib text-[10px]"></i>
+                </button>
+
+                <button (click)="handleDelete(project.id!)"
+                        title="TERMINATE_PROJECT"
+                        class="w-7 h-7 bg-gray-100 text-red-600 hover:bg-red-600 hover:text-white transition-all flex items-center justify-center">
+                  <i class="fas fa-trash-alt text-[10px]"></i>
+                </button>
+
+              </div>
+            </td>
+          </tr>
+        }@empty {
+          <tr>
+            <td colspan="6" class="py-40 text-center">
+              <div class="flex flex-col items-center opacity-20">
+                <i class="fas fa-database text-5xl mb-4"></i>
+                <span class="text-xs font-black tracking-[0.5em]">ZERO_PROJECT_DETECTED</span>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <div class="bg-gray-800 p-0.5 border-t-2 border-taurus-green flex-shrink-0 shadow-lg">
+    <app-pagination
+      [message]="'PROJECTS'"
+      [totalElements]="pagination.totalElements"
+      [totalPages]="pagination.totalPages"
+      [currentPage]="pagination.page"
+      [itemsPerPage]="pagination.size"
+      (pageChanged)="handlePageChange($event)"
+      (pageSizeChanged)="handleSizeChange($event)">
+    </app-pagination>
+  </div>
+</div>
+
+@if (isModalOpen) {
+  <app-create-project-modal
+    (close)="isModalOpen = false"
+    (created)="loadProjects()">
+  </app-create-project-modal>
+}
+
+@if (isEditLicenseModelOpen) {
+  <app-edit-license-model-modal
+    [project] = "selectedProject"
+    (close)="isEditLicenseModelOpen = false"
+    (updated)="loadProjects(); isEditLicenseModelOpen=false"
+    />
+}
+
+@if (isEditMetadataOpen) {
+  <app-edit-project-metadata-modal
+    [project] = "selectedProject"
+    (close)="isEditMetadataOpen = false"
+    (updated)="loadProjects(); isEditMetadataOpen=false"
+    />
+}
+
+@if (isCreateLicenseOpen) {
+  <app-create-project-license-modal
+    [project] = "selectedProject"
+    (close)="isCreateLicenseOpen = false"
+    (created)="loadProjects(); isCreateLicenseOpen=false"
+  />
+}
+

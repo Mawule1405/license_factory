@@ -1,39 +1,31 @@
-// src/app/core/interceptors/jwt.interceptor.ts
 import { HttpInterceptorFn, HttpErrorResponse, HttpRequest, HttpHandlerFn, HttpEvent } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { StorageService } from '../services/storage.service';
 import { AuthService } from '../services/auth.service';
-import { catchError, Observable, switchMap, throwError } from 'rxjs';
+import { catchError, Observable, switchMap, throwError, BehaviorSubject, filter, take, finalize } from 'rxjs';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants/auth.constants';
-import {NotificationService} from '../services/notification.service';
+
+// Variables globales à l'intercepteur pour gérer l'état du verrou
+let isRefreshing = false;
+const refreshTokenSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
 
 export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
   const storage = inject(StorageService);
   const authService = inject(AuthService);
-  const notifService = inject(NotificationService)
 
   const token = storage.read(ACCESS_TOKEN);
   let authReq = req;
 
   if (token) {
-    authReq = req.clone({
-      setHeaders: { Authorization: `Bearer ${token}` }
-    });
+    authReq = addTokenHeader(req, token);
   }
 
   return next(authReq).pipe(
     catchError((error: HttpErrorResponse) => {
-      // Cas 1: C'est un 401 sur une requête normale -> On tente le REFRESH
+
       if (error.status === 401 && !req.url.includes('/refresh-token')) {
-        return handle401Error(authReq, next, authService,notifService, storage);
+        return handle401Error(authReq, next, authService, storage);
       }
-
-      // Cas 2: C'est un 401 ALORS qu'on essayait déjà de REFRESHER
-      // Ou toute autre erreur critique -> LOGOUT immédiat
-      if (error.status === 401 && req.url.includes('/refresh-token')) {
-        authService.logout(); // Redirige vers /login
-      }
-
       return throwError(() => error);
     })
   );
@@ -43,36 +35,47 @@ const handle401Error = (
   req: HttpRequest<unknown>,
   next: HttpHandlerFn,
   authService: AuthService,
-  notifService: NotificationService,
   storage: StorageService
 ): Observable<HttpEvent<unknown>> => {
-  const refreshToken = storage.read(REFRESH_TOKEN);
 
-  if (!refreshToken) {
-    notifService.error(
-      "Your security session has expired. Please log in again to continue.",
-      "SESSION_EXPIRED"
+  if (!isRefreshing) {
+    isRefreshing = true;
+    refreshTokenSubject.next(null); // On réinitialise le flux
+
+    const refreshToken = storage.read(REFRESH_TOKEN);
+
+    return authService.refreshToken(refreshToken).pipe(
+      switchMap((res) => {
+        storage.save(ACCESS_TOKEN, res.accessToken);
+        storage.save(REFRESH_TOKEN, res.refreshToken);
+
+        // On libère toutes les requêtes en attente avec le nouveau token
+        refreshTokenSubject.next(res.accessToken);
+
+        return next(addTokenHeader(req, res.accessToken));
+      }),
+      catchError((err) => {
+        authService.logout();
+        return throwError(() => err);
+      }),
+      finalize(() => {
+        isRefreshing = false; // On déverrouille quoi qu'il arrive
+      })
     );
-    authService.logout();
-    return throwError(() => new Error('SESSION_EXPIRED_NO_REFRESH'));
+  } else {
+    // SI UN REFRESH EST DÉJÀ EN COURS :
+    // On attend que refreshTokenSubject émette une nouvelle valeur (le nouveau token)
+    return refreshTokenSubject.pipe(
+      filter(token => token !== null),
+      take(1),
+      switchMap(token => next(addTokenHeader(req, token!)))
+    );
   }
+};
 
-  return authService.refreshToken(refreshToken).pipe(
-    switchMap((res) => {
-      storage.save(ACCESS_TOKEN, res.accessToken);
-      storage.save(REFRESH_TOKEN, res.refreshToken);
-
-      // On re-tente la requête initiale avec le NOUVEAU token
-      console.log('--- RETRYING WITH NEW TOKEN ---')
-      return next(req.clone({
-        setHeaders: { Authorization: `Bearer ${res.accessToken}` }
-      }));
-    }),
-    catchError((err) => {
-      // Si le serveur répond 401 ici, le refreshToken est mort.
-      authService.logout();
-      console.log(err)
-      return throwError(() => err);
-    })
-  );
+// Helper pour cloner la requête proprement
+const addTokenHeader = (request: HttpRequest<any>, token: string) => {
+  return request.clone({
+    setHeaders: { Authorization: `Bearer ${token}` }
+  });
 };

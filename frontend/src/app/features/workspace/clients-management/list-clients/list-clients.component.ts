@@ -4,13 +4,19 @@ import {Client} from '../../../../core/models/client.model';
 import {FormsModule} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {CreateClientModalComponent} from './create-client-modal/create-client-modal.component';
+import {PaginationComponent} from '../../../../shared/components/layout/pagination/pagination.component';
+import {DatePipe} from '@angular/common';
+import {EditClientModalComponent} from './edit-client-modal/edit-client-modal.component';
 
 @Component({
   selector: 'app-list-clients.component',
   imports: [
     FormsModule,
     RouterLink,
-    CreateClientModalComponent
+    CreateClientModalComponent,
+    PaginationComponent,
+    DatePipe,
+    EditClientModalComponent
   ],
   templateUrl: './list-clients.component.html',
   styleUrl: './list-clients.component.css',
@@ -22,12 +28,18 @@ export class ListClientsComponent implements OnInit{
   clients: Client[] = [];
   loading = false;
   searchKey = '';
-  currentPage = 0;
-  pageSize = 10;
-  totalElements = 0;
-  totalPages = 0;
+
+
   isModalOpen = false;
   showDeleteConfirm = false
+  pagination = {
+    totalPages: 0,
+    totalElements: 0,
+    page:1,
+    size:10,
+  };
+  isEditModalOpen = false
+  selectedClient?: Client;
 
   ngOnInit() {
     this.loadClients();
@@ -35,13 +47,15 @@ export class ListClientsComponent implements OnInit{
 
   loadClients() {
     this.loading = true;
-    this.clientService.findClients(this.currentPage, this.pageSize, this.searchKey)
+    this.clientService.fetchClients(this.pagination.page, this.pagination.size, this.searchKey)
       .subscribe({
         next: (res) => {
           this.loading = false;
           this.clients = res.content;
-          this.totalElements = res.totalElements;
-          this.totalPages = res.totalPages;
+          this.pagination.totalElements = res.totalElements;
+          this.pagination.totalPages = res.totalPages;
+          this.pagination.page = res.page;
+          this.pagination.size = res.size;
           this.cdr.detectChanges();
         },
         error: () => {
@@ -52,7 +66,7 @@ export class ListClientsComponent implements OnInit{
   }
 
   onSearch() {
-    this.currentPage = 0;
+    this.pagination.page = 1;
     this.loadClients();
   }
 
@@ -62,5 +76,21 @@ export class ListClientsComponent implements OnInit{
 
   deleteClient() {
 
+  }
+
+  handlePageChange(page: number) {
+    this.pagination.page = page;
+    this.loadClients();
+  }
+
+  handleSizeChange(size: number) {
+    this.pagination.size = size;
+    this.pagination.page = 1; // Toujours revenir à la page 1
+    this.loadClients();
+  }
+
+  editClient(client: Client) {
+    this.selectedClient = client;
+    this.isEditModalOpen = true;
   }
 }

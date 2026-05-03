@@ -1,0 +1,11 @@
+2026-04-28 00:01:49,544 WARN c.z.h.p.HikariPool [HikariPool-1:housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6h56m51s898ms689µs700ns).
+2026-04-28 06:53:31,223 WARN c.z.h.p.HikariPool [HikariPool-1:housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6h25m20s256ms29µs600ns).
+2026-04-28 09:28:47,059 WARN c.z.h.p.HikariPool [HikariPool-1:housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=43m13s904ms126µs900ns).
+2026-04-28 10:03:04,685 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-04-28 10:03:04,702 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY_RESULT] Retrieved 3 projects for filter: ''
+2026-04-28 10:03:50,974 INFO c.t.b.c.ClientController [http-nio-8080-exec-6] REST request to list clients for user: admin
+2026-04-28 10:07:47,098 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-04-28 10:07:47,121 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-04-28 10:07:47,151 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-28 10:07:47,169 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-04-28 10:07:47,176 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

@@ -8,14 +8,16 @@ export const globalErrorInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
+
+      if (error.status === 401) {
+        return throwError(() => error);
+      }
+
       let message = 'An unexpected system error occurred.';
       let title = 'CRITICAL_FAILURE';
 
       switch (error.status) {
-        /*case 401:
-          title = 'SECURITY_BREACH';
-          message = 'Session expired or invalid credentials. Please re-authenticate.';
-          break;*/
+
         case 403:
           title = 'ACCESS_DENIED';
           message = 'You do not have the required clearance for this operation.';

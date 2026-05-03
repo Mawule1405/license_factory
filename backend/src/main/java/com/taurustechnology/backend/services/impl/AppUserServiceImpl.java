@@ -1,7 +1,8 @@
 package com.taurustechnology.backend.services.impl;
 
-import com.taurustechnology.backend.entities.AppRole;
-import com.taurustechnology.backend.entities.AppUser;
+import com.taurustechnology.backend.dtos.responses.AppUserResponse;
+import com.taurustechnology.backend.models.AppRole;
+import com.taurustechnology.backend.models.AppUser;
 import com.taurustechnology.backend.repositories.AppRoleRepository;
 import com.taurustechnology.backend.repositories.AppUserRepository;
 import com.taurustechnology.backend.services.AppUserService;
@@ -9,6 +10,7 @@ import com.taurustechnology.backend.services.AuditService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -28,39 +30,43 @@ import java.util.Optional;
 public class AppUserServiceImpl implements AppUserService {
 
     private final AppUserRepository appUserRepository;
-    private final PasswordEncoder passwordEncoder;
     private final AppRoleRepository appRoleRepository;
+    private final PasswordEncoder passwordEncoder;
     private final AuditService auditService;
 
     @Override
-    public AppUser create(AppUser appUser, String createdByAppUserId) {
+    public AppUser create(AppUser appUser, String username) {
         if (appUser == null) throw new IllegalArgumentException("AppUser cannot be null");
 
+        // 1. On cherche le créateur
+        AppUser creator = appUserRepository.findByUsername(username)
+                .orElseThrow(() -> new EntityNotFoundException("Creator " + username + " not found"));
+
+        // 2. On vérifie l'existence avec une contrainte unique en base (indispensable)
+        if (appUserRepository.existsByUsername(appUser.getUsername())) {
+            throw new IllegalStateException("Username " + appUser.getUsername() + " already exists");
+        }
+
+        AppRole appRole = appUser.getAppRoles().getFirst();
+        appRole = appRoleRepository.findByName(appRole.getName());
+
         try {
-            Optional<AppUser> creator = appUserRepository.findById(createdByAppUserId);
-            if (creator.isEmpty()) {
-                log.warn("Creator {} not found", createdByAppUserId);
-                auditService.logAction("CREATE_USER", createdByAppUserId, appUser.getUsername(), "FAILED: CREATOR_NOT_FOUND");
-                return null;
-            }
 
-            if (appUserRepository.existsByUsername(appUser.getUsername())) {
-                auditService.logAction("CREATE_USER", createdByAppUserId, appUser.getUsername(), "FAILED: USERNAME_EXISTS");
-                throw new IllegalArgumentException("Username already exists");
-            }
-
-            appUser.setPasswordHash(passwordEncoder.encode(appUser.getPasswordHash()));
-            appUser.setCreatedAt(LocalDateTime.now());
-            appUser.setUpdatedAt(LocalDateTime.now());
+            appUser.setPassword(passwordEncoder.encode(appUser.getPassword()));
             appUser.setActivated(true);
+            appUser.setLoggedIn(false);
+            appUser.setAppRoles(List.of(appRole));
+            appUser.setCreatedBy(creator.getId());
 
             AppUser saved = appUserRepository.save(appUser);
-            auditService.logAction("CREATE_USER", createdByAppUserId, saved.getUsername(), "SUCCESS");
+
+            auditService.logAction("CREATE_USER", username, saved.getUsername(), "SUCCESS");
             log.info("User {} created successfully", saved.getUsername());
             return saved;
-        } catch (Exception e) {
-            auditService.logAction("CREATE_USER", createdByAppUserId, appUser.getUsername(), "FAILED: " + e.getMessage());
-            throw e;
+        } catch (DataIntegrityViolationException e) {
+            // Capture le cas où deux threads essaient de créer le même username simultanément
+            log.error("Conflict detected during user creation: {}", appUser.getUsername());
+            throw new IllegalStateException("User creation conflict - possibly double submission");
         }
     }
 
@@ -75,13 +81,13 @@ public class AppUserServiceImpl implements AppUserService {
                     return new EntityNotFoundException("User not found");
                 });
 
-        if (!passwordEncoder.matches(oldPassword, appUser.getPasswordHash())) {
+        if (!passwordEncoder.matches(oldPassword, appUser.getPassword())) {
             auditService.logAction("CHANGE_PASSWORD", appUser.getUsername(), userId, "FAILED: WRONG_OLD_PASSWORD");
             log.warn("Invalid old password attempt for user: {}", appUser.getUsername());
             throw new IllegalArgumentException("Wrong password");
         }
 
-        appUser.setPasswordHash(passwordEncoder.encode(newPassword));
+        appUser.setPassword(passwordEncoder.encode(newPassword));
         appUser.setUpdatedAt(LocalDateTime.now());
         AppUser updated = appUserRepository.save(appUser);
 
@@ -133,9 +139,7 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
     public boolean deleteById(String id, String deletedByAppUserId) {
         return appUserRepository.findById(id).map(user -> {
-            user.setDeleted(true);
-            user.setUpdatedAt(LocalDateTime.now());
-            appUserRepository.save(user);
+            appUserRepository.delete(user);
             auditService.logAction("SOFT_DELETE", deletedByAppUserId, user.getUsername(), "SUCCESS");
             return true;
         }).orElseGet(() -> {
@@ -184,14 +188,15 @@ public class AppUserServiceImpl implements AppUserService {
     }
 
     @Override
-    public List<AppUser> findAdministrators() {
-        return appUserRepository.findByRoleName("ADMINISTRATEUR");
+    public Page<AppUser> findAdministrators(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return appUserRepository.findByRoleName("ADMINISTRATOR",pageable);
     }
 
     @Override
-    public Page<AppUser> searchUsers(String keyword, int page, int size) {
+    public Page<AppUserResponse> searchUsers(String keyword, int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("fullName"));
-        return appUserRepository.searchOperators(keyword, pageable);
+        return appUserRepository.searchOperatorsWithStats(keyword, pageable);
     }
 
     @Override
@@ -217,14 +222,15 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
     public AppUser initialize(String initializerId, String userId, String newPassword) {
         AppUser user = appUserRepository.findById(userId).orElseThrow();
-        user.setPasswordHash(passwordEncoder.encode(newPassword));
+        user.setPassword(passwordEncoder.encode(newPassword));
         user.setUpdatedAt(LocalDateTime.now());
         auditService.logAction("INITIALIZE_PASSWORD", initializerId, user.getUsername(), "SUCCESS");
         return appUserRepository.save(user);
     }
 
     @Override
-    public List<AppUser> findAllAppUser() {
-        return appUserRepository.findAll();
+    public Page<AppUser> findAllAppUser(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return appUserRepository.findAll(pageable);
     }
 }

@@ -1,7 +1,7 @@
 package com.taurustechnology.backend.repositories;
 
 
-import com.taurustechnology.backend.entities.AppRole;
+import com.taurustechnology.backend.models.AppRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

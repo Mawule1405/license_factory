@@ -21,6 +21,11 @@ import {OfflineComponent} from './features/workspace/documentations/offline/offl
 import {AboutComponent} from './features/workspace/about/about.component';
 import {ArchitectureComponent} from './features/workspace/documentations/architecture/architecture.component';
 import {SecurityComponent} from './features/workspace/documentations/security/security.component';
+import {RulesComponent} from './features/workspace/administration/rules/rules.component';
+import {ListProjectsComponent} from './features/workspace/projects-management/list-projects/list-projects.component';
+import {ProjectsManagementComponent} from './features/workspace/projects-management/projects-management.component';
+import {LicensesManagementComponent} from './features/workspace/licenses-management/licenses-management.component';
+import {ListLicensesComponent} from './features/workspace/licenses-management/list-licenses/list-licenses.component';
 
 export const routes: Routes = [
   {path:'', redirectTo:'login', pathMatch: 'full'},
@@ -32,6 +37,7 @@ export const routes: Routes = [
       children:[
         {path:'', redirectTo:'users', pathMatch: 'full'},
         {path:'users', component: UsersComponent, canActivate:[authGuard, adminGuard],},
+        {path:'rules', component: RulesComponent, canActivate:[authGuard, adminGuard],},
         {path:'logs', component: LogsComponent,canActivate:[authGuard, adminGuard]},
         {path:'settings',component: SettingsComponent,canActivate:[authGuard, adminGuard]},
       ]},
@@ -39,6 +45,17 @@ export const routes: Routes = [
         children: [
           { path: '', component: ListClientsComponent }, // La liste globale
           { path: ':clientId/licenses', component: ClientLicensesComponent }, // Les licences d'un client
+        ]
+      },
+      {path: 'projects', component: ProjectsManagementComponent, canActivate:[authGuard],
+        children: [
+          { path: '', component: ListProjectsComponent }, // La liste globale
+          ]
+      },
+      {
+        path:'licenses', component: LicensesManagementComponent, canActivate:[authGuard],
+        children:[
+          {path:'', component: ListLicensesComponent}
         ]
       },
       {path: 'docs', component: DocumentationsComponent, canActivate:[authGuard],children:[

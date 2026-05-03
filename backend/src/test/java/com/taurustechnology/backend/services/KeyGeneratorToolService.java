@@ -1,12 +1,11 @@
 package com.taurustechnology.backend.services;
 
-import com.taurustechnology.backend.entities.License;
+import com.taurustechnology.backend.models.License;
 import com.taurustechnology.backend.services.impl.LicenseGeneratorServiceImpl;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.io.TempDir;
 import tools.jackson.databind.ObjectMapper;
 
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.KeyPair;

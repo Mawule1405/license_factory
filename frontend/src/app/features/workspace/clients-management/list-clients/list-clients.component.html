@@ -1,4 +1,13 @@
 <div class="space-y-1">
+
+  <nav class="flex items-center gap-2 bg-gray-50 border border-gray-200 p-2 text-[10px] font-black tracking-widest uppercase">
+    <span
+      class="hover:text-taurus-green transition-colors flex items-center gap-2">
+      <i class="fas fa-address-book"></i> CLIENT_DATABASE
+    </span>
+
+  </nav>
+
   <div class="flex flex-col lg:flex-row gap-0 shadow-md border-2 border-gray-200">
     <div class="relative flex-1 bg-white">
       <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-taurus-green">
@@ -27,7 +36,8 @@
       <tr>
         <th class="p-2.5 border-r border-gray-700">Client Name</th>
         <th class="p-2.5 border-r border-gray-700">Contact Details</th>
-        <th class="p-2.5 border-r border-gray-700 w-32 text-center">Active Licenses</th>
+        <th class="p-2.5 border-r border-gray-700 w-32 text-center">Register</th>
+        <th class="p-2.5 border-r border-gray-700 w-36">Registry_Logs</th>
         <th class="p-2.5 text-center w-28">Command</th>
       </tr>
       </thead>
@@ -45,23 +55,42 @@
             </td>
             <td class="p-2 border-r border-gray-50 text-center">
               <span class="inline-block px-2 py-0.5 bg-gray-100 border border-gray-200 font-black">
-                {{ client.numberOfLicenses }}
+                {{ client.registerName }}
               </span>
+            </td>
+            <td class="p-2 border-r border-gray-50 text-center">
+              <div class="flex flex-col text-[8px] text-gray-400 leading-tight font-medium">
+                <span>INIT: {{ client.createdAt | date:'dd/MM/yyyy' }}</span>
+                <span>SYNC: {{ client.updatedAt | date:'dd/MM/yyyy' }}</span>
+              </div>
             </td>
             <td class="p-2">
               <div class="flex justify-center gap-1 opacity-40 group-hover:opacity-100 transition-opacity">
 
                 <button [routerLink]="[client.id, 'licenses']"
+                        title="LIST OF CLIENT LICENSES"
                         class="w-7 h-7 bg-taurus-green text-white hover:bg-taurus-dark transition-all flex items-center justify-center shadow-md">
                   <i class="fas fa-external-link-alt text-[9px]"></i>
                 </button>
 
-                <button class="w-7 h-7 bg-gray-100 text-gray-600 hover:bg-taurus-green hover:text-white transition-all flex items-center justify-center">
+                <button class="w-7 h-7 bg-gray-100 text-gray-600 hover:bg-taurus-green
+                        hover:text-white transition-all flex items-center justify-center"
+                        title="EDIT CLIENT INFOS" (click)="editClient(client)">
                   <i class="fas fa-edit text-[10px]"></i>
                 </button>
-                <button (click)="handleDelete(client.id!)" class="w-7 h-7 bg-gray-100 text-red-600 hover:bg-red-600 hover:text-white transition-all flex items-center justify-center">
+                <button (click)="handleDelete(client.id!)" title="DELETE CLIENT"
+                        class="w-7 h-7 bg-gray-100 text-red-600 hover:bg-red-600 hover:text-white transition-all flex items-center justify-center">
                   <i class="fas fa-trash-alt text-[10px]"></i>
                 </button>
+              </div>
+            </td>
+          </tr>
+        }@empty {
+          <tr>
+            <td colspan="6" class="py-40 text-center">
+              <div class="flex flex-col items-center opacity-20">
+                <i class="fas fa-database text-5xl mb-4"></i>
+                <span class="text-xs font-black tracking-[0.5em]">ZERO_CLIENT_DETECTED</span>
               </div>
             </td>
           </tr>
@@ -70,23 +99,16 @@
     </table>
   </div>
 
-  <div class="flex justify-between items-center bg-gray-800 p-2 border-t-4 border-taurus-green">
-    <div class="text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] ml-2">
-      DATA_STREAM: {{ totalElements }} CLIENTS
-    </div>
-    <div class="flex gap-1">
-      <button [disabled]="currentPage === 0" (click)="currentPage = currentPage - 1; loadClients()"
-              class="px-4 py-1.5 border border-white/20 text-white hover:border-taurus-green hover:text-taurus-green disabled:opacity-20 transition-all font-black text-[9px] uppercase">
-        <i class="fas fa-caret-left"></i> PREV
-      </button>
-      <div class="px-4 py-1.5 bg-taurus-green text-white font-black text-[9px]">
-        {{ currentPage + 1 }} / {{ totalPages }}
-      </div>
-      <button [disabled]="currentPage >= totalPages - 1" (click)="currentPage = currentPage + 1; loadClients()"
-              class="px-4 py-1.5 border border-white/20 text-white hover:border-taurus-green hover:text-taurus-green disabled:opacity-20 transition-all font-black text-[9px] uppercase">
-        NEXT <i class="fas fa-caret-right"></i>
-      </button>
-    </div>
+  <div class="bg-gray-800 p-0.5 border-t-2 border-taurus-green flex-shrink-0 shadow-lg">
+    <app-pagination
+      [message]="'CLIENTS'"
+      [totalElements]="pagination.totalElements"
+      [totalPages]="pagination.totalPages"
+      [currentPage]="pagination.page"
+      [itemsPerPage]="pagination.size"
+      (pageChanged)="handlePageChange($event)"
+      (pageSizeChanged)="handleSizeChange($event)">
+    </app-pagination>
   </div>
 </div>
 
@@ -95,6 +117,15 @@
     (close)="isModalOpen = false"
     (created)="loadClients()">
   </app-create-client-modal>
+}
+
+
+@if (isEditModalOpen) {
+  <app-edit-client-modal
+    [client]="selectedClient"
+    (close)="isEditModalOpen = false"
+    (updated)="loadClients(); isEditModalOpen = false"
+  />
 }
 
 

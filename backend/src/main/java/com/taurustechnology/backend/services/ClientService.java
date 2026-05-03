@@ -1,6 +1,6 @@
 package com.taurustechnology.backend.services;
 
-import com.taurustechnology.backend.entities.Client;
+import com.taurustechnology.backend.models.Client;
 import org.springframework.data.domain.Page;
 
 public interface ClientService {

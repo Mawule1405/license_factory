@@ -1,5 +1,5 @@
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {PageResponse} from '../models/auth.model';
+import {Pagination} from '../models/auth.model';
 import {Client} from '../models/client.model';
 import {Observable} from 'rxjs';
 import {inject, Injectable} from '@angular/core';
@@ -18,24 +18,28 @@ export class ClientService {
     return this.storage.getUserIdFromToken(ACCESS_TOKEN)
   }
 
-  findClients(page: number, size: number, searchKey: string): Observable<PageResponse<Client>> {
+  fetchClients(page: number, size: number, searchKey: string): Observable<Pagination<Client>> {
     const params = new HttpParams()
-      .set('page', page.toString())
+      .set('page', (page-1).toString())
       .set('size', size.toString())
       .set('searchKey', searchKey);
-    return this.http.get<PageResponse<Client>>(`${this.apiUrl}/${this.getUserId()}`, { params });
+    return this.http.get<Pagination<Client>>(`${this.apiUrl}`, { params });
   }
 
   saveClient(client: Client): Observable<Client> {
-    client.creatorId = this.getUserId();
-    return this.http.post<Client>(`${this.apiUrl}/${this.getUserId()}`, client);
+    return this.http.post<Client>(`${this.apiUrl}`, client);
   }
 
   deleteClient(clientId: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${this.getUserId()}/${clientId}`);
+    return this.http.delete<void>(`${this.apiUrl}/${clientId}`);
   }
 
   getClientById( clientId: string) {
-    return this.http.get<Client>(`${this.apiUrl}/${this.getUserId()}/${clientId}`)
+    return this.http.get<Client>(`${this.apiUrl}/${clientId}`)
+  }
+
+  updateClient(updatedClient: Client): Observable<Client> {
+    const url = `${this.apiUrl}/${updatedClient.id}`;
+    return this.http.put<Client>(url, updatedClient);
   }
 }

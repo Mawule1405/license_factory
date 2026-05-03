@@ -1,0 +1,190 @@
+<div class="space-y-1">
+  <!-- Fil d'ariane & Actions Globales -->
+  <nav class="flex items-center justify-between bg-gray-50 border border-gray-200 p-2">
+    <div class="flex items-center gap-2 text-[10px] font-black tracking-widest uppercase">
+      <span class="text-taurus-green flex items-center gap-2">
+        <i class="fas fa-shield-alt"></i> CENTRAL_LICENSE_REGISTRY
+      </span>
+      <span class="text-gray-300">/</span>
+      <span class="text-gray-400">GLOBAL_VIEW</span>
+    </div>
+
+    <div class="flex gap-2">
+
+      <button (click)="isModalOpen = true"
+              class="px-3 py-1.5 bg-taurus-green text-white text-[9px] font-black uppercase tracking-widest hover:bg-taurus-dark transition-all flex items-center gap-2 shadow-sm">
+        <i class="fas fa-plus-circle"></i> GENERATE_NEW_LICENSE
+      </button>
+    </div>
+  </nav>
+
+  <!-- Barre de recherche -->
+  <div class="flex flex-col lg:flex-row gap-0 shadow-md border-2 border-gray-200">
+    <div class="relative flex-1 bg-white">
+      <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-taurus-green">
+        <i class="fas fa-filter text-xs"></i>
+      </span>
+      <input type="text" [(ngModel)]="searchKey" (input)="onSearch()"
+             placeholder="FILTER BY CODE, CLIENT, PROJECT OR CREATOR..."
+             class="w-full pl-10 pr-4 py-2.5 outline-none font-black text-[10px] tracking-[0.2em] uppercase placeholder-gray-300">
+    </div>
+  </div>
+
+  <!-- Conteneur du Tableau avec Scroll Interne -->
+  <div class="bg-white border-2 border-gray-200 relative">
+    @if(loading){
+      <div class="absolute inset-0 bg-white/80 z-20 flex flex-col items-center justify-center">
+        <i class="fas fa-sync fa-spin text-taurus-green text-2xl mb-1"></i>
+        <span class="text-[8px] font-black tracking-widest text-gray-500 uppercase">Syncing_Registry...</span>
+      </div>
+    }
+
+    <!-- Wrapper pour le scroll -->
+    <div class="overflow-y-auto max-h-[500px] scrollbar-thin scrollbar-thumb-gray-300">
+      <table class="w-full text-left border-collapse table-fixed">
+        <!-- Sticky Header -->
+        <thead class="bg-gray-800 text-white uppercase text-[9px] tracking-[0.2em] sticky top-0 z-10">
+        <tr>
+          <th class="p-2.5 border-r border-gray-700 w-48">Activation_Code</th>
+          <th class="p-2.5 border-r border-gray-700">Client_Entity</th>
+          <th class="p-2.5 border-r border-gray-700 w-40">Assigned_Project</th>
+          <th class="p-2.5 border-r border-gray-700 text-center w-24">Status</th>
+          <th class="p-2.5 border-r border-gray-700 w-36">Generation_Log</th>
+          <th class="p-2.5 text-center w-48">Command_Stack</th>
+        </tr>
+        </thead>
+
+        <tbody class="text-[10px] font-bold uppercase tracking-widest text-gray-700">
+          @for (license of licenses; track license.id) {
+            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors group">
+              <!-- Code d'activation Tronqué -->
+              <td class="p-2 border-r border-gray-50 font-mono text-gray-900 overflow-hidden">
+                <div class="flex items-center justify-between gap-1">
+                  <span class="truncate" [title]="license.activationCode">
+                    {{ license.activationCode | slice:0:8 }}...{{ license.activationCode | slice:-4 }}
+                  </span>
+                  <button (click)="copyToClipboard(license.activationCode)"
+                          class="text-gray-400 hover:text-taurus-green p-1 transition-colors">
+                    <i class="fas fa-copy"></i>
+                  </button>
+                </div>
+              </td>
+
+              <!-- Info Client -->
+              <td class="p-2 border-r border-gray-50 truncate">
+                <div class="flex flex-col truncate">
+                  <span class="text-gray-900 truncate">{{ license.clientName }}</span>
+                  <span class="lowercase italic font-medium text-[8px] text-gray-400 tracking-normal truncate">{{ license.clientEmail }}</span>
+                </div>
+              </td>
+
+              <!-- Info Projet -->
+              <td class="p-2 border-r border-gray-50 text-center">
+                <span class="px-2 py-0.5 bg-gray-100 border border-gray-200 text-taurus-green text-[9px] block truncate">
+                  {{ license.projectName }}
+                </span>
+              </td>
+
+              <!-- État Actif -->
+              <td class="p-2 border-r border-gray-50 text-center">
+                <span [class]="license.active ? 'text-green-600 bg-green-50 border-green-200' : 'text-red-600 bg-red-50 border-red-200'"
+                      class="px-2 py-0.5 border text-[8px]">
+                  {{ license.active ? 'VALID' : 'REVOKED' }}
+                </span>
+              </td>
+
+              <!-- Log de création -->
+              <td class="p-2 border-r border-gray-50">
+                <div class="flex flex-col text-[8px] leading-tight font-medium text-gray-400">
+                  <span>BY: {{ license.creatorName }}</span>
+                  <span>ON: {{ license.createdAt | date:'dd/MM/yyyy' }}</span>
+                </div>
+              </td>
+
+              <!-- Actions Stack -->
+              <td class="p-2">
+                <div class="flex justify-center gap-1 opacity-60 group-hover:opacity-100 transition-opacity">
+                  <!-- Voir Paramètres -->
+                  <button (click)="viewParameters(license)"
+                          class="w-7 h-7 bg-gray-800 text-white hover:bg-taurus-green transition-all flex items-center justify-center shadow-sm"
+                          title="VIEW_PARAMETERS">
+                    <i class="fas fa-sliders-h text-[9px]"></i>
+                  </button>
+
+                  <!-- Voir Logs Historiques -->
+                  <button (click)="viewLicenseLogs(license.id)"
+                          class="w-7 h-7 bg-amber-500 text-white hover:bg-amber-600 transition-all flex items-center justify-center shadow-sm"
+                          title="VIEW_HISTORY_LOGS">
+                    <i class="fas fa-history text-[9px]"></i>
+                  </button>
+
+                  <!-- Exporter -->
+                  <button (click)="exportLicense(license)"
+                          class="w-7 h-7 bg-gray-100 text-gray-600 hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center border border-gray-200"
+                          title="EXPORT_JSON_SPEC">
+                    <i class="fas fa-file-download text-[9px]"></i>
+                  </button>
+
+                  <!-- Révoquer -->
+                  @if (license.active) {
+                    <button (click)="revokeLicense(license.id)"
+                            class="w-7 h-7 bg-gray-100 text-red-600 hover:bg-red-600 hover:text-white transition-all flex items-center justify-center border border-gray-200"
+                            title="REVOKE_LICENSE">
+                      <i class="fas fa-ban text-[9px]"></i>
+                    </button>
+                  }
+                </div>
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="6" class="py-40 text-center">
+                <div class="flex flex-col items-center opacity-20">
+                  <i class="fas fa-server text-5xl mb-4"></i>
+                  <span class="text-xs font-black tracking-[0.5em]">REGISTRY_EMPTY</span>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Footer avec Pagination -->
+  <div class="bg-gray-800 p-0.5 border-t-2 border-taurus-green shadow-lg">
+    <app-pagination
+      [message]="'ACTIVE_LICENSES'"
+      [totalElements]="pagination.totalElements"
+      [totalPages]="pagination.totalPages"
+      [currentPage]="pagination.page"
+      [itemsPerPage]="pagination.size"
+      (pageChanged)="handlePageChange($event)"
+      (pageSizeChanged)="handleSizeChange($event)">
+    </app-pagination>
+  </div>
+</div>
+
+@if (isModalOpen) {
+  <app-create-license-modal
+  (close)="isModalOpen = false"
+  (created)="loadLicenses();isModalOpen=false"
+  />
+}
+
+@if(isLicenseParametersModal){
+  <app-license-parameters-modal
+  [license]="selectedLicense"
+  (close)="isLicenseParametersModal = false"
+  />
+}
+
+@if (isExportLicenseModal) {
+  <app-export-license-raison-modal
+  [licenseId]="selectedLicense?.id||''"
+  (close)="isExportLicenseModal=false"
+  (confirmed)="downloadLicense($event)"
+
+  />
+
+}

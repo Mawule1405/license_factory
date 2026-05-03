@@ -1,0 +1,55 @@
+<div class="flex flex-col space-y-3 min-h-[calc(100vh-180px)]">
+
+  <div class="flex flex-col lg:flex-row gap-0 shadow-ms border-1
+   border-gray-200 flex-shrink-0">
+    <h2 class="p-2 text-taurus-green uppercase font-bold">Users rules</h2>
+  </div>
+
+  <div class="bg-white border-2 border-gray-200 relative flex-grow overflow-auto shadow-inner">
+
+    @if(loading){
+      <div class="absolute inset-0 bg-white/80 z-20 flex flex-col items-center justify-center">
+        <i class="fas fa-sync fa-spin text-taurus-green text-2xl mb-1"></i>
+        <span class="text-[9px] font-black uppercase tracking-widest text-taurus-green">Syncing_Nodes...</span>
+      </div>
+    }
+
+    <table class="w-full text-left border-collapse">
+      <thead class="bg-gray-800 text-white uppercase text-[9px] tracking-[0.2em] sticky top-0 z-10">
+      <tr>
+        <th class="p-3 border-r border-gray-700 w-32">name</th>
+        <th class="p-3 border-r border-gray-700">Description</th>
+        <th class="p-3 border-r border-gray-700">Users</th>
+
+      </tr>
+      </thead>
+
+      <tbody class="text-[10px] font-bold uppercase tracking-widest">
+        @for (rule of rules; track rule.id) {
+          <tr class="border-b border-gray-100 hover:bg-blue-50/30 transition-colors group">
+
+            <td class="p-2 border-r border-gray-50">
+              <div class="flex flex-col gap-0">
+                <span class="text-gray-900 font-black text-xs tracking-tighter">{{ rule.name }}</span>
+              </div>
+            </td>
+
+            <td class="p-2 border-r border-gray-50  font-black text-gray-700">{{ rule.description }}</td>
+            <td class="p-2 border-r border-gray-50  font-black text-gray-700">{{ rule.userCount||0 }}</td>
+
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="3" class="py-40 text-center">
+              <div class="flex flex-col items-center opacity-20">
+                <i class="fas fa-database text-5xl mb-4"></i>
+                <span class="text-xs font-black tracking-[0.5em]">ZERO_RULE_DETECTED</span>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+

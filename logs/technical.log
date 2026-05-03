@@ -1,9 +1,247 @@
-2026-02-05 00:25:26,109 WARN c.z.h.p.HikariPool [HikariPool-1:housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m33s247ms174µs700ns).
-2026-02-05 03:51:30,524 WARN c.z.h.p.HikariPool [HikariPool-1:housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h34s11ms579µs300ns).
-2026-02-05 07:54:20,139 WARN c.z.h.p.HikariPool [HikariPool-1:housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4h2m58s449ms991µs200ns).
-2026-02-05 08:52:29,667 WARN c.z.h.p.HikariPool [HikariPool-1:housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=44m39s293ms958µs799ns).
-2026-02-05 09:10:21,588 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
-2026-02-05 09:10:21,683 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
-2026-02-05 09:10:21,699 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-02-05 09:10:21,707 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
-2026-02-05 09:10:21,713 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-05-03 10:18:00,026 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 12244 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-05-03 10:18:00,037 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-05-03 10:18:00,550 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-05-03 10:18:01,970 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-03 10:18:02,140 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 153 ms. Found 9 JPA repository interfaces.
+2026-05-03 10:18:03,629 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-05-03 10:18:03,648 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-05-03 10:18:03,650 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-05-03 10:18:03,651 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-05-03 10:18:03,766 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 3653 ms
+2026-05-03 10:18:04,164 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-03 10:18:04,254 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-05-03 10:18:05,020 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-03 10:18:05,079 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-05-03 10:18:05,469 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-05-03 10:18:05,471 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-05-03 10:18:05,511 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-03 10:18:05,542 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-03 10:18:07,741 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-03 10:18:07,850 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-03 10:18:08,012 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-03 10:18:10,304 ERROR c.t.b.i.AppUserInitializer [main] Failed to initialize super administrator user
+org.springframework.dao.IncorrectResultSizeDataAccessException: Query did not return a unique result: 2 results were returned
+	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.convertHibernateAccessException(HibernateExceptionTranslator.java:180)
+	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.convertHibernateAccessException(HibernateExceptionTranslator.java:131)
+	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.translateExceptionIfPossible(HibernateExceptionTranslator.java:109)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:199)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:556)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:346)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:157)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:222)
+	at jdk.proxy2/jdk.proxy2.$Proxy177.findByAppRoles_name(Unknown Source)
+	at com.taurustechnology.backend.initialization.AppUserInitializer.createSuperAdministrator(AppUserInitializer.java:55)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:453)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:397)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:217)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:426)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1809)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:993)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.taurustechnology.backend.BackendApplication.main(BackendApplication.java:13)
+Caused by: org.hibernate.NonUniqueResultException: Query did not return a unique result: 2 results were returned
+	at org.hibernate.query.spi.AbstractSelectionQuery.uniqueElement(AbstractSelectionQuery.java:315)
+	at org.hibernate.query.spi.AbstractSelectionQuery.getSingleResultOrNull(AbstractSelectionQuery.java:330)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:414)
+	at jdk.proxy2/jdk.proxy2.$Proxy187.getSingleResultOrNull(Unknown Source)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:328)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:99)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:164)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:154)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:169)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:167)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:146)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:69)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:370)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:118)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:135)
+	... 31 common frames omitted
+2026-05-03 10:18:10,472 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-03 10:18:10,556 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-05-03 10:18:10,921 INFO c.t.b.s.s.WebSecurity [main] [2026-05-03T10:18:10.921809] Configuring security filter chain
+2026-05-03 10:18:11,681 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-05-03 10:18:11,709 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-05-03 10:18:11,716 INFO c.t.b.BackendApplication [main] Started BackendApplication in 12.948 seconds (process running for 16.16)
+2026-05-03 10:21:06,345 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-03 10:21:06,346 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-05-03 10:21:06,350 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 2 ms
+2026-05-03 10:21:06,556 INFO c.t.b.s.j.JwtAuthenticationFilter [http-nio-8080-exec-2] Tentative de connexion pour : admin
+2026-05-03 10:21:06,702 INFO c.t.b.s.s.UserDetailService [http-nio-8080-exec-2] 🔍 Authentication attempt for identifier: admin
+2026-05-03 10:21:06,713 INFO c.t.b.s.s.UserDetailService [http-nio-8080-exec-2] ✅ User admin loaded with authorities: [ROLE_ADMINISTRATOR]
+2026-05-03 10:21:23,117 INFO c.t.b.c.ClientController [http-nio-8080-exec-8] REST request to list clients for user: admin
+2026-05-03 10:23:40,243 INFO c.t.b.c.ClientController [http-nio-8080-exec-3] REST request to list clients for user: admin
+2026-05-03 10:23:40,249 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-03 10:23:40,284 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY_RESULT] Retrieved 3 projects for filter: ''
+2026-05-03 10:25:40,819 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-10] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-03 10:25:40,826 INFO c.t.b.c.ClientController [http-nio-8080-exec-9] REST request to list clients for user: admin
+2026-05-03 10:25:40,834 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-10] [QUERY_RESULT] Retrieved 3 projects for filter: ''
+2026-05-03 10:27:50,426 INFO c.t.b.c.ClientController [http-nio-8080-exec-9] REST request to list clients for user: admin
+2026-05-03 10:27:50,427 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-10] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-03 10:27:50,440 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-10] [QUERY_RESULT] Retrieved 3 projects for filter: ''
+2026-05-03 10:29:15,167 INFO c.t.b.c.ClientController [http-nio-8080-exec-6] REST request to list clients for user: admin
+2026-05-03 10:29:15,167 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-5] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-03 10:29:15,172 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-5] [QUERY_RESULT] Retrieved 3 projects for filter: ''
+2026-05-03 10:30:52,626 INFO c.t.b.c.ClientController [http-nio-8080-exec-10] REST request to list clients for user: admin
+2026-05-03 10:30:57,743 INFO c.t.b.c.ClientController [http-nio-8080-exec-1] REST request to get client ID: 07d7b439-66b5-497f-92d4-bc99b9c7a201 by user: admin
+2026-05-03 10:31:21,960 INFO c.t.b.c.ClientController [http-nio-8080-exec-5] REST request to list clients for user: admin
+2026-05-03 10:31:25,303 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-7] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-03 10:31:25,315 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-7] [QUERY_RESULT] Retrieved 3 projects for filter: ''
+2026-05-03 10:31:35,734 INFO c.t.b.c.ClientController [http-nio-8080-exec-10] REST request to list clients for user: admin
+2026-05-03 10:31:41,034 INFO c.t.b.c.ClientController [http-nio-8080-exec-1] REST request to list clients for user: admin
+2026-05-03 10:32:04,309 INFO c.t.b.c.ClientController [http-nio-8080-exec-3] REST request to list clients for user: admin
+2026-05-03 10:33:38,326 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-6] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-03 10:33:38,378 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-6] [QUERY_RESULT] Retrieved 3 projects for filter: ''
+2026-05-03 10:33:52,502 INFO c.t.b.c.ClientController [http-nio-8080-exec-8] REST request to list clients for user: admin
+2026-05-03 10:35:09,246 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-10] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-03 10:35:09,251 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-10] [QUERY_RESULT] Retrieved 3 projects for filter: ''
+2026-05-03 10:35:12,372 INFO c.t.b.c.ClientController [http-nio-8080-exec-1] REST request to list clients for user: admin
+2026-05-03 11:16:44,766 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-03 11:16:44,783 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-05-03 11:16:44,799 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-03 11:16:44,812 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-05-03 11:16:44,815 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-05-03 11:17:02,495 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 13720 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-05-03 11:17:02,499 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-05-03 11:17:03,251 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-05-03 11:17:04,951 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-03 11:17:06,367 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 1397 ms. Found 9 JPA repository interfaces.
+2026-05-03 11:17:07,791 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-05-03 11:17:07,814 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-05-03 11:17:07,817 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-05-03 11:17:07,817 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-05-03 11:17:07,916 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 5079 ms
+2026-05-03 11:17:08,169 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-03 11:17:08,235 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-05-03 11:17:09,373 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-03 11:17:09,421 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-05-03 11:17:09,880 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-05-03 11:17:09,884 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-05-03 11:17:09,924 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-03 11:17:09,956 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-03 11:17:11,990 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-03 11:17:12,161 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-03 11:17:12,373 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-03 11:17:15,479 ERROR c.t.b.i.AppUserInitializer [main] Failed to initialize super administrator user
+org.springframework.dao.IncorrectResultSizeDataAccessException: Query did not return a unique result: 2 results were returned
+	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.convertHibernateAccessException(HibernateExceptionTranslator.java:180)
+	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.convertHibernateAccessException(HibernateExceptionTranslator.java:131)
+	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.translateExceptionIfPossible(HibernateExceptionTranslator.java:109)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:199)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:556)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:346)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:157)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:137)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:222)
+	at jdk.proxy2/jdk.proxy2.$Proxy177.findByAppRoles_name(Unknown Source)
+	at com.taurustechnology.backend.initialization.AppUserInitializer.createSuperAdministrator(AppUserInitializer.java:55)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:453)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:397)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:217)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:426)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1809)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:993)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620)
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.taurustechnology.backend.BackendApplication.main(BackendApplication.java:13)
+Caused by: org.hibernate.NonUniqueResultException: Query did not return a unique result: 2 results were returned
+	at org.hibernate.query.spi.AbstractSelectionQuery.uniqueElement(AbstractSelectionQuery.java:315)
+	at org.hibernate.query.spi.AbstractSelectionQuery.getSingleResultOrNull(AbstractSelectionQuery.java:330)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:414)
+	at jdk.proxy2/jdk.proxy2.$Proxy188.getSingleResultOrNull(Unknown Source)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:328)
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:99)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:164)
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:154)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:169)
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:167)
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:146)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:69)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:370)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:118)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:135)
+	... 31 common frames omitted
+2026-05-03 11:17:15,654 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-03 11:17:15,727 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-05-03 11:17:15,914 INFO c.t.b.s.s.WebSecurity [main] [2026-05-03T11:17:15.914844400] Configuring security filter chain
+2026-05-03 11:17:17,645 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-05-03 11:17:17,679 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-05-03 11:17:17,687 INFO c.t.b.BackendApplication [main] Started BackendApplication in 16.268 seconds (process running for 17.678)
+2026-05-03 11:31:01,287 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-03 11:31:01,318 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-05-03 11:31:01,333 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-03 11:31:01,338 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-05-03 11:31:01,343 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

@@ -1,0 +1,120 @@
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4">
+  <div class="absolute inset-0 bg-gray-900/50 backdrop-blur-sm" (click)="close.emit()"></div>
+
+  <div class="relative bg-white w-full max-w-5xl shadow-2xl border-t-8 border-taurus-green animate-in fade-in zoom-in duration-300">
+
+    <!-- Header -->
+    <div class="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-800 text-white">
+      <div class="text-xs font-black uppercase tracking-[0.3em]">System_License_Forge</div>
+      <button (click)="close.emit()" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-times"></i></button>
+    </div>
+
+    <form [formGroup]="licenseForm" (ngSubmit)="onSubmit()">
+      <div class="flex flex-col lg:flex-row divide-y lg:divide-y-0 lg:divide-x divide-gray-100">
+
+        <!-- Étape 1 : Sélection Client & Projet -->
+        <div class="w-full lg:w-1/2 p-6 space-y-6 bg-gray-50/50">
+
+          <!-- Client Select -->
+          <div class="space-y-2">
+            <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest">01. Identity_Target_Client</label>
+            <div class="relative">
+              <select formControlName="clientId" (scroll)="onScroll($event, 'client')"
+                      class="w-full pl-3 pr-10 py-2.5 bg-white border-2 border-gray-100 outline-none focus:border-taurus-green font-bold text-[11px] uppercase transition-all appearance-none">
+                <option value="" disabled selected>-- SELECT_CLIENT_NODE --</option>
+                @for (client of clients; track client.id) {
+                  <option [value]="client.id">{{ client.name }}</option>
+                }
+              </select>
+              @if (hasMoreClients) {
+                <button type="button" (click)="loadNextClients()" class="mt-1 text-[7px] font-black text-taurus-green uppercase tracking-tighter">
+                  <i class="fas fa-plus-circle"></i> Sync_More_Clients
+                </button>
+              }
+            </div>
+          </div>
+
+          <!-- Project Registry -->
+          <div class="space-y-2">
+            <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest">02. Select_Assigned_Project</label>
+            <div class="max-h-[300px] overflow-y-auto pr-2 space-y-2 custom-scrollbar" (scroll)="onScroll($event, 'project')">
+              @for (project of projects; track project.id) {
+                <label class="flex items-center p-3 border-2 transition-all cursor-pointer bg-white"
+                       [class.border-taurus-green]="isProjectSelected(project.id)"
+                       [class.border-gray-100]="!isProjectSelected(project.id)">
+                  <input type="radio" formControlName="projectId" [value]="project.id" class="hidden">
+                  <div class="w-4 h-4 border-2 rounded-full flex items-center justify-center mr-3"
+                       [class.border-taurus-green]="isProjectSelected(project.id)"
+                       [class.border-gray-200]="!isProjectSelected(project.id)">
+                    @if (isProjectSelected(project.id)) { <div class="w-2 h-2 bg-taurus-green rounded-full"></div> }
+                  </div>
+                  <span class="text-[10px] font-black uppercase tracking-tight">{{ project.name }}</span>
+                </label>
+              }
+              @if (hasMoreProjects) {
+                <button type="button" (click)="loadNextProjects()" class="w-full py-2 border-2 border-dashed border-gray-200 text-[8px] font-black text-gray-400 uppercase">
+                  Load_More_Registry_Entries
+                </button>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Étape 2 : Paramètres Dynamiques -->
+        <div class="w-full lg:w-1/2 p-6 space-y-6 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-taurus-green rounded-full"></div>
+              <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest">03. Parameter_Injection</label>
+            </div>
+
+            <div class="space-y-4 min-h-[300px]" formGroupName="dynamicParams">
+              @for (key of dynamicParamKeys; track key) {
+                <div class="space-y-1">
+                  <label class="text-[9px] font-bold uppercase text-gray-600">{{ key.split('_').join(' ') }}</label>
+                  <input [formControlName]="key" type="text" [placeholder]="'ENTER_' + key"
+                         class="w-full px-3 py-2.5 bg-gray-50 border-2 border-gray-100 outline-none focus:border-taurus-green font-mono text-[11px] uppercase transition-all">
+                </div>
+              } @empty {
+                <div class="h-full flex flex-col items-center justify-center py-20 border-2 border-dashed border-gray-100 opacity-30 text-center">
+                  <i class="fas fa-project-diagram text-4xl mb-4"></i>
+                  <p class="text-[9px] font-black uppercase tracking-widest">Awaiting_Project_Selection<br>To_Load_Dynamic_Schema</p>
+                </div>
+              }
+            </div>
+          </div>
+
+          <!-- Submission -->
+          <div class="pt-6 border-t border-gray-100 flex gap-3">
+            <!-- Bouton Abort -->
+            <button type="button"
+                    (click)="close.emit()"
+                    [disabled]="isLoading"
+                    class="flex-1 py-3 border-2 border-gray-100 text-[10px] font-black uppercase tracking-widest hover:bg-gray-50 transition-all disabled:opacity-30">
+              Abort_System
+            </button>
+
+            <!-- Bouton de Soumission Dynamique -->
+            <button type="submit"
+                    [disabled]="licenseForm.invalid || isLoading"
+                    class="flex-1 py-3 text-[10px] font-black uppercase tracking-widest transition-all shadow-xl flex items-center justify-center gap-2"
+                    [ngClass]="{
+            'bg-gray-200 text-gray-400 cursor-not-allowed shadow-none': licenseForm.invalid && !isLoading,
+            'bg-gray-900 text-white hover:bg-taurus-green cursor-pointer': licenseForm.valid && !isLoading,
+            'bg-taurus-green text-white opacity-70': isLoading
+          }">
+
+              @if (isLoading) {
+                <i class="fas fa-circle-notch animate-spin"></i> Processing_Request...
+              } @else {
+                <i class="fas fa-terminal" [class.text-taurus-green]="licenseForm.valid"></i>
+                {{ licenseForm.invalid ? 'Awaiting_Valid_Input' : 'Commit_Forge_Execution' }}
+              }
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

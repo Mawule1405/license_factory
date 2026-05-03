@@ -13,12 +13,12 @@ export class AppRoleService {
   private readonly API_URL = `${environment.apiUrl}/roles`;
 
   /** Récupère tous les rôles (@GetMapping("/all")) */
-  findAll(): Observable<AppRole[]> {
+  fetchAll(): Observable<AppRole[]> {
     return this.http.get<AppRole[]>(`${this.API_URL}/all`);
   }
 
   /** Trouve un rôle par ID (@GetMapping("/find/{id}")) */
-  findById(id: string): Observable<AppRole> {
+  fetchById(id: string): Observable<AppRole> {
     return this.http.get<AppRole>(`${this.API_URL}/find/${id}`);
   }
 
