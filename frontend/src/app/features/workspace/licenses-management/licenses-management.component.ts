@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { ClientUiService } from '../../../core/services/client-ui.service';
@@ -13,6 +13,7 @@ import { LicenseService } from '../../../core/services/license.service'; // Serv
 })
 export class LicensesManagementComponent implements OnInit {
   private licenseService = inject(LicenseService);
+  private cdr = inject(ChangeDetectorRef)
 
 
 
@@ -34,6 +35,9 @@ export class LicensesManagementComponent implements OnInit {
 
   loadLicenseStats() {
 
-    this.licenseService.fetchLicenseMiniStats().subscribe(stats => this.miniStats = stats);
+    this.licenseService.fetchLicenseMiniStats().subscribe(stats => {
+      this.miniStats = stats
+      this.cdr.detectChanges();
+    });
   }
 }

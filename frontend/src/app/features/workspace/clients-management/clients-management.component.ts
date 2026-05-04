@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {ClientService} from '../../../core/services/client.service';
@@ -17,6 +17,7 @@ import {ProjectStats} from '../../../core/models/project.model';
 export class ClientsManagementComponent implements OnInit {
 
   clientService = inject(ClientService)
+  private cdr = inject(ChangeDetectorRef)
 
   miniStats: ClientStats = {
     // --- Volume & Croissance ---
@@ -38,6 +39,9 @@ export class ClientsManagementComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.clientService.fetchClientMiniStats().subscribe((data)=>this.miniStats = data);
+    this.clientService.fetchClientMiniStats().subscribe((data)=>{
+      this.miniStats = data
+      this.cdr.detectChanges();
+    });
   }
 }

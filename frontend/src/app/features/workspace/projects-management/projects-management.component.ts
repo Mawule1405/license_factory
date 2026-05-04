@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import { RouterOutlet} from '@angular/router';
@@ -15,6 +15,7 @@ import {ProjectService} from '../../../core/services/project.service';
 export class ProjectsManagementComponent implements OnInit {
 
   private projectService = inject(ProjectService);
+  private cdr = inject(ChangeDetectorRef)
 
   // Dans ta classe de composant
   miniStats: ProjectStats = {
@@ -28,7 +29,11 @@ export class ProjectsManagementComponent implements OnInit {
 
 
   ngOnInit() {
-    this.projectService.fetchProjectMiniStats().subscribe((data)=>this.miniStats = data);
+    this.projectService.fetchProjectMiniStats().subscribe((data)=>
+    {
+      this.miniStats = data
+      this.cdr.detectChanges()
+    });
   }
 
 
