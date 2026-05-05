@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormControl } from '@angular/forms';
 import { LicenseService } from '../../../../../core/services/license.service';
 import { ProjectService } from '../../../../../core/services/project.service';
-import {Project} from '../../../../../core/models/project.model'; // Service à importer
+import {Project} from '../../../../../core/models/project.model';
+import {Parameter} from '../../../../../core/models/license-model.model'; // Service à importer
 
 @Component({
   selector: 'app-create-client-licence-modal',
@@ -24,7 +25,7 @@ export class CreateClientLicenceModalComponent implements OnInit {
 
   licenseForm!: FormGroup;
   projects: Project[] = [];
-  dynamicParamKeys: string[] = [];
+  dynamicParameters: Parameter[] = [];
 
   // États de pagination
   page = 1;
@@ -75,13 +76,17 @@ export class CreateClientLicenceModalComponent implements OnInit {
     const selectedProject = this.projects.find(p => p.id === projectId);
     const dynamicGroup = this.licenseForm.get('dynamicParams') as FormGroup;
 
+    // Nettoyage
     Object.keys(dynamicGroup.controls).forEach(key => dynamicGroup.removeControl(key));
-    this.dynamicParamKeys = [];
+    this.dynamicParameters = [];
 
-    if (selectedProject?.licenseModel.parameters) {
-      this.dynamicParamKeys = selectedProject.licenseModel.parameters;
-      this.dynamicParamKeys.forEach(key => {
-        dynamicGroup.addControl(key, new FormControl('', Validators.required));
+    if (selectedProject?.licenseModel?.parameters) {
+      // On stocke les objets complets
+      this.dynamicParameters = selectedProject.licenseModel.parameters;
+
+      this.dynamicParameters.forEach(param => {
+        // On utilise param.label (ou param.key selon votre backend) pour le contrôle
+        dynamicGroup.addControl(param.label, new FormControl('', Validators.required));
       });
     }
   }

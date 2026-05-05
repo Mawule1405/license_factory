@@ -7,6 +7,7 @@ import { NotificationService } from '../../../../../core/services/notification.s
 import { Pagination } from '../../../../../core/models/auth.model';
 import { Project } from '../../../../../core/models/project.model';
 import {ChangeDetectorRef, Component, EventEmitter, inject, OnInit, Output} from '@angular/core';
+import {Parameter} from '../../../../../core/models/license-model.model';
 
 @Component({
   selector: 'app-create-license-modal',
@@ -27,7 +28,7 @@ export class CreateLicenseModalComponent implements OnInit {
 
   // Formulaire principal
   licenseForm!: FormGroup;
-  dynamicParamKeys: string[] = [];
+  dynamicParameters: Parameter[] = [];
 
   // Listes de données
   clients: any[] = [];
@@ -100,12 +101,15 @@ export class CreateLicenseModalComponent implements OnInit {
 
     // Reset des contrôles existants
     Object.keys(dynamicGroup.controls).forEach(key => dynamicGroup.removeControl(key));
-    this.dynamicParamKeys = [];
+    this.dynamicParameters = [];
 
     if (selectedProject?.licenseModel?.parameters) {
-      this.dynamicParamKeys = selectedProject.licenseModel.parameters;
-      this.dynamicParamKeys.forEach(key => {
-        dynamicGroup.addControl(key, new FormControl('', Validators.required));
+      // Stockage des objets complets { label, type, etc. }
+      this.dynamicParameters = selectedProject.licenseModel.parameters;
+
+      this.dynamicParameters.forEach(param => {
+        // On utilise param.label (ou param.key selon votre API) pour le nom du contrôle
+        dynamicGroup.addControl(param.label, new FormControl('', Validators.required));
       });
     }
   }

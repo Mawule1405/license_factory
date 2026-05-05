@@ -61,9 +61,6 @@ public class LicenseServiceImpl implements LicenseService {
                 .parameters(new ArrayList<>())
                 .build();
 
-        if (request.getParameters() != null) {
-            mapMetadataToParameters(request, license);
-        }
 
         try {
             License saved = licenseRepository.save(license);
@@ -102,9 +99,7 @@ public class LicenseServiceImpl implements LicenseService {
 
         // Mise à jour des paramètres dynamiques (Metadata)
         existingLicense.getParameters().clear();
-        if (request.getParameters() != null) {
-            mapMetadataToParameters(request, existingLicense);
-        }
+
 
         try {
             License updated = licenseRepository.save(existingLicense);
@@ -198,17 +193,6 @@ public class LicenseServiceImpl implements LicenseService {
         return ((double) (current - previous) / previous) * 100;
     }
 
-    /**
-     * Helper pour mapper la Map de métadonnées vers les entités LicenseParameter
-     */
-    private void mapMetadataToParameters(LicenseRequest request, License license) {
-        List<LicenseParameter> params = request.getParameters().entrySet().stream()
-                .map(entry -> LicenseParameter.builder()
-                        .label(entry.getKey())
-                        .value(entry.getValue())
-                        .license(license)
-                        .build())
-                .toList();
-        license.getParameters().addAll(params);
-    }
+
+
 }

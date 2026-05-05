@@ -80,15 +80,28 @@
           </div>
 
           <div class="space-y-4 min-h-[250px]">
-            @for (key of dynamicParamKeys; track key) {
-              <div class="space-y-1">
+            @for (param of dynamicParameters; track param.label) {
+              <div class="space-y-1 animate-in slide-in-from-right-2 duration-300">
                 <div class="flex justify-between items-center">
-                  <label class="text-[10px] font-bold uppercase tracking-wider text-gray-700">{{ key.replace('_', ' ') }}</label>
-                  @if (licenseForm.get('dynamicParams.' + key)?.invalid && licenseForm.get('dynamicParams.' + key)?.touched) {
+                  <div class="flex items-center gap-2">
+                    <label class="text-[10px] font-bold uppercase tracking-wider text-gray-700">
+                      {{ param.label.replace('_', ' ') }}
+                    </label>
+                    <!-- Badge de type -->
+                    <span class="px-1.5 py-0.5 bg-gray-100 text-[7px] font-black text-gray-400 rounded uppercase border border-gray-200">
+            {{ param.type }}
+          </span>
+                  </div>
+
+                  @if (licenseForm.get('dynamicParams.' + param.label)?.invalid && licenseForm.get('dynamicParams.' + param.label)?.touched) {
                     <span class="text-[9px] text-red-500 font-black uppercase">Required</span>
                   }
                 </div>
-                <input [formControlName]="key" type="text" [placeholder]="'Input_' + key + '...'"
+
+                <!-- L'attribut [type] est maintenant dynamique -->
+                <input [formControlName]="param.label"
+                       [type]="param.type === 'number' ? 'number' : (param.type === 'date' ? 'date' : 'text')"
+                       [placeholder]="'Input_' + param.label + '...'"
                        class="w-full px-3 py-2 bg-gray-50 border-2 border-gray-100 outline-none focus:border-taurus-green font-mono text-[11px] text-gray-800 uppercase transition-all">
               </div>
             } @empty {

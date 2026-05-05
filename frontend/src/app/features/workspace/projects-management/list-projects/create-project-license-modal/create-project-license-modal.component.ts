@@ -82,22 +82,25 @@ export class CreateProjectLicenseModalComponent implements OnInit, OnDestroy {
       });
   }
 
-  /**
-   * Construit dynamiquement les champs du formulaire basés sur le modèle du projet
-   */
+
+  get dynamicParameters(): any[] {
+    return this.project?.licenseModel?.parameters || [];
+  }
+
   private injectDynamicControls(): void {
     const dynamicGroup = this.licenseForm.get('dynamicParams') as FormGroup;
 
     if (this.project?.licenseModel?.parameters) {
       this.project.licenseModel.parameters.forEach(param => {
-        dynamicGroup.addControl(param, new FormControl('', Validators.required));
+        // param est maintenant un objet { label: string, type: string, ... }
+        // On utilise param.label comme clé pour le contrôle du formulaire
+        dynamicGroup.addControl(param.label, new FormControl('', Validators.required));
       });
     }
   }
 
-  /**
-   * Helpers pour le template
-   */
+  // Modifiez ce getter si vous l'utilisez encore pour autre chose,
+  // mais dynamicParameters est préférable pour le HTML
   get dynamicParamKeys(): string[] {
     return Object.keys((this.licenseForm.get('dynamicParams') as FormGroup).controls);
   }
