@@ -20,10 +20,7 @@ public class LicenseModel extends BaseEntity {
     @JsonBackReference
     private Project project;
 
-    @ElementCollection
-    @CollectionTable(name = "model_parameters", joinColumns = @JoinColumn(name = "model_id"))
-    @Column(name = "parameter_name")
-    @Builder.Default
-    private List<String> parameters = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Parameter> parameters = new ArrayList<>();
 
 }

@@ -3,6 +3,6 @@ export interface LicenseModel {
   projectId: string;
 
   parameters :string[]
+  types: string[]
 
-  description:string[];
 }

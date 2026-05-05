@@ -35,13 +35,27 @@
           </button>
         </div>
 
-        <div formArrayName="parameters" class="space-y-2 max-h-32 overflow-y-auto pr-2">
-          @for (param of parameters.controls; track $index) {
-            <div class="flex gap-2 animate-in slide-in-from-left-2 duration-200">
-              <input [formControlName]="$index"
+        <!-- ... début du formulaire inchangé -->
+
+        <div formArrayName="parameters" class="space-y-2 max-h-48 overflow-y-auto pr-2">
+          @for (paramGroup of parameters.controls; track $index) {
+            <!-- On lie chaque ligne au FormGroup correspondant par son index -->
+            <div [formGroupName]="$index" class="flex gap-2 animate-in slide-in-from-left-2 duration-200">
+
+              <!-- Champ pour le Nom du paramètre -->
+              <input formControlName="key"
                      type="text"
                      placeholder="PARAM_KEY"
                      class="flex-1 px-3 py-1 bg-gray-50 border-2 border-gray-100 outline-none focus:border-taurus-green font-bold text-[10px] uppercase transition-all">
+
+              <!-- Nouveau Select pour le Type -->
+              <select formControlName="type"
+                      class="w-24 px-2 py-1 bg-gray-100 border-2 border-gray-100 outline-none focus:border-taurus-green font-bold text-[9px] uppercase cursor-pointer transition-all">
+                <option value="text">TEXT</option>
+                <option value="number">NUMBER</option>
+                <option value="date">DATE</option>
+                <option value="boolean">BOOLEAN</option>
+              </select>
 
               @if (parameters.length > 1) {
                 <button type="button"
@@ -57,6 +71,8 @@
             </div>
           }
         </div>
+
+
       </div>
 
       <div class="pt-4 flex gap-2">

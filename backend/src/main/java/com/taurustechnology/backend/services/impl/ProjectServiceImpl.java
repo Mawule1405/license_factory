@@ -77,14 +77,12 @@ public class ProjectServiceImpl implements ProjectService {
 
         if (projectRequest.getLicenseModel() != null) {
             log.debug("[CONFIG] Initializing security parameters for project: {}", savedProject.getName());
-            Set<String> parameters = new HashSet<>(projectRequest.getLicenseModel().getParameters());
-            LicenseModel licenseModel = new LicenseModel();
-            licenseModel.setParameters(new ArrayList<>(parameters));
+             LicenseModel licenseModel = new LicenseModel();
             licenseModel.setProject(savedProject);
 
             licenseModel = licenseModelRepository.save(licenseModel);
             savedProject.setLicenseModel(licenseModel);
-            log.info("[CONFIG_SUCCESS] {} security parameters attached to project", parameters.size());
+            log.info("[CONFIG_SUCCESS] {} security parameters attached to project",licenseModel.getParameters().size());
         }
 
         auditService.logAction("CREATE_PROJECT", username, savedProject.getName(), "SUCCESS");
@@ -127,6 +125,7 @@ public class ProjectServiceImpl implements ProjectService {
                     lm.setProject(existingProject);
                 }
                 lm.setParameters(projectUpdates.getLicenseModel().getParameters());
+
                 licenseModelRepository.save(lm);
                 existingProject.setLicenseModel(lm);
             }

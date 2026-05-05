@@ -1,6 +1,7 @@
 package com.taurustechnology.backend.dtos.responses;
 
 
+import com.taurustechnology.backend.models.Parameter;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class LicenseModelResponse {
 
     private String projectId;
 
-    private List<String> parameters = new ArrayList<>();
+    private List<Parameter> parameters = new ArrayList<>();
 
     private String description;
 }
