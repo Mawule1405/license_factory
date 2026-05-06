@@ -99,11 +99,6 @@ export class CreateProjectLicenseModalComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Modifiez ce getter si vous l'utilisez encore pour autre chose,
-  // mais dynamicParameters est préférable pour le HTML
-  get dynamicParamKeys(): string[] {
-    return Object.keys((this.licenseForm.get('dynamicParams') as FormGroup).controls);
-  }
 
   isClientSelected(id: string|undefined): boolean {
     return this.licenseForm.get('clientId')?.value === id;
@@ -115,28 +110,37 @@ export class CreateProjectLicenseModalComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     if (this.licenseForm.invalid) {
       this.licenseForm.markAllAsTouched();
-      //this.notify.warn("Incomplete data fields", "VALIDATION_FAILED");
       return;
     }
 
     this.isLoading = true;
+
+    // Récupérer les valeurs brutes du groupe dynamique
+    const dynamicValues = this.licenseForm.value.dynamicParams;
+
+    // Transformer le dictionnaire { LABEL: VALUE } en List<LicenseParameterDto>
+    // On s'appuie sur this.dynamicParameters (récupéré du projet) pour retrouver les types
+    const formattedParameters = this.dynamicParameters.map(param => ({
+      label: param.label,
+      value: String(dynamicValues[param.label]), // On s'assure que la valeur est une string
+      type: param.type
+    }));
+
     const payload = {
       clientId: this.licenseForm.value.clientId,
       projectId: this.project.id,
-      parameters: this.licenseForm.value.dynamicParams
+      parameters: formattedParameters // Envoi sous forme de tableau d'objets []
     };
 
     this.licenseService.createLicense(payload)
       .pipe(finalize(() => this.isLoading = false))
       .subscribe({
         next: () => {
-          this.notify.success(`License Forge Successful: ${this.project.name}`, "COMMIT_OK");
+          this.notify.success("License Forge Successful", "COMMIT_OK");
           this.created.emit();
           this.close.emit();
         },
-        error: (err) => {
-          this.notify.error("Provisioning failed. Check server logs.", "EXECUTION_ERROR");
-        }
+        error: (err) => this.notify.error("Execution Error", "FAIL")
       });
   }
 }

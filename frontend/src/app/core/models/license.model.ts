@@ -18,9 +18,15 @@ export interface LicenseResponse {
   // Utilisateur ayant généré la licence
   creatorName: string;
 
-  parameters: { [key: string]: string };
+  parameters: LicenseParameter[];
 }
 
+export interface LicenseParameter{
+  id: string;
+  label: string;
+  value: string;
+  type: string;
+}
 
 export interface LicenseStats {
   // --- Volume ---
@@ -39,3 +45,4 @@ export interface LicenseStats {
   leadArchitect: string;     // Administrateur ayant généré le plus de licences
   deploymentDensity: number; // Moyenne de licences par projet
 }
+

@@ -93,10 +93,15 @@
                   <i class="fas fa-microchip text-[8px] text-gray-300"></i>
                 </div>
                 <div class="grid grid-cols-1 gap-1">
-                  @for (param of license.parameters | keyvalue; track param.key) {
+                  @for (param of license.parameters; track param.id) {
                     <div class="flex justify-between items-center text-[9px]">
-                      <span class="text-gray-400 font-medium uppercase">{{ param.key }}:</span>
-                      <span class="text-gray-800 font-bold font-mono uppercase">{{ param.value }}</span>
+                      <div class="flex items-center gap-1">
+                        <span class="text-gray-400 font-medium uppercase">{{ param.label }}:</span>
+                        <span class="text-[6px] text-gray-300 border border-gray-200 px-0.5 rounded uppercase">{{ param.type }}</span>
+                      </div>
+                      <span class="text-gray-800 font-bold font-mono uppercase truncate max-w-[100px]" [title]="param.value">
+          {{ param.value }}
+        </span>
                     </div>
                   } @empty {
                     <p class="text-[8px] text-gray-400 italic text-center py-1">No custom parameters defined</p>

@@ -30,31 +30,45 @@
           </button>
         </div>
 
-        <div formArrayName="parameters" class="space-y-2 max-h-48 overflow-y-auto pr-2 custom-scrollbar">
-          @for (param of parameters.controls; track $index) {
-            <div class="flex gap-2 animate-in slide-in-from-right-2 duration-200">
-              <div class="flex-none flex items-center justify-center w-6 bg-gray-100 text-[8px] font-black text-gray-400 border border-gray-200">
-                0{{ $index + 1 }}
-              </div>
-              <input [formControlName]="$index"
-                     type="text"
-                     placeholder="PARAM_IDENTIFIER"
-                     class="flex-1 px-3 py-1 bg-gray-50 border-2 border-gray-100 outline-none focus:border-taurus-green font-bold text-[10px] uppercase transition-all">
 
-              @if (parameters.length > 1) {
-                <button type="button"
-                        (click)="removeParameter($index)"
-                        class="text-gray-300 hover:text-red-600 transition-colors px-1">
-                  <i class="fas fa-trash-alt"></i>
-                </button>
-              }
+        <div formArrayName="parameters" class="space-y-3 max-h-64 overflow-y-auto pr-2 custom-scrollbar">
+          @for (paramGroup of parameters.controls; track $index) {
+            <div [formGroupName]="$index" class="p-3 bg-gray-50 border-2 border-gray-100 space-y-2 animate-in slide-in-from-right-2 duration-200">
+
+              <div class="flex justify-between items-center">
+                <span class="text-[8px] font-black text-gray-400 uppercase">Parameter_Node_0{{ $index + 1 }}</span>
+                @if (parameters.length > 1) {
+                  <button type="button" (click)="removeParameter($index)" class="text-gray-300 hover:text-red-600 transition-colors">
+                    <i class="fas fa-times-circle text-xs"></i>
+                  </button>
+                }
+              </div>
+
+              <div class="flex gap-2">
+                <!-- Champ Label -->
+                <input formControlName="label"
+                       type="text"
+                       placeholder="LABEL (ex: EXPIRE_DATE)"
+                       class="flex-1 px-3 py-1.5 bg-white border border-gray-200 outline-none focus:border-taurus-green font-bold text-[10px] uppercase transition-all">
+
+                <!-- Sélecteur de Type -->
+                <select formControlName="type"
+                        class="w-24 px-2 py-1 bg-gray-100 border-2 border-gray-100 outline-none focus:border-taurus-green font-bold text-[9px] uppercase cursor-pointer transition-all">
+                  <option value="text">TEXT</option>
+                  <option value="number">NUMBER</option>
+                  <option value="date">DATE</option>
+                  <option value="boolean">BOOLEAN</option>
+                </select>
+              </div>
             </div>
           } @empty {
-            <div class="text-[8px] text-gray-400 italic text-center py-4 border-2 border-dashed border-gray-100">
-              NO_PARAMETERS_DEFINED_FOR_THIS_MODEL
+            <div class="text-[8px] text-gray-400 italic text-center py-4 border-2 border-dashed border-gray-100 uppercase">
+              Awaiting_Security_Definition
             </div>
           }
         </div>
+
+
       </div>
 
       <div class="pt-4 flex gap-2">

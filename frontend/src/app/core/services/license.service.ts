@@ -52,7 +52,7 @@ export class LicenseService {
    * @param licenseId L'UUID de la licence
    * @param payload Objet contenant la Map des paramètres
    */
-  updateLicense(licenseId: string, payload: { parameters: Record<string, string> }): Observable<LicenseResponse> {
+  updateLicense(licenseId: string, payload: any): Observable<LicenseResponse> {
     return this.http.put<LicenseResponse>(`${this.apiUrl}/${licenseId}`, payload);
   }
 

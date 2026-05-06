@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output, inject, ChangeDetectorR
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, FormControl } from '@angular/forms';
 import {LicenseService} from '../../../../core/services/license.service';
-import {LicenseResponse} from '../../../../core/models/license.model';
+import {LicenseParameter, LicenseResponse} from '../../../../core/models/license.model';
 
 @Component({
   selector: 'app-edit-license-parameters-modal',
@@ -20,7 +20,7 @@ export class EditLicenseParametersModalComponent implements OnInit {
   @Output() updated = new EventEmitter<void>(); // Événement de succès différent
 
   licenseForm!: FormGroup;
-  dynamicParamKeys: string[] = [];
+  dynamicParameters: LicenseParameter[] = [];
   isLoading = false;
 
   ngOnInit() {
@@ -30,26 +30,27 @@ export class EditLicenseParametersModalComponent implements OnInit {
 
   initForm() {
     this.licenseForm = this.fb.group({
-      // En mode édition, le projet est généralement fixe, on le met en readonly
       projectId: [{ value: '', disabled: true }],
       dynamicParams: this.fb.group({})
     });
   }
 
   loadCurrentLicenseData() {
-    if (!this.license) return;
+    if (!this.license || !this.license.parameters) return;
 
-    // 1. On définit le projet (ID ou Nom pour l'affichage)
     this.licenseForm.patchValue({ projectId: this.license.projectId });
 
-    // 2. On génère les champs basés sur les clés présentes dans la licence actuelle
     const dynamicGroup = this.licenseForm.get('dynamicParams') as FormGroup;
-    this.dynamicParamKeys = Object.keys(this.license.parameters);
 
-    this.dynamicParamKeys.forEach(key => {
-      // On crée le contrôle avec la valeur actuelle de la licence
-      const currentValue = this.license.parameters[key];
-      dynamicGroup.addControl(key, new FormControl(currentValue, Validators.required));
+    // On récupère le tableau d'objets paramètres
+    this.dynamicParameters = this.license.parameters;
+
+    this.dynamicParameters.forEach(param => {
+      // On utilise param.label comme clé du formulaire et param.value comme valeur initiale
+      dynamicGroup.addControl(
+        param.label,
+        new FormControl(param.value, Validators.required)
+      );
     });
 
     this.cdr.detectChanges();
@@ -59,18 +60,33 @@ export class EditLicenseParametersModalComponent implements OnInit {
     if (this.licenseForm.invalid) return;
     this.isLoading = true;
 
-    // On ne récupère que les paramètres modifiés
+    // 1. Récupérer les valeurs saisies dans le groupe dynamique { "ADRESS_MAC": "...", "MAX_USERS": "..." }
+    const dynamicValues = this.licenseForm.get('dynamicParams')?.value;
+
+    // 2. Transformer en tableau d'objets LicenseParameterDto
+    // On utilise this.dynamicParameters (chargé au ngOnInit) pour conserver les types et IDs
+    const formattedParameters = this.dynamicParameters.map(param => ({
+      id: param.id,             // Optionnel mais recommandé pour l'update
+      label: param.label,       // Le label sert de clé technique
+      value: String(dynamicValues[param.label]), // La nouvelle valeur saisie
+      type: param.type          // On conserve le type d'origine
+    }));
+
+    // 3. Construction du payload final
     const payload = {
-      parameters: this.licenseForm.get('dynamicParams')?.value
+      parameters: formattedParameters
     };
 
-    // Appel au service de mise à jour (supposé updateLicense ou patchLicense)
     this.licenseService.updateLicense(this.license.id, payload).subscribe({
       next: () => {
         this.updated.emit();
         this.close.emit();
       },
-      error: () => this.isLoading = false
+      error: () => {
+        this.isLoading = false;
+        // Optionnel : notify error
+      }
     });
   }
+
 }

@@ -2,6 +2,7 @@ package com.taurustechnology.backend.services.impl;
 
 import com.taurustechnology.backend.dtos.LicenseMiniStats;
 import com.taurustechnology.backend.dtos.requests.LicenseRequest;
+import com.taurustechnology.backend.mappers.LicenseParameterMapper;
 import com.taurustechnology.backend.models.*;
 import com.taurustechnology.backend.repositories.*;
 import com.taurustechnology.backend.services.AuditService;
@@ -37,6 +38,7 @@ public class LicenseServiceImpl implements LicenseService {
     private final AuditService auditService;
     private final LicenseGeneratorService licenseGeneratorService;
     private final ExportRepository exportRepository;
+    private final LicenseParameterMapper licenseParameterMapper;
 
     @Override
     @Transactional
@@ -52,21 +54,37 @@ public class LicenseServiceImpl implements LicenseService {
         AppUser creator = appUserRepository.findByUsername(username)
                 .orElseThrow(() -> new EntityNotFoundException("User not found"));
 
+        // 1. Initialisation de la licence
         License license = License.builder()
                 .activationCode(UUID.randomUUID().toString().toUpperCase())
                 .active(true)
                 .client(client)
                 .project(project)
                 .creator(creator)
-                .parameters(new ArrayList<>())
+                .parameters(new ArrayList<>()) // Initialiser la liste pour éviter les NPE
                 .build();
 
-
         try {
+            // 2. Mapping des paramètres (DTO -> Entity)
+            if (request.getParameters() != null && !request.getParameters().isEmpty()) {
+                List<LicenseParameter> parameters = licenseParameterMapper.toEntity(request.getParameters());
+
+                // 3. Liaison bidirectionnelle
+                parameters.forEach(p -> {
+                    p.setLicense(license); // On lie le paramètre à l'instance de licence
+                    license.getParameters().add(p);
+                });
+            }
+
+            // 4. Sauvegarde unique (CascadeType.ALL fera le reste)
             License saved = licenseRepository.save(license);
+
             auditService.logAction("CREATE_LICENSE", username, "License ID: " + saved.getId(), "SUCCESS");
+            log.info("[SUCCESS] License forged with {} parameters", saved.getParameters().size());
+
             return saved;
         } catch (Exception e) {
+            log.error("[ERROR] Failed to forge license: {}", e.getMessage());
             auditService.logAction("CREATE_LICENSE", username, "Client: " + request.getClientId(), "FAILED");
             throw e;
         }
@@ -91,22 +109,37 @@ public class LicenseServiceImpl implements LicenseService {
     @Override
     @Transactional
     public License update(String username, String id, LicenseRequest request) {
-        log.info("Updating license: {}", id);
+        log.info("Updating license metadata for ID: {}", id);
 
         License existingLicense = licenseRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("License not found"));
+                .orElseThrow(() -> new EntityNotFoundException("License not found with ID: " + id));
 
+        // 1. Gestion de la collection de paramètres
+        if (request.getParameters() != null) {
+            // Vider la collection existante (gérée par orphanRemoval = true)
+            existingLicense.getParameters().clear();
 
-        // Mise à jour des paramètres dynamiques (Metadata)
-        existingLicense.getParameters().clear();
+            // 2. Mapper les DTO en entités
+            List<LicenseParameter> newParameters = licenseParameterMapper.toEntity(request.getParameters());
 
+            // 3. CRUCIAL : Rétablir le lien bidirectionnel
+            for (LicenseParameter param : newParameters) {
+                param.setLicense(existingLicense); // Définit la clé étrangère license_id
+                existingLicense.getParameters().add(param); // Ajoute à la liste persistante
+            }
+        }
 
         try {
+            // 4. Une seule sauvegarde suffit pour tout mettre à jour (CascadeType.ALL)
             License updated = licenseRepository.save(existingLicense);
+
             auditService.logAction("UPDATE_LICENSE", username, "License ID: " + id, "SUCCESS");
+            log.info("[COMPLETED] License {} updated with {} parameters", id, updated.getParameters().size());
+
             return updated;
         } catch (Exception e) {
-            auditService.logAction("UPDATE_LICENSE", username, id, "FAILED");
+            log.error("[CRITICAL] Failed to update license {}: {}", id, e.getMessage());
+            auditService.logAction("UPDATE_LICENSE", username, id, "FAILED: " + e.getMessage());
             throw e;
         }
     }

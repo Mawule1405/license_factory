@@ -3,7 +3,6 @@
 
   <div class="relative bg-white w-full max-w-2xl shadow-2xl border-t-8 border-taurus-green animate-in fade-in zoom-in duration-300 overflow-hidden">
 
-    <!-- Header -->
     <div class="p-5 border-b border-gray-100 flex justify-between items-center bg-gray-800 text-white">
       <div>
         <h2 class="text-xs font-black uppercase tracking-[0.3em] text-white">License_Parameter_Tuning</h2>
@@ -29,37 +28,53 @@
           <label class="text-[9px] font-black text-gray-500 uppercase tracking-widest">Parameter_Recalibration</label>
         </div>
 
-        <!-- Champs Dynamiques -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 min-h-[150px]" formGroupName="dynamicParams">
-          @for (key of dynamicParamKeys; track key) {
-            <div class="space-y-1">
+          @for (param of dynamicParameters; track param.id) {
+            <div class="space-y-1 animate-in slide-in-from-bottom-2 duration-300">
               <div class="flex justify-between items-center">
-                <label class="text-[10px] font-bold uppercase tracking-wider text-gray-700">{{ key.replace('_', ' ') }}</label>
-                @if (licenseForm.get('dynamicParams.' + key)?.invalid) {
+                <div class="flex items-center gap-2">
+                  <label class="text-[10px] font-bold uppercase tracking-wider text-gray-700">
+                    {{ param.label.replace('_', ' ') }}
+                  </label>
+                  <span class="px-1.5 py-0.5 bg-gray-100 text-[7px] font-black text-gray-400 rounded uppercase border border-gray-200">
+                    {{ param.type }}
+                  </span>
+                </div>
+
+                @if (licenseForm.get('dynamicParams.' + param.label)?.invalid) {
                   <span class="text-[8px] text-red-500 font-black uppercase">Required</span>
                 }
               </div>
-              <input [formControlName]="key" type="text"
+
+              <input [formControlName]="param.label"
+                     [type]="param.type === 'number' ? 'number' : (param.type === 'date' ? 'date' : 'text')"
                      class="w-full px-3 py-2 bg-gray-50 border-2 border-gray-100 outline-none focus:border-taurus-green font-mono text-[11px] text-gray-800 uppercase transition-all">
             </div>
           }
         </div>
 
-        <!-- Actions -->
         <div class="pt-6 border-t border-gray-100 flex gap-3">
-          <button type="button" (click)="close.emit()" [disabled]="isLoading"
-                  class="flex-1 py-3 border-2 border-gray-100 text-[10px] font-black uppercase tracking-widest hover:bg-gray-50 transition-all">
+          <button type="button"
+                  (click)="close.emit()"
+                  [disabled]="isLoading"
+                  class="flex-1 py-3 border-2 border-gray-100 text-[10px] font-black uppercase tracking-widest hover:bg-gray-50 transition-all disabled:opacity-50">
             Cancel_Changes
           </button>
-          <button type="submit" [disabled]="licenseForm.invalid || isLoading"
-                  class="flex-1 py-3 bg-gray-900 text-white text-[10px] font-black uppercase tracking-widest hover:bg-taurus-green disabled:opacity-20 transition-all shadow-xl flex items-center justify-center gap-2">
+
+          <button type="submit"
+                  [disabled]="licenseForm.invalid || isLoading"
+                  class="flex-1 py-3 bg-gray-900 text-white text-[10px] font-black uppercase tracking-widest transition-all shadow-xl flex items-center justify-center gap-2"
+                  [ngClass]="{'hover:bg-taurus-green': !licenseForm.invalid, 'opacity-20 cursor-not-allowed': licenseForm.invalid}">
+
             @if (isLoading) {
-              <i class="fas fa-circle-notch animate-spin"></i> Synchronizing...
+              <i class="fas fa-circle-notch animate-spin"></i> Processing...
             } @else {
-              <i class="fas fa-save text-taurus-green"></i> Push_Update
+              <i class="fas fa-save" [class.text-taurus-green]="licenseForm.valid"></i>
+              Push_Update
             }
           </button>
         </div>
+
       </div>
     </form>
   </div>

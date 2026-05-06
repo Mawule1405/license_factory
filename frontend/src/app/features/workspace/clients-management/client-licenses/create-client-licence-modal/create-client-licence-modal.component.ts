@@ -76,19 +76,32 @@ export class CreateClientLicenceModalComponent implements OnInit {
     const selectedProject = this.projects.find(p => p.id === projectId);
     const dynamicGroup = this.licenseForm.get('dynamicParams') as FormGroup;
 
-    // Nettoyage
-    Object.keys(dynamicGroup.controls).forEach(key => dynamicGroup.removeControl(key));
+    // 1. Réinitialisation complète des valeurs et de l'état (touched/dirty) du groupe
+    dynamicGroup.reset();
+
+    // 2. Nettoyage des contrôles existants
+    // On utilise Object.keys pour itérer sur les contrôles actuels et les supprimer un par un
+    Object.keys(dynamicGroup.controls).forEach(key => {
+      dynamicGroup.removeControl(key);
+    });
+
+    // 3. Réinitialisation de la liste des paramètres pour le template
     this.dynamicParameters = [];
 
     if (selectedProject?.licenseModel?.parameters) {
-      // On stocke les objets complets
       this.dynamicParameters = selectedProject.licenseModel.parameters;
 
       this.dynamicParameters.forEach(param => {
-        // On utilise param.label (ou param.key selon votre backend) pour le contrôle
-        dynamicGroup.addControl(param.label, new FormControl('', Validators.required));
+        // 4. Injection des nouveaux contrôles vierges
+        dynamicGroup.addControl(
+          param.label,
+          new FormControl('', Validators.required)
+        );
       });
     }
+
+    // 5. Forcer la détection de changement pour mettre à jour l'UI immédiatement
+    this.cdr.detectChanges();
   }
 
   isProjectSelected(id: string): boolean {
@@ -99,10 +112,19 @@ export class CreateClientLicenceModalComponent implements OnInit {
     if (this.licenseForm.invalid) return;
     this.isLoading = true;
 
+    const dynamicValues = this.licenseForm.get('dynamicParams')?.value;
+
+    // Conversion en List<LicenseParameterDto>
+    const formattedParameters = this.dynamicParameters.map(param => ({
+      label: param.label,
+      value: String(dynamicValues[param.label]),
+      type: param.type
+    }));
+
     const payload = {
       clientId: this.clientId,
       projectId: this.licenseForm.value.projectId,
-      parameters: this.licenseForm.value.dynamicParams
+      parameters: formattedParameters // Format liste d'objets
     };
 
     this.licenseService.createLicense(payload).subscribe({

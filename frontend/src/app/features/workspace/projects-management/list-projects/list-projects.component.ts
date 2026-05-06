@@ -63,6 +63,7 @@ export class ListProjectsComponent implements OnInit{
           this.pagination.totalPages = res.totalPages;
           this.pagination.page = res.page;
           this.pagination.size = res.size;
+          console.log(res.content);
           this.cdr.detectChanges();
         },
         error: () => {

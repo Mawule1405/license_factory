@@ -18,7 +18,10 @@ public class LicenseParameter extends BaseEntity {
     @Column(name = "parameter_value", nullable = false)
     private String value; // Ex: "10", "true"
 
+    private String type;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "license_id", nullable = false)
     private License license;
+
 }

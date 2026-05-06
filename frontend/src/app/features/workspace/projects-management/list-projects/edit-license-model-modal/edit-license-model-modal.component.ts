@@ -35,7 +35,6 @@ export class EditLicenseModelModalComponent implements OnInit {
     this.patchProjectData();
   }
 
-  // Remplit le formulaire avec les données existantes du projet
   private patchProjectData() {
     if (this.project) {
       this.projectForm.patchValue({
@@ -43,13 +42,12 @@ export class EditLicenseModelModalComponent implements OnInit {
         description: this.project.description
       });
 
-      // Remplissage du FormArray des paramètres
       const params = this.project.licenseModel?.parameters || [];
       params.forEach(param => {
-        this.parameters.push(this.fb.control(param, Validators.required));
+        // Ajout d'un FormGroup pour chaque paramètre existant
+        this.addParameter(param.label, param.type);
       });
 
-      // Sécurité : Si aucun paramètre n'existe, en ajouter un vide
       if (this.parameters.length === 0) {
         this.addParameter();
       }
@@ -60,8 +58,13 @@ export class EditLicenseModelModalComponent implements OnInit {
     return this.projectForm.get('licenseModel.parameters') as FormArray;
   }
 
-  addParameter() {
-    this.parameters.push(this.fb.control('', Validators.required));
+  // Méthode mise à jour pour accepter label et type
+  addParameter(label: string = '', type: string = 'TEXT') {
+    const paramGroup = this.fb.group({
+      label: [label, Validators.required],
+      type: [type, Validators.required]
+    });
+    this.parameters.push(paramGroup);
   }
 
   removeParameter(index: number) {

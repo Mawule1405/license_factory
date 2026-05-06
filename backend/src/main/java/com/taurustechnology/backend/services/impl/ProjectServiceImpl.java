@@ -4,6 +4,7 @@ import com.taurustechnology.backend.dtos.ProjectMiniStats;
 import com.taurustechnology.backend.dtos.requests.ProjectRequest;
 import com.taurustechnology.backend.models.AppUser;
 import com.taurustechnology.backend.models.LicenseModel;
+import com.taurustechnology.backend.models.Parameter;
 import com.taurustechnology.backend.models.Project;
 import com.taurustechnology.backend.repositories.AppUserRepository;
 import com.taurustechnology.backend.repositories.LicenseModelRepository;
@@ -29,6 +30,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -51,6 +53,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    @Transactional
     public Project createProject(ProjectRequest projectRequest, String username) {
         log.info("[START] Attempting to create project '{}' by user: {}", projectRequest.getName(), username);
 
@@ -72,26 +75,43 @@ public class ProjectServiceImpl implements ProjectService {
         newProject.setCreatedBy(appuser.getId());
         newProject.setCreatedAt(LocalDateTime.now());
 
+        // 1. Sauvegarder d'abord le projet pour avoir l'ID
         final Project savedProject = projectRepository.save(newProject);
-        log.debug("[DB_SAVE] Core project entity saved for: {}", savedProject.getName());
 
         if (projectRequest.getLicenseModel() != null) {
             log.debug("[CONFIG] Initializing security parameters for project: {}", savedProject.getName());
-             LicenseModel licenseModel = new LicenseModel();
+
+            LicenseModel licenseModel = new LicenseModel();
             licenseModel.setProject(savedProject);
+
+            // 2. Mapper les paramètres depuis la requête (DTO -> Entity)
+            if (projectRequest.getLicenseModel().getParameters() != null) {
+                List<Parameter> parameters = projectRequest.getLicenseModel().getParameters().stream()
+                        .map(paramRequest -> {
+                            Parameter p = new Parameter();
+                            p.setLabel(paramRequest.getLabel());
+                            p.setType(paramRequest.getType());
+                            // Important : Si Parameter a un lien vers LicenseModel, le définir ici
+                            return p;
+                        }).collect(Collectors.toList());
+
+                // 3. Enregistrer les paramètres (dépend de votre cascade JPA)
+                licenseModel.setParameters(parameters);
+            }
 
             licenseModel = licenseModelRepository.save(licenseModel);
             savedProject.setLicenseModel(licenseModel);
-            log.info("[CONFIG_SUCCESS] {} security parameters attached to project",licenseModel.getParameters().size());
+
+            log.info("[CONFIG_SUCCESS] {} security parameters attached to project",
+                    licenseModel.getParameters() != null ? licenseModel.getParameters().size() : 0);
         }
 
         auditService.logAction("CREATE_PROJECT", username, savedProject.getName(), "SUCCESS");
-        log.info("[COMPLETED] Project '{}' created successfully with ID: {}", savedProject.getName(), savedProject.getId());
-
         return savedProject;
     }
 
     @Override
+    @Transactional
     public void updateProject(String id, Project projectUpdates, String username) {
         log.info("[START] Updating project ID: {} by user: {}", id, username);
 
@@ -105,6 +125,7 @@ public class ProjectServiceImpl implements ProjectService {
             return new EntityNotFoundException("Project not found with id: " + id);
         });
 
+        // Vérification de l'unicité du nom en cas de renommage
         if (!existingProject.getName().equalsIgnoreCase(projectUpdates.getName()) &&
                 projectRepository.existsByNameIgnoreCase(projectUpdates.getName())) {
             log.warn("[CONFLICT] Cannot rename project to '{}': Name already taken", projectUpdates.getName());
@@ -119,19 +140,41 @@ public class ProjectServiceImpl implements ProjectService {
 
             if (projectUpdates.getLicenseModel() != null) {
                 log.debug("[SYNC] Synchronizing license model parameters for: {}", existingProject.getName());
+
                 LicenseModel lm = existingProject.getLicenseModel();
                 if (lm == null) {
                     lm = new LicenseModel();
                     lm.setProject(existingProject);
+                    existingProject.setLicenseModel(lm);
                 }
-                lm.setParameters(projectUpdates.getLicenseModel().getParameters());
+
+                // Gestion sécurisée de la collection de paramètres
+                if (projectUpdates.getLicenseModel().getParameters() != null) {
+                    // 1. On initialise ou on vide la liste existante
+                    if (lm.getParameters() == null) {
+                        lm.setParameters(new ArrayList<>());
+                    } else {
+                        lm.getParameters().clear();
+                    }
+
+                    // 2. CRUCIAL : On ajoute les nouveaux paramètres
+                    for (Parameter paramUpdate : projectUpdates.getLicenseModel().getParameters()) {
+                        // On crée une nouvelle instance ou on prépare l'instance reçue
+                        Parameter newParam = new Parameter();
+                        newParam.setLabel(paramUpdate.getLabel());
+                        newParam.setType(paramUpdate.getType());
+
+                        // 3. IMPORTANT : On lie le paramètre au LicenseModel (Lien bidirectionnel)
+                        //newParam.setLicenseModel(lm);
+
+                        // 4. On ajoute à la liste gérée par Hibernate
+                        lm.getParameters().add(newParam);
+                    }
+                }
 
                 licenseModelRepository.save(lm);
-                existingProject.setLicenseModel(lm);
             }
 
-            existingProject.setUpdatedBy(appuser.getId());
-            existingProject.setUpdatedAt(LocalDateTime.now());
             projectRepository.save(existingProject);
             auditService.logAction("UPDATE_PROJECT", username, existingProject.getName(), "SUCCESS");
             log.info("[COMPLETED] Project '{}' updated successfully", existingProject.getName());

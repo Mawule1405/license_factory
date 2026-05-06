@@ -28,7 +28,7 @@ export class CreateProjectModalComponent {
     licenseModel: this.fb.group({
         parameters: this.fb.array([
           this.fb.group({
-            key: ['MAC_ADDRESS', Validators.required],
+            label: ['MAC_ADDRESS', Validators.required],
             type: ['text', Validators.required]
           })
         ]),
@@ -44,7 +44,7 @@ export class CreateProjectModalComponent {
   addParameter() {
     // On ajoute un nouveau groupe avec les deux champs
     this.parameters.push(this.fb.group({
-      key: ['', Validators.required],
+      label: ['', Validators.required],
       type: ['text', Validators.required]
     }));
   }
@@ -59,8 +59,6 @@ export class CreateProjectModalComponent {
     if (this.projectForm.valid && !this.isLoading) {
       this.isLoading = true; // Sécurité contre les doubles clics (Race Condition)
 
-      let data = this.projectForm.value;
-
       this.projectService.createProject(this.projectForm.value)
         .pipe(finalize(() => this.isLoading = false))
         .subscribe({
@@ -70,8 +68,7 @@ export class CreateProjectModalComponent {
             this.close.emit();
           },
           error: (err) => {
-            // L'erreur est déjà traitée par le GlobalErrorInterceptor,
-            // mais on peut logguer ici si besoin.
+
             console.error(err);
           }
         });

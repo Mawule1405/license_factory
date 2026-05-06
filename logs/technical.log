@@ -1,21 +1,44 @@
-2026-05-05 21:18:04,566 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 26812 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
-2026-05-05 21:18:04,574 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
-2026-05-05 21:18:05,308 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
-2026-05-05 21:18:11,550 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-05-05 21:18:12,019 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 256 ms. Found 9 JPA repository interfaces.
-2026-05-05 21:18:13,920 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
-2026-05-05 21:18:13,951 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
-2026-05-05 21:18:13,956 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
-2026-05-05 21:18:13,957 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
-2026-05-05 21:18:14,109 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 9414 ms
-2026-05-05 21:18:14,567 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
-2026-05-05 21:18:14,736 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
-2026-05-05 21:18:15,975 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-05-05 21:18:16,067 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
-2026-05-05 21:18:16,573 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
-2026-05-05 21:18:16,577 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
-2026-05-05 21:18:16,619 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-05-05 21:18:16,653 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+2026-05-06 03:30:31,443 WARN c.z.h.p.HikariPool [HikariPool-1:housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h30s393ms547µs).
+2026-05-06 06:38:24,364 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-7] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 06:38:24,408 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-7] [QUERY_RESULT] Retrieved 4 projects for filter: ''
+2026-05-06 06:38:38,983 WARN c.z.h.p.HikariPool [HikariPool-1:housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h8m17s184ms780µs999ns).
+2026-05-06 07:17:09,559 INFO c.t.b.c.ClientController [http-nio-8080-exec-3] REST request to list clients for user: admin
+2026-05-06 07:17:12,703 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-7] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 07:17:12,709 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-7] [QUERY_RESULT] Retrieved 4 projects for filter: ''
+2026-05-06 09:50:51,399 WARN c.z.h.p.HikariPool [HikariPool-1:housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h33m9s775ms713µs700ns).
+2026-05-06 09:51:08,326 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-2] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 09:51:08,342 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-2] [QUERY_RESULT] Retrieved 4 projects for filter: ''
+2026-05-06 09:51:09,397 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 09:51:09,407 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY_RESULT] Retrieved 4 projects for filter: ''
+2026-05-06 10:01:22,190 WARN c.z.h.p.HikariPool [HikariPool-1:housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m634ms324µs100ns).
+2026-05-06 10:15:59,068 WARN c.z.h.p.HikariPool [HikariPool-1:housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m36s816ms267µs500ns).
+2026-05-06 10:27:55,596 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 10:27:55,635 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [QUERY_RESULT] Retrieved 4 projects for filter: ''
+2026-05-06 10:28:50,736 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-2] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 10:28:50,747 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-2] [QUERY_RESULT] Retrieved 4 projects for filter: ''
+2026-05-06 12:08:16,833 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-06 12:08:16,869 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-05-06 12:08:16,898 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-06 12:08:16,924 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-05-06 12:08:16,933 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-05-06 17:55:52,812 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 28196 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-05-06 17:55:52,820 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-05-06 17:55:53,620 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-05-06 17:55:56,019 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-06 17:55:56,817 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 778 ms. Found 9 JPA repository interfaces.
+2026-05-06 17:56:00,431 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-05-06 17:56:00,462 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-05-06 17:56:00,466 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-05-06 17:56:00,466 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-05-06 17:56:00,729 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 7611 ms
+2026-05-06 17:56:04,028 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-06 17:56:04,226 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-05-06 17:56:06,104 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-06 17:56:06,212 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-05-06 17:56:07,220 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-05-06 17:56:07,225 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-05-06 17:56:07,325 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-06 17:56:07,384 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
 	Database JDBC URL [jdbc:h2:file:./data/license_db]
 	Database driver: H2 JDBC Driver
 	Database dialect: H2Dialect
@@ -27,495 +50,99 @@
 	Pool: DataSourceConnectionProvider
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-05-05 21:18:19,237 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-05-05 21:18:19,467 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-05-05 21:18:19,618 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-05-05 21:18:24,938 ERROR c.t.b.i.AppUserInitializer [main] Failed to initialize super administrator user
-org.springframework.dao.IncorrectResultSizeDataAccessException: Query did not return a unique result: 2 results were returned
-	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.convertHibernateAccessException(HibernateExceptionTranslator.java:180)
-	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.convertHibernateAccessException(HibernateExceptionTranslator.java:131)
-	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.translateExceptionIfPossible(HibernateExceptionTranslator.java:109)
-	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:199)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:556)
-	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
-	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:346)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:157)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:137)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:222)
-	at jdk.proxy2/jdk.proxy2.$Proxy177.findByAppRoles_name(Unknown Source)
-	at com.taurustechnology.backend.initialization.AppUserInitializer.createSuperAdministrator(AppUserInitializer.java:55)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:453)
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:397)
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:217)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:426)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1809)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:993)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620)
-	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
-	at com.taurustechnology.backend.BackendApplication.main(BackendApplication.java:13)
-Caused by: org.hibernate.NonUniqueResultException: Query did not return a unique result: 2 results were returned
-	at org.hibernate.query.spi.AbstractSelectionQuery.uniqueElement(AbstractSelectionQuery.java:315)
-	at org.hibernate.query.spi.AbstractSelectionQuery.getSingleResultOrNull(AbstractSelectionQuery.java:330)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:414)
-	at jdk.proxy2/jdk.proxy2.$Proxy188.getSingleResultOrNull(Unknown Source)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:328)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:99)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:164)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:154)
-	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:169)
-	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:167)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:146)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
-	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:69)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:370)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:118)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:135)
-	... 31 common frames omitted
-2026-05-05 21:18:27,136 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-05-05 21:18:27,244 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
-2026-05-05 21:18:27,489 INFO c.t.b.s.s.WebSecurity [main] [2026-05-05T21:18:27.489125100] Configuring security filter chain
-2026-05-05 21:18:28,904 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
-2026-05-05 21:18:28,954 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
-2026-05-05 21:18:28,965 INFO c.t.b.BackendApplication [main] Started BackendApplication in 25.577 seconds (process running for 27.129)
-2026-05-05 21:21:00,903 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
-2026-05-05 21:21:00,937 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
-2026-05-05 21:21:00,948 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-05-05 21:21:00,950 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
-2026-05-05 21:21:00,953 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
-2026-05-05 21:21:12,628 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 20720 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
-2026-05-05 21:21:12,632 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
-2026-05-05 21:21:13,017 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
-2026-05-05 21:21:14,514 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-05-05 21:21:14,855 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 321 ms. Found 9 JPA repository interfaces.
-2026-05-05 21:21:16,253 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
-2026-05-05 21:21:16,277 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
-2026-05-05 21:21:16,280 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
-2026-05-05 21:21:16,281 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
-2026-05-05 21:21:16,398 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 3693 ms
-2026-05-05 21:21:16,735 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
-2026-05-05 21:21:16,854 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
-2026-05-05 21:21:17,994 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-05-05 21:21:18,070 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
-2026-05-05 21:21:19,739 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
-2026-05-05 21:21:19,745 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
-2026-05-05 21:21:19,791 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-05-05 21:21:19,828 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
-	Database JDBC URL [jdbc:h2:file:./data/license_db]
-	Database driver: H2 JDBC Driver
-	Database dialect: H2Dialect
-	Database version: 2.4.240
-	Default catalog/schema: LICENSE_DB/PUBLIC
-	Autocommit mode: undefined/unknown
-	Isolation level: READ_COMMITTED [default READ_COMMITTED]
-	JDBC fetch size: 100
-	Pool: DataSourceConnectionProvider
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2026-05-05 21:21:22,707 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-05-05 21:21:22,850 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-05-05 21:21:23,038 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-05-05 21:21:31,698 ERROR c.t.b.i.AppUserInitializer [main] Failed to initialize super administrator user
-org.springframework.dao.IncorrectResultSizeDataAccessException: Query did not return a unique result: 2 results were returned
-	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.convertHibernateAccessException(HibernateExceptionTranslator.java:180)
-	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.convertHibernateAccessException(HibernateExceptionTranslator.java:131)
-	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.translateExceptionIfPossible(HibernateExceptionTranslator.java:109)
-	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:199)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:556)
-	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
-	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:346)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:157)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:137)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:222)
-	at jdk.proxy2/jdk.proxy2.$Proxy177.findByAppRoles_name(Unknown Source)
-	at com.taurustechnology.backend.initialization.AppUserInitializer.createSuperAdministrator(AppUserInitializer.java:55)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:453)
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:397)
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:217)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:426)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1809)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:993)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620)
-	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
-	at com.taurustechnology.backend.BackendApplication.main(BackendApplication.java:13)
-Caused by: org.hibernate.NonUniqueResultException: Query did not return a unique result: 2 results were returned
-	at org.hibernate.query.spi.AbstractSelectionQuery.uniqueElement(AbstractSelectionQuery.java:315)
-	at org.hibernate.query.spi.AbstractSelectionQuery.getSingleResultOrNull(AbstractSelectionQuery.java:330)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:414)
-	at jdk.proxy2/jdk.proxy2.$Proxy188.getSingleResultOrNull(Unknown Source)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:328)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:99)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:164)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:154)
-	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:169)
-	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:167)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:146)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
-	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:69)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:370)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:118)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:135)
-	... 31 common frames omitted
-2026-05-05 21:21:32,054 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-05-05 21:21:32,154 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
-2026-05-05 21:21:32,364 INFO c.t.b.s.s.WebSecurity [main] [2026-05-05T21:21:32.364240600] Configuring security filter chain
-2026-05-05 21:21:33,548 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
-2026-05-05 21:21:33,592 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
-2026-05-05 21:21:33,601 INFO c.t.b.BackendApplication [main] Started BackendApplication in 22.436 seconds (process running for 24.221)
-2026-05-05 21:24:41,150 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-05-05 21:24:41,150 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
-2026-05-05 21:24:41,156 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 6 ms
-2026-05-05 21:24:41,384 INFO c.t.b.s.j.JwtAuthenticationFilter [http-nio-8080-exec-2] Tentative de connexion pour : admin
-2026-05-05 21:24:41,579 INFO c.t.b.s.s.UserDetailService [http-nio-8080-exec-2] 🔍 Authentication attempt for identifier: admin
-2026-05-05 21:24:41,591 INFO c.t.b.s.s.UserDetailService [http-nio-8080-exec-2] ✅ User admin loaded with authorities: [ROLE_ADMINISTRATOR]
-2026-05-05 21:24:46,182 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
-2026-05-05 21:24:46,236 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [QUERY_RESULT] Retrieved 3 projects for filter: ''
-2026-05-05 21:24:57,999 INFO c.t.b.c.ClientController [http-nio-8080-exec-2] REST request to list clients for user: admin
-2026-05-05 21:32:20,021 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
-2026-05-05 21:32:20,031 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY_RESULT] Retrieved 3 projects for filter: ''
-2026-05-05 21:38:26,433 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-6] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
-2026-05-05 21:38:26,447 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-6] [QUERY_RESULT] Retrieved 3 projects for filter: ''
-2026-05-05 21:39:08,613 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
-2026-05-05 21:39:08,627 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY_RESULT] Retrieved 3 projects for filter: ''
-2026-05-05 21:52:39,250 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
-2026-05-05 21:52:39,270 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
-2026-05-05 21:52:39,281 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-05-05 21:52:39,287 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
-2026-05-05 21:52:39,289 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
-2026-05-05 22:01:57,788 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 23628 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
-2026-05-05 22:01:57,792 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
-2026-05-05 22:01:58,200 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
-2026-05-05 22:01:59,492 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-05-05 22:01:59,717 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 201 ms. Found 9 JPA repository interfaces.
-2026-05-05 22:02:02,224 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
-2026-05-05 22:02:02,256 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
-2026-05-05 22:02:02,262 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
-2026-05-05 22:02:02,263 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
-2026-05-05 22:02:02,662 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 4794 ms
-2026-05-05 22:02:03,121 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
-2026-05-05 22:02:03,272 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
-2026-05-05 22:02:04,281 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-05-05 22:02:04,342 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
-2026-05-05 22:02:04,841 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
-2026-05-05 22:02:04,845 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
-2026-05-05 22:02:04,884 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-05-05 22:02:04,930 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
-	Database JDBC URL [jdbc:h2:file:./data/license_db]
-	Database driver: H2 JDBC Driver
-	Database dialect: H2Dialect
-	Database version: 2.4.240
-	Default catalog/schema: LICENSE_DB/PUBLIC
-	Autocommit mode: undefined/unknown
-	Isolation level: READ_COMMITTED [default READ_COMMITTED]
-	JDBC fetch size: 100
-	Pool: DataSourceConnectionProvider
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2026-05-05 22:02:08,644 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-05-05 22:02:08,832 WARN o.h.t.s.i.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "create table parameters (id bigint generated by default as identity, key varchar(255), type varchar(255), primary key (id))" via JDBC [Erreur de syntaxe dans l'instruction SQL "create table parameters (id bigint generated by default as identity, [*]key varchar(255), type varchar(255), primary key (id))"; attendu "identifier"
-Syntax error in SQL statement "create table parameters (id bigint generated by default as identity, [*]key varchar(255), type varchar(255), primary key (id))"; expected "identifier";]
-org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table parameters (id bigint generated by default as identity, key varchar(255), type varchar(255), primary key (id))" via JDBC [Erreur de syntaxe dans l'instruction SQL "create table parameters (id bigint generated by default as identity, [*]key varchar(255), type varchar(255), primary key (id))"; attendu "identifier"
-Syntax error in SQL statement "create table parameters (id bigint generated by default as identity, [*]key varchar(255), type varchar(255), primary key (id))"; expected "identifier";]
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:81)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:566)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:506)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:305)
-	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:80)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:220)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:96)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:269)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$1(SchemaManagementToolCoordinator.java:101)
-	at java.base/java.util.HashMap.forEach(HashMap.java:1429)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:100)
-	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:35)
-	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:33)
-	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:323)
-	at org.hibernate.internal.SessionFactoryRegistry.instantiateSessionFactory(SessionFactoryRegistry.java:64)
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:437)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1456)
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:433)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:416)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:409)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:976)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620)
-	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
-	at com.taurustechnology.backend.BackendApplication.main(BackendApplication.java:13)
-Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Erreur de syntaxe dans l'instruction SQL "create table parameters (id bigint generated by default as identity, [*]key varchar(255), type varchar(255), primary key (id))"; attendu "identifier"
-Syntax error in SQL statement "create table parameters (id bigint generated by default as identity, [*]key varchar(255), type varchar(255), primary key (id))"; expected "identifier"; SQL statement:
-create table parameters (id bigint generated by default as identity, key varchar(255), type varchar(255), primary key (id)) [42001-240]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
-	at org.h2.message.DbException.getSyntaxError(DbException.java:261)
-	at org.h2.command.Parser.readIdentifier(Parser.java:5568)
-	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:8978)
-	at org.h2.command.Parser.parseCreateTable(Parser.java:8926)
-	at org.h2.command.Parser.parseCreate(Parser.java:6483)
-	at org.h2.command.Parser.parsePrepared(Parser.java:648)
-	at org.h2.command.Parser.parse(Parser.java:584)
-	at org.h2.command.Parser.parse(Parser.java:559)
-	at org.h2.command.Parser.prepareCommand(Parser.java:487)
-	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:647)
-	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:563)
-	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1160)
-	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245)
-	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
-	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
-	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:76)
-	... 38 common frames omitted
-2026-05-05 22:02:08,913 WARN o.h.t.s.i.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists license_models_parameters add constraint FKaeg4ora9qvl0mtcscl5tt0js foreign key (parameters_id) references parameters" via JDBC [Table "PARAMETERS" non trouvée
-Table "PARAMETERS" not found;]
-org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists license_models_parameters add constraint FKaeg4ora9qvl0mtcscl5tt0js foreign key (parameters_id) references parameters" via JDBC [Table "PARAMETERS" non trouvée
-Table "PARAMETERS" not found;]
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:81)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:566)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:506)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applyForeignKeys(AbstractSchemaMigrator.java:438)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:256)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:96)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:269)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$1(SchemaManagementToolCoordinator.java:101)
-	at java.base/java.util.HashMap.forEach(HashMap.java:1429)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:100)
-	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:35)
-	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:33)
-	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:323)
-	at org.hibernate.internal.SessionFactoryRegistry.instantiateSessionFactory(SessionFactoryRegistry.java:64)
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:437)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1456)
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:433)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:416)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:409)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:976)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620)
-	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
-	at com.taurustechnology.backend.BackendApplication.main(BackendApplication.java:13)
-Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PARAMETERS" non trouvée
-Table "PARAMETERS" not found; SQL statement:
-alter table if exists license_models_parameters add constraint FKaeg4ora9qvl0mtcscl5tt0js foreign key (parameters_id) references parameters [42102-240]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
-	at org.h2.message.DbException.get(DbException.java:223)
-	at org.h2.message.DbException.get(DbException.java:199)
-	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:198)
-	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
-	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
-	at org.h2.command.CommandContainer.update(CommandContainer.java:139)
-	at org.h2.command.Command.executeUpdate(Command.java:306)
-	at org.h2.command.Command.executeUpdate(Command.java:250)
-	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262)
-	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
-	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
-	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:76)
-	... 37 common frames omitted
-2026-05-05 22:02:08,932 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-05-05 22:02:09,192 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-05-05 22:02:13,141 ERROR c.t.b.i.AppUserInitializer [main] Failed to initialize super administrator user
-org.springframework.dao.IncorrectResultSizeDataAccessException: Query did not return a unique result: 2 results were returned
-	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.convertHibernateAccessException(HibernateExceptionTranslator.java:180)
-	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.convertHibernateAccessException(HibernateExceptionTranslator.java:131)
-	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.translateExceptionIfPossible(HibernateExceptionTranslator.java:109)
-	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:199)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:556)
-	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
-	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:346)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:157)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
-	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:137)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:222)
-	at jdk.proxy2/jdk.proxy2.$Proxy175.findByAppRoles_name(Unknown Source)
-	at com.taurustechnology.backend.initialization.AppUserInitializer.createSuperAdministrator(AppUserInitializer.java:55)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMethod.invoke(InitDestroyAnnotationBeanPostProcessor.java:453)
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:397)
-	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:217)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:426)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1809)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1218)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1184)
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1121)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:993)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620)
-	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
-	at com.taurustechnology.backend.BackendApplication.main(BackendApplication.java:13)
-Caused by: org.hibernate.NonUniqueResultException: Query did not return a unique result: 2 results were returned
-	at org.hibernate.query.spi.AbstractSelectionQuery.uniqueElement(AbstractSelectionQuery.java:315)
-	at org.hibernate.query.spi.AbstractSelectionQuery.getSingleResultOrNull(AbstractSelectionQuery.java:330)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.springframework.orm.jpa.SharedEntityManagerCreator$DeferredQueryInvocationHandler.invoke(SharedEntityManagerCreator.java:414)
-	at jdk.proxy2/jdk.proxy2.$Proxy186.getSingleResultOrNull(Unknown Source)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution$SingleEntityExecution.doExecute(JpaQueryExecution.java:328)
-	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:99)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:164)
-	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:154)
-	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:169)
-	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:167)
-	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:146)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
-	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:69)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:370)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:118)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:135)
-	... 31 common frames omitted
-2026-05-05 22:02:13,327 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-05-05 22:02:13,414 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
-2026-05-05 22:02:13,610 INFO c.t.b.s.s.WebSecurity [main] [2026-05-05T22:02:13.610159200] Configuring security filter chain
-2026-05-05 22:02:14,996 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
-2026-05-05 22:02:15,031 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
-2026-05-05 22:02:15,040 INFO c.t.b.BackendApplication [main] Started BackendApplication in 18.521 seconds (process running for 21.423)
-2026-05-05 22:02:42,317 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-05-05 22:02:42,317 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
-2026-05-05 22:02:42,323 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Completed initialization in 3 ms
-2026-05-05 22:02:42,938 INFO c.t.b.c.ClientController [http-nio-8080-exec-4] REST request to list clients for user: admin
-2026-05-05 22:02:44,563 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-7] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
-2026-05-05 22:02:44,658 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-7] [QUERY_RESULT] Retrieved 3 projects for filter: ''
-2026-05-05 22:02:44,732 WARN o.h.o.j.error [http-nio-8080-exec-7] HHH000247: ErrorCode: 42001, SQLState: 42001
-2026-05-05 22:02:44,734 WARN o.h.o.j.error [http-nio-8080-exec-7] Erreur de syntaxe dans l'instruction SQL "select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.[*]key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=?"; attendu "identifier"
-Syntax error in SQL statement "select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.[*]key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=?"; expected "identifier"; SQL statement:
-select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=? [42001-240]
-2026-05-05 22:07:54,340 INFO c.t.b.c.ClientController [http-nio-8080-exec-1] REST request to list clients for user: admin
-2026-05-05 22:07:56,689 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-5] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
-2026-05-05 22:07:56,695 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-5] [QUERY_RESULT] Retrieved 3 projects for filter: ''
-2026-05-05 22:07:56,703 WARN o.h.o.j.error [http-nio-8080-exec-5] HHH000247: ErrorCode: 42001, SQLState: 42001
-2026-05-05 22:07:56,704 WARN o.h.o.j.error [http-nio-8080-exec-5] Erreur de syntaxe dans l'instruction SQL "select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.[*]key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=?"; attendu "identifier"
-Syntax error in SQL statement "select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.[*]key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=?"; expected "identifier"; SQL statement:
-select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=? [42001-240]
-2026-05-05 22:08:03,003 INFO c.t.b.c.ClientController [http-nio-8080-exec-9] REST request to list clients for user: admin
-2026-05-05 22:15:55,018 INFO c.t.b.c.ClientController [http-nio-8080-exec-3] REST request to list clients for user: admin
-2026-05-05 22:15:58,701 INFO c.t.b.c.ClientController [http-nio-8080-exec-6] REST request to get client ID: 07d7b439-66b5-497f-92d4-bc99b9c7a201 by user: admin
-2026-05-05 22:16:01,881 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-9] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
-2026-05-05 22:16:01,887 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-9] [QUERY_RESULT] Retrieved 3 projects for filter: ''
-2026-05-05 22:16:01,895 WARN o.h.o.j.error [http-nio-8080-exec-9] HHH000247: ErrorCode: 42001, SQLState: 42001
-2026-05-05 22:16:01,895 WARN o.h.o.j.error [http-nio-8080-exec-9] Erreur de syntaxe dans l'instruction SQL "select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.[*]key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=?"; attendu "identifier"
-Syntax error in SQL statement "select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.[*]key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=?"; expected "identifier"; SQL statement:
-select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=? [42001-240]
-2026-05-05 22:16:22,884 INFO c.t.b.c.ClientController [http-nio-8080-exec-1] REST request to list clients for user: admin
-2026-05-05 22:18:35,199 WARN o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier [http-nio-8080-exec-9] Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+2026-05-06 17:56:11,462 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-06 17:56:11,657 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-06 17:56:12,198 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-06 17:56:16,580 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-06 17:56:16,650 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-05-06 17:56:16,854 INFO c.t.b.s.s.WebSecurity [main] [2026-05-06T17:56:16.854139300] Configuring security filter chain
+2026-05-06 17:56:17,835 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-05-06 17:56:17,901 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-05-06 17:56:17,913 INFO c.t.b.BackendApplication [main] Started BackendApplication in 26.514 seconds (process running for 28.666)
+2026-05-06 17:56:58,142 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-06 17:56:58,142 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2026-05-06 17:56:58,146 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Completed initialization in 4 ms
+2026-05-06 17:56:58,849 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 17:56:58,975 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY_RESULT] Retrieved 4 projects for filter: ''
+2026-05-06 17:58:13,640 INFO c.t.b.c.ProjectController [http-nio-8080-exec-8] REST request to update project ID: bf62596a-4d0b-4311-a932-d3f2e3b2475d
+2026-05-06 17:58:13,647 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [START] Updating project ID: bf62596a-4d0b-4311-a932-d3f2e3b2475d by user: admin
+2026-05-06 17:58:13,853 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [COMPLETED] Project 'NEBI' updated successfully
+2026-05-06 17:58:14,209 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-10] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 17:58:14,228 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-10] [QUERY_RESULT] Retrieved 4 projects for filter: ''
+2026-05-06 17:59:10,459 INFO c.t.b.c.ProjectController [http-nio-8080-exec-2] REST request to update project ID: 3d52a5af-2436-481f-8508-66aaab3e6d60
+2026-05-06 17:59:10,461 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-2] [START] Updating project ID: 3d52a5af-2436-481f-8508-66aaab3e6d60 by user: admin
+2026-05-06 17:59:10,505 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-2] [COMPLETED] Project 'cdscdscqs' updated successfully
+2026-05-06 17:59:10,565 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 17:59:10,575 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY_RESULT] Retrieved 4 projects for filter: ''
+2026-05-06 18:00:05,688 INFO c.t.b.c.ProjectController [http-nio-8080-exec-5] REST request to update project ID: 3d52a5af-2436-481f-8508-66aaab3e6d60
+2026-05-06 18:00:05,691 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-5] [START] Updating project ID: 3d52a5af-2436-481f-8508-66aaab3e6d60 by user: admin
+2026-05-06 18:00:05,737 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-5] [COMPLETED] Project 'NOWAIT' updated successfully
+2026-05-06 18:00:05,806 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 18:00:05,823 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [QUERY_RESULT] Retrieved 4 projects for filter: ''
+2026-05-06 18:00:14,555 WARN c.t.b.c.ProjectController [http-nio-8080-exec-10] REST request to delete project ID: 531b9557-a8a2-4609-8f32-4720cd75a933 by user: admin
+2026-05-06 18:00:14,563 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-10] [START] Request to terminate project ID: 531b9557-a8a2-4609-8f32-4720cd75a933 by: admin
+2026-05-06 18:00:14,571 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-10] [COMPLETED] Project 'dcfec' successfully decommissioned (Soft Delete)
+2026-05-06 18:00:14,632 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-2] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 18:00:14,636 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-2] [QUERY_RESULT] Retrieved 3 projects for filter: ''
+2026-05-06 18:00:23,520 WARN c.t.b.c.ProjectController [http-nio-8080-exec-4] REST request to delete project ID: a4613790-f3f8-4856-a535-a2a9d6028bc6 by user: admin
+2026-05-06 18:00:23,522 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [START] Request to terminate project ID: a4613790-f3f8-4856-a535-a2a9d6028bc6 by: admin
+2026-05-06 18:00:23,541 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [COMPLETED] Project 'fjhjknbjuig' successfully decommissioned (Soft Delete)
+2026-05-06 18:00:23,588 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-5] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 18:00:23,601 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-5] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 18:00:27,970 INFO c.t.b.c.ClientController [http-nio-8080-exec-10] REST request to list clients for user: admin
+2026-05-06 18:01:59,832 INFO c.t.b.c.ClientController [http-nio-8080-exec-4] REST request to create client by user: admin
+2026-05-06 18:01:59,862 INFO c.t.b.s.i.ClientServiceImpl [http-nio-8080-exec-4] [SUCCESS] Client saved with ID: 56ba9a3e-47a7-48e2-9a49-89dbe2ddd760
+2026-05-06 18:01:59,994 INFO c.t.b.c.ClientController [http-nio-8080-exec-5] REST request to list clients for user: admin
+2026-05-06 18:02:20,049 INFO c.t.b.c.ClientController [http-nio-8080-exec-8] REST request to get client ID: 56ba9a3e-47a7-48e2-9a49-89dbe2ddd760 by user: admin
+2026-05-06 18:02:23,266 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-1] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 18:02:23,283 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-1] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 18:02:36,815 INFO c.t.b.c.ClientController [http-nio-8080-exec-3] REST request to list clients for user: admin
+2026-05-06 18:03:33,798 INFO c.t.b.c.ClientController [http-nio-8080-exec-6] REST request to create client by user: admin
+2026-05-06 18:03:33,812 INFO c.t.b.s.i.ClientServiceImpl [http-nio-8080-exec-6] [SUCCESS] Client saved with ID: 8cd4444c-5e3e-4fdf-9f81-b2d950b4f5c6
+2026-05-06 18:03:33,877 INFO c.t.b.c.ClientController [http-nio-8080-exec-5] REST request to list clients for user: admin
+2026-05-06 18:03:42,790 INFO c.t.b.c.ClientController [http-nio-8080-exec-8] REST request to get client ID: 8cd4444c-5e3e-4fdf-9f81-b2d950b4f5c6 by user: admin
+2026-05-06 18:03:45,078 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-1] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 18:03:45,094 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-1] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 18:05:53,540 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-9] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 18:05:53,565 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-9] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 20:49:32,320 WARN c.z.h.p.HikariPool [HikariPool-1:housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h8m16s549ms551µs500ns).
+2026-05-06 21:02:13,599 WARN c.z.h.p.HikariPool [HikariPool-1:housekeeper] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m41s227ms972µs).
+2026-05-06 21:17:22,048 WARN o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier [http-nio-8080-exec-8] Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
 	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
 	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
 
-2026-05-05 22:19:03,120 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-9] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
-2026-05-05 22:19:03,124 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-9] [QUERY_RESULT] Retrieved 3 projects for filter: ''
-2026-05-05 22:19:03,135 WARN o.h.o.j.error [http-nio-8080-exec-9] HHH000247: ErrorCode: 42001, SQLState: 42001
-2026-05-05 22:19:03,135 WARN o.h.o.j.error [http-nio-8080-exec-9] Erreur de syntaxe dans l'instruction SQL "select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.[*]key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=?"; attendu "identifier"
-Syntax error in SQL statement "select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.[*]key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=?"; expected "identifier"; SQL statement:
-select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=? [42001-240]
-2026-05-05 22:26:12,230 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
-2026-05-05 22:26:12,271 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
-2026-05-05 22:26:12,281 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-05-05 22:26:12,285 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
-2026-05-05 22:26:12,287 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
-2026-05-05 22:26:20,399 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 21612 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
-2026-05-05 22:26:20,405 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
-2026-05-05 22:26:20,798 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
-2026-05-05 22:26:22,018 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-05-05 22:26:22,194 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 160 ms. Found 9 JPA repository interfaces.
-2026-05-05 22:26:23,328 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
-2026-05-05 22:26:23,349 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
-2026-05-05 22:26:23,351 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
-2026-05-05 22:26:23,352 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
-2026-05-05 22:26:23,433 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 2947 ms
-2026-05-05 22:26:23,673 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
-2026-05-05 22:26:23,750 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
-2026-05-05 22:26:24,355 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-05-05 22:26:24,414 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
-2026-05-05 22:26:24,696 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
-2026-05-05 22:26:24,699 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
-2026-05-05 22:26:24,731 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-05-05 22:26:24,764 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+2026-05-06 21:20:01,446 INFO c.t.b.c.ClientController [http-nio-8080-exec-4] REST request to list clients for user: admin
+2026-05-06 21:20:01,447 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-7] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 21:20:01,457 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-7] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 21:20:07,823 INFO c.t.b.c.ClientController [http-nio-8080-exec-8] REST request to list clients for user: admin
+2026-05-06 21:20:09,843 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-1] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 21:20:09,854 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-1] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 21:20:15,325 INFO c.t.b.c.ClientController [http-nio-8080-exec-7] REST request to list clients for user: admin
+2026-05-06 21:20:52,556 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-9] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 21:20:52,560 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-9] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 21:21:47,268 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-06 21:21:47,281 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-05-06 21:21:47,293 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-06 21:21:47,300 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-05-06 21:21:47,303 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-05-06 21:22:07,683 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 1660 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-05-06 21:22:07,687 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-05-06 21:22:08,135 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-05-06 21:22:09,439 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-06 21:22:09,607 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 151 ms. Found 9 JPA repository interfaces.
+2026-05-06 21:22:10,705 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-05-06 21:22:10,720 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-05-06 21:22:10,722 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-05-06 21:22:10,723 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-05-06 21:22:10,800 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 3043 ms
+2026-05-06 21:22:11,085 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-06 21:22:11,157 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-05-06 21:22:11,933 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-06 21:22:11,983 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-05-06 21:22:12,440 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-05-06 21:22:12,443 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-05-06 21:22:12,473 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-06 21:22:12,503 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
 	Database JDBC URL [jdbc:h2:file:./data/license_db]
 	Database driver: H2 JDBC Driver
 	Database dialect: H2Dialect
@@ -527,183 +154,136 @@ select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at
 	Pool: DataSourceConnectionProvider
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-05-05 22:26:26,716 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-05-05 22:26:26,824 WARN o.h.t.s.i.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "create table parameters (id bigint generated by default as identity, key varchar(255), type varchar(255), primary key (id))" via JDBC [Erreur de syntaxe dans l'instruction SQL "create table parameters (id bigint generated by default as identity, [*]key varchar(255), type varchar(255), primary key (id))"; attendu "identifier"
-Syntax error in SQL statement "create table parameters (id bigint generated by default as identity, [*]key varchar(255), type varchar(255), primary key (id))"; expected "identifier";]
-org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table parameters (id bigint generated by default as identity, key varchar(255), type varchar(255), primary key (id))" via JDBC [Erreur de syntaxe dans l'instruction SQL "create table parameters (id bigint generated by default as identity, [*]key varchar(255), type varchar(255), primary key (id))"; attendu "identifier"
-Syntax error in SQL statement "create table parameters (id bigint generated by default as identity, [*]key varchar(255), type varchar(255), primary key (id))"; expected "identifier";]
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:81)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:566)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:506)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.createTable(AbstractSchemaMigrator.java:305)
-	at org.hibernate.tool.schema.internal.GroupedSchemaMigratorImpl.performTablesMigration(GroupedSchemaMigratorImpl.java:80)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:220)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:96)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:269)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$1(SchemaManagementToolCoordinator.java:101)
-	at java.base/java.util.HashMap.forEach(HashMap.java:1429)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:100)
-	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:35)
-	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:33)
-	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:323)
-	at org.hibernate.internal.SessionFactoryRegistry.instantiateSessionFactory(SessionFactoryRegistry.java:64)
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:437)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1456)
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:433)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:416)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:409)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:976)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620)
-	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
-	at com.taurustechnology.backend.BackendApplication.main(BackendApplication.java:13)
-Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Erreur de syntaxe dans l'instruction SQL "create table parameters (id bigint generated by default as identity, [*]key varchar(255), type varchar(255), primary key (id))"; attendu "identifier"
-Syntax error in SQL statement "create table parameters (id bigint generated by default as identity, [*]key varchar(255), type varchar(255), primary key (id))"; expected "identifier"; SQL statement:
-create table parameters (id bigint generated by default as identity, key varchar(255), type varchar(255), primary key (id)) [42001-240]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
-	at org.h2.message.DbException.getSyntaxError(DbException.java:261)
-	at org.h2.command.Parser.readIdentifier(Parser.java:5568)
-	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:8978)
-	at org.h2.command.Parser.parseCreateTable(Parser.java:8926)
-	at org.h2.command.Parser.parseCreate(Parser.java:6483)
-	at org.h2.command.Parser.parsePrepared(Parser.java:648)
-	at org.h2.command.Parser.parse(Parser.java:584)
-	at org.h2.command.Parser.parse(Parser.java:559)
-	at org.h2.command.Parser.prepareCommand(Parser.java:487)
-	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:647)
-	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:563)
-	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1160)
-	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245)
-	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
-	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
-	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:76)
-	... 38 common frames omitted
-2026-05-05 22:26:26,868 WARN o.h.t.s.i.ExceptionHandlerLoggedImpl [main] GenerationTarget encountered exception accepting command : Error executing DDL "alter table if exists license_models_parameters add constraint FKaeg4ora9qvl0mtcscl5tt0js foreign key (parameters_id) references parameters" via JDBC [Table "PARAMETERS" non trouvée
-Table "PARAMETERS" not found;]
-org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table if exists license_models_parameters add constraint FKaeg4ora9qvl0mtcscl5tt0js foreign key (parameters_id) references parameters" via JDBC [Table "PARAMETERS" non trouvée
-Table "PARAMETERS" not found;]
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:81)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlString(AbstractSchemaMigrator.java:566)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applySqlStrings(AbstractSchemaMigrator.java:506)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.applyForeignKeys(AbstractSchemaMigrator.java:438)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.performMigration(AbstractSchemaMigrator.java:256)
-	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:96)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:269)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$1(SchemaManagementToolCoordinator.java:101)
-	at java.base/java.util.HashMap.forEach(HashMap.java:1429)
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:100)
-	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:35)
-	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:33)
-	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:323)
-	at org.hibernate.internal.SessionFactoryRegistry.instantiateSessionFactory(SessionFactoryRegistry.java:64)
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:437)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1456)
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:66)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:433)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:416)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:409)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1864)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1813)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:976)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:620)
-	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
-	at com.taurustechnology.backend.BackendApplication.main(BackendApplication.java:13)
-Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PARAMETERS" non trouvée
-Table "PARAMETERS" not found; SQL statement:
-alter table if exists license_models_parameters add constraint FKaeg4ora9qvl0mtcscl5tt0js foreign key (parameters_id) references parameters [42102-240]
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
-	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
-	at org.h2.message.DbException.get(DbException.java:223)
-	at org.h2.message.DbException.get(DbException.java:199)
-	at org.h2.command.ddl.AlterTableAddConstraint.tryUpdate(AlterTableAddConstraint.java:198)
-	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:74)
-	at org.h2.command.ddl.AlterTable.update(AlterTable.java:46)
-	at org.h2.command.CommandContainer.update(CommandContainer.java:139)
-	at org.h2.command.Command.executeUpdate(Command.java:306)
-	at org.h2.command.Command.executeUpdate(Command.java:250)
-	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:262)
-	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
-	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95)
-	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:76)
-	... 37 common frames omitted
-2026-05-05 22:26:26,887 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-05-05 22:26:27,183 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-05-05 22:26:29,487 INFO c.t.b.i.AppRoleInitializer [main] Starting application role initialization...
-2026-05-05 22:26:29,689 INFO c.t.b.i.AppRoleInitializer [main] Created new application role: ADMINISTRATOR
-2026-05-05 22:26:29,696 INFO c.t.b.i.AppRoleInitializer [main] Created new application role: OPERATOR
-2026-05-05 22:26:29,696 INFO c.t.b.i.AppRoleInitializer [main] Application role initialization completed successfully
-2026-05-05 22:26:29,943 INFO c.t.b.i.AppUserInitializer [main] Created default super administrator user: admin
-2026-05-05 22:26:29,943 WARN c.t.b.i.AppUserInitializer [main] Default admin password should be changed after first login for security reasons
-2026-05-05 22:26:30,109 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-05-05 22:26:30,169 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
-2026-05-05 22:26:30,287 INFO c.t.b.s.s.WebSecurity [main] [2026-05-05T22:26:30.287787100] Configuring security filter chain
-2026-05-05 22:26:30,993 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
-2026-05-05 22:26:31,020 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
-2026-05-05 22:26:31,030 INFO c.t.b.BackendApplication [main] Started BackendApplication in 11.797 seconds (process running for 13.133)
-2026-05-05 22:29:45,076 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-05-05 22:29:45,077 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
-2026-05-05 22:29:45,079 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 2 ms
-2026-05-05 22:29:45,370 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
-2026-05-05 22:29:45,496 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY_RESULT] Retrieved 0 projects for filter: ''
-2026-05-05 22:29:53,275 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-3] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
-2026-05-05 22:29:53,278 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-3] [QUERY_RESULT] Retrieved 0 projects for filter: ''
-2026-05-05 22:29:54,526 INFO c.t.b.c.ClientController [http-nio-8080-exec-6] REST request to list clients for user: admin
-2026-05-05 22:30:18,344 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-3] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
-2026-05-05 22:30:18,347 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-3] [QUERY_RESULT] Retrieved 0 projects for filter: ''
-2026-05-05 22:32:18,571 INFO c.t.b.c.ProjectController [http-nio-8080-exec-7] REST request to create project: NEBI
-2026-05-05 22:32:18,572 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-7] [START] Attempting to create project 'NEBI' by user: admin
-2026-05-05 22:32:18,614 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-7] [CONFIG_SUCCESS] 0 security parameters attached to project
-2026-05-05 22:32:18,618 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-7] [COMPLETED] Project 'NEBI' created successfully with ID: 233cb882-3d43-4e42-8337-71250210fded
-2026-05-05 22:32:18,664 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-10] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
-2026-05-05 22:32:18,680 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-10] [QUERY_RESULT] Retrieved 1 projects for filter: ''
-2026-05-05 22:32:18,690 WARN o.h.o.j.error [http-nio-8080-exec-10] HHH000247: ErrorCode: 42001, SQLState: 42001
-2026-05-05 22:32:18,691 WARN o.h.o.j.error [http-nio-8080-exec-10] Erreur de syntaxe dans l'instruction SQL "select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.[*]key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=?"; attendu "identifier"
-Syntax error in SQL statement "select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.[*]key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=?"; expected "identifier"; SQL statement:
-select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=? [42001-240]
-2026-05-05 22:32:26,841 INFO c.t.b.c.ClientController [http-nio-8080-exec-8] REST request to list clients for user: admin
-2026-05-05 22:32:28,050 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-5] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
-2026-05-05 22:32:28,071 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-5] [QUERY_RESULT] Retrieved 1 projects for filter: ''
-2026-05-05 22:32:28,084 WARN o.h.o.j.error [http-nio-8080-exec-5] HHH000247: ErrorCode: 42001, SQLState: 42001
-2026-05-05 22:32:28,085 WARN o.h.o.j.error [http-nio-8080-exec-5] Erreur de syntaxe dans l'instruction SQL "select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.[*]key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=?"; attendu "identifier"
-Syntax error in SQL statement "select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.[*]key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=?"; expected "identifier"; SQL statement:
-select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=? [42001-240]
-2026-05-05 22:36:30,495 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
-2026-05-05 22:36:30,505 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [QUERY_RESULT] Retrieved 1 projects for filter: ''
-2026-05-05 22:36:30,511 WARN o.h.o.j.error [http-nio-8080-exec-8] HHH000247: ErrorCode: 42001, SQLState: 42001
-2026-05-05 22:36:30,511 WARN o.h.o.j.error [http-nio-8080-exec-8] Erreur de syntaxe dans l'instruction SQL "select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.[*]key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=?"; attendu "identifier"
-Syntax error in SQL statement "select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.[*]key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=?"; expected "identifier"; SQL statement:
-select lm1_0.id,lm1_0.created_at,lm1_0.created_by,lm1_0.deleted,lm1_0.deleted_at,lm1_0.deleted_by,lm1_0.project_id,lm1_0.updated_at,lm1_0.updated_by,p2_0.license_model_id,p2_1.id,p2_1.key,p2_1.type from license_models lm1_0 left join license_models_parameters p2_0 on lm1_0.id=p2_0.license_model_id left join parameters p2_1 on p2_1.id=p2_0.parameters_id where lm1_0.id=? [42001-240]
-2026-05-05 22:42:31,024 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
-2026-05-05 22:42:31,044 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
-2026-05-05 22:42:31,053 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-05-05 22:42:31,059 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
-2026-05-05 22:42:31,063 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-05-06 21:22:14,350 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-06 21:22:14,463 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-06 21:22:14,608 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-06 21:22:16,917 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-06 21:22:16,961 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-05-06 21:22:17,076 INFO c.t.b.s.s.WebSecurity [main] [2026-05-06T21:22:17.076073600] Configuring security filter chain
+2026-05-06 21:22:17,724 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-05-06 21:22:17,749 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-05-06 21:22:17,756 INFO c.t.b.BackendApplication [main] Started BackendApplication in 10.93 seconds (process running for 13.051)
+2026-05-06 21:22:32,405 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-06 21:22:32,405 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-05-06 21:22:32,407 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 2 ms
+2026-05-06 21:22:32,644 INFO c.t.b.c.ClientController [http-nio-8080-exec-4] REST request to list clients for user: admin
+2026-05-06 21:22:32,648 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-3] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 21:22:32,687 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-3] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 21:23:16,651 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 21:23:16,663 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 21:23:26,172 INFO c.t.b.c.ClientController [http-nio-8080-exec-2] REST request to list clients for user: admin
+2026-05-06 21:29:57,258 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-06 21:29:57,276 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-05-06 21:29:57,285 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-06 21:29:57,291 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-05-06 21:29:57,293 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-05-06 21:30:27,077 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 16620 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-05-06 21:30:27,081 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-05-06 21:30:27,485 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-05-06 21:30:28,670 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-06 21:30:28,833 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 150 ms. Found 9 JPA repository interfaces.
+2026-05-06 21:30:29,983 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-05-06 21:30:30,001 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-05-06 21:30:30,004 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-05-06 21:30:30,004 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-05-06 21:30:30,085 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 2929 ms
+2026-05-06 21:30:30,332 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-06 21:30:30,406 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-05-06 21:30:31,017 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-06 21:30:31,066 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-05-06 21:30:31,425 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-05-06 21:30:31,428 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-05-06 21:30:31,461 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-06 21:30:31,492 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-06 21:30:33,391 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-06 21:30:33,483 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-06 21:30:33,647 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-06 21:30:39,482 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-06 21:30:39,604 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-05-06 21:30:39,900 INFO c.t.b.s.s.WebSecurity [main] [2026-05-06T21:30:39.900532100] Configuring security filter chain
+2026-05-06 21:30:41,022 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-05-06 21:30:41,059 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-05-06 21:30:41,068 INFO c.t.b.BackendApplication [main] Started BackendApplication in 14.867 seconds (process running for 16.521)
+2026-05-06 21:32:05,424 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-06 21:32:05,424 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2026-05-06 21:32:05,428 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-2] Completed initialization in 4 ms
+2026-05-06 21:32:05,700 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 21:32:05,751 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 21:35:34,399 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-6] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 21:35:34,448 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-6] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 21:35:40,266 INFO c.t.b.c.ClientController [http-nio-8080-exec-1] REST request to list clients for user: admin
+2026-05-06 21:36:58,041 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-9] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 21:36:58,091 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-9] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 21:37:01,598 INFO c.t.b.c.ClientController [http-nio-8080-exec-7] REST request to list clients for user: admin
+2026-05-06 21:41:19,313 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-3] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 21:41:19,319 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-3] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 21:41:30,782 INFO c.t.b.c.ClientController [http-nio-8080-exec-4] REST request to list clients for user: admin
+2026-05-06 21:41:55,064 WARN o.h.o.j.error [http-nio-8080-exec-7] HHH000247: ErrorCode: 23502, SQLState: 23502
+2026-05-06 21:41:55,065 WARN o.h.o.j.error [http-nio-8080-exec-7] NULL non permis pour la colonne "LICENSE_ID"
+NULL not allowed for column "LICENSE_ID"; SQL statement:
+insert into license_parameters (created_at,created_by,deleted,deleted_at,deleted_by,label,license_id,type,updated_at,updated_by,parameter_value,id) values (?,?,?,?,?,?,?,?,?,?,?,?) [23502-240]
+2026-05-06 21:48:08,208 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-06 21:48:08,233 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-05-06 21:48:08,247 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-06 21:48:08,255 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-05-06 21:48:08,260 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-05-06 21:48:22,704 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 7320 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-05-06 21:48:22,709 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-05-06 21:48:23,158 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-05-06 21:48:24,808 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-06 21:48:24,993 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 170 ms. Found 9 JPA repository interfaces.
+2026-05-06 21:48:26,344 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-05-06 21:48:26,369 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-05-06 21:48:26,373 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-05-06 21:48:26,374 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-05-06 21:48:26,512 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 3725 ms
+2026-05-06 21:48:26,870 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-06 21:48:26,950 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-05-06 21:48:27,768 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-06 21:48:27,816 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-05-06 21:48:28,165 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-05-06 21:48:28,169 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-05-06 21:48:28,200 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-06 21:48:28,232 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-06 21:48:30,245 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-06 21:48:30,342 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-06 21:48:30,495 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-06 21:48:33,016 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-06 21:48:33,073 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-05-06 21:48:33,193 INFO c.t.b.s.s.WebSecurity [main] [2026-05-06T21:48:33.193169700] Configuring security filter chain
+2026-05-06 21:48:33,886 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-05-06 21:48:33,913 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-05-06 21:48:33,919 INFO c.t.b.BackendApplication [main] Started BackendApplication in 12.3 seconds (process running for 13.812)
+2026-05-06 21:48:44,092 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-06 21:48:44,093 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-05-06 21:48:44,096 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 3 ms
+2026-05-06 21:48:44,646 INFO c.t.b.s.i.LicenseServiceImpl [http-nio-8080-exec-2] [SUCCESS] License forged with 4 parameters
+2026-05-06 21:48:44,814 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 21:48:44,852 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-4] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 22:10:25,114 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-06 22:10:25,133 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-05-06 22:10:25,147 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-06 22:10:25,152 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-05-06 22:10:25,154 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

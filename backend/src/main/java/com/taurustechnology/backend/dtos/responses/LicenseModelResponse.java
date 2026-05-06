@@ -17,7 +17,7 @@ public class LicenseModelResponse {
 
     private String projectId;
 
-    private List<Parameter> parameters = new ArrayList<>();
-
     private String description;
+
+    private List<Parameter> parameters = new ArrayList<>();
 }

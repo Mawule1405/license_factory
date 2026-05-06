@@ -1,11 +1,14 @@
 package com.taurustechnology.backend.dtos.responses;
 
+import com.taurustechnology.backend.dtos.LicenseParameterDto;
+import com.taurustechnology.backend.models.LicenseParameter;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
 @Data
@@ -33,9 +36,6 @@ public class LicenseResponse {
     // Utilisateur ayant généré la licence
     private String creatorName;
 
-    /**
-     * Les paramètres dynamiques transformés en Map<Label, Value>
-     * Exemple: { "max_users": "10", "environment": "production" }
-     */
-    private Map<String, String> parameters;
+
+    private List<LicenseParameterDto> parameters;
 }
