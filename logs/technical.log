@@ -287,3 +287,109 @@ insert into license_parameters (created_at,created_by,deleted,deleted_at,deleted
 2026-05-06 22:10:25,147 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-05-06 22:10:25,152 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
 2026-05-06 22:10:25,154 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2026-05-06 22:10:40,266 INFO c.t.b.BackendApplication [main] Starting BackendApplication using Java 21.0.6 with PID 17852 (D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory\backend\target\classes started by HELOU Komlan Mawule in D:\zopipo\professionnal_project\zopipo\taurus\TaurusTeX\license_factory)
+2026-05-06 22:10:40,274 INFO c.t.b.BackendApplication [main] No active profile set, falling back to 1 default profile: "default"
+2026-05-06 22:10:40,867 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 9.0.1.Final
+2026-05-06 22:10:42,439 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-05-06 22:10:42,633 INFO o.s.d.r.c.RepositoryConfigurationDelegate [main] Finished Spring Data repository scanning in 175 ms. Found 9 JPA repository interfaces.
+2026-05-06 22:10:44,029 INFO o.s.b.t.TomcatWebServer [main] Tomcat initialized with port 8080 (http)
+2026-05-06 22:10:44,053 INFO o.a.c.h.Http11NioProtocol [main] Initializing ProtocolHandler ["http-nio-8080"]
+2026-05-06 22:10:44,057 INFO o.a.c.c.StandardService [main] Starting service [Tomcat]
+2026-05-06 22:10:44,057 INFO o.a.c.c.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-05-06 22:10:44,171 INFO o.s.b.w.c.s.WebApplicationContextInitializer [main] Root WebApplicationContext: initialization completed in 3762 ms
+2026-05-06 22:10:44,562 INFO o.h.o.jpa [main] HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-05-06 22:10:44,684 INFO o.h.o.core [main] HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-05-06 22:10:45,600 INFO o.s.o.j.p.SpringPersistenceUnitInfo [main] No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-05-06 22:10:45,655 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2026-05-06 22:10:46,079 INFO c.z.h.p.HikariPool [main] HikariPool-1 - Added connection conn0: url=jdbc:h2:file:./data/license_db user=POSTGRES
+2026-05-06 22:10:46,083 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2026-05-06 22:10:46,122 WARN o.h.o.deprecation [main] HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-05-06 22:10:46,162 INFO o.h.o.c.pooling [main] HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:./data/license_db]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: LICENSE_DB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-05-06 22:10:48,246 INFO o.h.o.core [main] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-05-06 22:10:48,335 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [main] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-05-06 22:10:48,480 INFO o.s.d.j.r.q.QueryEnhancerFactories [main] Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-05-06 22:10:50,781 WARN o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration [main] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-05-06 22:10:50,830 INFO o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer [main] Global AuthenticationManager configured with UserDetailsService bean with name userDetailService
+2026-05-06 22:10:50,950 INFO c.t.b.s.s.WebSecurity [main] [2026-05-06T22:10:50.950077800] Configuring security filter chain
+2026-05-06 22:10:51,853 INFO o.a.c.h.Http11NioProtocol [main] Starting ProtocolHandler ["http-nio-8080"]
+2026-05-06 22:10:51,883 INFO o.s.b.t.TomcatWebServer [main] Tomcat started on port 8080 (http) with context path '/'
+2026-05-06 22:10:51,891 INFO c.t.b.BackendApplication [main] Started BackendApplication in 13.407 seconds (process running for 15.44)
+2026-05-06 22:11:40,432 INFO o.a.c.c.C.[.[.[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-05-06 22:11:40,434 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2026-05-06 22:11:40,438 INFO o.s.w.s.DispatcherServlet [http-nio-8080-exec-1] Completed initialization in 4 ms
+2026-05-06 22:11:40,821 INFO c.t.b.s.i.LicenseServiceImpl [http-nio-8080-exec-3] Updating license metadata for ID: 4de0b5ab-482b-49e7-963c-be753b4dbd1b
+2026-05-06 22:11:40,905 INFO c.t.b.s.i.LicenseServiceImpl [http-nio-8080-exec-3] [COMPLETED] License 4de0b5ab-482b-49e7-963c-be753b4dbd1b updated with 4 parameters
+2026-05-06 22:12:06,337 WARN o.s.d.w.c.SpringDataJackson3Configuration$PageModule$WarningLoggingModifier [http-nio-8080-exec-6] Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-05-06 22:12:16,773 INFO c.t.b.c.ClientController [http-nio-8080-exec-9] REST request to list clients for user: admin
+2026-05-06 22:12:18,922 INFO c.t.b.c.ClientController [http-nio-8080-exec-3] REST request to get client ID: 8cd4444c-5e3e-4fdf-9f81-b2d950b4f5c6 by user: admin
+2026-05-06 22:12:20,885 INFO c.t.b.c.ClientController [http-nio-8080-exec-4] REST request to list clients for user: admin
+2026-05-06 22:12:22,500 INFO c.t.b.c.ClientController [http-nio-8080-exec-8] REST request to get client ID: 56ba9a3e-47a7-48e2-9a49-89dbe2ddd760 by user: admin
+2026-05-06 22:16:45,762 INFO c.t.b.c.ClientController [http-nio-8080-exec-5] REST request to get client ID: 56ba9a3e-47a7-48e2-9a49-89dbe2ddd760 by user: admin
+2026-05-06 22:16:48,715 INFO c.t.b.c.ClientController [http-nio-8080-exec-9] REST request to list clients for user: admin
+2026-05-06 22:16:50,906 INFO c.t.b.c.ClientController [http-nio-8080-exec-1] REST request to get client ID: 8cd4444c-5e3e-4fdf-9f81-b2d950b4f5c6 by user: admin
+2026-05-06 22:16:52,873 INFO c.t.b.c.ClientController [http-nio-8080-exec-5] REST request to list clients for user: admin
+2026-05-06 22:16:54,280 INFO c.t.b.c.ClientController [http-nio-8080-exec-6] REST request to get client ID: 56ba9a3e-47a7-48e2-9a49-89dbe2ddd760 by user: admin
+2026-05-06 22:18:17,868 INFO c.t.b.c.ClientController [http-nio-8080-exec-4] REST request to list clients for user: admin
+2026-05-06 22:18:58,553 INFO c.t.b.c.ClientController [http-nio-8080-exec-9] REST request to get client ID: 8cd4444c-5e3e-4fdf-9f81-b2d950b4f5c6 by user: admin
+2026-05-06 22:19:00,488 INFO c.t.b.c.ClientController [http-nio-8080-exec-5] REST request to list clients for user: admin
+2026-05-06 22:19:01,836 INFO c.t.b.c.ClientController [http-nio-8080-exec-6] REST request to get client ID: 56ba9a3e-47a7-48e2-9a49-89dbe2ddd760 by user: admin
+2026-05-06 22:19:21,354 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-10] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 22:19:21,373 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-10] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 22:20:19,817 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-5] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 22:20:19,829 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-5] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 22:23:03,763 INFO c.t.b.c.ClientController [http-nio-8080-exec-9] REST request to get client ID: 56ba9a3e-47a7-48e2-9a49-89dbe2ddd760 by user: admin
+2026-05-06 22:23:32,412 INFO c.t.b.c.ClientController [http-nio-8080-exec-6] REST request to get client ID: 56ba9a3e-47a7-48e2-9a49-89dbe2ddd760 by user: admin
+2026-05-06 22:23:34,422 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 22:23:34,426 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 22:24:26,033 INFO c.t.b.s.i.LicenseServiceImpl [http-nio-8080-exec-10] [SUCCESS] License forged with 4 parameters
+2026-05-06 22:24:53,791 INFO c.t.b.s.i.LicenseServiceImpl [http-nio-8080-exec-3] Updating license metadata for ID: 4de0b5ab-482b-49e7-963c-be753b4dbd1b
+2026-05-06 22:24:53,801 INFO c.t.b.s.i.LicenseServiceImpl [http-nio-8080-exec-3] [COMPLETED] License 4de0b5ab-482b-49e7-963c-be753b4dbd1b updated with 4 parameters
+2026-05-06 22:25:44,998 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 22:25:45,005 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 22:26:26,091 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-1] [QUERY] Fetching projects page 1 (size: 10) with filter: ''
+2026-05-06 22:26:26,101 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-1] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 22:26:40,847 INFO c.t.b.c.ClientController [http-nio-8080-exec-2] REST request to list clients for user: admin
+2026-05-06 22:26:43,131 INFO c.t.b.c.ClientController [http-nio-8080-exec-3] REST request to get client ID: 56ba9a3e-47a7-48e2-9a49-89dbe2ddd760 by user: admin
+2026-05-06 22:26:45,035 INFO c.t.b.c.ClientController [http-nio-8080-exec-9] REST request to list clients for user: admin
+2026-05-06 22:26:46,170 INFO c.t.b.c.ClientController [http-nio-8080-exec-10] REST request to get client ID: 8cd4444c-5e3e-4fdf-9f81-b2d950b4f5c6 by user: admin
+2026-05-06 22:26:52,039 INFO c.t.b.c.ClientController [http-nio-8080-exec-10] REST request to list clients for user: admin
+2026-05-06 22:26:52,040 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 22:26:52,048 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 22:29:11,606 INFO c.t.b.c.ClientController [http-nio-8080-exec-8] REST request to list clients for user: admin
+2026-05-06 22:29:11,609 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-1] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 22:29:11,618 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-1] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 22:29:31,391 INFO c.t.b.s.i.LicenseServiceImpl [http-nio-8080-exec-2] [SUCCESS] License forged with 3 parameters
+2026-05-06 22:29:58,793 INFO c.t.b.c.ClientController [http-nio-8080-exec-9] REST request to list clients for user: admin
+2026-05-06 22:30:00,034 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 22:30:00,040 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-8] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 22:30:04,502 INFO c.t.b.c.ClientController [http-nio-8080-exec-4] REST request to list clients for user: admin
+2026-05-06 22:30:15,407 INFO c.t.b.c.ClientController [http-nio-8080-exec-5] REST request to list clients for user: admin
+2026-05-06 22:30:16,855 INFO c.t.b.c.ClientController [http-nio-8080-exec-2] REST request to get client ID: 8cd4444c-5e3e-4fdf-9f81-b2d950b4f5c6 by user: admin
+2026-05-06 22:32:01,491 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-9] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 22:32:01,497 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-9] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 22:32:05,163 INFO c.t.b.c.ClientController [http-nio-8080-exec-8] REST request to list clients for user: admin
+2026-05-06 22:32:13,396 INFO c.t.b.c.ClientController [http-nio-8080-exec-10] REST request to list clients for user: admin
+2026-05-06 22:32:15,332 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-5] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 22:32:15,340 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-5] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 22:34:10,781 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-2] [QUERY] Fetching projects page 0 (size: 10) with filter: ''
+2026-05-06 22:34:10,789 INFO c.t.b.s.i.ProjectServiceImpl [http-nio-8080-exec-2] [QUERY_RESULT] Retrieved 2 projects for filter: ''
+2026-05-06 22:34:11,375 INFO c.t.b.c.ClientController [http-nio-8080-exec-6] REST request to list clients for user: admin
+2026-05-06 22:36:34,711 INFO o.s.b.t.GracefulShutdown [SpringApplicationShutdownHook] Commencing graceful shutdown. Waiting for active requests to complete
+2026-05-06 22:36:34,775 INFO o.s.b.t.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete
+2026-05-06 22:36:34,787 INFO o.s.o.j.LocalContainerEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-05-06 22:36:34,794 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2026-05-06 22:36:34,800 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.

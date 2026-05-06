@@ -103,9 +103,11 @@ export class CreateLicenseModalComponent implements OnInit {
     }
   }
 
+
   isProjectSelected(id: string): boolean {
     return this.licenseForm.get('projectId')?.value === id;
   }
+
 
   generateDynamicFields(projectId: string) {
     const selectedProject = this.projects.find(p => p.id === projectId);
