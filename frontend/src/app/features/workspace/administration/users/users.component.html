@@ -92,7 +92,8 @@
 
             <td class="p-2">
               <div class="flex justify-center gap-1 opacity-20 group-hover:opacity-100 transition-all">
-                <button title="EDIT_PROFILE" class="w-7 h-7 bg-gray-100 text-gray-600 hover:bg-taurus-green hover:text-white transition-all flex items-center justify-center">
+                <button title="EDIT_PROFILE" (click)="editUser(user)"
+                        class="w-7 h-7 bg-gray-100 text-gray-600 hover:bg-taurus-green hover:text-white transition-all flex items-center justify-center">
                   <i class="fas fa-edit text-[10px]"></i>
                 </button>
                 <button title="REVOKE_ACCESS" class="w-7 h-7 bg-gray-100 text-gray-600 hover:bg-orange-600 hover:text-white transition-all flex items-center justify-center">
@@ -138,4 +139,12 @@
     (close)="isCreateModalOpen = false"
     (userCreated)="loadUsers()">
   </app-create-user-modal>
+}
+
+@if (isEditModalOpen) {
+  <app-edit-user-modal
+  [user]="selectedUser!"
+  (close)="isEditModalOpen=false"
+  (updated)="loadUsers(); isEditModalOpen =false"
+  />
 }

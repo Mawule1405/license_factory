@@ -181,7 +181,7 @@
 
 @if(isLicenseParametersModal){
   <app-license-parameters-modal
-  [license]="selectedLicense"
+  [license]="selectedLicense!"
   (close)="isLicenseParametersModal = false"
   />
 }

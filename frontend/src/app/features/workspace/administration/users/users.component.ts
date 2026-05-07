@@ -6,11 +6,13 @@ import {UserService} from '../../../../core/services/user.service';
 import {AppUser} from '../../../../core/models/auth.model';
 import {CreateUserModalComponent} from './create-user-modal/create-user-modal.component';
 import {PaginationComponent} from '../../../../shared/components/layout/pagination/pagination.component';
+import {EditUserModalComponent} from './edit-user-modal/edit-user-modal.component';
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [CommonModule, FormsModule, CreateUserModalComponent, PaginationComponent],
+  imports: [CommonModule, FormsModule, CreateUserModalComponent, PaginationComponent
+    , EditUserModalComponent],
   templateUrl: './users.component.html'
 })
 export class UsersComponent implements OnInit {
@@ -20,6 +22,8 @@ export class UsersComponent implements OnInit {
   // Data
   users: AppUser[] = [];
   isCreateModalOpen = false;
+  isEditModalOpen = false
+  selectedUser! : AppUser;
 
   // State Management
   loading = false;
@@ -94,4 +98,11 @@ export class UsersComponent implements OnInit {
     this.pagination.page = 1; // Toujours revenir à la page 1
     this.loadUsers();
   }
+
+  editUser(user: AppUser) {
+    this.selectedUser = user;
+    this.isEditModalOpen = true;
+  }
+
+
 }

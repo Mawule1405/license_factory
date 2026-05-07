@@ -108,7 +108,6 @@ export class CreateLicenseModalComponent implements OnInit {
     return this.licenseForm.get('projectId')?.value === id;
   }
 
-
   generateDynamicFields(projectId: string) {
     const selectedProject = this.projects.find(p => p.id === projectId);
     const dynamicGroup = this.licenseForm.get('dynamicParams') as FormGroup;
@@ -172,4 +171,5 @@ export class CreateLicenseModalComponent implements OnInit {
       }
     });
   }
+
 }
