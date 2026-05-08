@@ -96,8 +96,11 @@
                         class="w-7 h-7 bg-gray-100 text-gray-600 hover:bg-taurus-green hover:text-white transition-all flex items-center justify-center">
                   <i class="fas fa-edit text-[10px]"></i>
                 </button>
-                <button title="REVOKE_ACCESS" class="w-7 h-7 bg-gray-100 text-gray-600 hover:bg-orange-600 hover:text-white transition-all flex items-center justify-center">
+                <button title="REVOKE_ACCESS" (click)=revokeAccess(user) class="w-7 h-7 bg-gray-100 text-gray-600 hover:bg-orange-600 hover:text-white transition-all flex items-center justify-center">
                   <i class="fas fa-user-slash text-[10px]"></i>
+                </button>
+                <button title="INITIALIZE PASSWORD" (click)="initializePassword(user)" class="w-7 h-7 bg-gray-100 text-gray-600 hover:bg-red-600 hover:text-white transition-all flex items-center justify-center">
+                  <i class="fas fa-rotate-right text-[10px]"></i>
                 </button>
                 <button title="TERMINATE_OPERATOR" (click)="deleteOperator(user)" class="w-7 h-7 bg-gray-100 text-red-600 hover:bg-red-600 hover:text-white transition-all flex items-center justify-center">
                   <i class="fas fa-trash-alt text-[10px]"></i>

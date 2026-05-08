@@ -21,7 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -139,12 +138,52 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
     public boolean deleteById(String id, String deletedByAppUserId) {
         return appUserRepository.findById(id).map(user -> {
-            appUserRepository.delete(user);
+            user.setDeleted(true);
+            appUserRepository.save(user);
             auditService.logAction("SOFT_DELETE", deletedByAppUserId, user.getUsername(), "SUCCESS");
             return true;
         }).orElseGet(() -> {
             auditService.logAction("SOFT_DELETE", deletedByAppUserId, id, "FAILED: NOT_FOUND");
             return false;
+        });
+    }
+
+    @Transactional
+    @Override
+    public void delete(String id, String deletedByAppUserId) {
+        log.info("Initiating soft delete protocol for user ID: {}", id);
+
+        appUserRepository.findById(id).map(user -> {
+            user.setDeleted(true);
+            // On désactive aussi souvent le compte lors d'une suppression
+            user.setActivated(false);
+
+            appUserRepository.save(user);
+            auditService.logAction("USER_SOFT_DELETE", deletedByAppUserId, "Target: " + user.getUsername(), "SUCCESS");
+            log.info("User {} successfully flagged as deleted", user.getUsername());
+            return user;
+        }).orElseThrow(() -> {
+            auditService.logAction("USER_SOFT_DELETE", deletedByAppUserId, "Target ID: " + id, "FAILED: NOT_FOUND");
+            return new EntityNotFoundException("Operator not found in registry");
+        });
+    }
+
+    @Override
+    @Transactional
+    public void revokeById(String id, String revokedByAppUserId) {
+        log.info("Initiating access revocation for user ID: {}", id);
+
+        appUserRepository.findById(id).map(user -> {
+            // Désactivation du flag d'activation sans supprimer l'entité
+            user.setActivated(false);
+
+            appUserRepository.save(user);
+            auditService.logAction("REVOKE_ACCESS", revokedByAppUserId, "Target: " + user.getUsername(), "SUCCESS");
+            log.info("Access revoked for user: {}", user.getUsername());
+            return user;
+        }).orElseThrow(() -> {
+            auditService.logAction("REVOKE_ACCESS", revokedByAppUserId, "Target ID: " + id, "FAILED: NOT_FOUND");
+            return new EntityNotFoundException("Operator not found in registry");
         });
     }
 

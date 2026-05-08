@@ -40,6 +40,10 @@ export class UserService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
+  revokeUser(id: string): Observable<void> {
+    return this.http.patch<void>(`${this.apiUrl}/revoke/${id}`,{});
+  }
+
   getUser(userId: string) {
     return this.http.get<AppUser>(`${this.apiUrl}/find/${userId}`);
   }
@@ -61,8 +65,8 @@ export class UserService {
     );
   }
 
-  initializePassword(initializerId:string, userId:string) {
-    return this.http.patch<AppUser>(`${this.apiUrl}/${initializerId}/initialize-password/${userId}`, {})
+  resetPassword( userId:string) {
+    return this.http.patch<AppUser>(`${this.apiUrl}/initialize-password/${userId}`, {})
   }
 
 }

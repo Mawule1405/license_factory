@@ -143,9 +143,9 @@ public class AppUserController {
         return ResponseEntity.ok(appUserMapper.toDTO(appUserService.changePassword(userId, data.getOldPassword(),data.getNewPassword())));
     }
 
-    @PatchMapping("/{initializerId}/initialize-password/{userId}")
-    public ResponseEntity<AppUserResponse> initialize(@PathVariable String initializerId, @PathVariable String userId) {
-        return ResponseEntity.ok(appUserMapper.toDTO(appUserService.initialize(initializerId, userId, "123456789")));
+    @PatchMapping("initialize-password/{userId}")
+    public ResponseEntity<AppUserResponse> initialize( @PathVariable String userId , Principal principal) {
+        return ResponseEntity.ok(appUserMapper.toDTO(appUserService.initialize(principal.getName(), userId, "123456789")));
     }
 
     @PatchMapping("/change-app-roles/{id}")
@@ -171,4 +171,18 @@ public class AppUserController {
         Page<AppUserResponse> appUserResponses = appUsers.map(appUserMapper::toDTO);
         return ResponseEntity.ok(Pagination.of(appUserResponses));
     }
+
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<Void> delete(@PathVariable("userId") String appUserId,Principal principal) {
+        appUserService.delete( appUserId,principal.getName());
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/revoke/{userId}")
+    public ResponseEntity<Void> revoke(@PathVariable("userId") String appUserId,Principal principal) {
+        appUserService.revokeById( appUserId,principal.getName());
+        return ResponseEntity.noContent().build();
+    }
+
+
 }

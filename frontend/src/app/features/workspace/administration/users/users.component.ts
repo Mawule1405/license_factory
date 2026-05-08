@@ -7,6 +7,7 @@ import {AppUser} from '../../../../core/models/auth.model';
 import {CreateUserModalComponent} from './create-user-modal/create-user-modal.component';
 import {PaginationComponent} from '../../../../shared/components/layout/pagination/pagination.component';
 import {EditUserModalComponent} from './edit-user-modal/edit-user-modal.component';
+import {NotificationService} from '../../../../core/services/notification.service';
 
 @Component({
   selector: 'app-users',
@@ -17,6 +18,7 @@ import {EditUserModalComponent} from './edit-user-modal/edit-user-modal.componen
 })
 export class UsersComponent implements OnInit {
   private userService = inject(UserService);
+  private notifyService = inject(NotificationService)
   private cdr = inject(ChangeDetectorRef)
 
   // Data
@@ -77,11 +79,7 @@ export class UsersComponent implements OnInit {
     this.searchSubject.next(this.searchTerm);
   }
 
-  deleteOperator(user: AppUser) {
-    if (confirm(`CRITICAL: CONFIRM TERMINATION OF OPERATOR [${user.username.toUpperCase()}]?`)) {
-      this.userService.deleteUser(user.id).subscribe(() => this.loadUsers());
-    }
-  }
+
 
   openCreationPanel() {
     this.isCreateModalOpen = true
@@ -104,5 +102,86 @@ export class UsersComponent implements OnInit {
     this.isEditModalOpen = true;
   }
 
+
+  initializePassword(user: AppUser) {
+    this.notifyService.confirm(
+      `Are you sure you want to reset the password for ${user.username}?`,
+      "PASSWORD_RESET_PROTOCOL"
+    ).then((confirmed) => {
+      if (confirmed) {
+        this.userService.resetPassword(user.id).subscribe({
+          next: () => {
+            this.notifyService.success(
+              `New credentials dispatched to ${user.email}`,
+              "RESET_SUCCESS"
+            );
+          },
+          error: (err) => {
+            this.notifyService.error(
+              "Failed to initialize reset protocol",
+              "EXECUTION_ERROR"
+            );
+          }
+        });
+      }
+    });
+  }
+
+  revokeAccess(user: AppUser) {
+    this.notifyService.confirm(
+      `CRITICAL: You are about to revoke all access for ${user.fullName}. This action is logged.`,
+      "REVOKE_ACCESS_CONFIRMATION"
+    ).then((confirmed) => {
+      if (confirmed) {
+        this.userService.revokeUser(user.id).subscribe({
+          next: () => {
+            this.notifyService.success(
+              `User ${user.username} has been purged from registry`,
+              "REVOCATION_COMPLETE"
+            );
+            // Optionnel : Déclencher un rafraîchissement de la liste
+            this.loadUsers();
+          },
+          error: (err) => {
+            this.notifyService.error(
+              "Security clearance level insufficient or network error",
+              "REVOCATION_FAILED"
+            );
+          }
+        });
+      }
+    });
+  }
+
+  deleteOperator(user: AppUser) {
+    // 1. Demande de confirmation avec un ton "Security Protocol"
+    this.notifyService.confirm(
+      `CRITICAL: Are you sure you want to permanently delete operator [ ${user.username} ]? This action cannot be undone.`,
+      "TERMINATION_CONFIRMATION"
+    ).then((confirmed) => {
+      if (confirmed) {
+        // 2. Activation du flag de chargement global si nécessaire ou feedback visuel
+        this.userService.deleteUser(user.id).subscribe({
+          next: () => {
+            // 3. Notification de succès
+            this.notifyService.success(
+              `Operator ${user.username} successfully purged from system registry.`,
+              "DELETION_SUCCESS"
+            );
+
+            this.loadUsers();
+          },
+          error: (err) => {
+            // 6. Gestion d'erreur
+            this.notifyService.error(
+              "Access denied or system error during deletion protocol.",
+              "DELETION_FAILED"
+            );
+            console.error('Termination error:', err);
+          }
+        });
+      }
+    });
+  }
 
 }

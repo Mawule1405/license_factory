@@ -5,6 +5,7 @@ import com.taurustechnology.backend.dtos.responses.AppUserResponse;
 import com.taurustechnology.backend.models.AppRole;
 import com.taurustechnology.backend.models.AppUser;
 import org.springframework.data.domain.Page;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,7 +23,12 @@ public interface AppUserService {
 
     boolean existsByUsername(String username);
     boolean existsByEmail(String email);
+
     boolean deleteById(String id, String deletedByAppUserId);
+
+    void delete(String id, String deletedByAppUserId);
+
+    void revokeById(String appUserId, String name);
 
     Page<AppUser> findAdministrators(int page, int size);
 
@@ -39,4 +45,6 @@ public interface AppUserService {
     Page<AppUser> findAllAppUser(int page, int size);
 
     Page<AppUserResponse> searchUsers(String keyword, int page, int size);
+
+
 }

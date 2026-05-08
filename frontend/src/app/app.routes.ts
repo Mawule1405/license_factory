@@ -27,6 +27,7 @@ import {ProjectsManagementComponent} from './features/workspace/projects-managem
 import {LicensesManagementComponent} from './features/workspace/licenses-management/licenses-management.component';
 import {ListLicensesComponent} from './features/workspace/licenses-management/list-licenses/list-licenses.component';
 import {ExportLogsComponent} from './features/workspace/administration/export-logs/export-logs.component';
+import {NotFoundComponent} from './features/not-found/not-found.component';
 
 export const routes: Routes = [
   {path:'', redirectTo:'login', pathMatch: 'full'},
@@ -72,5 +73,5 @@ export const routes: Routes = [
       {path: 'change-password', component: ChangePasswordComponent, canActivate:[authGuard]},
     ]},
 
-  {path: '**', redirectTo: 'dashboard', pathMatch: 'full' },
+  {path: '**', component:NotFoundComponent, pathMatch: 'full' },
 ];
